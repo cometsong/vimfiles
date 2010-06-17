@@ -1,0 +1,48 @@
+##### Aliases #####
+
+##### ls, the common ones I use a lot shortened for rapid fire usage
+alias ls='ls -G'      #I like color (on os X)                                                 
+alias ll='ls -lh'     #size,show type,human readable
+alias l.='ls -d .[^.]*' #size,show type,.dotfiles only                                        
+alias l.='ls -ld .[^.]*'  # long,size,show type,.dotfiles only                                
+alias la='ls -lAh'   #long list,show almost all,show type,human readable                      
+alias lr='ls -tRh'   #sorted by date,recursive,show type,human readable                       
+alias lt='ls -lth'   #long list,sorted by date,show type,human readable                       
+alias lsd='ls -ld *(-/DN)'                                                                    
+
+##### cd, because typing the backslash is ALOT of work!!                                          
+alias .='cd ../'
+alias ..='cd ../../'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+
+
+##### Screen aliases #####
+# - add a new screen , or entire session, name it, then ssh to
+# the host
+alias sc="screen"
+alias scr="screen -r"
+
+##### ssh #####
+alias shep="ssh leopolbj@cphepdev"
+alias shstag="ssh deploy@staging"
+alias shprod="ssh deploy@production"
+
+##### mysql #####
+alias my="mysql"
+alias mycd='mysql -u rails -p6f6a589d cwc_development'
+alias myct='mysql -u rails -p6f6a589d cwc_test'
+alias my360='mysql -u rails -p6f6a589d 360_development'
+
+
+alias dmesg="sudo dmesg"
+
+alias su="su -s /bin/zsh"                                                                     
+alias top="top -n40 -ocpu -Orsize \
+	-P '  PID   UID     TIME   #TH   %CPU  RSIZE   RSHRD  COMMAND         ' \
+	-p '\$aaaa \$mmmm  \$wwwwww  \$ee \$cccc%  \$jjjj-  \$hhhh-  ^bbbbbbbbbbbbbbb' "
+
+alias errcode='grep -e"$1" /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Headers/MacErrors.h | more'
+
+# Ruby/Rails/Rake
+alias rdbf="rake db:recreate db:fixtures:load RAILS_ENV=development"

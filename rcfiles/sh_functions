@@ -1,0 +1,69 @@
+##### Functions #####
+mdc() { mkdir -p "$1" && cd "$1" }
+
+
+##### MISC #####
+alias e="$EDITOR"
+alias h="history"
+alias ..="cd .."
+alias l="ls -al"
+alias vi="vim"
+function rr() {
+  cd ~/Sites/$1
+}
+
+
+# rails
+alias ss="./script/server -u"
+alias ssp="ss -p"
+alias sc="./script/console"
+alias mig="rake db:migrate db:test:clone"
+
+# git
+alias g="git checkout"
+alias s="git status"
+alias ga="git add ."
+alias gd="git diff"
+alias gm="git merge"
+alias amend="git commit --amend"
+alias gc="git commit -am"
+alias gf="git fetch origin"
+alias gb="git checkout -b"
+alias gp="git push --tags "
+alias gu="git pull --tags "
+function gfm() {
+  gf $*
+  gm FETCH_HEAD
+}
+function gbranch() {
+  current_branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+}
+function gpo() {
+  # pushes the current branch; whatever that is
+  gbranch
+  gp origin $current_branch
+}
+function guo() {
+  # pushes the current branch; whatever that is
+  gbranch
+  gu origin $current_branch
+}
+function gpom() {
+  gp origin master
+}
+function guom() {
+  gu origin master
+}
+alias gl="git log"
+
+# mysql
+alias m="mysql"
+
+# commands
+alias 360="cd ~/Sites/360"
+alias cwc="cd ~/Sites/cwc"
+alias aps="cd /var/www/apps"
+alias htm="cd /var/www/html"
+alias alr=". ~/Me/bash/aliases"
+alias _al="e ~/Me/bash/aliases && alr"
+alias _me="e ~/Me"
