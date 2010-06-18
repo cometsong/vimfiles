@@ -1,10 +1,12 @@
 To use this 'rcfiles' project....
+
 	ln -s [rcfiles.git.dir] ~/rcfiles
-	ln -s rcfiles/zshrc ~/.zshrc
-	ln -s rcfiles/bash_profile ~/.bash_profile
-	ln -s rcfiles/vimrc ~/.vimrc
 Of course replacing "[rcfiles.git.dir]" with the actual directory you've cloned this git repo into 
 if you haven't just moved it to your home dir straight out. 
+
+	ln -s ~/rcfiles/zshrc ~/.zshrc
+	ln -s ~/rcfiles/bash_profile ~/.bash_profile
+	ln -s ~/rcfiles/vimrc ~/.vimrc
 
 One note: there's a file named 'my_aliases' referring to a file with mysql db connection shortcuts
 which includes the passwords, hosts, etc. and thus the file won't exist for you as it's not part 
