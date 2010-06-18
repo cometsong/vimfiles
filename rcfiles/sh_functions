@@ -1,27 +1,18 @@
 ##### Functions #####
 mdc() { mkdir -p "$1" && cd "$1" }
 
+##### Ruby/Rails/Rake ##### 
+alias rsrv="./script/server -u"
+alias rsrvp="ss -p"
+alias rcon="./script/console"
+alias rmig="rake db:migrate db:test:clone"
+alias rdbf="rake db:recreate db:fixtures:load RAILS_ENV=development"
 
-##### MISC #####
-alias e="$EDITOR"
-alias h="history"
-alias ..="cd .."
-alias l="ls -al"
-alias vi="vim"
-function rr() {
-  cd ~/Sites/$1
-}
-
-
-# rails
-alias ss="./script/server -u"
-alias ssp="ss -p"
-alias sc="./script/console"
-alias mig="rake db:migrate db:test:clone"
-
-# git
+##### git ##### 
 alias g="git checkout"
+alias gchk="git checkout"
 alias s="git status"
+alias gs="git status"
 alias ga="git add ."
 alias gd="git diff"
 alias gm="git merge"
@@ -29,8 +20,10 @@ alias amend="git commit --amend"
 alias gc="git commit -am"
 alias gf="git fetch origin"
 alias gb="git checkout -b"
+alias gbr="git branch"
 alias gp="git push --tags "
 alias gu="git pull --tags "
+alias gl="git log"
 function gfm() {
   gf $*
   gm FETCH_HEAD
@@ -54,16 +47,7 @@ function gpom() {
 function guom() {
   gu origin master
 }
-alias gl="git log"
 
-# mysql
-alias m="mysql"
 
-# commands
-alias 360="cd ~/Sites/360"
-alias cwc="cd ~/Sites/cwc"
-alias aps="cd /var/www/apps"
-alias htm="cd /var/www/html"
-alias alr=". ~/Me/bash/aliases"
-alias _al="e ~/Me/bash/aliases && alr"
-alias _me="e ~/Me"
+##### MISC #####
+

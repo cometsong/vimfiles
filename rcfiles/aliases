@@ -4,7 +4,7 @@
 alias ls='ls -G'      #I like color (on os X)                                                 
 alias ll='ls -lh'     #size,show type,human readable
 alias l.='ls -d .[^.]*' #size,show type,.dotfiles only                                        
-alias l.='ls -ld .[^.]*'  # long,size,show type,.dotfiles only                                
+alias ll.='ls -ld .[^.]*'  # long,size,show type,.dotfiles only                                
 alias la='ls -lAh'   #long list,show almost all,show type,human readable                      
 alias lr='ls -tRh'   #sorted by date,recursive,show type,human readable                       
 alias lt='ls -lth'   #long list,sorted by date,show type,human readable                       
@@ -30,10 +30,9 @@ alias shprod="ssh deploy@production"
 
 ##### mysql #####
 alias my="mysql"
-alias mycd='mysql -u rails -p6f6a589d cwc_development'
-alias myct='mysql -u rails -p6f6a589d cwc_test'
-alias my360='mysql -u rails -p6f6a589d 360_development'
 
+alias htc="sudo vi /usr/local/httpd/conf/httpd.conf"
+alias htr="sudo /etc/init.d/httpd restart"
 
 alias dmesg="sudo dmesg"
 
@@ -44,5 +43,6 @@ alias top="top -n40 -ocpu -Orsize \
 
 alias errcode='grep -e"$1" /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Headers/MacErrors.h | more'
 
-# Ruby/Rails/Rake
-alias rdbf="rake db:recreate db:fixtures:load RAILS_ENV=development"
+alias e="$EDITOR"
+alias h="history"
+

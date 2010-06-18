@@ -2,9 +2,9 @@ TZ="America/Chicago"
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
-HOSTNAME="`hostname`"
 PAGER='less'
 EDITOR='vi'
+HOSTNAME=`uname -n`
 
 #LANGUAGE=
 LC_ALL='en_US.UTF-8'

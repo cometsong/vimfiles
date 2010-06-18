@@ -1,0 +1,4 @@
+
+alias mycd='mysql -u rails -p6f6a589d cwc_development'
+alias myct='mysql -u rails -p6f6a589d cwc_test'
+alias my360='mysql -u rails -p6f6a589d 360_development'
