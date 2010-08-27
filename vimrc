@@ -1,7 +1,7 @@
-" Jamin composited vimrc file.
+" Jamin's composited vimrc file.
 "
 " Maintainer:	Jamin Leopold <jl@jaminleopold.com>
-" Last change:	2010 May 11
+" Last change:	2010 Aug 27
 "
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -12,33 +12,45 @@ set term=ansi
 
 """" Options.
 
-set backspace=2		" (bs) allow backspacing over everything in insert mode
+set backspace=2       " (bs) allow backspacing over everything in insert mode
 "set viminfo='20,\"50	" (vi) read/write a .viminfo file, don't store more
-			" than 50 lines of registers
-set viminfo='0,\"100,	" Stay at the start of a file when opening it
+                      " than 50 lines of registers
+set viminfo='0,\"100, " Stay at the start of a file when opening it
 
-set history=50		" (hi) keep 50 lines of command line history
-set ruler		" (ru) show the cursor position all the time
+set history=50    " (hi) keep 50 lines of command line history
+set ruler         " (ru) show the cursor position all the time
 set autoindent
-set smartindent		" Indent settings (really only the cindent matters)
+set smartindent   " Indent settings (really only the cindent matters)
 set cindent
-set cinkeys=0{,0},:,!^F,o,O,e	" See "cinkeys"; this stops "#" from indenting
+set cinkeys=0{,0},:,!^F,o,O,e " See "cinkeys"; this stops "#" from indenting
 
-set fileformat=unix	" No crazy CR/LF
+set fileformat=unix " No crazy CR/LF
 set listchars=tab:\ \ ,trail:� " If you do ":set list", shows trailing spaces
-set mouse=		" I don't like the mouse in VIM
-set nohlsearch		" Don't highlight search terms
-set nojoinspaces	" One space after a "." rather than 2
-set scrolloff=1		" Minimum lines between cursor and window edge
-set tabstop=2           " tabs are 2 spaces
-set shiftwidth=2	" Indent by 2 columns (for functions, etc).
-set expandtab           " 
-set showcmd		" Show partially typed commands
-set showmatch		" Show parentheses matching
-set textwidth=80	" Maximum line width
+set mouse=        " I don't like the mouse in VIM
+set nohlsearch    " Don't highlight search terms
+set nojoinspaces  " One space after a "." rather than 2
+set scrolloff=1   " Minimum lines between cursor and window edge
+set tabstop=2     " tabs are 2 spaces
+set shiftwidth=2  " Indent by 2 columns (for functions, etc).
+set expandtab     " 
+set showcmd       " Show partially typed commands
+set showmatch     " Show parentheses matching
+set textwidth=100 " Maximum line width
 set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
-set nobackup		" Don't use a backup file (also see writebackup)
-set writebackup		" Write temporary backup files in case we crash
+set nobackup      " Don't use a backup file (also see writebackup)
+set writebackup   " Write temporary backup files in case we crash
+set incsearch     " 
+
+"set runtimepath=~/rcfiles/vim,~/rcfiles/vim/colors,$VIMRUNTIME
+
+" Use color syntax highlighting.
+syntax on
+
+" Color specification files
+"colorscheme LightOrDarkBG/COLORSCHEME.vim
+colorscheme darkdevel
+
+set encoding=utf-8
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -227,40 +239,8 @@ if has("autocmd")
 endif " has("autocmd")
 
 "Toggle indenting for pasting pre-indented
-nnoremap <F13> :Set invpaste paste?<CR>
-set pastetoggle=<F13>
+nnoremap <F8> :Set invpaste paste?<CR>
+set pastetoggle=<F8>
 set showmode
-
-" Use color syntax highlighting.
-syntax on
-
-" Color specifications. Change them as you would like.
-
-hi Comment	term=none	ctermfg=gray	guifg=Gray
-hi Constant	term=underline	ctermfg=cyan	guifg=Cyan
-hi Identifier	term=underline	ctermfg=green	guifg=White
-hi Statement	term=bold	ctermfg=white	guifg=White
-hi PreProc	term=underline	ctermfg=magenta	guifg=Magenta
-hi Type		term=underline	ctermfg=white	guifg=White
-hi Special	term=bold	ctermfg=blue	guifg=Blue
-hi Nontext	term=bold	ctermfg=red	guifg=Red
-hi Normal	guifg=Yellow	guibg=#00007F
-hi Normal	ctermfg=darkgreen
-
-hi Comment      cterm=none	gui=none
-hi Constant     cterm=bold	gui=none
-hi Identifier   cterm=none	gui=none
-hi Statement    cterm=bold	gui=none
-hi PreProc      cterm=bold	gui=none
-hi Type         cterm=bold	gui=none
-hi Special      cterm=bold	gui=none
-hi NonText	cterm=bold	gui=none
-
-" Special highlighting for XML
-hi xmlTag ctermfg=blue cterm=bold guifg=white
-hi xmlTagName ctermfg=blue cterm=bold guifg=white
-hi xmlEndTag ctermfg=blue cterm=bold guifg=white
-
-set encoding=utf-8
 
 map! habtm has_and_belongs_to_many :object, :join_table => "table_name", :foreign_key => "object_id"<ESC>13b
