@@ -13,3 +13,18 @@ Sooooo... either delete the reference to it, or create your own file in its plac
 For a quick fix (creating empty file), simply enter:
   touch ~rcfiles/my_aliases
 
+
+#!/bin/sh
+#This can be run as shell script:
+
+set RCPATH='~/code/rcfiles'
+LnkRCs = "zshrc" "bash_profile" "vimrc" "vim"
+for LName in ${LnkRCs[@]} do { 
+  if test -h ~/.$LName then
+   rm -f ~/.$LName
+   ln -s $RCPATH/LName ~/.$LName
+   echo "  Link to $LName...."
+  fi
+}
+done
+

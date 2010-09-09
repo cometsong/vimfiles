@@ -18,7 +18,7 @@ let g:colors_name = "darkdevel"
 " ================
 set background=dark
 if v:version > 700
-  set cursorline
+  "set cursorline
   "set cursorcolumn
 endif
 

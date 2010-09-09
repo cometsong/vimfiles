@@ -26,7 +26,7 @@ set cinkeys=0{,0},:,!^F,o,O,e " See "cinkeys"; this stops "#" from indenting
 
 set fileformat=unix " No crazy CR/LF
 set listchars=tab:\ \ ,trail:� " If you do ":set list", shows trailing spaces
-set mouse=        " I don't like the mouse in VIM
+set mouse=a       " the mouse in VIM in a=all modes
 set nohlsearch    " Don't highlight search terms
 set nojoinspaces  " One space after a "." rather than 2
 set scrolloff=1   " Minimum lines between cursor and window edge
@@ -35,19 +35,20 @@ set shiftwidth=2  " Indent by 2 columns (for functions, etc).
 set expandtab     " 
 set showcmd       " Show partially typed commands
 set showmatch     " Show parentheses matching
-set textwidth=100 " Maximum line width
+"set textwidth=100 " Maximum line width
 set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
 set nobackup      " Don't use a backup file (also see writebackup)
 set writebackup   " Write temporary backup files in case we crash
 set incsearch     " 
+set number        " line numbers
 
 "set runtimepath=~/rcfiles/vim,~/rcfiles/vim/colors,$VIMRUNTIME
 
 " Use color syntax highlighting.
 syntax on
 
-" Color specification files
-"colorscheme LightOrDarkBG/COLORSCHEME.vim
+" Color specification files (in $HOME/.vim/colors)
+"colorscheme COLORSCHEME.vim
 colorscheme darkdevel
 
 set encoding=utf-8
@@ -123,7 +124,24 @@ map! <Esc>Ox 8
 map! <Esc>Oy 9
 map! <Esc>Oz 0
 """""""""""""""""""""""""""""""""""""""""""""""
+" Options for gVim
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Set size of gvim window.
+  set lines=60 columns=90
+else
+  " This is console Vim.
+"  if exists("+lines")
+"    set lines=50
+"  endif
+"  if exists("+columns")
+"    set columns=100
+"  endif
+endif
+
                                                        
+"""""""""""""""""""""""""""""""""""""""""""""""
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 

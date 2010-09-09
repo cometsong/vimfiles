@@ -3,7 +3,8 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
 PAGER='less'
-EDITOR='vi'
+#EDITOR='vi'
+EDITOR='gvim'
 HOSTNAME=`uname -n`
 
 #LANGUAGE=
