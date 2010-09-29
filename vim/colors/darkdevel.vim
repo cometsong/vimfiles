@@ -64,7 +64,8 @@ let g:Darkdevel.comment.guibg   = 'NONE'
   "highlight FoldColumn
   "highlight SignColumn
   "highlight IncSearch
-  highlight LineNr          ctermfg=DarkGray    guifg=#777777     ctermbg=DarkGray    guibg=#0F0F0F 
+  "highlight LineNr          ctermfg=DarkGray    guifg=#777777     ctermbg=LightGray    guibg=#0F0F0F 
+  highlight LineNr          ctermfg=DarkGray    guifg=#777777     ctermbg=Green        guibg=#FFFFFF
   "highlight MatchParen
   highlight NonText         ctermfg=Gray        guifg=#777777     ctermbg=NONE        guibg=#000000
   highlight Normal          ctermfg=Gray        guifg=#F0F0F0     ctermbg=NONE        guibg=#000000

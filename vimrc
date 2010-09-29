@@ -41,6 +41,7 @@ set nobackup      " Don't use a backup file (also see writebackup)
 set writebackup   " Write temporary backup files in case we crash
 set incsearch     " 
 set number        " line numbers
+set numberwidth=3 " line numbers gutter width
 
 "set runtimepath=~/rcfiles/vim,~/rcfiles/vim/colors,$VIMRUNTIME
 
@@ -50,6 +51,7 @@ syntax on
 " Color specification files (in $HOME/.vim/colors)
 "colorscheme COLORSCHEME.vim
 colorscheme darkdevel
+"set hl-LineNr term=underline cterm=bold ctermfg=Black ctermbg=LightGrey
 
 set encoding=utf-8
 

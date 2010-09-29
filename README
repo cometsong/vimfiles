@@ -1,30 +1,25 @@
 To use this 'rcfiles' project....
 
-	ln -s [rcfiles.git.dir] ~/rcfiles
-Of course replacing "[rcfiles.git.dir]" with the actual directory you've cloned this git repo into if you haven't just moved it to your home dir straight out. 
+-----------------------------------------------------------------
+  It can be installed via an included shell script: INSTALL.sh
+-----------------------------------------------------------------
 
-	ln -s ~/rcfiles/zshrc ~/.zshrc
-	ln -s ~/rcfiles/bash_profile ~/.bash_profile
-	ln -s ~/rcfiles/vimrc ~/.vimrc
-	ln -s ~/rcfiles/vim ~/.vim
 
-One note: there's a file named 'my_aliases' referring to a file with mysql db connection shortcuts which includes the passwords, hosts, etc. and thus the file won't exist for you as it's not part of this repo of files.  
+OR, if you prefer to do things yourself. 
+
+	ln -s ~/[rcfiles.git.dir]/zshrc ~/.zshrc
+	ln -s ~/[rcfiles.git.dir]/bash_profile ~/.bash_profile
+	ln -s ~/[rcfiles.git.dir]/vimrc ~/.vimrc
+	ln -s ~/[rcfiles.git.dir]/vim ~/.vim
+
+Of course replacing "[rcfiles.git.dir]" with the actual directory you've cloned 
+this git repo into if you haven't just moved it to your home dir straight out. 
+
+One note: there's a file named 'my_aliases' referring to a file with mysql db 
+connection shortcuts which includes the passwords, hosts, etc. and thus the file i
+won't exist for you as it's not part of this repo of files.  
+
 Sooooo... either delete the reference to it, or create your own file in its place.
-For a quick fix (creating empty file), simply enter:
-  touch ~rcfiles/my_aliases
 
-
-#!/bin/sh
-#This can be run as shell script:
-
-set RCPATH='~/code/rcfiles'
-LnkRCs = "zshrc" "bash_profile" "vimrc" "vim"
-for LName in ${LnkRCs[@]} do { 
-  if test -h ~/.$LName then
-   rm -f ~/.$LName
-   ln -s $RCPATH/LName ~/.$LName
-   echo "  Link to $LName...."
-  fi
-}
-done
+-Jamin-
 
