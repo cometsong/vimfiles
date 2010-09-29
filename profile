@@ -38,7 +38,7 @@ export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/libexec:${HOME}/bi
 export PATH=${PATH}:/usr/local/mysql/bin:/usr/local/git/bin:/opt/php/bin
 
 # Set path to rcfiles git repository
-RCPATH=/Users/leopold/code/rcfiles
+RCPATH=/home/benjamin/code/rcfiles
 # multi-dotfile setup
 source $RCPATH/colors          # load color vars
 source $RCPATH/aliases         # load aliases 
