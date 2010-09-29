@@ -1,11 +1,18 @@
-To use this 'rcfiles' project....
+To use this 'rcfiles' project:
 
 -----------------------------------------------------------------
   It can be installed via an included shell script: INSTALL.sh
 -----------------------------------------------------------------
+Simply clone the git repository to wherever you'd like to keep it.
+Then run the included INSTALL.sh script to have it create the links 
+and to modify the primary rc starters.
 
 
-OR, if you prefer to do things yourself. 
+
+OR............................................................................
+If you prefer Manual Installation mode... 
+Just follow these old vague directions:
+
 
 	ln -s ~/[rcfiles.git.dir]/zshrc ~/.zshrc
 	ln -s ~/[rcfiles.git.dir]/bash_profile ~/.bash_profile
@@ -19,7 +26,8 @@ One note: there's a file named 'my_aliases' referring to a file with mysql db
 connection shortcuts which includes the passwords, hosts, etc. and thus the file i
 won't exist for you as it's not part of this repo of files.  
 
-Sooooo... either delete the reference to it, or create your own file in its place.
+Sooooo... either delete the reference to it, or create your own file in its place,
+or not.
 
 -Jamin-
 
