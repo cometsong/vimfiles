@@ -1,16 +1,15 @@
 " Jamin's composited vimrc file.
 "
 " Maintainer:	Jamin Leopold <jl@jaminleopold.com>
-" Last change:	2010 Aug 27
+" Last change:	2010 Nov 04
 "
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-let b:did_ftplugin = 1
 set term=ansi
 
-"""" Options.
+"""" Vim Options.
 
 set backspace=2       " (bs) allow backspacing over everything in insert mode
 "set viminfo='20,\"50	" (vi) read/write a .viminfo file, don't store more
@@ -57,11 +56,14 @@ set encoding=utf-8
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
-
-au FileType * setl fo-=cro " disable auto-commenting
+"------- File Typing --------"
 filetype on
+filetype plugin on
+let b:did_ftplugin = 1
+au FileType * setl fo-=cro " disable auto-commenting
 
-"------- key mapping --------"
+
+"------- Key Mapping --------"
 " On plain text files, no keyword chars, because we don't want tab completion
 au BufNewFile,BufRead *.txt set iskeyword=
 
@@ -70,12 +72,12 @@ au BufNewFile,BufRead *.html set noautoindent nosmartindent nocindent
 
 " On CGI files, determine type by reading in a line.
 fun! CGICheck()
-    let l = getline(nextnonblank(1))
-    if l =~ 'php'
-	set syn=php
-    elseif l =~ 'perl'
-	set syn=perl
-    endif
+  let l = getline(nextnonblank(1))
+  if l =~ 'php'
+    set syn=php
+  elseif l =~ 'perl'
+    set syn=perl
+  endif
 endfun
 au BufRead *.cgi	call CGICheck()
 
@@ -100,15 +102,15 @@ au BufNewFile,BufRead *.rb, map <F5> i#{}
 au BufNewFile,BufRead *.rb, map! <F5> #{}
 
 map! <Esc>OM <c-m>
-map <Esc>OM <c-m>
+map  <Esc>OM <c-m>
 map! <Esc>OP <nop>
-map <Esc>OP <nop>
+map  <Esc>OP <nop>
 map! <Esc>OQ /
-map <Esc>OQ /
+map  <Esc>OQ /
 map! <Esc>OR *
-map <Esc>OR *
+map  <Esc>OR *
 map! <Esc>OS -
-map <Esc>OS -
+map  <Esc>OS -
 
 " Numeric keypad setup
 map! <Esc>Ol +
@@ -125,13 +127,27 @@ map! <Esc>Ow 7
 map! <Esc>Ox 8
 map! <Esc>Oy 9
 map! <Esc>Oz 0
+
 """""""""""""""""""""""""""""""""""""""""""""""
-" Options for gVim
+" Options for window size (gVim, console)
 
 if has("gui_running")
   " GUI is running or is about to start.
   " Set size of gvim window.
-  set lines=60 columns=100
+  set lines=60 columns=110
+else
+  " This is console Vim.
+  " let the terminal's size set the vim size
+"  if exists("+lines")
+"    set lines=50
+"  endif
+"  if exists("+columns")
+"    set columns=100
+"  endif
+endif
+
+
+" Options for cutting and pasting
 
   " CTRL-X and SHIFT-Del are Cut
   vnoremap <C-X> "+x
@@ -154,16 +170,6 @@ if has("gui_running")
   " Use CTRL-Q to do what CTRL-V used to do
   noremap <C-Q>		<C-V>
 
-else
-  " This is console Vim.
-"  if exists("+lines")
-"    set lines=50
-"  endif
-"  if exists("+columns")
-"    set columns=100
-"  endif
-endif
-
                                                        
 """""""""""""""""""""""""""""""""""""""""""""""
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
@@ -172,24 +178,19 @@ endif
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" work around a bug in some key-maping
-" if your 'End' key doesn't work, uncomment these next two lines
-" imap " Switch syntax highlighting on, when the terminal has colors 
-" nmap  $
-
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Based on VIM tip 102: automatic tab completion of keywords
 function InsertTabWrapper(dir)
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-	return "\<tab>"
-    elseif "back" == a:dir
-	return "\<c-p>"
-    else
-	return "\<c-n>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  elseif "back" == a:dir
+    return "\<c-p>"
+  else
+    return "\<c-n>"
+  endif
 endfunction
 
 inoremap <tab> <c-r>=InsertTabWrapper("fwd")<cr>
@@ -245,6 +246,7 @@ if has("autocmd")
   autocmd FileAppendPost    *.gz !mv <afile> <afile>:r
   autocmd FileAppendPost    *.gz !gzip <afile>:r
  augroup END
+
  augroup bz2
   " Remove all bz2 autocommands
   au!
@@ -285,4 +287,6 @@ nnoremap <F8> :Set invpaste paste?<CR>
 set pastetoggle=<F8>
 set showmode
 
+"--- Ruby mappings ---"
 map! habtm has_and_belongs_to_many :object, :join_table => "table_name", :foreign_key => "object_id"<ESC>13b
+
