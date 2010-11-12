@@ -1,4 +1,4 @@
-" Darkdevel Vim color scheme
+"Darkdevel Vim color scheme
 "
 " Name:         darkdevel.vim
 " Maintainer:   Hallison Batista <email@hallisonbatista.com> 
@@ -20,10 +20,6 @@ let g:colors_name = "darkdevel"
 " General settings
 " ================
 set background=dark
-if v:version > 700
-  set cursorline
-  set cursorcolumn
-endif
 
 let g:Darkdevel = {}
 let g:Darkdevel.cursor = {}
@@ -33,8 +29,8 @@ let g:Darkdevel.cursor.ctermbg = 'NONE'
 let g:Darkdevel.cursor.guibg   = '#FFFFFF'
 
 let g:Darkdevel.comment = {}
-let g:Darkdevel.comment.ctermfg = 'DarkGray'
-let g:Darkdevel.comment.guifg   = '#646464'
+let g:Darkdevel.comment.ctermfg = 'Gray'
+let g:Darkdevel.comment.guifg   = '#777777'
 let g:Darkdevel.comment.ctermbg = 'NONE'
 let g:Darkdevel.comment.guibg   = 'NONE'
 
@@ -123,7 +119,7 @@ let g:Darkdevel.comment.guibg   = 'NONE'
   highlight Boolean           ctermfg=DarkBlue    guifg=#6496C8
   highlight Float             ctermfg=DarkGreen   guifg=#64C896
 
-  highlight Comment           ctermfg=DarkGray    guifg=#646464     ctermbg=NONE      guibg=NONE
+  highlight Comment           ctermfg=Gray        guifg=#777777     ctermbg=DarkGray        guibg=#000000
 
 " Style for identifier and variable names
 " ........................................

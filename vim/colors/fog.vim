@@ -8,9 +8,7 @@
 " **C**O**N**T**R**A**S**T**!
 
 set background=light
-
 hi clear
-
 if exists("syntax_on")
   syntax reset
 endif

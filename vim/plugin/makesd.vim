@@ -18,11 +18,11 @@ function _makesd(start_line, end_line, line_width, linechar, str)
 endfunction
 
 function _cmd_makecsd(str)
-	call _makesd('/* ', ' */', 78, '=', ' ' . a:str . ' ')
+	call _makesd('/* ', ' */', 78, '=', '     ' . a:str . '     ')
 endfunction
 
 function _cmd_makesd(str)
-	call _makesd('# ', ' #', 78, '=', ' ' . a:str . ' ')
+	call _makesd('# ', ' #', 80, '=', '     ' . a:str . '     ')
 endfunction
 
 command! -nargs=+ Makecsd :call _cmd_makecsd(<args>)

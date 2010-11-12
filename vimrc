@@ -47,6 +47,7 @@ set numberwidth=3 " line numbers gutter width
 
 " Use color syntax highlighting.
 syntax on
+syntax enable
 set nohlsearch    " Don't highlight search terms
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -59,11 +60,31 @@ endif
 " Color specification files (in $HOME/.vim/colors)
 " -> colorscheme COLORSCHEME-File-Name
 colorscheme darkdevel
+if v:version > 700
+  set nocursorline
+  set nocursorcolumn
+  hi  CursorLine   cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=white
+  hi  CursorColumn cterm=bold      ctermbg=NONE ctermfg=NONE guibg=NONE guifg=white
+   map <silent> <Leader>curo      :set   cursorcolumn   cursorline  <CR>
+  imap <silent> <Leader>curo <Esc>:set   cursorcolumn   cursorline  <CR>a
+   map <silent> <Leader>curt      :set   cursorcolumn!  cursorline! <CR>
+  imap <silent> <Leader>curt <Esc>:set   cursorcolumn!  cursorline! <CR>a
+   map <silent> <Leader>curn      :set nocursorcolumn nocursorline  <CR>
+  imap <silent> <Leader>curn <Esc>:set nocursorcolumn nocursorline  <CR>a
+endif
+
 
 set encoding=utf-8
 
 " Most-Recently-Used file list:
-let MRU_File = $HOME . '/.vim/vim_mru_files'
+"  !leave the default in $HOME so that diff systems have their own lists
+"let MRU_File = $HOME . '/.vim/vim_mru_files'
+
+
+"CMD Alias plugin
+"Alias bd SmartBd
+"Alias mru MRU
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 "------- File Typing --------"
