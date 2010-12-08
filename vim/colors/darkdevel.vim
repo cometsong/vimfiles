@@ -1,10 +1,13 @@
-" Darkdevel Vim color scheme
+"Darkdevel Vim color scheme
 "
 " Name:         darkdevel.vim
 " Maintainer:   Hallison Batista <email@hallisonbatista.com> 
 " Last Change:  2009-03-17 
 " License:      Public Domain
 " Version:      1.1.1
+"
+" Modified:     B Leopold
+" Last Change:  2010-11-09 
 
 highlight clear
 
@@ -17,10 +20,6 @@ let g:colors_name = "darkdevel"
 " General settings
 " ================
 set background=dark
-if v:version > 700
-  "set cursorline
-  "set cursorcolumn
-endif
 
 let g:Darkdevel = {}
 let g:Darkdevel.cursor = {}
@@ -30,14 +29,14 @@ let g:Darkdevel.cursor.ctermbg = 'NONE'
 let g:Darkdevel.cursor.guibg   = '#FFFFFF'
 
 let g:Darkdevel.comment = {}
-let g:Darkdevel.comment.ctermfg = 'DarkGray'
-let g:Darkdevel.comment.guifg   = '#646464'
+let g:Darkdevel.comment.ctermfg = 'Gray'
+let g:Darkdevel.comment.guifg   = '#777777'
 let g:Darkdevel.comment.ctermbg = 'NONE'
 let g:Darkdevel.comment.guibg   = 'NONE'
 
 " Cursor style
 " ============
-  highlight Cursor          ctermfg=NONE        guifg=#000000     ctermbg=NONE        guibg=#FFFFFF
+  highlight Cursor          ctermfg=Black        guifg=#000000     ctermbg=White        guibg=#FFFFFF
   "highlight CursorIM      
   highlight CursorColumn    ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#0F0F0F
   highlight CursorLine      ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#0F0F0F
@@ -64,8 +63,7 @@ let g:Darkdevel.comment.guibg   = 'NONE'
   "highlight FoldColumn
   "highlight SignColumn
   "highlight IncSearch
-  "highlight LineNr          ctermfg=DarkGray    guifg=#777777     ctermbg=LightGray    guibg=#0F0F0F 
-  highlight LineNr          ctermfg=DarkGray    guifg=#777777     ctermbg=Green        guibg=#FFFFFF
+  highlight LineNr          ctermfg=DarkGray    guifg=#444444     ctermbg=LightGrey   guibg=#999999
   "highlight MatchParen
   highlight NonText         ctermfg=Gray        guifg=#777777     ctermbg=NONE        guibg=#000000
   highlight Normal          ctermfg=Gray        guifg=#F0F0F0     ctermbg=NONE        guibg=#000000
@@ -104,7 +102,7 @@ let g:Darkdevel.comment.guibg   = 'NONE'
   highlight WildMenu        ctermfg=NONE        guifg=#777777     ctermbg=DarkGray    guibg=#0F0F0F
 
 " Win32 specific style
-" --------------------
+" ......................
   "highlight Menu
   "highlight Scrollbar
   "highlight Tooltip
@@ -113,7 +111,7 @@ let g:Darkdevel.comment.guibg   = 'NONE'
 " ============
 
 " Style for constants
-" -------------------
+" ......................
   highlight Constant          ctermfg=DarkRed     guifg=#6496C8
   highlight String            ctermfg=DarkGreen   guifg=#64C896
   highlight Character         ctermfg=DarkBlue    guifg=#6496C8
@@ -121,15 +119,15 @@ let g:Darkdevel.comment.guibg   = 'NONE'
   highlight Boolean           ctermfg=DarkBlue    guifg=#6496C8
   highlight Float             ctermfg=DarkGreen   guifg=#64C896
 
-  highlight Comment           ctermfg=DarkGray    guifg=#646464     ctermbg=NONE      guibg=NONE
+  highlight Comment           ctermfg=Gray        guifg=#777777     ctermbg=DarkGray        guibg=#000000
 
 " Style for identifier and variable names
-" ----------------------------------------
+" ........................................
   highlight Identifier        ctermfg=DarkCyan    guifg=#6496C8     gui=NONE
   highlight Function          ctermfg=Yellow      guifg=#FFC864     gui=NONE
 
 " Style for statements
-" ---------------------
+" .....................
   highlight Statement         ctermfg=Brown       guifg=#C89664     gui=NONE
   highlight link Conditional  Statement
   highlight link Repeat       Statement
@@ -139,7 +137,7 @@ let g:Darkdevel.comment.guibg   = 'NONE'
   highlight link Exception    Statement
 
 " Style for generic preprocessor
-" ------------------------------
+" ...............................
   highlight PreProc           ctermfg=Gray        guifg=#DCDCDC     ctermbg=NONE      guibg=NONE
   highlight Include           ctermfg=DarkRed     guifg=#C86432     ctermbg=NONE      guibg=NONE
   highlight link Define       Include
@@ -147,14 +145,14 @@ let g:Darkdevel.comment.guibg   = 'NONE'
   highlight link PreCondit    Include
 
 " Style for types and objects
-" ---------------------------
+" ............................
   highlight Type              ctermfg=DarkRed     guifg=#DC4B32     gui=NONE
   highlight link StorageClass Type
   highlight link Structure    Type
   highlight link Typedef      Type
 
 " Style for special symbols
-" -------------------------
+" ..........................
   "highlight Special         
   "highlight SpecialChar     
   "highlight Tag             
@@ -163,14 +161,14 @@ let g:Darkdevel.comment.guibg   = 'NONE'
   "highlight Debug           
 
 " Style for text format
-" ---------------------
+" ......................
   "highlight Underlined 
   "highlight Ignore     
   "highlight Error      
   "highlight Todo       
 
 " Style for Shell Syntax
-" ----------------------
+" ......................
   "highlight shTest
   "highlight shCase
   "highlight shCaseExSingleQuote
@@ -207,7 +205,7 @@ let g:Darkdevel.comment.guibg   = 'NONE'
   "highlight shWhileSync
 
 " Style for Ruby Syntax
-" ---------------------
+" ......................
   highlight rubyBlockParameter        guifg=#FFFFFF
   highlight rubyClass                 guifg=#FFFFFF
   highlight rubyConstant              guifg=#DA4939

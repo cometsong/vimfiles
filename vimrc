@@ -1,17 +1,18 @@
-" Jamin's composited vimrc file.
-"
-" Maintainer:	Jamin Leopold <jl@jaminleopold.com>
-" Last change:	2010 Aug 27
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  Jamin's composited vimrc file.                        "
+"                                                        "
+"  Maintainer:	Jamin Leopold <jl@jaminleopold.com>      "
+"  Last change:	2010 Nov 08                              "
+"                                                        "
+"  !Many add-ons are included in the $HOME/.vim folder!  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-let b:did_ftplugin = 1
-set term=ansi
+set term=xterm " xterm allows mouse, home/end/pgup/pgdown, etc. 
 
-"""" Options.
-
+"""" Vim Options.
 set backspace=2       " (bs) allow backspacing over everything in insert mode
 "set viminfo='20,\"50	" (vi) read/write a .viminfo file, don't store more
                       " than 50 lines of registers
@@ -27,7 +28,6 @@ set cinkeys=0{,0},:,!^F,o,O,e " See "cinkeys"; this stops "#" from indenting
 set fileformat=unix " No crazy CR/LF
 set listchars=tab:\ \ ,trail:� " If you do ":set list", shows trailing spaces
 set mouse=a       " the mouse in VIM in a=all modes
-set nohlsearch    " Don't highlight search terms
 set nojoinspaces  " One space after a "." rather than 2
 set scrolloff=1   " Minimum lines between cursor and window edge
 set tabstop=2     " tabs are 2 spaces
@@ -40,42 +40,75 @@ set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
 set nobackup      " Don't use a backup file (also see writebackup)
 set writebackup   " Write temporary backup files in case we crash
 set incsearch     " 
+
 set number        " line numbers
 set numberwidth=3 " line numbers gutter width
-
-"set runtimepath=~/rcfiles/vim,~/rcfiles/vim/colors,$VIMRUNTIME
+" for line number colors, see colorscheme.vim file, LineNr
 
 " Use color syntax highlighting.
 syntax on
+syntax enable
+set nohlsearch    " Don't highlight search terms
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch off highlighting the last used search pattern.
+if has("syntax") && &t_Co > 2 || has("gui_running")
+  syntax on
+  set nohlsearch
+endif
 
 " Color specification files (in $HOME/.vim/colors)
-"colorscheme COLORSCHEME.vim
+" -> colorscheme COLORSCHEME-File-Name
 colorscheme darkdevel
-"set hl-LineNr term=underline cterm=bold ctermfg=Black ctermbg=LightGrey
+if v:version > 700
+  set nocursorline
+  set nocursorcolumn
+  hi  CursorLine   cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=white
+  hi  CursorColumn cterm=bold      ctermbg=NONE ctermfg=NONE guibg=NONE guifg=white
+   map <silent> <Leader>curo      :set   cursorcolumn   cursorline  <CR>
+  imap <silent> <Leader>curo <Esc>:set   cursorcolumn   cursorline  <CR>a
+   map <silent> <Leader>curt      :set   cursorcolumn!  cursorline! <CR>
+  imap <silent> <Leader>curt <Esc>:set   cursorcolumn!  cursorline! <CR>a
+   map <silent> <Leader>curn      :set nocursorcolumn nocursorline  <CR>
+  imap <silent> <Leader>curn <Esc>:set nocursorcolumn nocursorline  <CR>a
+endif
+
 
 set encoding=utf-8
 
+" Most-Recently-Used file list:
+"  !leave the default in $HOME so that diff systems have their own lists
+"let MRU_File = $HOME . '/.vim/vim_mru_files'
+
+
+"CMD Alias plugin
+"Alias bd SmartBd
+"Alias mru MRU
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
-
-au FileType * setl fo-=cro " disable auto-commenting
+"------- File Typing --------"
 filetype on
+filetype plugin on
+let b:did_ftplugin = 1
+au FileType * setl fo-=cro " disable auto-commenting
 
-"------- key mapping --------"
+
+"------- Key Mapping --------"
 " On plain text files, no keyword chars, because we don't want tab completion
-au BufNewFile,BufRead *.txt set iskeyword=
+au BufNewFile,BufRead *.txt,*.log set iskeyword=
 
 " On HTML files don't use indenting.
 au BufNewFile,BufRead *.html set noautoindent nosmartindent nocindent
 
 " On CGI files, determine type by reading in a line.
 fun! CGICheck()
-    let l = getline(nextnonblank(1))
-    if l =~ 'php'
-	set syn=php
-    elseif l =~ 'perl'
-	set syn=perl
-    endif
+  let l = getline(nextnonblank(1))
+  if l =~ 'php'
+    set syn=php
+  elseif l =~ 'perl'
+    set syn=perl
+  endif
 endfun
 au BufRead *.cgi	call CGICheck()
 
@@ -100,15 +133,15 @@ au BufNewFile,BufRead *.rb, map <F5> i#{}
 au BufNewFile,BufRead *.rb, map! <F5> #{}
 
 map! <Esc>OM <c-m>
-map <Esc>OM <c-m>
+map  <Esc>OM <c-m>
 map! <Esc>OP <nop>
-map <Esc>OP <nop>
+map  <Esc>OP <nop>
 map! <Esc>OQ /
-map <Esc>OQ /
+map  <Esc>OQ /
 map! <Esc>OR *
-map <Esc>OR *
+map  <Esc>OR *
 map! <Esc>OS -
-map <Esc>OS -
+map  <Esc>OS -
 
 " Numeric keypad setup
 map! <Esc>Ol +
@@ -125,13 +158,28 @@ map! <Esc>Ow 7
 map! <Esc>Ox 8
 map! <Esc>Oy 9
 map! <Esc>Oz 0
+
 """""""""""""""""""""""""""""""""""""""""""""""
-" Options for gVim
+" Options for window size (gVim, console)
 
 if has("gui_running")
   " GUI is running or is about to start.
   " Set size of gvim window.
-  set lines=60 columns=100
+  set lines=60 columns=110
+else
+  " This is console Vim.
+  " let the terminal's size set the vim size
+"  if exists("+lines")
+"    set lines=50
+"  endif
+"  if exists("+columns")
+"    set columns=100
+"  endif
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Options for cutting and pasting
 
   " CTRL-X and SHIFT-Del are Cut
   vnoremap <C-X> "+x
@@ -154,16 +202,6 @@ if has("gui_running")
   " Use CTRL-Q to do what CTRL-V used to do
   noremap <C-Q>		<C-V>
 
-else
-  " This is console Vim.
-"  if exists("+lines")
-"    set lines=50
-"  endif
-"  if exists("+columns")
-"    set columns=100
-"  endif
-endif
-
                                                        
 """""""""""""""""""""""""""""""""""""""""""""""
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
@@ -172,36 +210,23 @@ endif
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" work around a bug in some key-maping
-" if your 'End' key doesn't work, uncomment these next two lines
-" imap " Switch syntax highlighting on, when the terminal has colors 
-" nmap  $
-
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Based on VIM tip 102: automatic tab completion of keywords
 function InsertTabWrapper(dir)
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-	return "\<tab>"
-    elseif "back" == a:dir
-	return "\<c-p>"
-    else
-	return "\<c-n>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  elseif "back" == a:dir
+    return "\<c-p>"
+  else
+    return "\<c-n>"
+  endif
 endfunction
 
 inoremap <tab> <c-r>=InsertTabWrapper("fwd")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper("back")<cr>
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch off highlighting the last used search pattern.
-if has("syntax") && &t_Co > 2 || has("gui_running")
-  set background=dark
-  syntax on
-  set nohlsearch
-endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -245,6 +270,7 @@ if has("autocmd")
   autocmd FileAppendPost    *.gz !mv <afile> <afile>:r
   autocmd FileAppendPost    *.gz !gzip <afile>:r
  augroup END
+
  augroup bz2
   " Remove all bz2 autocommands
   au!
@@ -285,4 +311,6 @@ nnoremap <F8> :Set invpaste paste?<CR>
 set pastetoggle=<F8>
 set showmode
 
+"--- Ruby mappings ---"
 map! habtm has_and_belongs_to_many :object, :join_table => "table_name", :foreign_key => "object_id"<ESC>13b
+
