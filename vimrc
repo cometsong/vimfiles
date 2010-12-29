@@ -32,7 +32,7 @@ set nojoinspaces  " One space after a "." rather than 2
 set scrolloff=1   " Minimum lines between cursor and window edge
 set tabstop=2     " tabs are 2 spaces
 set shiftwidth=2  " Indent by 2 columns (for functions, etc).
-set expandtab     " 
+"set expandtab     " expand <Tab> to spaces in Insert mode
 set showcmd       " Show partially typed commands
 set showmatch     " Show parentheses matching
 "set textwidth=100 " Maximum line width
