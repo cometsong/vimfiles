@@ -1,2 +1,4 @@
 my_aliases
 .project
+.DS_Store
+.VimballRecord
