@@ -40,6 +40,7 @@ set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
 set nobackup      " Don't use a backup file (also see writebackup)
 set writebackup   " Write temporary backup files in case we crash
 set incsearch     " 
+let laststatus = 2
 
 set number        " line numbers
 set numberwidth=3 " line numbers gutter width
@@ -111,26 +112,6 @@ fun! CGICheck()
   endif
 endfun
 au BufRead *.cgi	call CGICheck()
-
-"C - useful commands"
-au BufNewFile,BufRead *.c map <F5> i/**/
-au BufNewFile,BufRead *.c map! <F5> /**/
-
-"SQL - useful commands"
-au BufNewFile,BufRead *.sql map <F5> i/**/
-au BufNewFile,BufRead *.sql map! <F5> /**/
-
-"Perl - useful commands"
-au BufNewFile,BufRead *.pl,*.plx map <F5> bi$
-au BufNewFile,BufRead *.pl,*.plx map! <F5> <Esc>bi$
-
-"PHP - useful commands"
-au BufNewFile,BufRead *.php, map <F5> bi$
-au BufNewFile,BufRead *.php, map! <F5> <Esc>bi$
-
-"Ruby - useful commands"
-au BufNewFile,BufRead *.rb, map <F5> i#{}
-au BufNewFile,BufRead *.rb, map! <F5> #{}
 
 map! <Esc>OM <c-m>
 map  <Esc>OM <c-m>
@@ -313,4 +294,68 @@ set showmode
 
 "--- Ruby mappings ---"
 map! habtm has_and_belongs_to_many :object, :join_table => "table_name", :foreign_key => "object_id"<ESC>13b
+
+"--- Buffer Access Setup ---"
+" noremap <C-left> :bprev<CR>
+" noremap <C-right> :bnext<CR>
+noremap <C-PageUp> :bprev<CR>
+noremap <C-PageDown> :bnext<CR>
+
+"--- NERDTreeOptions ---"
+noremap <C-F12> :NERDTreeToggle<CR>
+" let loaded_nerd_tree        = 0 "set to 1 to turn off plugin
+let NERDTreeHijackNetrw     = 1 "opening a dir will use Nerd Tree, not built-in
+let NERDChristmasTree       = 1 "make more colourful
+let NERDTreeAutoCenter      = 1 "center around the cursor if it moves
+let NERDTreeAutoCenterThreshold = 4 "sensitivity of auto centering
+let NERDTreeCaseSensitiveSort = 0
+let NERDTreeChDirMode       = 1 " [0,1,2] 0=never, 1=startup, 2=always
+let NERDTreeHighlightCursorline = 1
+let NERDTreeIgnore          = ['\~$'] " a list of regular expressions
+" let NERDTreeBookmarksFile   = $HOME/.NERDTreeBookmarks
+let NERDTreeShowBookmarks   = 1
+let NERDTreeQuitOnOpen      = 0 " if NERDTree will close after opening a file
+let NERDTreeShowLineNumbers = 0
+
+"--- Git Branch Info ---"
+" set statusline=%#ErrorMsg#%{GitBranchInfoString()}%#StatusLine#
+" let g:git_branch_status_head_current=1
+" let g:git_branch_status_ignore_remotes=1
+
+" if has("gui_running")
+"     if (v:version >= 600)
+"         syntax enable
+"     else
+"         syntax on
+"     endif
+" " line numbers
+"     set number
+" " display invisibles
+"     set list
+" " search options
+"     set hlsearch
+"     set showmatch
+"     if has("gui_win32")
+" 			" windows font
+"         set guifont=courier_new:h10
+"     elseif has("gui_gtk2")
+" 			" linux font
+"         set guifont=Monospace\ 12
+"     endif
+"     colorscheme darkdevel
+" " highlight cursor line
+"     set cul
+" endif
+
+" ctrl-tab and ctrl-shift-tab cycle tabs
+if (v:version >= 700)
+    noremap <C-Tab> gt
+    noremap <C-S-Tab> gT
+endif
+
+" folding
+set foldenable
+" don't autofold anything
+set foldlevel=100
+
 
