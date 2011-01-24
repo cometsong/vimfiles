@@ -9,8 +9,6 @@
 
 ##### Situations #####
 function current_os {
-  # if on vnc connection
-    if [[ VNCDESKTOP != "" ]]      export DISPLAY=:2;
   # If Darwin (OS X)
     if [[ `uname -s` = "Darwin" ]] export APPLE=TRUE;
   # If Linux (Ubuntu,RedHat,etc)
@@ -18,6 +16,16 @@ function current_os {
   }
 # run current_os func here:
 current_os
+
+# set DISPLAY (if on vnc connection or not)
+function dispnum {
+	if [[ $VNCDESKTOP != "" ]]; then
+		DISPLAY=$({ echo $VNCDESKTOP| sed -e 's/.*\(:[0-9]\).*/\1/' })
+	else
+		DISPLAY=:1
+	fi
+}
+dispnum
 
 ##### Config Vars #####
 TZ="Europe/Zurich"
@@ -31,7 +39,6 @@ HOSTNAME=`uname -n`
 LC_ALL='en_US.UTF-8'
 LANG='en_US.UTF-8'
 LC_CTYPE=C
-DISPLAY=:0
 
 if [[ -n $APPLE ]] EDITOR='vim'   # on Mac, use CLI vim
 if [[ -n $LINUX ]] EDITOR='gvim'  # on linux, use GUI gvim
@@ -46,6 +53,6 @@ RCPATH=/usr/local/rcfiles
 source $RCPATH/colors          # load color vars
 source $RCPATH/aliases         # load aliases 
 source $RCPATH/sh_functions    # load sh functions
-if [[ -e $RCPATH/my_aliases ]] source $RCPATH/my_aliases # if 'mysql' file exists, source it.
+if [[ -e $RCPATH/my_aliases ]] source $RCPATH/my_aliases # if 'my' password-full alias file exists, source it.
 
 
