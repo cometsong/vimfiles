@@ -32,7 +32,7 @@ set nojoinspaces  " One space after a "." rather than 2
 set scrolloff=1   " Minimum lines between cursor and window edge
 set tabstop=2     " tabs are 2 spaces
 set shiftwidth=2  " Indent by 2 columns (for functions, etc).
-"set expandtab     " expand <Tab> to spaces in Insert mode
+set expandtab     " expand <Tab> to spaces in Insert mode
 set showcmd       " Show partially typed commands
 set showmatch     " Show parentheses matching
 "set textwidth=100 " Maximum line width
@@ -169,7 +169,7 @@ endif
   vnoremap <C-C>      "+y
   vnoremap <C-Insert> "+y
   " CTRL-V and SHIFT-Insert are Paste
-  map <C-V>	     "+gP
+  "map <C-V>	     "+gP                    "<C-V> does Block-select!
   map <S-Insert> "+gP
 
   " Pasting blockwise and linewise selections is not possible in Insert and
