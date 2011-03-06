@@ -357,5 +357,5 @@ endif
 set foldenable
 " don't autofold anything
 set foldlevel=100
-
+"(This is set within Simplefold.vim)  map <unique> <silent> <Leader>f <Plug>SimpleFold_Foldsearch
 
