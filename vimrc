@@ -60,7 +60,7 @@ endif
 
 " Color specification files (in $HOME/.vim/colors)
 " -> colorscheme COLORSCHEME-File-Name
-colorscheme darkdevel
+colorscheme dante
 if v:version > 700
   set nocursorline
   set nocursorcolumn
