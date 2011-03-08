@@ -146,7 +146,8 @@ map! <Esc>Oz 0
 if has("gui_running")
   " GUI is running or is about to start.
   " Set size of gvim window.
-  set lines=60 columns=110
+  set lines=70 columns=130
+  set guifont=Monospace\ 8
 else
   " This is console Vim.
   " let the terminal's size set the vim size
