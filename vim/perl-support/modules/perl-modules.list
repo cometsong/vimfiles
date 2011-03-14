@@ -22,7 +22,7 @@ Could not eval '
                         ( defined $Graph::VERSION && $Graph::VERSION >= 0.5 ) ?
                 };
                 $Graph::VERSION;
-            ' in /Library/Perl/5.10.0/Bio/Ontology/SimpleGOEngine/GraphAdaptor.pm: syntax error at (eval 1660) line 17, at EOF
+            ' in /Library/Perl/5.10.0/Bio/Ontology/SimpleGOEngine/GraphAdaptor.pm: syntax error at (eval 1661) line 17, at EOF
 APR                                  (0.009000) Perl Interface for Apache Portable Runtime (libapr and libaprutil Libraries)
 APR::Base64                          (0.009000) Perl API for APR base64 encoding/decoding functionality
 APR::Brigade                         (0.009000) Perl API for manipulating APR Bucket Brigades
@@ -2855,6 +2855,13 @@ Test::YAML                           (0.72)    Testing Module for YAML Implement
 Text::Abbrev                         (1.01)    create an abbreviation table from a list
 Text::Balanced                       (2.0.0)   Extract delimited text sequences from strings.
 Text::Balanced                       (2.02)    Extract delimited text sequences from strings.
+Text::CSV                            (1.21)    comma-separated values manipulator (using XS or PurePerl)
+Text::CSV::Encoded                   (0.10)    Encoding aware Text::CSV.
+Text::CSV::Encoded::Coder::Base      (0.02)    Interface for Text::CSV::Encoded coder base class
+Text::CSV::Encoded::Coder::Encode    (0.04)    Text::CSV::Encoded coder class using Encode
+Text::CSV::Encoded::Coder::EncodeGuess (0.03)    Text::CSV::Encoded coder class using Encode::Guess
+Text::CSV_PP                         (1.29)    Text::CSV_XS compatible pure-Perl module
+Text::CSV_XS                         (0.80)    comma-separated values manipulation routines
 Text::ParseWords                     (3.26)    parse text into an array of tokens or array of arrays
 Text::ParseWords                     (3.27)    parse text into an array of tokens or array of arrays
 Text::Soundex                        (3.03)    Implementation of the soundex algorithm.

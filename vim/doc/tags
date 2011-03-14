@@ -69,7 +69,9 @@
 :TlistUndebug	taglist.txt	/*:TlistUndebug*
 :TlistUnlock	taglist.txt	/*:TlistUnlock*
 :TlistUpdate	taglist.txt	/*:TlistUpdate*
+ArrangeColumn	ft_csv.txt	/*ArrangeColumn*
 CD	FileTree.txt	/*CD*
+DeleteColumn	ft_csv.txt	/*DeleteColumn*
 Dirs	FileTree.txt	/*Dirs*
 DummyFunction	tree.txt	/*DummyFunction*
 FileTree	tree.txt	/*FileTree*
@@ -101,6 +103,8 @@ FileTree_p	FileTree.txt	/*FileTree_p*
 FileTree_s	FileTree.txt	/*FileTree_s*
 HTMLSpecialChars	htmlspecialchars.txt	/*HTMLSpecialChars*
 HTMLSpecialCharsDecode	htmlspecialchars.txt	/*HTMLSpecialCharsDecode*
+HiColumn	ft_csv.txt	/*HiColumn*
+InitCSV	ft_csv.txt	/*InitCSV*
 NERDTree	NERD_tree.txt	/*NERDTree*
 NERDTree-?	NERD_tree.txt	/*NERDTree-?*
 NERDTree-A	NERD_tree.txt	/*NERDTree-A*
@@ -160,8 +164,10 @@ NERDTreeOptionSummary	NERD_tree.txt	/*NERDTreeOptionSummary*
 NERDTreeOptions	NERD_tree.txt	/*NERDTreeOptions*
 NERDTreeRender()	NERD_tree.txt	/*NERDTreeRender()*
 NERD_tree.txt	NERD_tree.txt	/*NERD_tree.txt*
+NrColumns	ft_csv.txt	/*NrColumns*
 Popd	FileTree.txt	/*Popd*
 Pushd	FileTree.txt	/*Pushd*
+SearchInColumn	ft_csv.txt	/*SearchInColumn*
 Tlist_Get_Tag_Prototype_By_Line()	taglist.txt	/*Tlist_Get_Tag_Prototype_By_Line()*
 Tlist_Get_Tagname_By_Line()	taglist.txt	/*Tlist_Get_Tagname_By_Line()*
 Tlist_Set_App()	taglist.txt	/*Tlist_Set_App()*
@@ -176,6 +182,7 @@ Tree_NewTreeWindow	tree.txt	/*Tree_NewTreeWindow*
 Tree_OnLeafClick	tree.txt	/*Tree_OnLeafClick*
 Tree_RebuildTree	tree.txt	/*Tree_RebuildTree*
 Tree_pathSeparator	tree.txt	/*Tree_pathSeparator*
+WhatColumn	ft_csv.txt	/*WhatColumn*
 WinManagerFileEdit	winmanager.txt	/*WinManagerFileEdit*
 WinManagerForceReSize	winmanager.txt	/*WinManagerForceReSize*
 WinManagerResumeAUs	winmanager.txt	/*WinManagerResumeAUs*
@@ -191,6 +198,15 @@ bufexplorer-usage	bufexplorer.txt	/*bufexplorer-usage*
 bufexplorer-windowlayout	bufexplorer.txt	/*bufexplorer-windowlayout*
 bufexplorer.txt	bufexplorer.txt	/*bufexplorer.txt*
 buffer-explorer	bufexplorer.txt	/*buffer-explorer*
+csv-changelog	ft_csv.txt	/*csv-changelog*
+csv-column	ft_csv.txt	/*csv-column*
+csv-commands	ft_csv.txt	/*csv-commands*
+csv-configuration	ft_csv.txt	/*csv-configuration*
+csv-delimiter	ft_csv.txt	/*csv-delimiter*
+csv-higroup	ft_csv.txt	/*csv-higroup*
+csv-installation	ft_csv.txt	/*csv-installation*
+csv-toc	ft_csv.txt	/*csv-toc*
+ft_csv.txt	ft_csv.txt	/*ft_csv.txt*
 fugitive	fugitive.txt	/*fugitive*
 fugitive#statusline()	fugitive.txt	/*fugitive#statusline()*
 fugitive-:Gblame	fugitive.txt	/*fugitive-:Gblame*
