@@ -4,3 +4,4 @@ my_aliases
 .VimballRecord
 *.backup
 vim/perl-support/modules/perl-modules.list
+*.swp

@@ -22,7 +22,7 @@ function dispnum {
 	if [[ $VNCDESKTOP != "" ]]; then
 		DISPLAY=$({ echo $VNCDESKTOP| sed -e 's/.*\(:[0-9]\).*/\1/' })
 	else
-		DISPLAY=:1
+		DISPLAY=:0
 	fi
 }
 dispnum
@@ -40,9 +40,8 @@ LC_ALL='en_US.UTF-8'
 LANG='en_US.UTF-8'
 LC_CTYPE=C
 
-if [[ -n $APPLE ]] EDITOR='vim'   # on Mac, use CLI vim
-if [[ -n $LINUX ]] EDITOR='gvim'  # on linux, use GUI gvim
-
+if [[ -n $APPLE ]] EDITOR='macvim' # on Mac, use GUI macvim
+if [[ -n $LINUX ]] EDITOR='gvim'   # on linux, use GUI gvim
 
 export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/libexec:${HOME}/bin
 # export PATH=${PATH}:/usr/local/mysql/bin:/usr/local/git/bin:/opt/php/bin

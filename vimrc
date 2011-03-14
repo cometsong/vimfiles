@@ -138,6 +138,7 @@ map! <Esc>Ox 8
 map! <Esc>Oy 9
 map! <Esc>Oz 0
 
+"""""""""""""""""""""""""""""""""""""""""""""""
 " Options for cutting and pasting
 
   " CTRL-X and SHIFT-Del are Cut
