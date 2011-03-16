@@ -39,23 +39,21 @@ set showmatch     " Show parentheses matching
 set whichwrap=<,>,[,],h,l " Allows for left/right keys to wrap across lines
 set nobackup      " Don't use a backup file (also see writebackup)
 set writebackup   " Write temporary backup files in case we crash
-set incsearch     " 
-let laststatus = 2
+set incsearch     "
+set laststatus=2  " for obviousmode.vim plugin
 
 set number        " line numbers
 set numberwidth=3 " line numbers gutter width
 " for line number colors, see colorscheme.vim file, LineNr
 
 " Use color syntax highlighting.
-syntax on
 syntax enable
-set nohlsearch    " Don't highlight search terms
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch off highlighting the last used search pattern.
 if has("syntax") && &t_Co > 2 || has("gui_running")
   syntax on
-  set nohlsearch
+  set nohlsearch    " Don't highlight search terms
 endif
 
 " Color specification files (in $HOME/.vim/colors)
@@ -94,14 +92,6 @@ filetype plugin on
 let b:did_ftplugin = 1
 au FileType * setl fo-=cro " disable auto-commenting
 
-
-"------- Key Mapping --------"
-" On plain text files, no keyword chars, because we don't want tab completion
-au BufNewFile,BufRead *.txt,*.log set iskeyword=
-
-" On HTML files don't use indenting.
-au BufNewFile,BufRead *.html set noautoindent nosmartindent nocindent
-
 " On CGI files, determine type by reading in a line.
 fun! CGICheck()
   let l = getline(nextnonblank(1))
@@ -113,6 +103,14 @@ fun! CGICheck()
 endfun
 au BufRead *.cgi	call CGICheck()
 
+" On plain text files, no keyword chars, because we don't want tab completion
+au BufNewFile,BufRead *.txt,*.log set iskeyword=
+
+" On HTML files don't use indenting.
+au BufNewFile,BufRead *.html set noautoindent nosmartindent nocindent
+
+
+"------- Key Mapping --------"
 map! <Esc>OM <c-m>
 map  <Esc>OM <c-m>
 map! <Esc>OP <nop>
@@ -141,26 +139,6 @@ map! <Esc>Oy 9
 map! <Esc>Oz 0
 
 """""""""""""""""""""""""""""""""""""""""""""""
-" Options for window size (gVim, console)
-
-if has("gui_running")
-  " GUI is running or is about to start.
-  " Set size of gvim window.
-  set lines=70 columns=130
-  set guifont=Monospace\ 8
-else
-  " This is console Vim.
-  " let the terminal's size set the vim size
-"  if exists("+lines")
-"    set lines=50
-"  endif
-"  if exists("+columns")
-"    set columns=100
-"  endif
-endif
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""
 " Options for cutting and pasting
 
   " CTRL-X and SHIFT-Del are Cut
@@ -184,7 +162,26 @@ endif
   " Use CTRL-Q to do what CTRL-V used to do
   noremap <C-Q>		<C-V>
 
-                                                       
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Options for window size (gVim, console)
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Set size of gvim or macvim window.
+  set lines=60 columns=150
+else
+  " This is console Vim.
+  " let the terminal's size set the vim size
+"  if exists("+lines")
+"    set lines=50
+"  endif
+"  if exists("+columns")
+"    set columns=100
+"  endif
+endif
+
+
 """""""""""""""""""""""""""""""""""""""""""""""
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -196,19 +193,19 @@ map Q gq
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Based on VIM tip 102: automatic tab completion of keywords
-function InsertTabWrapper(dir)
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  elseif "back" == a:dir
-    return "\<c-p>"
-  else
-    return "\<c-n>"
-  endif
-endfunction
-
-inoremap <tab> <c-r>=InsertTabWrapper("fwd")<cr>
-inoremap <s-tab> <c-r>=InsertTabWrapper("back")<cr>
+"    function InsertTabWrapper(dir)
+"      let col = col('.') - 1
+"      if !col || getline('.')[col - 1] !~ '\k'
+"        return "\<tab>"
+"      elseif "back" == a:dir
+"        return "\<c-p>"
+"      else
+"        return "\<c-n>"
+"      endif
+"    endfunction
+"
+"    inoremap <tab> <c-r>=InsertTabWrapper("fwd")<cr>
+"    inoremap <s-tab> <c-r>=InsertTabWrapper("back")<cr>
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -348,13 +345,8 @@ let NERDTreeShowLineNumbers = 0
 "     set cul
 " endif
 
-" ctrl-tab and ctrl-shift-tab cycle tabs
-if (v:version >= 700)
-    noremap <C-Tab> gt
-    noremap <C-S-Tab> gT
-endif
 
-" folding
+" Folding
 set foldenable
 " don't autofold anything
 set foldlevel=100

@@ -22,8 +22,8 @@ let s:MSWIN = has("win16") || has("win32")   || has("win64")    || has("win95")
 "  Uncomment the next two lines to force these settings for all files with
 "  filetype 'perl' .
 "
-setlocal  tabstop=2
-setlocal  shiftwidth=2
+setlocal  tabstop=4
+setlocal  shiftwidth=4
 "
 " ---------- Add ':' to the keyword characters -------------------------------
 "            Tokens like 'File::Find' are recognized as

@@ -3,4 +3,5 @@ my_aliases
 .DS_Store
 .VimballRecord
 *.backup
-./vim/perl-support/modules/perl-modules.list
+vim/perl-support/modules/perl-modules.list
+*.swp
