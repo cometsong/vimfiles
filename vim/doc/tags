@@ -165,6 +165,7 @@ NERDTreeOptions	NERD_tree.txt	/*NERDTreeOptions*
 NERDTreeRender()	NERD_tree.txt	/*NERDTreeRender()*
 NERD_tree.txt	NERD_tree.txt	/*NERD_tree.txt*
 NrColumns	ft_csv.txt	/*NrColumns*
+Perldoc	perl_doc.txt	/*Perldoc*
 Popd	FileTree.txt	/*Popd*
 Pushd	FileTree.txt	/*Pushd*
 SearchInColumn	ft_csv.txt	/*SearchInColumn*
@@ -288,6 +289,8 @@ g:manpageview_sfx_EXT	manpageview.txt	/*g:manpageview_sfx_EXT*
 g:manpageview_syntax_EXT	manpageview.txt	/*g:manpageview_syntax_EXT*
 g:manpageview_winopen	manpageview.txt	/*g:manpageview_winopen*
 g:manpgeview_user	manpageview.txt	/*g:manpgeview_user*
+g:perldoc_flags	perl_doc.txt	/*g:perldoc_flags*
+g:perldoc_program	perl_doc.txt	/*g:perldoc_program*
 htmlspecialchars	htmlspecialchars.txt	/*htmlspecialchars*
 htmlspecialchars-customization	htmlspecialchars.txt	/*htmlspecialchars-customization*
 htmlspecialchars.txt	htmlspecialchars.txt	/*htmlspecialchars.txt*
@@ -317,6 +320,14 @@ manpageview.txt	manpageview.txt	/*manpageview.txt*
 manpageview_extend	manpageview.txt	/*manpageview_extend*
 opspl_<CR>	tree.txt	/*opspl_<CR>*
 perl-support	perlsupport.txt	/*perl-support*
+perldoc-commands	perl_doc.txt	/*perldoc-commands*
+perldoc-info	perl_doc.txt	/*perldoc-info*
+perldoc-matches	perl_doc.txt	/*perldoc-matches*
+perldoc-problems	perl_doc.txt	/*perldoc-problems*
+perldoc-variables	perl_doc.txt	/*perldoc-variables*
+perldoc.txt	perl_doc.txt	/*perldoc.txt*
+perldoc_flags	perl_doc.txt	/*perldoc_flags*
+perldoc_program	perl_doc.txt	/*perldoc_program*
 perlsupport	perlsupport.txt	/*perlsupport*
 perlsupport-Ctrl-j	perlsupport.txt	/*perlsupport-Ctrl-j*
 perlsupport-ad-mappings	perlsupport.txt	/*perlsupport-ad-mappings*
