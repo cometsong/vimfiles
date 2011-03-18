@@ -40,7 +40,7 @@ LC_ALL='en_US.UTF-8'
 LANG='en_US.UTF-8'
 LC_CTYPE=C
 
-if [[ -n $APPLE ]] EDITOR='macvim' # on Mac, use GUI macvim
+if [[ -n $APPLE ]] EDITOR="open /Applications/MacVim.app" # on Mac, use GUI macvim
 if [[ -n $LINUX ]] EDITOR='gvim'   # on linux, use GUI gvim
 
 export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/libexec:${HOME}/bin
