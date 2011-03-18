@@ -79,7 +79,7 @@ set encoding=utf-8
 
 " Most-Recently-Used file list:
 "  !leave the default in $HOME so that diff systems have their own lists
-let MRU_File = "$HOME/.vim_mru_files"
+"let MRU_File = $HOME . '/.vim/vim_mru_files'
 
 
 "CMD Alias plugin
