@@ -51,9 +51,11 @@ syntax enable
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch off highlighting the last used search pattern.
+" Below is the contents of a .gvimrc file
 if has("syntax") && &t_Co > 2 || has("gui_running")
   syntax on
   set nohlsearch    " Don't highlight search terms
+  set guifont=Monospace\ 8
 endif
 
 " Color specification files (in $HOME/.vim/colors)
@@ -77,7 +79,7 @@ set encoding=utf-8
 
 " Most-Recently-Used file list:
 "  !leave the default in $HOME so that diff systems have their own lists
-"let MRU_File = $HOME . '/.vim/vim_mru_files'
+let MRU_File = "$HOME/.vim_mru_files"
 
 
 "CMD Alias plugin
