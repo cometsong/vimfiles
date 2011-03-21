@@ -1,6 +1,7 @@
 my_aliases
 .project
 .DS_Store
+._.DS_Store
 .VimballRecord
 *.backup
 vim/perl-support/modules/perl-modules.list

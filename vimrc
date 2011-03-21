@@ -30,8 +30,8 @@ set listchars=tab:\ \ ,trail:� " If you do ":set list", shows trailing spaces
 set mouse=a       " the mouse in VIM in a=all modes
 set nojoinspaces  " One space after a "." rather than 2
 set scrolloff=1   " Minimum lines between cursor and window edge
-set tabstop=2     " tabs are 2 spaces
-set shiftwidth=2  " Indent by 2 columns (for functions, etc).
+set tabstop=4     " tabs are 2 spaces
+set shiftwidth=4  " Indent by 2 columns (for functions, etc).
 set expandtab     " expand <Tab> to spaces in Insert mode
 set showcmd       " Show partially typed commands
 set showmatch     " Show parentheses matching
@@ -55,7 +55,6 @@ syntax enable
 if has("syntax") && &t_Co > 2 || has("gui_running")
   syntax on
   set nohlsearch    " Don't highlight search terms
-  set guifont=Monospace\ 8
 endif
 
 " Color specification files (in $HOME/.vim/colors)
@@ -172,15 +171,10 @@ if has("gui_running")
   " GUI is running or is about to start.
   " Set size of gvim or macvim window.
   set lines=60 columns=150
+  set guifont=Monospace\ 8
 else
   " This is console Vim.
   " let the terminal's size set the vim size
-"  if exists("+lines")
-"    set lines=50
-"  endif
-"  if exists("+columns")
-"    set columns=100
-"  endif
 endif
 
 
@@ -287,13 +281,10 @@ if has("autocmd")
 
 endif " has("autocmd")
 
-"Toggle indenting for pasting pre-indented
+"--- Toggle indenting for pasting pre-indented ---"
 nnoremap <F8> :Set invpaste paste?<CR>
 set pastetoggle=<F8>
 set showmode
-
-"--- Ruby mappings ---"
-map! habtm has_and_belongs_to_many :object, :join_table => "table_name", :foreign_key => "object_id"<ESC>13b
 
 "--- Buffer Access Setup ---"
 " noremap <C-left> :bprev<CR>
@@ -301,8 +292,14 @@ map! habtm has_and_belongs_to_many :object, :join_table => "table_name", :foreig
 noremap <C-PageUp> :bprev<CR>
 noremap <C-PageDown> :bnext<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""
+" Load all Plugins using the Pathogen plugin
+call pathogen#runtime_append_all_bundles()
+""""""""""""""""""""""""""""""""""""""""""""""
+
 "--- NERDTreeOptions ---"
 noremap <C-F12> :NERDTreeToggle<CR>
+map <Leader>tt   :NERDTreeToggle<Esc>
 " let loaded_nerd_tree        = 0 "set to 1 to turn off plugin
 let NERDTreeHijackNetrw     = 1 "opening a dir will use Nerd Tree, not built-in
 let NERDChristmasTree       = 1 "make more colourful
@@ -322,33 +319,12 @@ let NERDTreeShowLineNumbers = 0
 " let g:git_branch_status_head_current=1
 " let g:git_branch_status_ignore_remotes=1
 
-" if has("gui_running")
-"     if (v:version >= 600)
-"         syntax enable
-"     else
-"         syntax on
-"     endif
-" " line numbers
-"     set number
-" " display invisibles
-"     set list
-" " search options
-"     set hlsearch
-"     set showmatch
-"     if has("gui_win32")
-" 			" windows font
-"         set guifont=courier_new:h10
-"     elseif has("gui_gtk2")
-" 			" linux font
-"         set guifont=Monospace\ 12
-"     endif
-"     colorscheme darkdevel
-" " highlight cursor line
-"     set cul
-" endif
+"--- TagList ---"
+let Tlist_Inc_Winwidth = 0
+map <F3>        :Tlist<CR>
+map <Leader>tl  :TList<Esc>
 
-
-" Folding
+"--- Folding ---"
 set foldenable
 " don't autofold anything
 set foldlevel=100
