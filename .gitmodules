@@ -1,0 +1,72 @@
+[submodule "vim/bundle/Archive"]
+	path = vim/bundle/Archive
+	url = git://github.com/vim-scripts/Archive.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/vim-git"]
+	path = vim/bundle/vim-git
+	url = git://github.com/tpope/vim-git.git
+[submodule "vim/bundle/vim-pathogen"]
+	path = vim/bundle/vim-pathogen
+	url = git://github.com/tpope/vim-pathogen.git
+[submodule "vim/bundle/Better-CSS-Syntax-for-Vim"]
+	path = vim/bundle/Better-CSS-Syntax-for-Vim
+	url = git://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
+[submodule "vim/bundle/ManPageView"]
+	path = vim/bundle/ManPageView
+	url = git://github.com/vim-scripts/ManPageView.git
+[submodule "vim/bundle/SQLUtilities"]
+	path = vim/bundle/SQLUtilities
+	url = git://github.com/vim-scripts/SQLUtilities.git
+[submodule "vim/bundle/SuperTab-continued"]
+	path = vim/bundle/SuperTab-continued
+	url = git://github.com/vim-scripts/SuperTab-continued..git
+[submodule "vim/bundle/bufexplorer"]
+	path = vim/bundle/bufexplorer
+	url = git://github.com/vim-scripts/bufexplorer.zip.git
+[submodule "vim/bundle/grep.vim"]
+	path = vim/bundle/grep.vim
+	url = git://github.com/vim-scripts/grep.vim.git
+[submodule "vim/bundle/html5.vim"]
+	path = vim/bundle/html5.vim
+	url = git://github.com/vim-scripts/html5.vim.git
+[submodule "vim/bundle/iptables"]
+	path = vim/bundle/iptables
+	url = git://github.com/vim-scripts/iptables.git
+[submodule "vim/bundle/loremipsum"]
+	path = vim/bundle/loremipsum
+	url = git://github.com/vim-scripts/loremipsum.git
+[submodule "vim/bundle/minibufexpl"]
+	path = vim/bundle/minibufexpl
+	url = git://github.com/vim-scripts/minibufexpl.vim.git
+[submodule "vim/bundle/mru.vim"]
+	path = vim/bundle/mru.vim
+	url = git://github.com/vim-scripts/mru.vim.git
+[submodule "vim/bundle/numbered"]
+	path = vim/bundle/numbered
+	url = git://github.com/vim-scripts/numbered.vim.git
+[submodule "vim/bundle/reload"]
+	path = vim/bundle/reload
+	url = git://github.com/vim-scripts/reload.vim.git
+[submodule "vim/bundle/simplefold"]
+	path = vim/bundle/simplefold
+	url = git://github.com/vim-scripts/simplefold.git
+[submodule "vim/bundle/smartbd"]
+	path = vim/bundle/smartbd
+	url = git://github.com/vim-scripts/smartbd.git
+[submodule "vim/bundle/taglist-plus"]
+	path = vim/bundle/taglist-plus
+	url = git://github.com/vim-scripts/taglist-plus.git
+[submodule "vim/bundle/makesd.vim"]
+	path = vim/bundle/makesd.vim
+	url = git@github.com:JaminOne/makesd.vim.git
+[submodule "vim/bundle/perl-support.vim"]
+	path = vim/bundle/perl-support.vim
+	url = git@github.com:JaminOne/perl-support.vim.git
+[submodule "vim/bundle/bash-support.vim"]
+	path = vim/bundle/bash-support.vim
+	url = git@github.com:JaminOne/bash-support.vim.git
