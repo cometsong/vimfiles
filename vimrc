@@ -41,6 +41,7 @@ set nobackup      " Don't use a backup file (also see writebackup)
 set writebackup   " Write temporary backup files in case we crash
 set incsearch     "
 set laststatus=2  " for obviousmode.vim plugin
+set nowrap        " do not wrap lines
 
 set number        " line numbers
 set numberwidth=3 " line numbers gutter width
@@ -138,6 +139,37 @@ map! <Esc>Ow 7
 map! <Esc>Ox 8
 map! <Esc>Oy 9
 map! <Esc>Oz 0
+
+"-------------------------------------------------------------------------------
+" autocomplete parenthesis, (brackets) and braces
+"-------------------------------------------------------------------------------
+inoremap  (  ()<Left>
+inoremap  [  []<Left>
+inoremap  {  {}<Left>
+"
+vnoremap  (  s()<Esc>P<Right>%
+vnoremap  [  s[]<Esc>P<Right>%
+vnoremap  {  s{}<Esc>P<Right>%
+"
+" surround content with additional spaces
+"
+vnoremap  )  s(  )<Esc><Left>P<Right><Right>%
+vnoremap  ]  s[  ]<Esc><Left>P<Right><Right>%
+vnoremap  }  s{  }<Esc><Left>P<Right><Right>%
+"
+"-------------------------------------------------------------------------------
+" autocomplete quotes (visual and select mode)
+"-------------------------------------------------------------------------------
+xnoremap  '  s''<Esc>P<Right>
+xnoremap  "  s""<Esc>P<Right>
+xnoremap  `  s``<Esc>P<Right>
+"
+"-------------------------------------------------------------------------------
+" The current directory is the directory of the file in the current window.
+"-------------------------------------------------------------------------------
+if has("autocmd")
+  autocmd BufEnter * :lchdir %:p:h
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " Options for cutting and pasting
@@ -289,8 +321,10 @@ set showmode
 "--- Buffer Access Setup ---"
 " noremap <C-left> :bprev<CR>
 " noremap <C-right> :bnext<CR>
-noremap <C-PageUp> :bprev<CR>
-noremap <C-PageDown> :bnext<CR>
+ noremap <C-S-PageUp>        :bprev<CR>
+inoremap <C-S-PageUp>   <C-C>:bprev<CR>
+ noremap <C-S-PageDown>      :bnext<CR>
+inoremap <C-S-PageDown> <C-C>:bnext<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Load all Plugins using the Pathogen plugin
@@ -298,31 +332,29 @@ call pathogen#runtime_append_all_bundles()
 """"""""""""""""""""""""""""""""""""""""""""""
 
 "--- NERDTreeOptions ---"
-noremap <C-F12> :NERDTreeToggle<CR>
-map <Leader>tt   :NERDTreeToggle<Esc>
-" let loaded_nerd_tree        = 0 "set to 1 to turn off plugin
-let NERDTreeHijackNetrw     = 1 "opening a dir will use Nerd Tree, not built-in
-let NERDChristmasTree       = 1 "make more colourful
-let NERDTreeAutoCenter      = 1 "center around the cursor if it moves
-let NERDTreeAutoCenterThreshold = 4 "sensitivity of auto centering
-let NERDTreeCaseSensitiveSort = 0
-let NERDTreeChDirMode       = 1 " [0,1,2] 0=never, 1=startup, 2=always
+ noremap <S-F12>          :NERDTreeToggle<CR>
+inoremap <S-F12>    <C-C> :NERDTreeToggle<CR>
+ noremap <Leader>tt       :NERDTreeToggle<Esc>
+inoremap <Leader>tt <C-C> :NERDTreeToggle<Esc>
+" let loaded_nerd_tree            = 0 " set to 1 to turn off plugin
+let NERDTreeHijackNetrw         = 1 " opening a dir will use Nerd Tree, not built-in
+let NERDChristmasTree           = 1 " make more colourful
+let NERDTreeAutoCenter          = 1 " center around the cursor if it moves
+let NERDTreeAutoCenterThreshold = 4 " sensitivity of auto centering
+let NERDTreeCaseSensitiveSort   = 0 " 0=case-INsensitive sort
+let NERDTreeChDirMode           = 1 " [0,1,2] 0=never, 1=startup, 2=always
 let NERDTreeHighlightCursorline = 1
-let NERDTreeIgnore          = ['\~$'] " a list of regular expressions
-" let NERDTreeBookmarksFile   = $HOME/.NERDTreeBookmarks
-let NERDTreeShowBookmarks   = 1
-let NERDTreeQuitOnOpen      = 0 " if NERDTree will close after opening a file
-let NERDTreeShowLineNumbers = 0
-
-"--- Git Branch Info ---"
-" set statusline=%#ErrorMsg#%{GitBranchInfoString()}%#StatusLine#
-" let g:git_branch_status_head_current=1
-" let g:git_branch_status_ignore_remotes=1
+let NERDTreeIgnore              = ['\~$'] " a list of regular expressions
+" let NERDTreeBookmarksFile       = $HOME/.NERDTreeBookmarks
+let NERDTreeShowBookmarks       = 1
+let NERDTreeQuitOnOpen          = 0 " if NERDTree will close after opening a file
+let NERDTreeShowLineNumbers     = 0 " no line numbers in the tree window
 
 "--- TagList ---"
 let Tlist_Inc_Winwidth = 0
-map <F3>        :Tlist<CR>
-map <Leader>tl  :TList<Esc>
+ noremap <S-F11>       :TlistToggle<CR>
+inoremap <S-F11> <C-C> :TlistToggle<CR>
+let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 
 "--- Folding ---"
 set foldenable
