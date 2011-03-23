@@ -362,3 +362,24 @@ set foldenable
 set foldlevel=100
 "(This is set within Simplefold.vim)  map <unique> <silent> <Leader>f <Plug>SimpleFold_Foldsearch
 
+"--- Perl-Support ---"
+let g:Perl_GlobalTemplateFile     = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
+let g:Perl_LocalTemplateFile      = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
+let g:Perl_CodeSnippets           = $HOME.'/.vim/bundle/perl-support.vim/perl-support/codesnippets'
+let g:Perl_Ctrl_j                 = 'on'
+let g:Perl_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
+let g:Perl_MenuHeader             = 'off'
+let g:Perl_TemplateOverwrittenMsg = 'no'
+let g:Perl_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
+
+"--- Bash-Support ---"
+let g:BASH_GlobalTemplateFile     = $HOME.'/.vim/bundle/bash-support.vim/bash-support/templates/Templates'
+let g:BASH_LocalTemplateFile      = $HOME.'/.vim/bundle/bash-support.vim/bash-support/templates/Templates'
+let g:BASH_CodeSnippets           = $HOME.'/.vim/bundle/bash-support.vim/bash-support/codesnippets'
+let g:BASH_Ctrl_j                 = 'on'
+let g:BASH_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
+let g:BASH_MenuHeader             = 'off'
+let g:BASH_TemplateOverwrittenMsg = 'no'
+let g:BASH_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
+
+
