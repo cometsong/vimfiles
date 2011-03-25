@@ -321,10 +321,10 @@ set showmode
 "--- Buffer Access Setup ---"
 " noremap <C-left> :bprev<CR>
 " noremap <C-right> :bnext<CR>
- noremap <C-S-PageUp>        :bprev<CR>
-inoremap <C-S-PageUp>   <C-C>:bprev<CR>
- noremap <C-S-PageDown>      :bnext<CR>
-inoremap <C-S-PageDown> <C-C>:bnext<CR>
+ noremap <C-PageUp>        :bprev<CR>
+inoremap <C-PageUp>   <C-C>:bprev<CR>
+ noremap <C-PageDown>      :bnext<CR>
+inoremap <C-PageDown> <C-C>:bnext<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Load all Plugins using the Pathogen plugin
@@ -332,8 +332,8 @@ call pathogen#runtime_append_all_bundles()
 """"""""""""""""""""""""""""""""""""""""""""""
 
 "--- NERDTreeOptions ---"
- noremap <S-F12>          :NERDTreeToggle<CR>
-inoremap <S-F12>    <C-C> :NERDTreeToggle<CR>
+ noremap <C-F12>          :NERDTreeToggle<CR>
+inoremap <C-F12>    <C-C> :NERDTreeToggle<CR>
  noremap <Leader>tt       :NERDTreeToggle<Esc>
 inoremap <Leader>tt <C-C> :NERDTreeToggle<Esc>
 " let loaded_nerd_tree            = 0 " set to 1 to turn off plugin
