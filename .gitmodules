@@ -72,4 +72,7 @@
 	url = git@github.com:JaminOne/bash-support.vim.git
 [submodule "vim/bundle/bufstat"]
 	path = vim/bundle/bufstat
-	url = https://github.com/rson/vim-bufstat.git
+	url = git@github.com:JaminOne/vim-bufstat.git
+[submodule "vim/bundle/NERDcommenter"]
+	path = vim/bundle/NERDcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git

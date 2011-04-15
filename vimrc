@@ -1,10 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Jamin's composited vimrc file.                        "
 "                                                        "
-"  Maintainer:	Jamin Leopold <jl@jaminleopold.com>      "
-"  Last change:	2010 Nov 08                              "
-"                                                        "
-"  !Many add-ons are included in the $HOME/.vim folder!  "
+"  Maintainer:  Jamin Leopold <jl@jaminleopold.com>      "
+"  Last change: 2011 Apr 15                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -13,59 +11,70 @@ set nocompatible
 "-------------------------------------------------------------------------------
 "--- Vim Options.
 set term=xterm        " xterm allows mouse, home/end/pgup/pgdown, etc.
-set backspace=2       " (bs) allow backspacing over everything in insert mode
 set viminfo='0,\"100, " Stay at the start of a file when opening it
+set history=50        " keep 50 lines of command line history
+set backspace=2       " allow backspacing over everything in insert mode (=indent,eol,start)
+set whichwrap=<,>,[,],h,l    " Allows for left/right keys to wrap across lines
 
-set history=50        " (hi) keep 50 lines of command line history
 set autoindent        " Automatically set the indent of a new line (local to buffer))
 set smartindent       " Indent settings (really only the cindent matters)
 set cindent
 set cinkeys=0{,0},:,!^F,o,O,e  " See 'cinkeys'; this stops '#' from indenting
 
-set ruler             " (ru) show the cursor position all the time
+set ruler             " show the cursor position all the time
 set fileformat=unix   " No crazy CR/LF
 set mouse=a           " the mouse in VIM in a=all modes
 set nojoinspaces      " One space after a '.' rather than 2
 set scrolloff=1       " Minimum lines between cursor and window edge
 set showcmd           " Show partially typed commands
-"set textwidth=100     " Maximum line width
-set whichwrap=<,>,[,],h,l    " Allows for left/right keys to wrap across lines
 set nobackup          " Don't use a backup file (also see writebackup)
 set writebackup       " Write temporary backup files in case we crash
-set incsearch         " incremental searching as you type
 set nowrap            " do not wrap lines
 set encoding=utf-8
 set hidden            " keep buffer mods hidden, allow switching buffers without saving
+set splitright        " set split default on the right
+set equalalways       " all new windows equal size
 
 set showmatch         " Show parentheses matching
 set matchpairs+=<:>   " append pairable chars to the default set '(:),{:},[:]'
+set matchtime=3       " Show matching brackets for only 0.3 seconds
+
+set laststatus=2      " always show status line
+set statusline=%{fugitive#statusline()}\ \ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
 
 set number            " line numbers
-set numberwidth=3     " line numbers gutter width
+set numberwidth=1     " line numbers minimum gutter width
 " for line number colors, see colorscheme.vim file, LineNr
 
 "-------------------------------------------------------------------------------
-"--- Invisible characters
-set listchars=trail:�,tab:>-,eol:$  " If you do ':set list', shows trailing spaces
-set nolist                          " do not show trailing characters
+"--- Invisible characters   " If you ':set list', shows trailing spaces
+set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:⏎
+set list                          " do not show trailinginsert mode characters
 :noremap <Leader>i :set list!<CR> " Toggle invisible chars
 
 "-------------------------------------------------------------------------------
 "--- Color specification files (in $HOME/.vim/colors)
 "    -> colorscheme COLORSCHEME-File-Name
-colorscheme dante
+colorscheme dante-mods
+set incsearch         " incremental searching as you type
+set hlsearch          " highlight all search results
 
 "-------------------------------------------------------------------------------
 "--- Syntax highlighting.
 syntax enable
 
 " Switch syntax highlighting on, when the terminal has colors
-" Also switch off highlighting the last used search pattern.
-" Below is the contents of a .gvimrc file
 if has("syntax") && &t_Co > 2 || has("gui_running")
   syntax on
   set nohlsearch      " Don't highlight search terms
 endif
+
+"-------------------------------------------------------------------------------
+"--- Folding ---"
+set foldenable
+" don't autofold anything
+set foldlevel=100
+"(This is set within Simplefold.vim)  map <unique> <silent> <Leader>f <Plug>SimpleFold_Foldsearch
 
 "-------------------------------------------------------------------------------
 "--- File Typing
@@ -85,12 +94,62 @@ fun! CGICheck()
 endfun
 au BufRead *.cgi	call CGICheck()
 
-" On plain text files, no keyword chars, because we don't want tab completion
-au BufNewFile,BufRead *.txt,*.log set iskeyword=
+"-------------------------------------------------------------------------------
+"---  Cursor column and line show/hide
+if v:version > 700
+  set nocursorline
+  set nocursorcolumn
+  hi  CursorLine   cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=underline 
+  hi  CursorColumn cterm=bold      ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=bold 
+   map <silent> <Leader>curt      :set   cursorcolumn!  cursorline! <CR>
+  imap <silent> <Leader>curt <Esc>:set   cursorcolumn!  cursorline! <CR>a
+endif
 
-" On HTML files don't use indenting.
-au BufNewFile,BufRead *.html set noautoindent nosmartindent nocindent
+"-------------------------------------------------------------------------------
+"  Autocmds
+if has("autocmd")
+  " The current directory is the directory of the file in the current window.
+  autocmd BufEnter * :lchdir %:p:h
 
+  " On plain text files, no keyword chars, because we don't want tab completion
+  au BufNewFile,BufRead *.txt,*.log set iskeyword=
+
+  " On HTML files don't use indenting.
+  au BufNewFile,BufRead *.html set noautoindent nosmartindent nocindent
+
+  " In text files, always limit the width of text to 80 characters
+  "autocmd BufRead *.txt,*.log set tw=100
+
+endif " has("autocmd")
+
+"-------------------------------------------------------------------------------
+"--- Moves in Insert mode
+inoremap <C-b> <C-o>0
+inoremap <C-e> <C-o>$
+
+"-------------------------------------------------------------------------------
+"--- Tabs
+function! Tabstyle_tabs()
+  " Using 4 column tabs
+  set softtabstop=4
+  set shiftwidth=4
+  set tabstop=4
+  set noexpandtab
+endfunction
+
+function! Tabstyle_spaces()
+  " Use 4 spaces
+  set softtabstop=4
+  set shiftwidth=4
+  set tabstop=4
+  set expandtab
+endfunction
+
+call Tabstyle_spaces()
+
+"-------------------------------------------------------------------------------
+" Sessions - Sets what is saved when you save a session
+set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 "-------------------------------------------------------------------------------
 " Key Mapping
@@ -121,61 +180,6 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 "inoremap <s-c-tab> <c-p>
 let g:SuperTabMappingForward  = '<s-tab>'
 let g:SuperTabMappingBackward = '<s-c-tab>'
-
-"---  Insert New Line
-" inserts new line without going into insert mode
-map <s-Enter> O<ESC>    
-map <Enter> o<ESC>
-
-"-------------------------------------------------------------------------------
-"---  Cursor column and line show/hide
-if v:version > 700
-  set nocursorline
-  set nocursorcolumn
-  hi  CursorLine   cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=white
-  hi  CursorColumn cterm=bold      ctermbg=NONE ctermfg=NONE guibg=NONE guifg=white
-   map <silent> <Leader>curo      :set   cursorcolumn   cursorline  <CR>
-  imap <silent> <Leader>curo <Esc>:set   cursorcolumn   cursorline  <CR>a
-   map <silent> <Leader>curt      :set   cursorcolumn!  cursorline! <CR>
-  imap <silent> <Leader>curt <Esc>:set   cursorcolumn!  cursorline! <CR>a
-   map <silent> <Leader>curn      :set nocursorcolumn nocursorline  <CR>
-  imap <silent> <Leader>curn <Esc>:set nocursorcolumn nocursorline  <CR>a
-endif
-
-"-------------------------------------------------------------------------------
-"  Autocmds
-if has("autocmd")
-    " The current directory is the directory of the file in the current window.
-    autocmd BufEnter * :lchdir %:p:h
-
-    " In text files, always limit the width of text to 80 characters
-    "autocmd BufRead *.txt set tw=80
-
-endif " has("autocmd")
-
-"-------------------------------------------------------------------------------
-"--- Tabs
-function! Tabstyle_tabs()
-  " Using 4 column tabs
-  set softtabstop=4
-  set shiftwidth=4
-  set tabstop=4
-  set noexpandtab
-endfunction
-
-function! Tabstyle_spaces()
-  " Use 4 spaces
-  set softtabstop=4
-  set shiftwidth=4
-  set tabstop=4
-  set expandtab
-endfunction
-
-call Tabstyle_spaces()
-
-"-------------------------------------------------------------------------------
-" Sessions - Sets what is saved when you save a session
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 "-------------------------------------------------------------------------------
 "--- Buffer Access Setup ---"
@@ -215,12 +219,6 @@ inoremap <S-F11> <C-C> :TlistToggle<CR>
 inoremap <Leader>tt <C-C> :TlistToggle<Esc>
 let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 
-"--- Folding ---"
-set foldenable
-" don't autofold anything
-set foldlevel=100
-"(This is set within Simplefold.vim)  map <unique> <silent> <Leader>f <Plug>SimpleFold_Foldsearch
-
 "--- Perl-Support ---"
 let g:Perl_GlobalTemplateFile     = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
 let g:Perl_LocalTemplateFile      = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
@@ -242,11 +240,10 @@ let g:BASH_TemplateOverwrittenMsg = 'no'
 let g:BASH_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
 
 "--- bufstat ---"
-set laststatus=2
 let g:bufstat_debug = 1
-highlight InactiveBuffer ctermfg=blue ctermbg=white
+highlight InactiveBuffer ctermfg=DarkGray ctermbg=White
 let g:bufstat_inactive_hl_group = "InactiveBuffer"
-highlight ActiveBuffer ctermfg=white ctermbg=blue
+highlight ActiveBuffer ctermfg=White ctermbg=blue
 let g:bufstat_active_hl_group = "ActiveBuffer"
 let g:bufstat_alternate_list_char = '^'
 let g:bufstat_modified_list_char  = '+'
@@ -254,5 +251,4 @@ let g:bufstat_bracket_around_bufname  = 1
 let g:bufstat_number_before_bufname   = 1
 noremap <c-left>  <plug>bufstat_scroll_left
 noremap <c-right> <plug>bufstat_scroll_right
-
 
