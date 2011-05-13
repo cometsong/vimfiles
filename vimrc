@@ -188,6 +188,10 @@ inoremap <C-PageUp>   <C-C>:bprev<CR>
  noremap <C-PageDown>      :bnext<CR>
 inoremap <C-PageDown> <C-C>:bnext<CR>
 
+"---datetime stamp---"
+ noremap <Leader>dts      "=strftime("%F %T%z")<CR>P
+inoremap <Leader>dts <C-R>"=strftime("%F %T%z")<CR>
+
 "-------------------------------------------------------------------------------
 "--- Load all Plugins using the Pathogen plugin
 call pathogen#runtime_append_all_bundles()
