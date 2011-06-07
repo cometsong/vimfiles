@@ -32,8 +32,8 @@ hi ModeMsg      term=bold           cterm=bold           gui=bold
 hi Question     term=standout       ctermfg=green        gui=bold           guifg=olivedrab1
 hi WarningMsg   term=standout       ctermfg=red          gui=bold           guifg=red3
 hi WildMenu     term=standout       ctermfg=black        ctermbg=yellow     guifg=black       guibg=gold2
-hi Folded       term=standout       ctermfg=DarkGray     ctermbg=white      guifg=royalblue1  guibg=white
-hi FoldColumn   term=standout       ctermfg=blue         ctermbg=white      guifg=royalblue3  guibg=white
+hi Folded       term=none           ctermfg=DarkGray     ctermbg=Black      guifg=DarkGray    guibg=Black
+hi FoldColumn   term=none           ctermfg=DarkGray     ctermbg=Black      guifg=DarkGray    guibg=Black
 hi DiffAdd      term=bold           ctermbg=blue         guibg=royalblue2
 hi DiffChange   term=bold           ctermbg=darkmagenta  guibg=maroon
 hi DiffDelete   term=bold           cterm=bold           ctermfg=lightblue  ctermbg=cyan      gui=bold   guifg=lightblue guibg=cyan4

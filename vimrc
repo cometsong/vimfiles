@@ -55,7 +55,8 @@ set list                          " do not show trailinginsert mode characters
 "-------------------------------------------------------------------------------
 "--- Color specification files (in $HOME/.vim/colors)
 "    -> colorscheme COLORSCHEME-File-Name
-colorscheme dante-mods
+"colorscheme dante-mods
+colorscheme darkdevel
 set incsearch         " incremental searching as you type
 set hlsearch          " highlight all search results
 
@@ -187,6 +188,10 @@ let g:SuperTabMappingBackward = '<s-c-tab>'
 inoremap <C-PageUp>   <C-C>:bprev<CR>
  noremap <C-PageDown>      :bnext<CR>
 inoremap <C-PageDown> <C-C>:bnext<CR>
+
+"---datetime stamp---"
+ noremap <Leader>dts      "=strftime("%F %T%z")<CR>P
+inoremap <Leader>dts <C-R>"=strftime("%F %T%z")<CR>
 
 "-------------------------------------------------------------------------------
 "--- Load all Plugins using the Pathogen plugin
