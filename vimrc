@@ -55,7 +55,8 @@ set list                          " do not show trailinginsert mode characters
 "-------------------------------------------------------------------------------
 "--- Color specification files (in $HOME/.vim/colors)
 "    -> colorscheme COLORSCHEME-File-Name
-colorscheme dante-mods
+"colorscheme dante-mods
+colorscheme darkdevel
 set incsearch         " incremental searching as you type
 set hlsearch          " highlight all search results
 
