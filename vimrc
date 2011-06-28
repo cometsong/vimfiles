@@ -55,7 +55,7 @@ set list                          " do not show trailinginsert mode characters
 "-------------------------------------------------------------------------------
 "--- Color specification files (in $HOME/.vim/colors)
 "    -> colorscheme COLORSCHEME-File-Name
-"colorscheme dante-mods
+" colorscheme dante-mods
 colorscheme darkdevel
 set incsearch         " incremental searching as you type
 set hlsearch          " highlight all search results
@@ -179,6 +179,7 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 "---  automatic tab completion of keywords
 "inoremap <s-tab>   <c-n>
 "inoremap <s-c-tab> <c-p>
+"set completeopt=longest,menuone
 let g:SuperTabMappingForward  = '<s-tab>'
 let g:SuperTabMappingBackward = '<s-c-tab>'
 
