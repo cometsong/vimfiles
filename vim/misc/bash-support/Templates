@@ -1,0 +1,20 @@
+§
+§ =============================================================
+§ ========== USER MACROS ======================================
+§ =============================================================
+§
+|AUTHOR|    = B. Leopold
+|AUTHORREF| = cometsong
+|EMAIL|     = bleopoldNOSPAM@uni-muenster.de
+|COMPANY|   = Universitaetsklinik Muenster
+|YEAR|      = 2011
+|COPYRIGHT| = Copyright (c) |YEAR|, |AUTHOR|
+§
+§ =============================================================
+§ ========== FILE INCLUDES ====================================
+§ =============================================================
+§
+|includefile| = bash.comments.template
+|includefile| = bash.statements.template
+|includefile| = bash.paramsub.template
+§

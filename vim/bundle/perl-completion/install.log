@@ -1,0 +1,177 @@
+
+sourcing "$VIM/vimrc"
+finished sourcing $VIM/vimrc
+sourcing "$HOME/.vimrc"
+Searching for "colors/darkdevel.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/colors/darkdevel.vim"
+line 59: sourcing "/Users/leopold/.vim/colors/darkdevel.vim"
+finished sourcing /Users/leopold/.vim/colors/darkdevel.vim
+continuing in /Users/leopold/.vimrc
+line 65: sourcing "/usr/share/vim/vim72/syntax/syntax.vim"
+Searching for "syntax/synload.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/syntax/synload.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/synload.vim"
+line 19: sourcing "/usr/share/vim/vimfiles/syntax/synload.vim"
+Searching for "colors/darkdevel.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/colors/darkdevel.vim"
+line 19: sourcing "/Users/leopold/.vim/colors/darkdevel.vim"
+Searching for "syntax/syncolor.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+line 12: sourcing "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vimfiles/syntax/syncolor.vim
+continuing in /usr/local/rcfiles/vim/colors/darkdevel.vim
+Searching for "/usr/share/vim/vim72/syntax/syncolor.vim"
+line 12: sourcing "/usr/share/vim/vim72/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim72/syntax/syncolor.vim
+continuing in /usr/local/rcfiles/vim/colors/darkdevel.vim
+Searching for "/usr/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/Users/leopold/.vim/after/syntax/syncolor.vim"
+Searching for "syntax/syncolor.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+line 15: sourcing "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vimfiles/syntax/syncolor.vim
+continuing in /usr/local/rcfiles/vim/colors/darkdevel.vim
+Searching for "/usr/share/vim/vim72/syntax/syncolor.vim"
+line 15: sourcing "/usr/share/vim/vim72/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim72/syntax/syncolor.vim
+continuing in /usr/local/rcfiles/vim/colors/darkdevel.vim
+Searching for "/usr/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/Users/leopold/.vim/after/syntax/syncolor.vim"
+finished sourcing /Users/leopold/.vim/colors/darkdevel.vim
+continuing in /usr/share/vim/vim72/syntax/synload.vim
+finished sourcing /usr/share/vim/vimfiles/syntax/synload.vim
+continuing in /usr/share/vim/vim72/syntax/syntax.vim
+Searching for "filetype.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/filetype.vim"
+Searching for "/usr/share/vim/vimfiles/filetype.vim"
+line 25: sourcing "/usr/share/vim/vimfiles/filetype.vim"
+Searching for "ftdetect/*.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/ftdetect/*.vim"
+Searching for "/usr/share/vim/vimfiles/ftdetect/*.vim"
+Searching for "/usr/share/vim/vim72/ftdetect/*.vim"
+Searching for "/usr/share/vim/vimfiles/after/ftdetect/*.vim"
+Searching for "/Users/leopold/.vim/after/ftdetect/*.vim"
+not found in 'runtimepath': "ftdetect/*.vim"
+finished sourcing /usr/share/vim/vimfiles/filetype.vim
+continuing in /usr/share/vim/vim72/syntax/syntax.vim
+Searching for "/usr/share/vim/vim72/filetype.vim"
+line 25: sourcing "/usr/share/vim/vim72/filetype.vim"
+finished sourcing /usr/share/vim/vim72/filetype.vim
+continuing in /usr/share/vim/vim72/syntax/syntax.vim
+Searching for "/usr/share/vim/vimfiles/after/filetype.vim"
+Searching for "/Users/leopold/.vim/after/filetype.vim"
+finished sourcing /usr/share/vim/vim72/syntax/syntax.vim
+continuing in /Users/leopold/.vimrc
+line 69: sourcing "/usr/share/vim/vim72/syntax/syntax.vim"
+line 15: sourcing "/usr/share/vim/vim72/syntax/nosyntax.vim"
+finished sourcing /usr/share/vim/vim72/syntax/nosyntax.vim
+continuing in /usr/share/vim/vim72/syntax/syntax.vim
+Searching for "syntax/synload.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/syntax/synload.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/synload.vim"
+line 19: sourcing "/usr/share/vim/vimfiles/syntax/synload.vim"
+Searching for "colors/darkdevel.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/colors/darkdevel.vim"
+line 19: sourcing "/Users/leopold/.vim/colors/darkdevel.vim"
+Searching for "syntax/syncolor.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+line 12: sourcing "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vimfiles/syntax/syncolor.vim
+continuing in /usr/local/rcfiles/vim/colors/darkdevel.vim
+Searching for "/usr/share/vim/vim72/syntax/syncolor.vim"
+line 12: sourcing "/usr/share/vim/vim72/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim72/syntax/syncolor.vim
+continuing in /usr/local/rcfiles/vim/colors/darkdevel.vim
+Searching for "/usr/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/Users/leopold/.vim/after/syntax/syncolor.vim"
+Searching for "syntax/syncolor.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/syntax/syncolor.vim"
+Searching for "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+line 15: sourcing "/usr/share/vim/vimfiles/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vimfiles/syntax/syncolor.vim
+continuing in /usr/local/rcfiles/vim/colors/darkdevel.vim
+Searching for "/usr/share/vim/vim72/syntax/syncolor.vim"
+line 15: sourcing "/usr/share/vim/vim72/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim72/syntax/syncolor.vim
+continuing in /usr/local/rcfiles/vim/colors/darkdevel.vim
+Searching for "/usr/share/vim/vimfiles/after/syntax/syncolor.vim"
+Searching for "/Users/leopold/.vim/after/syntax/syncolor.vim"
+finished sourcing /Users/leopold/.vim/colors/darkdevel.vim
+continuing in /usr/share/vim/vim72/syntax/synload.vim
+finished sourcing /usr/share/vim/vimfiles/syntax/synload.vim
+continuing in /usr/share/vim/vim72/syntax/syntax.vim
+finished sourcing /usr/share/vim/vim72/syntax/syntax.vim
+continuing in /Users/leopold/.vimrc
+Searching for "filetype.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/filetype.vim"
+Searching for "/usr/share/vim/vimfiles/filetype.vim"
+line 82: sourcing "/usr/share/vim/vimfiles/filetype.vim"
+finished sourcing /usr/share/vim/vimfiles/filetype.vim
+continuing in /Users/leopold/.vimrc
+Searching for "/usr/share/vim/vim72/filetype.vim"
+line 82: sourcing "/usr/share/vim/vim72/filetype.vim"
+finished sourcing /usr/share/vim/vim72/filetype.vim
+continuing in /Users/leopold/.vimrc
+Searching for "/usr/share/vim/vimfiles/after/filetype.vim"
+Searching for "/Users/leopold/.vim/after/filetype.vim"
+Searching for "filetype.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/filetype.vim"
+Searching for "/usr/share/vim/vimfiles/filetype.vim"
+line 83: sourcing "/usr/share/vim/vimfiles/filetype.vim"
+finished sourcing /usr/share/vim/vimfiles/filetype.vim
+continuing in /Users/leopold/.vimrc
+Searching for "/usr/share/vim/vim72/filetype.vim"
+line 83: sourcing "/usr/share/vim/vim72/filetype.vim"
+finished sourcing /usr/share/vim/vim72/filetype.vim
+continuing in /Users/leopold/.vimrc
+Searching for "/usr/share/vim/vimfiles/after/filetype.vim"
+Searching for "/Users/leopold/.vim/after/filetype.vim"
+Searching for "ftplugin.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/ftplugin.vim"
+Searching for "/usr/share/vim/vimfiles/ftplugin.vim"
+line 83: sourcing "/usr/share/vim/vimfiles/ftplugin.vim"
+finished sourcing /usr/share/vim/vimfiles/ftplugin.vim
+continuing in /Users/leopold/.vimrc
+Searching for "/usr/share/vim/vim72/ftplugin.vim"
+line 83: sourcing "/usr/share/vim/vim72/ftplugin.vim"
+finished sourcing /usr/share/vim/vim72/ftplugin.vim
+continuing in /Users/leopold/.vimrc
+Searching for "/usr/share/vim/vimfiles/after/ftplugin.vim"
+Searching for "/Users/leopold/.vim/after/ftplugin.vim"
+Searching for "autoload/pathogen.vim" in "/Users/leopold/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/Users/leopold/.vim/after"
+Searching for "/Users/leopold/.vim/autoload/pathogen.vim"
+line 199: sourcing "/Users/leopold/.vim/autoload/pathogen.vim"
+finished sourcing /Users/leopold/.vim/autoload/pathogen.vim
+continuing in /Users/leopold/.vimrc
+Calling shell to execute: "unset nonomatch; print -N >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/0 /Users/leopold/.vim/bundle/*[^~]"
+Calling shell to execute: "unset nonomatch; print -N >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/1 /usr/share/vim/vimfiles/bundle/*[^~]"
+Calling shell to execute: "unset nonomatch; print -N >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/2 /usr/share/vim/vim72/bundle/*[^~]"
+Calling shell to execute: "unset nonomatch; print -N >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/3 /usr/share/vim/vimfiles/bundle/*[^~]/after"
+Calling shell to execute: "unset nonomatch; print -N >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/4 /Users/leopold/.vim/bundle/*[^~]/after"
+finished sourcing $HOME/.vimrc
+Reading viminfo file "/Users/leopold/.viminfo" info oldfiles
+Executing BufEnter Auto commands for "*"
+autocommand :lchdir %:p:h
+
+line 0: sourcing ".mkrecord"
+Calling shell to execute: "(cat /Users/leopold/.vim/ftplugin/perl/perlomni.vim | md5) >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/5 2>&1"
+Calling shell to execute: "(cat /Users/leopold/.vim/plugin/perlomni-data.vim | md5) >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/6 2>&1"
+Calling shell to execute: "(cat /Users/leopold/.vim/plugin/perlomni-util.vim | md5) >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/7 2>&1"
+Calling shell to execute: "(cat /Users/leopold/.vim/bin/grep-hashkeys.pl | md5) >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/8 2>&1"
+Calling shell to execute: "(cat /Users/leopold/.vim/bin/grep-objvar.pl | md5) >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/9 2>&1"
+Calling shell to execute: "(cat /Users/leopold/.vim/bin/grep-pattern.pl | md5) >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/10 2>&1"
+Calling shell to execute: "(cat /Users/leopold/.vim//test.vim | md5) >/var/folders/Zg/ZgtYfTCYEwSTmwiPr+W+2U+++TQ/-Tmp-/v449298/11 2>&1"{'version': 0.3, 'files': [{'file': '/Users/leopold/.vim/ftplugin/perl/perlomni.vim', 'checksum': 'd993e503090c0ab17d2df57f3e2afc47
+'}, {'file': '/Users/leopold/.vim/plugin/perlomni-data.vim', 'checksum': '5f3e61c7be548ac7890987be84e47fbb
+'}, {'file': '/Users/leopold/.vim/plugin/perlomni-util.vim', 'checksum': 'c98aa97515ce8d0f14e01d9f79e1e40b
+'}, {'file': '/Users/leopold/.vim/bin/grep-hashkeys.pl', 'checksum': '81fa63c19f421f3f8980436c2b756b5e
+'}, {'file': '/Users/leopold/.vim/bin/grep-objvar.pl', 'checksum': 'dea8a4d4c266fafd54906bb80163cb68
+'}, {'file': '/Users/leopold/.vim/bin/grep-pattern.pl', 'checksum': '9457f55552197acc95c7698e98c1fe8b
+'}, {'file': '/Users/leopold/.vim//test.vim', 'checksum': 'c2cc141a0f0f5db11aec669842b1dbf0
+'}], 'install_type': 'makefile', 'script_version': '2.42', 'package': 'perl-completion.vim', 'generated_by': 'Vim-Makefile'}
+                                                                                                                            Done
+   finished sourcing .mkrecord
+   continuing in command line
+   Writing viminfo file "/Users/leopold/.viminfo"
