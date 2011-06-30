@@ -64,9 +64,6 @@
 [submodule "vim/bundle/makesd.vim"]
 	path = vim/bundle/makesd.vim
 	url = git@github.com:JaminOne/makesd.vim.git
-[submodule "vim/bundle/perl-support.vim"]
-	path = vim/bundle/perl-support.vim
-	url = git@github.com:JaminOne/perl-support.vim.git
 [submodule "vim/bundle/bash-support.vim"]
 	path = vim/bundle/bash-support.vim
 	url = git@github.com:JaminOne/bash-support.vim.git
@@ -76,3 +73,6 @@
 [submodule "vim/bundle/NERDcommenter"]
 	path = vim/bundle/NERDcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/bundle/perl-support.vim"]
+	path = vim/bundle/perl-support.vim
+	url = t@github.com:JaminOne/perl-support.vim.git
