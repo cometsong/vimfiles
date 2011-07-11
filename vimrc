@@ -227,8 +227,8 @@ let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:sub
 
 "--- Perl-Support ---"
 let g:Perl_GlobalTemplateFile     = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
-let g:Perl_LocalTemplateFile      = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
-let g:Perl_CodeSnippets           = $HOME.'/.vim/bundle/perl-support.vim/perl-support/codesnippets'
+let g:Perl_LocalTemplateFile      = $HOME.'/.vim/misc/perl-support/Templates'
+let g:Perl_CodeSnippets           = $HOME.'/.vim/misc/perl-support/codesnippets'
 let g:Perl_Ctrl_j                 = 'on'
 let g:Perl_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
 let g:Perl_MenuHeader             = 'off'
@@ -237,8 +237,8 @@ let g:Perl_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
 
 "--- Bash-Support ---"
 let g:BASH_GlobalTemplateFile     = $HOME.'/.vim/bundle/bash-support.vim/bash-support/templates/Templates'
-let g:BASH_LocalTemplateFile      = $HOME.'/.vim/bundle/bash-support.vim/bash-support/templates/Templates'
-let g:BASH_CodeSnippets           = $HOME.'/.vim/bundle/bash-support.vim/bash-support/codesnippets'
+let g:BASH_LocalTemplateFile      = $HOME.'/.vim/misc/bash-support/Templates'
+let g:BASH_CodeSnippets           = $HOME.'/.vim/misc/bash-support/codesnippets'
 let g:BASH_Ctrl_j                 = 'on'
 let g:BASH_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
 let g:BASH_MenuHeader             = 'off'
@@ -257,4 +257,7 @@ let g:bufstat_bracket_around_bufname  = 1
 let g:bufstat_number_before_bufname   = 1
 noremap <c-left>  <plug>bufstat_scroll_left
 noremap <c-right> <plug>bufstat_scroll_right
+
+"--- easytags ---"
+let g:easytags_cmd = '/usr/local/bin/ctags'
 
