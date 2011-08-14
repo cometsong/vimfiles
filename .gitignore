@@ -1,8 +1,24 @@
+#  rcfiles ignores
 my_aliases
-.project
-.DS_Store
-._.DS_Store
-.VimballRecord
-*.backup
 vim/perl-support/modules/perl-modules.list
-*.swp
+
+
+#  OSX ignores
+.DS_Store
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+
+#  Linux ignores
+!.gitignore
+*~
+
+
+#  Vim ignores
+.*.sw[a-z]
+*.un~
+Session.vim
+.VimballRecord
+
