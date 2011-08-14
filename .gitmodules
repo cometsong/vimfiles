@@ -75,4 +75,4 @@
 	url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/perl-support.vim"]
 	path = vim/bundle/perl-support.vim
-	url = t@github.com:JaminOne/perl-support.vim.git
+	url = git@github.com:JaminOne/perl-support.vim.git
