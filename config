@@ -25,7 +25,7 @@ function dispnum {
 		DISPLAY=:0
 	fi
 }
-dispnum
+# dispnum
 
 ##### Config Vars #####
 TZ="Europe/Zurich"
