@@ -6,3 +6,5 @@ my_aliases
 *.backup
 vim/perl-support/modules/perl-modules.list
 *.swp
+
+vim/bundle/makesd.vim
