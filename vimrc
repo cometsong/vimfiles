@@ -28,7 +28,7 @@ set nojoinspaces      " One space after a '.' rather than 2
 set scrolloff=1       " Minimum lines between cursor and window edge
 set showcmd           " Show partially typed commands
 set nobackup          " Don't use a backup file (also see writebackup)
-set writebackup       " Write temporary backup files in case we crash
+"set writebackup       " Write temporary backup files in case we crash
 set nowrap            " do not wrap lines
 set encoding=utf-8
 set hidden            " keep buffer mods hidden, allow switching buffers without saving
