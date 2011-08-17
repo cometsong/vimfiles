@@ -1,0 +1,5 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3253
+
+This is a simple plugin to generate fancy-looking comments / section dividers with centered titles and append them at the current cursor position. For an example, see:
+
+http://www.chaseventers.org/2010/09/vim-plugin-makesdmakecsd.html
