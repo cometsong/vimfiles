@@ -43,8 +43,7 @@ LC_CTYPE=C
 if [[ -n $APPLE ]] EDITOR="open /Applications/MacVim.app" # on Mac, use GUI macvim
 if [[ -n $LINUX ]] EDITOR='gvim'   # on linux, use GUI gvim
 
-export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/libexec:${HOME}/bin
-# export PATH=${PATH}:/usr/local/mysql/bin:/usr/local/git/bin:/opt/php/bin
+export PATH=$PATH:/usr/local/bin:${HOME}/bin
 
 # Set path to rcfiles git repository
 RCPATH=/usr/local/rcfiles
