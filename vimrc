@@ -77,6 +77,12 @@ set foldenable
 set foldlevel=100
 "(This is set within Simplefold.vim)  map <unique> <silent> <Leader>f <Plug>SimpleFold_Foldsearch
 
+" key map to toggle and create/delete folds
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <C-F9> zf
+
 "-------------------------------------------------------------------------------
 "--- File Typing
 filetype on
