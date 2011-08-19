@@ -191,7 +191,7 @@ inoremap <C-PageUp>   <C-C>:bprev<CR>
 inoremap <C-PageDown> <C-C>:bnext<CR>
 
 "---datetime stamp---"
- noremap <Leader>dts      "=strftime("%F %T%z")<CR>P
+ noremap <Leader>dts      "=strftime("%F %T%z")<CR>p
 inoremap <Leader>dts <C-R>"=strftime("%F %T%z")<CR>
 
 "-------------------------------------------------------------------------------
