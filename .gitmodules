@@ -54,7 +54,7 @@
 	url = git://github.com/vim-scripts/reload.vim.git
 [submodule "vim/bundle/simplefold"]
 	path = vim/bundle/simplefold
-	url = git://github.com/vim-scripts/simplefold.git
+	url = git@github.com:JaminOne/vim-simplefold.git
 [submodule "vim/bundle/smartbd"]
 	path = vim/bundle/smartbd
 	url = git://github.com/vim-scripts/smartbd.git
