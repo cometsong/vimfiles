@@ -49,7 +49,7 @@ set numberwidth=1     " line numbers minimum gutter width
 "-------------------------------------------------------------------------------
 "--- Invisible characters   " If you ':set list', shows trailing spaces
 set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:⏎
-set nolist                          " do not show trailing characters
+set list                          " do not show trailinginsert mode characters
 :noremap <Leader>i :set list!<CR> " Toggle invisible chars
 
 "-------------------------------------------------------------------------------
