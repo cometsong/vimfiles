@@ -49,7 +49,7 @@ set numberwidth=1     " line numbers minimum gutter width
 "-------------------------------------------------------------------------------
 "--- Invisible characters   " If you ':set list', shows trailing spaces
 set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:⏎
-set list                          " do not show trailinginsert mode characters
+set nolist                          " do not show trailinginsert mode characters
 :noremap <Leader>i :set list!<CR> " Toggle invisible chars
 
 "-------------------------------------------------------------------------------
@@ -136,21 +136,40 @@ inoremap <C-e> <C-o>$
 
 "-------------------------------------------------------------------------------
 "--- Tabs
+"function! Tabstyle(a)
+
+"endfunction
+
 function! Tabstyle_tabs()
-  " Using 4 column tabs
-  set softtabstop=4
-  set shiftwidth=4
-  set tabstop=4
+  " Default to using 8 column tabs
+  set softtabstop=8
+  set shiftwidth=8
+  set tabstop=8
   set noexpandtab
 endfunction
 
 function! Tabstyle_spaces()
-  " Use 4 spaces
+  " Default to using 4 column indents
   set softtabstop=4
   set shiftwidth=4
   set tabstop=4
   set expandtab
 endfunction
+
+" Attempted to re-make function to accept argument of tabsize
+"function! Tabstyle_spaces(ts)
+"  if exists("a:ts")
+"    let tsize = a:ts
+"  else 
+"    let tsize = 4
+"  endif
+"
+"  let s:tsize = 4
+"  set softtabstop="s:tsize"
+"  set shiftwidth=s:tsize
+"  set tabstop=s:tsize
+"  set expandtab
+"endfunction
 
 call Tabstyle_spaces()
 
