@@ -1,8 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Jamin's composited vimrc file.                        "
 "                                                        "
-"  Maintainer:  Jamin Leopold <jl@jaminleopold.com>      "
-"  Last change: 2011 Apr 15                              "
+"  Maintainer : Jamin Leopold <jl@jaminleopold.com>      "
+"  Last change: 2011 Sep 30                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -39,12 +39,26 @@ set showmatch         " Show parentheses matching
 set matchpairs+=<:>   " append pairable chars to the default set '(:),{:},[:]'
 set matchtime=3       " Show matching brackets for only 0.3 seconds
 
-set laststatus=2      " always show status line
-set statusline=%{fugitive#statusline()}\ \ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
-
 set number            " line numbers
 set numberwidth=1     " line numbers minimum gutter width
 " for line number colors, see colorscheme.vim file, LineNr
+
+"-------------------------------------------------------------------------------
+" StatusLine : 
+set laststatus=2      " always show status line
+
+" function! Set_Status_Line()
+"     let CurDir = getcwd() 
+"     if filereadable(CurDir.'.git') " Check for .git folder to include fugitive bits
+"        set statusline=%{fugitive#statusline()}\ \ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
+"     else
+"        set statusline=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
+"     endif
+" endfunction 
+" call Set_Status_Line()
+
+" TODO : function remains to be implemented
+set statusline=%{fugitive#statusline()}\ \ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
 
 "-------------------------------------------------------------------------------
 "--- Invisible characters   " If you ':set list', shows trailing spaces
@@ -117,6 +131,10 @@ endif
 if has("autocmd")
   " The current directory is the directory of the file in the current window.
   autocmd BufEnter * :lchdir %:p:h
+  "autocmd BufEnter * call Set_Status_Line()   " TODO : function remains to be implemented
+
+  " When vimrc is edited, reload it
+  autocmd! bufwritepost vimrc source ~/.vimrc
 
   " On plain text files, no keyword chars, because we don't want tab completion
   au BufNewFile,BufRead *.txt,*.log set iskeyword=
@@ -124,7 +142,7 @@ if has("autocmd")
   " On HTML files don't use indenting.
   au BufNewFile,BufRead *.html set noautoindent nosmartindent nocindent
 
-  " In text files, always limit the width of text to 80 characters
+  " In text files, always limit the width of text
   "autocmd BufRead *.txt,*.log set tw=100
 
 endif " has("autocmd")
@@ -194,9 +212,9 @@ vnoremap  ]  s[  ]<Esc><Left>P<Right><Right>%
 vnoremap  }  s{  }<Esc><Left>P<Right><Right>%
 
 "---  autocomplete quotes (visual and select mode)
-xnoremap  '  s''<Esc>P<Right>
-xnoremap  "  s""<Esc>P<Right>
-xnoremap  `  s``<Esc>P<Right>
+xnoremap  <Leader>'  s''<Esc>P<Right>
+xnoremap  <Leader>"  s""<Esc>P<Right>
+xnoremap  <Leader>`  s``<Esc>P<Right>
 
 "---  Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
