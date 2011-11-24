@@ -201,7 +201,7 @@ call Tabstyle_spaces()
 
 "-------------------------------------------------------------------------------
 " Sessions - Sets what is saved when you save a session
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+set sessionoptions=blank,buffers,curdir,folds,help,options,resize,tabpages,winsize
 
 "-------------------------------------------------------------------------------
 " Key Mapping
