@@ -2,14 +2,14 @@
 "  Jamin's composited vimrc file.                        "
 "                                                        "
 "  Maintainer : Jamin Leopold <jl@jaminleopold.com>      "
-"  Last change: 2011 Sep 30                              "
+"  Last change: 2011 Oct 19                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
 
 "-------------------------------------------------------------------------------
 "--- Vim Options.
+" This must be first, because it changes other options as a side effect.
+set nocompatible      " Use Vim settings, rather then Vi settings (much better!).
+
 set term=xterm        " xterm allows mouse, home/end/pgup/pgdown, etc.
 set viminfo='0,\"100, " Stay at the start of a file when opening it
 set history=50        " keep 50 lines of command line history
@@ -57,7 +57,7 @@ set laststatus=2      " always show status line
 " endfunction 
 " call Set_Status_Line()
 
-" TODO : function remains to be implemented
+" TODO : function remains to be repaired, debugged, implemented
 set statusline=%{fugitive#statusline()}\ \ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
 
 "-------------------------------------------------------------------------------
@@ -82,6 +82,13 @@ syntax enable
 if has("syntax") && &t_Co > 2 || has("gui_running")
   syntax on
   set nohlsearch      " Don't highlight search terms
+endif
+
+"-------------------------------------------------------------------------------
+"--- gvim ---"
+if has("gui_running")
+    set guioptions=m   " menu
+    set guioptions+=T   " toolbar
 endif
 
 "-------------------------------------------------------------------------------
@@ -134,7 +141,7 @@ if has("autocmd")
   "autocmd BufEnter * call Set_Status_Line()   " TODO : function remains to be implemented
 
   " When vimrc is edited, reload it
-  autocmd! bufwritepost vimrc source ~/.vimrc
+  autocmd! Bufwritepost vimrc source ~/.vimrc
 
   " On plain text files, no keyword chars, because we don't want tab completion
   au BufNewFile,BufRead *.txt,*.log set iskeyword=
@@ -152,11 +159,11 @@ endif " has("autocmd")
 inoremap <C-b> <C-o>0
 inoremap <C-e> <C-o>$
 
+nnoremap Y  y$
+
 "-------------------------------------------------------------------------------
 "--- Tabs
 "function! Tabstyle(a)
-
-"endfunction
 
 function! Tabstyle_tabs()
   " Default to using 8 column tabs
@@ -175,17 +182,18 @@ function! Tabstyle_spaces()
 endfunction
 
 " Attempted to re-make function to accept argument of tabsize
-"function! Tabstyle_spaces(ts)
+"function! Tabstyle_set(ts)
 "  if exists("a:ts")
 "    let tsize = a:ts
 "  else 
 "    let tsize = 4
 "  endif
 "
-"  let s:tsize = 4
-"  set softtabstop="s:tsize"
-"  set shiftwidth=s:tsize
-"  set tabstop=s:tsize
+"  let tsize = 4
+"  let g:softtabstop = tsize
+"  let g:shiftwidth  = tsize
+"  let g:tabstop     = tsize
+"  let s:tsize       = 4
 "  set expandtab
 "endfunction
 
@@ -199,17 +207,17 @@ set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 " Key Mapping
 
 "---  autocomplete parenthesis, (brackets) and braces
-inoremap  (  ()<Left>
-vnoremap  (  s()<Esc>P<Right>%
-inoremap  [  []<Left>
-vnoremap  [  s[]<Esc>P<Right>%
-inoremap  {  {}<Left>
-vnoremap  {  s{}<Esc>P<Right>%
+inoremap  <Leader>(  ()<Left>
+vnoremap  <Leader>(  s()<Esc>P<Right>%
+inoremap  <Leader>[  []<Left>
+vnoremap  <Leader>[  s[]<Esc>P<Right>%
+inoremap  <Leader>{  {}<Left>
+vnoremap  <Leader>{  s{}<Esc>P<Right>%
 
 "---  surround content with additional spaces
-vnoremap  )  s(  )<Esc><Left>P<Right><Right>%
-vnoremap  ]  s[  ]<Esc><Left>P<Right><Right>%
-vnoremap  }  s{  }<Esc><Left>P<Right><Right>%
+vnoremap  <Leader>)  s(  )<Esc><Left>P<Right><Right>%
+vnoremap  <Leader>]  s[  ]<Esc><Left>P<Right><Right>%
+vnoremap  <Leader>}  s{  }<Esc><Left>P<Right><Right>%
 
 "---  autocomplete quotes (visual and select mode)
 xnoremap  <Leader>'  s''<Esc>P<Right>
@@ -226,7 +234,10 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 let g:SuperTabMappingForward  = '<s-tab>'
 let g:SuperTabMappingBackward = '<s-c-tab>'
 
-"-------------------------------------------------------------------------------
+"--- Buffer Access Setup ---"
+ noremap <F8>   :set paste!<CR>
+inoremap <F8>   :set paste!<CR>
+
 "--- Buffer Access Setup ---"
  noremap <C-PageUp>        :bprev<CR>
 inoremap <C-PageUp>   <C-C>:bprev<CR>
@@ -236,6 +247,8 @@ inoremap <C-PageDown> <C-C>:bnext<CR>
 "---datetime stamp---"
  noremap <Leader>dts      "=strftime("%F %T%z")<CR>p
 inoremap <Leader>dts <C-R>"=strftime("%F %T%z")<CR>
+ noremap <Leader>ts       "=strftime("%T%z")<CR>p
+inoremap <Leader>ts  <C-R>"=strftime("%T%z")<CR>
 
 "-------------------------------------------------------------------------------
 "--- Load all Plugins using the Pathogen plugin
@@ -262,11 +275,11 @@ let NERDTreeShowLineNumbers     = 0 " no line numbers in the tree window
 
 "--- TagList ---"
 let Tlist_Inc_Winwidth = 0
- noremap <S-F11>       :TlistToggle<CR>
-inoremap <S-F11> <C-C> :TlistToggle<CR>
+ noremap <S-F11>          :TlistToggle<CR>
+inoremap <S-F11> <C-C>    :TlistToggle<CR>
  noremap <Leader>tt       :TlistToggle<Esc>
 inoremap <Leader>tt <C-C> :TlistToggle<Esc>
-let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
+"let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 
 "--- Perl-Support ---"
 let g:Perl_GlobalTemplateFile     = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
@@ -296,11 +309,29 @@ highlight ActiveBuffer ctermfg=White ctermbg=blue
 let g:bufstat_active_hl_group = "ActiveBuffer"
 let g:bufstat_alternate_list_char = '^'
 let g:bufstat_modified_list_char  = '+'
-let g:bufstat_bracket_around_bufname  = 1
 let g:bufstat_number_before_bufname   = 1
-noremap <c-left>  <plug>bufstat_scroll_left
-noremap <c-right> <plug>bufstat_scroll_right
+let g:bufstat_surround_buffers = '[:]'
+let g:bufstat_surround_flags = ':'
+let g:bufstat_join_string = ' '
+let g:bufstat_sort_function = "BufstatSortNumeric"
+let g:bufstat_update_old_windows = 1
+map <C-Left>  <plug>bufstat_scroll_left
+map <C-Right> <plug>bufstat_scroll_right
 
-"--- easytags ---"
-let g:easytags_cmd = '/usr/local/bin/ctags'
+"--- indexer ---"
+"let g:easytags_cmd = '/usr/local/bin/ctags'
+let g:indexer_indexerListFilename = '~/.indexer_files'
+"let g:indexer_ctagsCommandLineOptions = ''   "default: --c++-kinds=+p+l --fields=+iaS --extra=+q
+let g:indexer_ctagsJustAppendTagsAtFileSave = 1
+
+"--- MRU ---"
+let MRU_Max_Entries = 400
+map <leader>r :MRU<CR>
+
+"--- netrw ---"
+let g:netrw_home = "~"
+let g:netrw_ctags ="/usr/local/bin/ctags"
+let g:netrw_dirhistmax = 10
+let g:netrw_special_syntax = 1
+let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
 
