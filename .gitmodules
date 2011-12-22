@@ -94,3 +94,6 @@
 [submodule "vim/bundle/vim-session"]
 	path = vim/bundle/vim-session
 	url = git://github.com/xolox/vim-session.git
+[submodule "vim/bundle/better-snipmate-snippet"]
+	path = vim/bundle/better-snipmate-snippet
+	url = git://github.com/vim-scripts/better-snipmate-snippet.git
