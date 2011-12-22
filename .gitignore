@@ -1,6 +1,7 @@
 #  rcfiles ignores
 my_aliases
-vim/perl-support/modules/perl-modules.list
+vim/perl-support/*
+vim/bash-support/*
 
 
 #  OSX ignores

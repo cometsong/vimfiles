@@ -91,3 +91,6 @@
 [submodule "vim/bundle/netrw"]
 	path = vim/bundle/netrw
 	url = git://github.com/vim-scripts/netrw.vim.git
+[submodule "vim/bundle/vim-session"]
+	path = vim/bundle/vim-session
+	url = git://github.com/xolox/vim-session.git

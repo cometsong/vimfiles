@@ -159,6 +159,7 @@ endif " has("autocmd")
 inoremap <C-b> <C-o>0
 inoremap <C-e> <C-o>$
 
+"--- set capital Y to do same as D&C, yank to end of line ---"
 nnoremap Y  y$
 
 "-------------------------------------------------------------------------------
@@ -181,62 +182,75 @@ function! Tabstyle_spaces()
   set expandtab
 endfunction
 
-" Attempted to re-make function to accept argument of tabsize
-"function! Tabstyle_set(ts)
-"  if exists("a:ts")
-"    let tsize = a:ts
-"  else 
-"    let tsize = 4
-"  endif
-"
-"  let tsize = 4
-"  let g:softtabstop = tsize
-"  let g:shiftwidth  = tsize
-"  let g:tabstop     = tsize
-"  let s:tsize       = 4
-"  set expandtab
-"endfunction
+function! Tabstyle_set(ts)
+  if exists("a:ts")
+    let tsize = a:ts
+  else 
+    let tsize = 4
+  endif
+
+  let &softtabstop = tsize
+  let &shiftwidth  = tsize
+  let &tabstop     = tsize
+  set expandtab
+endfunction
 
 call Tabstyle_spaces()
 
 "-------------------------------------------------------------------------------
 " Sessions - Sets what is saved when you save a session
-set sessionoptions=blank,buffers,curdir,folds,help,options,resize,tabpages,winsize
+set sessionoptions=blank,buffers,curdir,folds,resize,localoptions,winsize
+set sessionoptions-=help,options,tabpages
+ noremap <Leader>ms      :mksession!<CR>
+inoremap <Leader>ms <C-C>:mksession!<CR>
+ noremap <C-F7>          :mksession!<CR>
+inoremap <C-F7>     <C-C>:mksession!<CR>
+" see vim-session plugin options below
 
 "-------------------------------------------------------------------------------
 " Key Mapping
 
-"---  autocomplete parenthesis, (brackets) and braces
-inoremap  <Leader>(  ()<Left>
-vnoremap  <Leader>(  s()<Esc>P<Right>%
-inoremap  <Leader>[  []<Left>
-vnoremap  <Leader>[  s[]<Esc>P<Right>%
-inoremap  <Leader>{  {}<Left>
-vnoremap  <Leader>{  s{}<Esc>P<Right>%
+"--- autocomplete parenthesis, (brackets) and braces ---"
+"--- surround visual content with additional spaces ---"
+inoremap  <Leader>(  (  )<Left><Left>
+vnoremap  <Leader>)  s()<Esc>P<Right>%
+vnoremap  <Leader>(  s(  )<Esc><Left>P<Right><Right>%
 
-"---  surround content with additional spaces
-vnoremap  <Leader>)  s(  )<Esc><Left>P<Right><Right>%
-vnoremap  <Leader>]  s[  ]<Esc><Left>P<Right><Right>%
-vnoremap  <Leader>}  s{  }<Esc><Left>P<Right><Right>%
+inoremap  <Leader>[  [  ]<Left><Left>
+vnoremap  <Leader>]  s[]<Esc>P<Right>%
+vnoremap  <Leader>[  s[  ]<Esc><Left>P<Right><Right>%
 
-"---  autocomplete quotes (visual and select mode)
+inoremap  <Leader>{  {  }<Left><Left>
+vnoremap  <Leader>}  s{}<Esc>P<Right>%
+vnoremap  <Leader>{  s{  }<Esc><Left>P<Right><Right>%
+
+"---  autocomplete quotes (visual and select mode) ---"
 xnoremap  <Leader>'  s''<Esc>P<Right>
 xnoremap  <Leader>"  s""<Esc>P<Right>
 xnoremap  <Leader>`  s``<Esc>P<Right>
 
-"---  Make p in Visual mode replace the selected text with the "" register.
+"
+"---  Make p in Visual mode replace the selected text with the "" register. ---"
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
-"---  automatic tab completion of keywords
+"--- automatic tab completion of keywords ---"
 "inoremap <s-tab>   <c-n>
 "inoremap <s-c-tab> <c-p>
 "set completeopt=longest,menuone
 let g:SuperTabMappingForward  = '<s-tab>'
 let g:SuperTabMappingBackward = '<s-c-tab>'
 
-"--- Buffer Access Setup ---"
- noremap <F8>   :set paste!<CR>
-inoremap <F8>   :set paste!<CR>
+"--- Wrap Setup ---"
+ noremap <Leader>w      :set wrap!<CR>
+inoremap <Leader>w <C-C>:set wrap!<CR>
+ noremap <F6>           :set wrap!<CR>
+inoremap <F6>      <C-C>:set wrap!<CR>
+
+"--- Pastin' Setup ---"
+ noremap <Leader>p       :set paste!<CR>
+inoremap <Leader>p  <C-C>:set paste!<CR>
+ noremap <F8>            :set paste!<CR>
+inoremap <F8>       <C-C>:set paste!<CR>
 
 "--- Buffer Access Setup ---"
  noremap <C-PageUp>        :bprev<CR>
@@ -244,7 +258,12 @@ inoremap <C-PageUp>   <C-C>:bprev<CR>
  noremap <C-PageDown>      :bnext<CR>
 inoremap <C-PageDown> <C-C>:bnext<CR>
 
-"---datetime stamp---"
+ noremap <C-Up>        :bprev<CR>
+inoremap <C-Up>   <C-C>:bprev<CR>
+ noremap <C-Down>      :bnext<CR>
+inoremap <C-Down> <C-C>:bnext<CR>
+
+"--- datetime stamps ---"
  noremap <Leader>dts      "=strftime("%F %T%z")<CR>p
 inoremap <Leader>dts <C-R>"=strftime("%F %T%z")<CR>
  noremap <Leader>ts       "=strftime("%T%z")<CR>p
@@ -274,7 +293,7 @@ let NERDTreeQuitOnOpen          = 1 " if NERDTree will close after opening a fil
 let NERDTreeShowLineNumbers     = 0 " no line numbers in the tree window
 
 "--- TagList ---"
-let Tlist_Inc_Winwidth = 0
+let Tlist_Inc_Winwidth = 40
  noremap <S-F11>          :TlistToggle<CR>
 inoremap <S-F11> <C-C>    :TlistToggle<CR>
  noremap <Leader>tt       :TlistToggle<Esc>
@@ -334,4 +353,15 @@ let g:netrw_ctags ="/usr/local/bin/ctags"
 let g:netrw_dirhistmax = 10
 let g:netrw_special_syntax = 1
 let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
+
+"--- vim-session plugin settings ---"
+let g:session_directory = $HOME . '/.vimsessions/'
+let g:session_autosave  = 'yes'
+let g:session_autoload  = 'no'
+ noremap <Leader>sv      :SaveSession
+inoremap <Leader>sv <C-C>:SaveSession
+ noremap <F7>            :SaveSession v:this_session
+inoremap <F7>       <C-C>:SaveSession v:this_session
+ noremap <Leader>so      :OpenSession
+inoremap <Leader>so <C-C>:OpenSession
 
