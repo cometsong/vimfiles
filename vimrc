@@ -144,7 +144,8 @@ if has("autocmd")
   autocmd! Bufwritepost vimrc source ~/.vimrc
 
   " On plain text files, no keyword chars, because we don't want tab completion
-  au BufNewFile,BufRead *.txt,*.log set iskeyword=
+" commented out because we DO want word boundaries to actual word boundaries
+"  au BufNewFile,BufRead *.txt,*.log set iskeyword=
 
   " On HTML files don't use indenting.
   au BufNewFile,BufRead *.html set noautoindent nosmartindent nocindent
