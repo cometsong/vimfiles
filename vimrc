@@ -202,10 +202,10 @@ call Tabstyle_spaces()
 " Sessions - Sets what is saved when you save a session
 set sessionoptions=blank,buffers,curdir,folds,resize,localoptions,winsize
 set sessionoptions-=help,options,tabpages
- noremap <Leader>ms      :mksession!<CR>
-inoremap <Leader>ms <C-C>:mksession!<CR>
- noremap <C-F7>          :mksession!<CR>
-inoremap <C-F7>     <C-C>:mksession!<CR>
+ noremap <Leader>ms      :mksession! ~/.vimsessions/Session.vim<CR>
+inoremap <Leader>ms <C-C>:mksession! ~/.vimsessions/Session.vim<CR>
+ noremap <C-F7>          :mksession! ~/.vimsessions/Session.vim<CR>
+inoremap <C-F7>     <C-C>:mksession! ~/.vimsessions/Session.vim<CR>
 " see vim-session plugin options below
 
 "-------------------------------------------------------------------------------
@@ -359,10 +359,12 @@ let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
 let g:session_directory = $HOME . '/.vimsessions/'
 let g:session_autosave  = 'yes'
 let g:session_autoload  = 'no'
- noremap <Leader>sv      :SaveSession
-inoremap <Leader>sv <C-C>:SaveSession
- noremap <F7>            :SaveSession v:this_session
-inoremap <F7>       <C-C>:SaveSession v:this_session
- noremap <Leader>so      :OpenSession
-inoremap <Leader>so <C-C>:OpenSession
+ noremap <Leader>sst      :SaveSession v:this_session
+inoremap <Leader>sst <C-C>:SaveSession v:this_session
+ noremap <F7>             :SaveSession v:this_session
+inoremap <F7>        <C-C>:SaveSession v:this_session
+ noremap <Leader>sv       :SaveSession
+inoremap <Leader>sv  <C-C>:SaveSession
+ noremap <Leader>so       :OpenSession
+inoremap <Leader>so  <C-C>:OpenSession
 
