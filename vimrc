@@ -359,10 +359,11 @@ let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
 let g:session_directory = $HOME . '/.vimsessions/'
 let g:session_autosave  = 'yes'
 let g:session_autoload  = 'no'
- noremap <Leader>sst      :SaveSession v:this_session
-inoremap <Leader>sst <C-C>:SaveSession v:this_session
- noremap <F7>             :SaveSession v:this_session
-inoremap <F7>        <C-C>:SaveSession v:this_session
+let g:session_command_aliases = 1
+ noremap <Leader>sst      :SaveSession v:this_session<CR>
+inoremap <Leader>sst <C-C>:SaveSession v:this_session<CR>
+ noremap <F7>             :SaveSession v:this_session<CR>
+inoremap <F7>        <C-C>:SaveSession v:this_session<CR>
  noremap <Leader>sv       :SaveSession
 inoremap <Leader>sv  <C-C>:SaveSession
  noremap <Leader>so       :OpenSession
