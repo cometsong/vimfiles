@@ -16,9 +16,6 @@
 [submodule "vim/bundle/Better-CSS-Syntax-for-Vim"]
 	path = vim/bundle/Better-CSS-Syntax-for-Vim
 	url = git://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
-[submodule "vim/bundle/ManPageView"]
-	path = vim/bundle/ManPageView
-	url = git://github.com/vim-scripts/ManPageView.git
 [submodule "vim/bundle/SQLUtilities"]
 	path = vim/bundle/SQLUtilities
 	url = git://github.com/vim-scripts/SQLUtilities.git
