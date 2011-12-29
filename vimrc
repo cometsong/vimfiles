@@ -360,6 +360,9 @@ if v:version > 702
     let g:netrw_dirhistmax = 10
     let g:netrw_special_syntax = 1
     let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
+else " do not load netrw if ver < 7.2
+    let g:loaded_netrw = 1
+    let g:loaded_netrwPlugin = 1
 endif
 
 "--- vim-session plugin settings ---"
