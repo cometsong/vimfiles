@@ -202,10 +202,6 @@ call Tabstyle_spaces()
 " Sessions - Sets what is saved when you save a session
 set sessionoptions=blank,buffers,curdir,folds,resize,localoptions,winsize
 set sessionoptions-=help,options,tabpages
- noremap <Leader>ms      :mksession! ~/.vimsessions/Session.vim<CR>
-inoremap <Leader>ms <C-C>:mksession! ~/.vimsessions/Session.vim<CR>
- noremap <C-F7>          :mksession! ~/.vimsessions/Session.vim<CR>
-inoremap <C-F7>     <C-C>:mksession! ~/.vimsessions/Session.vim<CR>
 " see vim-session plugin options below
 
 "-------------------------------------------------------------------------------
@@ -213,17 +209,17 @@ inoremap <C-F7>     <C-C>:mksession! ~/.vimsessions/Session.vim<CR>
 
 "--- autocomplete parenthesis, (brackets) and braces ---"
 "--- surround visual content with additional spaces ---"
-inoremap  <Leader>(  (  )<Left><Left>
-vnoremap  <Leader>)  s()<Esc>P<Right>%
-vnoremap  <Leader>(  s(  )<Esc><Left>P<Right><Right>%
+inoremap  <Leader>((  (  )<Left><Left>
+vnoremap  <Leader>))  s()<Esc>P<Right>%
+vnoremap  <Leader>((  s(  )<Esc><Left>P<Right><Right>%
 
-inoremap  <Leader>[  [  ]<Left><Left>
-vnoremap  <Leader>]  s[]<Esc>P<Right>%
-vnoremap  <Leader>[  s[  ]<Esc><Left>P<Right><Right>%
+inoremap  <Leader>[[  [  ]<Left><Left>
+vnoremap  <Leader>]]  s[]<Esc>P<Right>%
+vnoremap  <Leader>[[  s[  ]<Esc><Left>P<Right><Right>%
 
-inoremap  <Leader>{  {  }<Left><Left>
-vnoremap  <Leader>}  s{}<Esc>P<Right>%
-vnoremap  <Leader>{  s{  }<Esc><Left>P<Right><Right>%
+inoremap  <Leader>{{  {  }<Left><Left>
+vnoremap  <Leader>}}  s{}<Esc>P<Right>%
+vnoremap  <Leader>{{  s{  }<Esc><Left>P<Right><Right>%
 
 "---  autocomplete quotes (visual and select mode) ---"
 xnoremap  <Leader>'  s''<Esc>P<Right>
@@ -244,14 +240,14 @@ let g:SuperTabMappingBackward = '<s-c-tab>'
 "--- Wrap Setup ---"
  noremap <Leader>w      :set wrap!<CR>
 inoremap <Leader>w <C-C>:set wrap!<CR>
- noremap <F6>           :set wrap!<CR>
-inoremap <F6>      <C-C>:set wrap!<CR>
+ noremap <C-F6>         :set wrap!<CR>
+inoremap <C-F6>    <C-C>:set wrap!<CR>
 
 "--- Pastin' Setup ---"
  noremap <Leader>p       :set paste!<CR>
 inoremap <Leader>p  <C-C>:set paste!<CR>
- noremap <F8>            :set paste!<CR>
-inoremap <F8>       <C-C>:set paste!<CR>
+ noremap <C-F8>          :set paste!<CR>
+inoremap <C-F8>     <C-C>:set paste!<CR>
 
 "--- Buffer Access Setup ---"
  noremap <C-PageUp>        :bprev<CR>
@@ -360,12 +356,20 @@ let g:session_directory = $HOME . '/.vimsessions/'
 let g:session_autosave  = 'yes'
 let g:session_autoload  = 'no'
 let g:session_command_aliases = 1
- noremap <Leader>sst      :SaveSession v:this_session<CR>
-inoremap <Leader>sst <C-C>:SaveSession v:this_session<CR>
- noremap <F7>             :SaveSession v:this_session<CR>
-inoremap <F7>        <C-C>:SaveSession v:this_session<CR>
+"--- v:this_session var does not get expanded, just used as filename
+ "noremap <Leader>sst      :SaveSession v:this_session<CR>
+"inoremap <Leader>sst <C-C>:SaveSession v:this_session<CR>
+ "noremap <F7>             :SaveSession v:this_session<CR>
+"inoremap <F7>        <C-C>:SaveSession v:this_session<CR>
  noremap <Leader>sv       :SaveSession
 inoremap <Leader>sv  <C-C>:SaveSession
  noremap <Leader>so       :OpenSession
 inoremap <Leader>so  <C-C>:OpenSession
+ noremap <Leader>ms       :mksession! ~/.vimsessions/Session.vim<CR>
+inoremap <Leader>ms  <C-C>:mksession! ~/.vimsessions/Session.vim<CR>
+ noremap <C-F7>           :mksession! ~/.vimsessions/Session.vim<CR>
+inoremap <C-F7>      <C-C>:mksession! ~/.vimsessions/Session.vim<CR>
+
+"au VimLeave * exe ' if strlen(v:this_session) | exe "wviminfo! " . v:this_session . ".viminfo" | else | exe "wviminfo! " . "~/.vim/session/" . g:myfilename . ".session.viminfo" | endif '
+"au VimLeave * exe 'if strlen(v:this_session) | exe "mksession! " . v:this_session | else | exe "mksession! " . "~/.vim/session/" . g:myfilename . ".session" | endif '
 
