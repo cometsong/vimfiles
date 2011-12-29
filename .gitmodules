@@ -88,3 +88,6 @@
 [submodule "vim/bundle/better-snipmate-snippet"]
 	path = vim/bundle/better-snipmate-snippet
 	url = git://github.com/vim-scripts/better-snipmate-snippet.git
+[submodule "vim/bundle/ShowMarks7"]
+	path = vim/bundle/ShowMarks7
+	url = git://github.com/vim-scripts/ShowMarks7.git
