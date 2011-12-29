@@ -40,9 +40,6 @@
 [submodule "vim/bundle/loremipsum"]
 	path = vim/bundle/loremipsum
 	url = git://github.com/vim-scripts/loremipsum.git
-[submodule "vim/bundle/minibufexpl"]
-	path = vim/bundle/minibufexpl
-	url = git://github.com/vim-scripts/minibufexpl.vim.git
 [submodule "vim/bundle/mru.vim"]
 	path = vim/bundle/mru.vim
 	url = git://github.com/vim-scripts/mru.vim.git
@@ -85,9 +82,6 @@
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
 	url = git://github.com/tpope/vim-repeat.git
-[submodule "vim/bundle/Advancer-Abbreviation"]
-	path = vim/bundle/Advancer-Abbreviation
-	url = git://github.com/vim-scripts/Advancer-Abbreviation.git
 [submodule "vim/bundle/netrw"]
 	path = vim/bundle/netrw
 	url = git://github.com/vim-scripts/netrw.vim.git
