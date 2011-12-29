@@ -261,10 +261,19 @@ inoremap <C-Up>   <C-C>:bprev<CR>
 inoremap <C-Down> <C-C>:bnext<CR>
 
 "--- datetime stamps ---"
- noremap <Leader>dts      "=strftime("%F %T%z")<CR>p
-inoremap <Leader>dts <C-R>"=strftime("%F %T%z")<CR>
- noremap <Leader>ts       "=strftime("%T%z")<CR>p
-inoremap <Leader>ts  <C-R>"=strftime("%T%z")<CR>
+ noremap <Leader>dts       "=strftime("%F %T%z")<CR>p
+inoremap <Leader>dts  <C-R>"=strftime("%F %T%z")<CR>
+ noremap <Leader>ymd       "=strftime("%y%m%d")<CR>p
+inoremap <Leader>ymd  <C-R>"=strftime("%y%m%d")<CR>
+ noremap <Leader>dny       "=strftime("%d-%b-%Y")<CR>p
+inoremap <Leader>dny  <C-R>"=strftime("%d-%b-%Y")<CR>
+
+"--- time stamps ---"
+ noremap <Leader>tz        "=strftime("%T%z")<CR>p
+inoremap <Leader>tz   <C-R>"=strftime("%T%z")<CR>
+ noremap <Leader>ts        "=strftime("%T")<CR>p
+inoremap <Leader>ts   <C-R>"=strftime("%T")<CR>
+
 
 "-------------------------------------------------------------------------------
 "--- Load all Plugins using the Pathogen plugin
