@@ -344,7 +344,7 @@ map <C-Left>  <plug>bufstat_scroll_left
 map <C-Right> <plug>bufstat_scroll_right
 
 "--- indexer ---"
-"let g:easytags_cmd = '/usr/local/bin/ctags'
+let g:easytags_cmd = $HOME.'/bin/ctags'
 let g:indexer_indexerListFilename = '~/.indexer_files'
 "let g:indexer_ctagsCommandLineOptions = ''   "default: --c++-kinds=+p+l --fields=+iaS --extra=+q
 let g:indexer_ctagsJustAppendTagsAtFileSave = 1
@@ -354,11 +354,13 @@ let MRU_Max_Entries = 400
 map <leader>r :MRU<CR>
 
 "--- netrw ---"
-let g:netrw_home = "~"
-let g:netrw_ctags ="/usr/local/bin/ctags"
-let g:netrw_dirhistmax = 10
-let g:netrw_special_syntax = 1
-let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
+if v:version > 702
+    let g:netrw_home = "~"
+    let g:netrw_ctags =$HOME.'/bin/ctags'
+    let g:netrw_dirhistmax = 10
+    let g:netrw_special_syntax = 1
+    let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
+endif
 
 "--- vim-session plugin settings ---"
 let g:session_directory = $HOME . '/.vimsessions/'
