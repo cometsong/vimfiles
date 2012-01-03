@@ -1,0 +1,40 @@
+#!/bin/bash - 
+#===============================================================================
+#          FILE:  vims.sh
+#         USAGE:  ./vims.sh SessionName
+# 
+#   DESCRIPTION:  
+# 
+#        AUTHOR: B. Leopold (cometsong), bleopoldNOSPAM@uni-muenster.de
+#       COMPANY: Universitaetsklinik Muenster
+#       CREATED: 2012-01-03 12:26:01+0100
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+VIM_SESSION_DIR=~/.vimsessions
+SESSION_NAME=''
+SESSION_FILE_EXT=vim
+
+function usage () {
+    echo Usage:
+    echo "  $0 SessionName"
+    echo This will load vim running a session by that name if the file exists.
+    echo If no file is found in the vimsessions directory then vim will create a new one.
+}
+
+
+if [[ ! -n $1 || $1 == "-h" ]]
+then
+    exec usage;
+else
+    SESSION_NAME=$1
+fi
+
+
+if [[ -r $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT ]] ; then
+    vim -S $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT
+else
+    vim -c "mksession! $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT"
+fi
