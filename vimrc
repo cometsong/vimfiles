@@ -1,8 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  Jamin's composited vimrc file.                        "
-"                                                        "
-"  Maintainer : Jamin Leopold <jl@jaminleopold.com>      "
-"  Last change: 2011 Oct 19                              "
+"    Jamin's composed and composited vimrc file.         "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------------------------------------
@@ -10,7 +7,7 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible      " Use Vim settings, rather then Vi settings (much better!).
 
-set term=xterm        " xterm allows mouse, home/end/pgup/pgdown, etc.
+"set term=xterm        " xterm allows mouse, home/end/pgup/pgdown, etc.
 set viminfo='0,\"100, " Stay at the start of a file when opening it
 set history=50        " keep 50 lines of command line history
 set backspace=2       " allow backspacing over everything in insert mode (=indent,eol,start)
