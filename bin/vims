@@ -1,33 +1,31 @@
 #!/bin/bash - 
 #===============================================================================
-#          FILE:  vims.sh
-#         USAGE:  ./vims.sh SessionName
-# 
-#   DESCRIPTION:  
+#          FILE: vims.sh
+#         USAGE: ./vims.sh SessionName
+#   DESCRIPTION: See usage function
 # 
 #        AUTHOR: B. Leopold (cometsong), bleopoldNOSPAM@uni-muenster.de
 #       COMPANY: Universitaetsklinik Muenster
 #       CREATED: 2012-01-03 12:26:01+0100
-#      REVISION:  ---
+#      REVISION: ---
 #===============================================================================
 
-set -o nounset                              # Treat unset variables as an error
-
-VIM_SESSION_DIR=~/.vimsessions
-SESSION_NAME=''
+VIM_SESSION_DIR=$HOME/.vimsessions
+SESSION_NAME='default'
 SESSION_FILE_EXT=vim
 
 function usage () {
-    echo Usage:
+    echo "Usage":
     echo "  $0 SessionName"
-    echo This will load vim running a session by that name if the file exists.
-    echo If no file is found in the vimsessions directory then vim will create a new one.
+    echo "This will load vim running a session by that name if the file exists."
+    echo "If no file is found in the vimsessions directory then vim will create a new one."
 }
 
 
-if [[ ! -n $1 || $1 == "-h" ]]
+if [[ ! -n $1 ]] || [[ $1 == "-h" ]]
 then
-    exec usage;
+    usage
+    exit
 else
     SESSION_NAME=$1
 fi
@@ -36,5 +34,8 @@ fi
 if [[ -r $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT ]] ; then
     vim -S $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT
 else
+    if [[ ! -d $VIM_SESSION_DIR ]] ; then
+        mkdir -p $VIM_SESSION_DIR
+    fi
     vim -c "mksession! $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT"
 fi
