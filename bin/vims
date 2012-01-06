@@ -13,14 +13,21 @@
 VIM_SESSION_DIR=$HOME/.vimsessions
 SESSION_NAME='default'
 SESSION_FILE_EXT=vim
+VIMINFO_FILE_EXT=viminfo
+
+# Next line checks whether called by link named 'vims' or 'gvims'
+VIMBINS=`basename $0`
+# strip 's' from end of link name
+VIMBIN=${VIMBINS:0:-1}
 
 function usage () {
     echo "Usage":
     echo "  $0 SessionName"
     echo "This will load vim running a session by that name if the file exists."
-    echo "If no file is found in the vimsessions directory then vim will create a new one."
+    echo "If no file is found in the vimsessions directory ( $VIM_SESSION_DIR )"
+    echo "then vim will create a new one. In both cases it will read or create"
+    echo "a matching .viminfo file to read/store all Marks."
 }
-
 
 if [[ ! -n $1 ]] || [[ $1 == "-h" ]]
 then
@@ -30,12 +37,32 @@ else
     SESSION_NAME=$1
 fi
 
+function SaveCurrentSession () {
+    echo au VimLeave exe ' if strlen(v:this_session) | exe "wviminfo! " . v:this_session . ".viminfo" | else | exe "wviminfo! " . "~/.vim/session/" . g:myfilename . ".session.viminfo" | endif ' |
+    echo 'if strlen(v:this_session) | exe "mksession! " . v:this_session | else | exe "mksession! " . "~/.vim/session/" . g:myfilename . ".session" | endif '
+}
+
+function OpenSession () { 
+    SAVE_SESSION=`SaveCurrentSession`
+    echo $SAVE_SESSION
+    $VIMBIN -c "source $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT 
+        | rviminfo! $VIM_SESSION_DIR/$SESSION_NAME.$VIMINFO_FILE_EXT 
+        | $SAVE_SESSION"
+}
+
+function CreateSession () { 
+    SAVE_SESSION=`SaveCurrentSession`
+    echo $SAVE_SESSION
+    $VIMBIN -c "mksession! $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT 
+        | wviminfo! $VIM_SESSION_DIR/$SESSION_NAME.$VIMINFO_FILE_EXT
+        | $SAVE_SESSION"
+}
 
 if [[ -r $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT ]] ; then
-    vim -S $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT
+   OpenSession  
 else
     if [[ ! -d $VIM_SESSION_DIR ]] ; then
         mkdir -p $VIM_SESSION_DIR
     fi
-    vim -c "mksession! $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT"
+    CreateSession
 fi
