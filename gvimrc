@@ -8,7 +8,6 @@
 if has("gui_macvim")
 "    set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
     set guifont=Monaco\ 8           " set font and size
-    colorscheme marklar             " scheme designed for MacVim
 
 elseif has("gui_gtk2")
     set guifont=Monospace\ 8        " set font and size
@@ -20,7 +19,10 @@ end
 "--------------------------------------------------------------------------------
 "--- General
 
-set guioptions-=T                   " remove toolbar
+syntax on
+set nohlsearch                      " Don't highlight search terms
+colorscheme navajo
+set guioptions+=mT                  " show menu and toolbar
 set showtabline=1                   " show tabline only if there are 2 or more.
 set anti                            " Antialias font
 

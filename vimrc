@@ -8,7 +8,7 @@
 set nocompatible      " Use Vim settings, rather then Vi settings (much better!).
 
 "set term=xterm        " xterm allows mouse, home/end/pgup/pgdown, etc.
-set viminfo='0,\"100, " Stay at the start of a file when opening it
+set viminfo='1000,f1,<1000,:25,@25,/25,s50 " default string to determine what viminfo file stores
 set history=50        " keep 50 lines of command line history
 set backspace=2       " allow backspacing over everything in insert mode (=indent,eol,start)
 set whichwrap=<,>,[,],h,l    " Allows for left/right keys to wrap across lines
@@ -76,16 +76,9 @@ set hlsearch          " highlight all search results
 syntax enable
 
 " Switch syntax highlighting on, when the terminal has colors
-if has("syntax") && &t_Co > 2 || has("gui_running")
+if has("syntax") && &t_Co > 2
   syntax on
   set nohlsearch      " Don't highlight search terms
-endif
-
-"-------------------------------------------------------------------------------
-"--- gvim ---"
-if has("gui_running")
-    set guioptions=m   " menu
-    set guioptions+=T   " toolbar
 endif
 
 "-------------------------------------------------------------------------------
@@ -206,17 +199,17 @@ set sessionoptions-=help,options,tabpages
 
 "--- autocomplete parenthesis, (brackets) and braces ---"
 "--- surround visual content with additional spaces ---"
-inoremap  <Leader>((  (  )<Left><Left>
-vnoremap  <Leader>))  s()<Esc>P<Right>%
-vnoremap  <Leader>((  s(  )<Esc><Left>P<Right><Right>%
+inoremap          (  (  )<Left><Left>
+vnoremap  <Leader>)  s()<Esc>P<Right>%
+vnoremap  <Leader>(  s(  )<Esc><Left>P<Right><Right>%
 
-inoremap  <Leader>[[  [  ]<Left><Left>
-vnoremap  <Leader>]]  s[]<Esc>P<Right>%
-vnoremap  <Leader>[[  s[  ]<Esc><Left>P<Right><Right>%
+inoremap          [  [  ]<Left><Left>
+vnoremap  <Leader>]  s[]<Esc>P<Right>%
+vnoremap  <Leader>[  s[  ]<Esc><Left>P<Right><Right>%
 
-inoremap  <Leader>{{  {  }<Left><Left>
-vnoremap  <Leader>}}  s{}<Esc>P<Right>%
-vnoremap  <Leader>{{  s{  }<Esc><Left>P<Right><Right>%
+inoremap          {  {  }<Left><Left>
+vnoremap  <Leader>}  s{}<Esc>P<Right>%
+vnoremap  <Leader>{  s{  }<Esc><Left>P<Right><Right>%
 
 "---  autocomplete quotes (visual and select mode) ---"
 xnoremap  <Leader>'  s''<Esc>P<Right>
@@ -260,8 +253,8 @@ inoremap <C-Down> <C-C>:bnext<CR>
 "--- datetime stamps ---"
  noremap <Leader>dts       "=strftime("%F %T%z")<CR>p
 inoremap <Leader>dts  <C-R>"=strftime("%F %T%z")<CR>
- noremap <Leader>ymd       "=strftime("%y%m%d")<CR>p
-inoremap <Leader>ymd  <C-R>"=strftime("%y%m%d")<CR>
+ noremap <Leader>ymd       "=strftime("%Y%m%d")<CR>p
+inoremap <Leader>ymd  <C-R>"=strftime("%Y%m%d")<CR>
  noremap <Leader>dny       "=strftime("%d-%b-%Y")<CR>p
 inoremap <Leader>dny  <C-R>"=strftime("%d-%b-%Y")<CR>
 
