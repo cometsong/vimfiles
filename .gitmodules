@@ -91,3 +91,6 @@
 [submodule "vim/bundle/ShowMarks7"]
 	path = vim/bundle/ShowMarks7
 	url = git://github.com/vim-scripts/ShowMarks7.git
+[submodule "vim/bundle/ack.vim"]
+	path = vim/bundle/ack.vim
+	url = git://github.com/AndrewRadev/ack.vim.git
