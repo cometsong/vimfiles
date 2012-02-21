@@ -199,22 +199,22 @@ set sessionoptions-=help,options,tabpages
 
 "--- autocomplete parenthesis, (brackets) and braces ---"
 "--- surround visual content with additional spaces ---"
-inoremap          (  (  )<Left><Left>
+inoremap          (  ()<Left>
 vnoremap  <Leader>)  s()<Esc>P<Right>%
 vnoremap  <Leader>(  s(  )<Esc><Left>P<Right><Right>%
 
-inoremap          [  [  ]<Left><Left>
+inoremap          [  []<Left>
 vnoremap  <Leader>]  s[]<Esc>P<Right>%
 vnoremap  <Leader>[  s[  ]<Esc><Left>P<Right><Right>%
 
-inoremap          {  {  }<Left><Left>
+inoremap          {  {}<Left>
 vnoremap  <Leader>}  s{}<Esc>P<Right>%
 vnoremap  <Leader>{  s{  }<Esc><Left>P<Right><Right>%
 
-"---  autocomplete quotes (visual and select mode) ---"
-xnoremap  <Leader>'  s''<Esc>P<Right>
-xnoremap  <Leader>"  s""<Esc>P<Right>
-xnoremap  <Leader>`  s``<Esc>P<Right>
+""---  autocomplete quotes (visual and select mode) ---"
+"xnoremap  <Leader>'  s''<Esc>P<Right>
+"xnoremap  <Leader>"  s""<Esc>P<Right>
+"xnoremap  <Leader>`  s``<Esc>P<Right>
 
 "
 "---  Make p in Visual mode replace the selected text with the "" register. ---"
@@ -369,11 +369,12 @@ let g:session_command_aliases = 1
 inoremap <Leader>sv  <C-C>:SaveSession
  noremap <Leader>so       :OpenSession
 inoremap <Leader>so  <C-C>:OpenSession
- noremap <Leader>ms       :mksession! ~/.vimsessions/Session.vim<CR>
-inoremap <Leader>ms  <C-C>:mksession! ~/.vimsessions/Session.vim<CR>
- noremap <C-F7>           :mksession! ~/.vimsessions/Session.vim<CR>
-inoremap <C-F7>      <C-C>:mksession! ~/.vimsessions/Session.vim<CR>
+ noremap <Leader>ms       :mksession! ~/.vimsessions/untitled.vim<CR>
+inoremap <Leader>ms  <C-C>:mksession! ~/.vimsessions/untitled.vim<CR>
+ noremap <C-F7>           :mksession! ~/.vimsessions/untitled.vim<CR>
+inoremap <C-F7>      <C-C>:mksession! ~/.vimsessions/untitled.vim<CR>
 
-"au VimLeave * exe ' if strlen(v:this_session) | exe "wviminfo! " . v:this_session . ".viminfo" | else | exe "wviminfo! " . "~/.vim/session/" . g:myfilename . ".session.viminfo" | endif '
-"au VimLeave * exe 'if strlen(v:this_session) | exe "mksession! " . v:this_session | else | exe "mksession! " . "~/.vim/session/" . g:myfilename . ".session" | endif '
+"--- if v:this_session, also save marks to the same folder ( for use with bin/vims ) ---"
+au VimLeave * exe 'if strlen(v:this_session) | exe "wviminfo!  ~/.vimsessions/" . v:this_session . ".viminfo" | endif '
+au VimLeave * exe 'if strlen(v:this_session) | exe "mksession! ~/.vimsessions/" . v:this_session | endif '
 

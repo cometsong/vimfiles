@@ -19,14 +19,13 @@ SESSION_NAME='default'
 SESSION_FILE_EXT=vim
 VIMINFO_FILE_EXT=viminfo
 
-# Next line checks whether called by link named 'vims' or 'gvims'
-VIMBINS=`basename $0`
-echo Vimbins: $VIMBINS
+# Next line checks whether called by link named 'vims' or 'gvims', 'mvims', etc
+VIMBINS=$(basename $0)
 # strip 's' from end of link name
-#VIMBIN=${VIMBINS:0:-1}
-VBLEN=${#VIMBINS}
-VIMBIN=${VIMBINS:0:$VBLEN-1}
-echo Vimbin: $VIMBIN
+VIMBIN=${VIMBINS:0:${#VIMBINS}-1}
+
+#echo Vimbins: $VIMBINS
+#echo Vimbin: $VIMBIN
 
 #------------------------------------------------------------------------------#
 #                               ... Functions ...                              #
@@ -41,29 +40,23 @@ function usage () {
 }
 
 function SaveOnExit () {
-    echo "au VimLeave \* exe ' 
-        if strlen(v:this_session) 
-            | exe \"wviminfo! \" . v:this_session . \".viminfo\"
-        | endif '
-        | 'if strlen(v:this_session) 
-            | exe \"mksession! \" . v:this_session
-        | endif '"
+        echo "au VimLeave * exe ' if strlen(v:this_session) | exe \"wviminfo! \" . v:this_session . \".viminfo\" | endif ' | 'if strlen(v:this_session) | exe \"mksession! \" . v:this_session | endif '"
 }
 
 function OpenSession () { 
-    SAVE_SESSION=`SaveOnExit`
-    echo $SAVE_SESSION
+    SAVE_SESSION=$(SaveOnExit)
+    echo "Open: $SAVE_SESSION"
     $VIMBIN -c "source $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT 
         | rviminfo! $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT.$VIMINFO_FILE_EXT 
         | $SAVE_SESSION"
 }
 
 function CreateSession () { 
-    SAVE_SESSION=`SaveOnExit`
-#    echo $SAVE_SESSION
+#    SAVE_SESSION=$(SaveOnExit)
+#    echo "Create: $SAVE_SESSION"
     $VIMBIN -c "mksession! $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT 
         | wviminfo! $VIM_SESSION_DIR/$SESSION_NAME.$SESSION_FILE_EXT.$VIMINFO_FILE_EXT
-        | $SAVE_SESSION"
+        | au VimLeave * exe ' if strlen(v:this_session) | exe \"wviminfo! \" . v:this_session . \".viminfo\" | endif ' | 'if strlen(v:this_session) | exe \"mksession! \" . v:this_session | endif '"
 }
 
 
