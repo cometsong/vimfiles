@@ -55,9 +55,6 @@
 [submodule "vim/bundle/taglist-plus"]
 	path = vim/bundle/taglist-plus
 	url = git://github.com/vim-scripts/taglist-plus.git
-[submodule "vim/bundle/makesd.vim"]
-	path = vim/bundle/makesd.vim
-	url = git@github.com:JaminOne/makesd.vim.git
 [submodule "vim/bundle/bash-support.vim"]
 	path = vim/bundle/bash-support.vim
 	url = git@github.com:JaminOne/bash-support.vim.git
@@ -94,3 +91,6 @@
 [submodule "vim/bundle/ack.vim"]
 	path = vim/bundle/ack.vim
 	url = git://github.com/AndrewRadev/ack.vim.git
+[submodule "vim/bundle/CommentFrame.vim"]
+	path = vim/bundle/CommentFrame.vim
+	url = git@github.com:JaminOne/CommentFrame.vim.git
