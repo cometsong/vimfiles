@@ -21,7 +21,7 @@ end
 
 syntax on
 set nohlsearch                      " Don't highlight search terms
-colorscheme navajo
+colorscheme metacosm                " dark and stylin colors
 set guioptions+=mT                  " show menu and toolbar
 set showtabline=1                   " show tabline only if there are 2 or more.
 set anti                            " Antialias font
