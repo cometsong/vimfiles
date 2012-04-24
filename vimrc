@@ -376,6 +376,6 @@ inoremap <Leader>ms  <C-C>:mksession! ~/.vimsessions/untitled.vim<CR>
 inoremap <C-F7>      <C-C>:mksession! ~/.vimsessions/untitled.vim<CR>
 
 "--- if v:this_session, also save marks to the same folder ( for use with bin/vims ) ---"
-au VimLeave * exe 'if strlen(v:this_session) | exe "wviminfo!  ~/.vimsessions/" . v:this_session . ".viminfo" | endif '
-au VimLeave * exe 'if strlen(v:this_session) | exe "mksession! ~/.vimsessions/" . v:this_session | endif '
+au VimLeave * exe 'if strlen(v:this_session) | exe "wviminfo!  " . v:this_session . ".viminfo" | endif '
+au VimLeave * exe 'if strlen(v:this_session) | exe "mksession! " . v:this_session | endif '
 
