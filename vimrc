@@ -199,15 +199,15 @@ set sessionoptions-=help,options,tabpages
 
 "--- autocomplete parenthesis, (brackets) and braces ---"
 "--- surround visual content with additional spaces ---"
-inoremap          (  ()<Left>
+inoremap  <Leader>(  (  )<Left><Left>
 vnoremap  <Leader>)  s()<Esc>P<Right>%
 vnoremap  <Leader>(  s(  )<Esc><Left>P<Right><Right>%
 
-inoremap          [  []<Left>
+inoremap  <Leader>[  [  ]<Left><Left>
 vnoremap  <Leader>]  s[]<Esc>P<Right>%
 vnoremap  <Leader>[  s[  ]<Esc><Left>P<Right><Right>%
 
-inoremap          {  {}<Left>
+inoremap  <Leader>{  {  }<Left><Left>
 vnoremap  <Leader>}  s{}<Esc>P<Right>%
 vnoremap  <Leader>{  s{  }<Esc><Left>P<Right><Right>%
 
