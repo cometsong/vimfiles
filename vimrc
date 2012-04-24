@@ -228,16 +228,14 @@ let g:SuperTabMappingForward  = '<s-tab>'
 let g:SuperTabMappingBackward = '<s-c-tab>'
 
 "--- Wrap Setup ---"
- noremap <Leader>w      :set wrap!<CR>
-inoremap <Leader>w <C-C>:set wrap!<CR>
- noremap <C-F6>         :set wrap!<CR>
-inoremap <C-F6>    <C-C>:set wrap!<CR>
+ noremap <Leader>w       :set wrap!<CR>
+inoremap <Leader>w  <C-C>:set wrap!<CR>
+ noremap <Leader>wl      :set wrap!<CR> :set linebreak!<CR>
+inoremap <Leader>wl <C-C>:set wrap!<CR> :set linebreak!<CR>
 
 "--- Pastin' Setup ---"
  noremap <Leader>p       :set paste!<CR>
 inoremap <Leader>p  <C-C>:set paste!<CR>
- noremap <C-F8>          :set paste!<CR>
-inoremap <C-F8>     <C-C>:set paste!<CR>
 
 "--- Buffer Access Setup ---"
  noremap <C-PageUp>        :bprev<CR>
@@ -264,6 +262,9 @@ inoremap <Leader>tz   <C-R>"=strftime("%T%z")<CR>
  noremap <Leader>ts        "=strftime("%T")<CR>p
 inoremap <Leader>ts   <C-R>"=strftime("%T")<CR>
 
+"--- ignorecase ---"
+ noremap <Leader>ic      :set ignorecase!<CR>
+inoremap <Leader>ic <C-C>:set ignorecase!<CR>
 
 "-------------------------------------------------------------------------------
 "--- Load all Plugins using the Pathogen plugin
