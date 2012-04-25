@@ -197,19 +197,23 @@ set sessionoptions-=help,options,tabpages
 "-------------------------------------------------------------------------------
 " Key Mapping
 
-"--- autocomplete parenthesis, (brackets) and braces ---"
-"--- surround visual content with additional spaces ---"
+"--- autocomplete (parentheses), [brackets] and {braces} ---"
+"--+ surround visual content with additional spaces      ---"
+"--+ See also plugin AutoComplete toggle below.          ---"
 inoremap  <Leader>(  (  )<Left><Left>
-vnoremap  <Leader>)  s()<Esc>P<Right>%
-vnoremap  <Leader>(  s(  )<Esc><Left>P<Right><Right>%
+ noremap  <Leader>(  s(  )<Esc><Left>P<Right><Right>%
+inoremap  <Leader>)  ()<Esc>i
+ noremap  <Leader>)  s()<Esc>P<Right>%
 
 inoremap  <Leader>[  [  ]<Left><Left>
-vnoremap  <Leader>]  s[]<Esc>P<Right>%
-vnoremap  <Leader>[  s[  ]<Esc><Left>P<Right><Right>%
+ noremap  <Leader>[  s[  ]<Esc><Left>P<Right><Right>%
+inoremap  <Leader>]  []<Esc>i
+ noremap  <Leader>]  s[]<Esc>P<Right>%
 
 inoremap  <Leader>{  {  }<Left><Left>
-vnoremap  <Leader>}  s{}<Esc>P<Right>%
-vnoremap  <Leader>{  s{  }<Esc><Left>P<Right><Right>%
+ noremap  <Leader>{  s{  }<Esc><Left>P<Right><Right>%
+inoremap  <Leader>]  []<Esc>i
+ noremap  <Leader>}  s{}<Esc>P<Right>%
 
 ""---  autocomplete quotes (visual and select mode) ---"
 "xnoremap  <Leader>'  s''<Esc>P<Right>
@@ -360,6 +364,10 @@ else " do not load netrw if ver < 7.2
     let g:loaded_netrw = 1
     let g:loaded_netrwPlugin = 1
 endif
+
+"--- autocomplete (parentheses), [brackets] and {braces} ---"
+inoremap <unique> <Leader>ac <Plug>ToggleAutoCloseMappings
+ noremap <unique> <Leader>ac <Plug>ToggleAutoCloseMappings
 
 "--- vim-session plugin settings ---"
 let g:session_directory = $HOME . '/.vimsessions/'

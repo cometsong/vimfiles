@@ -94,3 +94,6 @@
 [submodule "vim/bundle/CommentFrame.vim"]
 	path = vim/bundle/CommentFrame.vim
 	url = git@github.com:JaminOne/CommentFrame.vim.git
+[submodule "vim/bundle/AutoClose"]
+	path = vim/bundle/AutoClose
+	url = https://github.com/vim-scripts/AutoClose.git
