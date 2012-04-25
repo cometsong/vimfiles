@@ -248,6 +248,11 @@ inoremap <C-Up>   <C-C>:bprev<CR>
  noremap <C-Down>      :bnext<CR>
 inoremap <C-Down> <C-C>:bnext<CR>
 
+ noremap <C-k>      :bprev<CR>
+inoremap <C-k> <C-C>:bprev<CR>
+ noremap <C-j>      :bnext<CR>
+inoremap <C-j> <C-C>:bnext<CR>
+
 "--- datetime stamps ---"
  noremap <Leader>dts       "=strftime("%F %T%z")<CR>p
 inoremap <Leader>dts  <C-R>"=strftime("%F %T%z")<CR>
