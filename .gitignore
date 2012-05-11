@@ -3,29 +3,6 @@ my_aliases
 vim/perl-support/*
 vim/bash-support/*
 
-
-#  OSX ignores
-.DS_Store
-Icon?
-._*
-.Spotlight-V100
-.Trashes
-
-
-#  Linux ignores
-!.gitignore
-*~
-
-
-#  Vim ignores
-.*.sw[a-z]
-*.un~
-Session.vim
-.VimballRecord
-
-# Ignore tags created by ctags
-tags
-**/*/tags
-!tags/
-
+# override gitignore_global
+!bin/**
 
