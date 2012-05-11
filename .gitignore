@@ -23,4 +23,9 @@ Icon?
 Session.vim
 .VimballRecord
 
+# Ignore tags created by ctags
 tags
+**/*/tags
+!tags/
+
+
