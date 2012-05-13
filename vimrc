@@ -3,7 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------------------------------------
-"--- Vim Options.
+"--- Vim Options  {{{
 " This must be first, because it changes other options as a side effect.
 set nocompatible      " Use Vim settings, rather then Vi settings (much better!).
 
@@ -26,8 +26,9 @@ set scrolloff=1       " Minimum lines between cursor and window edge
 set showcmd           " Show partially typed commands
 set nobackup          " Don't use a backup file (also see writebackup)
 "set writebackup       " Write temporary backup files in case we crash
-set nowrap            " do not wrap lines
-set encoding=utf-8
+set nowrap            " do not wrap lines; see also |Wrap Setup|
+set encoding=utf-8    " Necessary to show unicode glyphs
+set t_Co=256          " Explicitly tell vim that the terminal supports 256 colors
 set hidden            " keep buffer mods hidden, allow switching buffers without saving
 set splitright        " set split default on the right
 set equalalways       " all new windows equal size
@@ -38,7 +39,11 @@ set matchtime=3       " Show matching brackets for only 0.3 seconds
 
 set number            " line numbers
 set numberwidth=1     " line numbers minimum gutter width
+set relativenumber    " linenumber shows num of lines apart from current line
 " for line number colors, see colorscheme.vim file, LineNr
+
+set incsearch         " incremental searching as you type
+set hlsearch          " highlight all search results
 
 "-------------------------------------------------------------------------------
 " StatusLine : 
@@ -55,7 +60,7 @@ set laststatus=2      " always show status line
 " call Set_Status_Line()
 
 " TODO : function remains to be repaired, debugged, implemented
-set statusline=%{fugitive#statusline()}\ \ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
+"set statusline=%{fugitive#statusline()}\ \ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
 
 "-------------------------------------------------------------------------------
 "--- Invisible characters   " If you ':set list', shows trailing spaces
@@ -68,11 +73,9 @@ set nolist                          " do not show trailinginsert mode characters
 "    -> colorscheme COLORSCHEME-File-Name
 " colorscheme dante-mods
 colorscheme darkdevel
-set incsearch         " incremental searching as you type
-set hlsearch          " highlight all search results
-
+"  }}}
 "-------------------------------------------------------------------------------
-"--- Syntax highlighting.
+"--- Syntax highlighting  {{{
 syntax enable
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -80,9 +83,9 @@ if has("syntax") && &t_Co > 2
   syntax on
   set nohlsearch      " Don't highlight search terms
 endif
-
+"  }}}
 "-------------------------------------------------------------------------------
-"--- Folding ---"
+"--- Folding  {{{
 set foldenable
 " don't autofold anything
 set foldlevel=100
@@ -93,11 +96,11 @@ inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <C-F9> zf
-
+"  }}}
 "-------------------------------------------------------------------------------
-"--- File Typing
+"--- File Typing  {{{
 filetype on
-filetype plugin on
+filetype plugin indent on
 let b:did_ftplugin = 1
 au FileType * setl fo-=cro " disable auto-commenting
 
@@ -110,25 +113,24 @@ fun! CGICheck()
     set syn=perl
   endif
 endfun
-au BufRead *.cgi	call CGICheck()
-
+au BufRead *.cgi    call CGICheck()
+"  }}}
 "-------------------------------------------------------------------------------
-"---  Cursor column and line show/hide
+"--- Cursor column and line show/hide  {{{
 if v:version > 700
   set nocursorline
   set nocursorcolumn
-  hi  CursorLine   cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=underline 
-  hi  CursorColumn cterm=bold      ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=bold 
-   map <silent> <Leader>curt      :set   cursorcolumn!  cursorline! <CR>
-  imap <silent> <Leader>curt <Esc>:set   cursorcolumn!  cursorline! <CR>a
+  hi  CursorLine   cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=undercurl 
+  hi  CursorColumn cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=undercurl
+   noremap <silent> <Leader>curt      :set   cursorcolumn!  cursorline! <CR>
+  inoremap <silent> <Leader>curt <Esc>:set   cursorcolumn!  cursorline! <CR>a
 endif
-
+"  }}}
 "-------------------------------------------------------------------------------
-"  Autocmds
+"--- Autocmds  {{{
 if has("autocmd")
   " The current directory is the directory of the file in the current window.
   autocmd BufEnter * :lchdir %:p:h
-  "autocmd BufEnter * call Set_Status_Line()   " TODO : function remains to be implemented
 
   " When vimrc is edited, reload it
   autocmd! Bufwritepost vimrc source ~/.vimrc
@@ -143,18 +145,13 @@ if has("autocmd")
   " In text files, always limit the width of text
   "autocmd BufRead *.txt,*.log set tw=100
 
+  " for all 'grep' commands, open in QuickFix window
+  autocmd QuickFixCmdPost *grep* cwindow
+
 endif " has("autocmd")
 
 "-------------------------------------------------------------------------------
-"--- Moves in Insert mode
-inoremap <C-b> <C-o>0
-inoremap <C-e> <C-o>$
-
-"--- set capital Y to do same as D&C, yank to end of line ---"
-nnoremap Y  y$
-
-"-------------------------------------------------------------------------------
-"--- Tabs
+"--- Tabs/Indents  {{{
 "function! Tabstyle(a)
 
 function! Tabstyle_tabs()
@@ -187,15 +184,24 @@ function! Tabstyle_set(ts)
 endfunction
 
 call Tabstyle_spaces()
-
+"  }}}
 "-------------------------------------------------------------------------------
-" Sessions - Sets what is saved when you save a session
+"--- Sessions - Sets what is saved when you save a session  {{{
 set sessionoptions=blank,buffers,curdir,folds,resize,localoptions,winsize
 set sessionoptions-=help,options,tabpages
 " see vim-session plugin options below
-
+"  }}}
 "-------------------------------------------------------------------------------
-" Key Mapping
+"--- Key Mapping  {{{
+
+"--- set capital Y to do same as D&C, yank to end of line ---"
+nnoremap Y  y$
+
+" for regex matching with 'very magic' to match other:wa
+nnoremap ? ?\v
+vnoremap ? ?\v
+nnoremap / /\v
+vnoremap / /\v
 
 "--- autocomplete (parentheses), [brackets] and {braces} ---"
 "--+ surround visual content with additional spaces      ---"
@@ -212,32 +218,27 @@ inoremap  <Leader>]  []<Esc>i
 
 inoremap  <Leader>{  {  }<Left><Left>
  noremap  <Leader>{  s{  }<Esc><Left>P<Right><Right>%
-inoremap  <Leader>]  []<Esc>i
+inoremap  <Leader>}  {}<Esc>i
  noremap  <Leader>}  s{}<Esc>P<Right>%
 
-""---  autocomplete quotes (visual and select mode) ---"
-"xnoremap  <Leader>'  s''<Esc>P<Right>
-"xnoremap  <Leader>"  s""<Esc>P<Right>
-"xnoremap  <Leader>`  s``<Esc>P<Right>
 
-"
 "---  Make p in Visual mode replace the selected text with the "" register. ---"
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 "--- automatic tab completion of keywords ---"
-"inoremap <s-tab>   <c-n>
-"inoremap <s-c-tab> <c-p>
 "set completeopt=longest,menuone
 let g:SuperTabMappingForward  = '<s-tab>'
 let g:SuperTabMappingBackward = '<s-c-tab>'
 
 "--- Wrap Setup ---"
  noremap <Leader>w       :set wrap!<CR>
-inoremap <Leader>w  <C-C>:set wrap!<CR>
+inoremap <Leader>w  <C-C>:set wrap!<CR>a
+ noremap <Leader>l       :set linebreak!<CR>
+inoremap <Leader>l  <C-C>:set linebreak!<CR>a
  noremap <Leader>wl      :set wrap!<CR> :set linebreak!<CR>
-inoremap <Leader>wl <C-C>:set wrap!<CR> :set linebreak!<CR>
+inoremap <Leader>wl <C-C>:set wrap!<CR> :set linebreak!<CR>a
 
-"--- Pastin' Setup ---"
+"---Pastin' Setup ---"
  noremap <Leader>p       :set paste!<CR>
 inoremap <Leader>p  <C-C>:set paste!<CR>
 
@@ -258,26 +259,47 @@ inoremap <C-k> <C-C>:bprev<CR>
 inoremap <C-j> <C-C>:bnext<CR>
 
 "--- datetime stamps ---"
+ noremap <Leader>dt        "=strftime("%Y%m%d_%H%M%S")<CR>p
+inoremap <Leader>dt    <C-R>=strftime("%Y%m%d_%H%M%S")<CR>
  noremap <Leader>dts       "=strftime("%F %T%z")<CR>p
-inoremap <Leader>dts  <C-R>"=strftime("%F %T%z")<CR>
+inoremap <Leader>dts   <C-R>=strftime("%F %T%z")<CR>
  noremap <Leader>ymd       "=strftime("%Y%m%d")<CR>p
-inoremap <Leader>ymd  <C-R>"=strftime("%Y%m%d")<CR>
+inoremap <Leader>ymd   <C-R>=strftime("%Y%m%d")<CR>
  noremap <Leader>dny       "=strftime("%d-%b-%Y")<CR>p
-inoremap <Leader>dny  <C-R>"=strftime("%d-%b-%Y")<CR>
+inoremap <Leader>dny   <C-R>=strftime("%d-%b-%Y")<CR>
 
 "--- time stamps ---"
  noremap <Leader>tz        "=strftime("%T%z")<CR>p
-inoremap <Leader>tz   <C-R>"=strftime("%T%z")<CR>
- noremap <Leader>ts        "=strftime("%T")<CR>p
-inoremap <Leader>ts   <C-R>"=strftime("%T")<CR>
+inoremap <Leader>tz    <C-R>=strftime("%T%z")<CR>
+ noremap <Leader>ts        "=strftime("%H%M%S")<CR>p
+inoremap <Leader>ts    <C-R>=strftime("%T")<CR>
 
 "--- ignorecase ---"
  noremap <Leader>ic      :set ignorecase!<CR>
 inoremap <Leader>ic <C-C>:set ignorecase!<CR>
 
+"--- if Leader=\ then set 2xLeader=\ (to allow fast typing of the <Leader>
+"---    instead of waiting for vim to catch up with you.)
+inoremap <Leader><Leader> <Leader>
+
+"--- operating system clipboard use
+nnoremap <s-c-c> "+y
+" <s-c-v> also maps <c-v>
+""nnoremap <s-c-v> "+p
+
+"--- delete whole line (cf. eclipse) in insert-mode or normal
+imap <C-d> <C-C>ddi
+nmap <C-d> dd
+
+
+"  }}}
 "-------------------------------------------------------------------------------
+"--- Plugged In  {{{
 "--- Load all Plugins using the Pathogen plugin
 call pathogen#runtime_append_all_bundles()
+
+"--- gundo: disable when no gui (unexplained python errors), see gvimrc for gundo settings
+let g:gundo_disable=1
 
 "--- NERDTreeOptions ---"
  noremap <C-F12>          :NERDTreeToggle<CR>
@@ -298,12 +320,15 @@ let NERDTreeShowBookmarks       = 1
 let NERDTreeQuitOnOpen          = 1 " if NERDTree will close after opening a file
 let NERDTreeShowLineNumbers     = 0 " no line numbers in the tree window
 
-"--- TagList ---"
-let Tlist_Inc_Winwidth = 40
- noremap <S-F11>          :TlistToggle<CR>
-inoremap <S-F11> <C-C>    :TlistToggle<CR>
- noremap <Leader>tt       :TlistToggle<Esc>
-inoremap <Leader>tt <C-C> :TlistToggle<Esc>
+"--- TagBar ---"
+let g:tagbar_left = 1
+let g:tagbar_width = 50
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+ noremap <S-F11>          :TagbarToggle<CR>
+inoremap <S-F11> <C-C>    :TagbarToggle<CR>
+ noremap <Leader>tt       :TagbarToggle<Esc>
+inoremap <Leader>tt <C-C> :TagbarToggle<Esc>
 "let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 
 "--- Perl-Support ---"
@@ -325,6 +350,10 @@ let g:BASH_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
 let g:BASH_MenuHeader             = 'off'
 let g:BASH_TemplateOverwrittenMsg = 'no'
 let g:BASH_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
+
+"--- Buffet
+nnoremap <Leader>be      :Bufferlist<CR>
+inoremap <Leader>be <C-C>:Bufferlist<CR>i
 
 "--- bufstat ---"
 let g:bufstat_debug = 1
@@ -365,9 +394,10 @@ else " do not load netrw if ver < 7.2
     let g:loaded_netrwPlugin = 1
 endif
 
-"--- autocomplete (parentheses), [brackets] and {braces} ---"
-inoremap <unique> <Leader>ac <Plug>ToggleAutoCloseMappings
- noremap <unique> <Leader>ac <Plug>ToggleAutoCloseMappings
+"--- delimitMate
+let delimitMate_autoclose = 1
+inoremap <Leader>dc <C-C>:DelimitMateSwitch<CR>a
+ noremap <Leader>dc      :DelimitMateSwitch<CR>
 
 "--- vim-session plugin settings ---"
 let g:session_directory = $HOME . '/.vimsessions/'
@@ -388,7 +418,42 @@ inoremap <Leader>ms  <C-C>:mksession! ~/.vimsessions/untitled.vim<CR>
  noremap <C-F7>           :mksession! ~/.vimsessions/untitled.vim<CR>
 inoremap <C-F7>      <C-C>:mksession! ~/.vimsessions/untitled.vim<CR>
 
-"--- if v:this_session, also save marks to the same folder ( for use with bin/vims ) ---"
-au VimLeave * exe 'if strlen(v:this_session) | exe "wviminfo!  " . v:this_session . ".viminfo" | endif '
-au VimLeave * exe 'if strlen(v:this_session) | exe "mksession! " . v:this_session | endif '
+"--- if v:this_session, also save marks to the same folder (for use with 'bin/vims')
+"au VimLeave * exe 'if strlen(v:this_session) | exe "wviminfo!  " . v:this_session . ".viminfo" | endif '
+"au VimLeave * exe 'if strlen(v:this_session) | exe "mksession! " . v:this_session | endif '
 
+"--- CtrlP
+let g:ctrlp_working_path_mode = 1
+
+"--- Powerline
+"let g:Powerline_symbols = 'fancy'
+"" PL#Theme... mod default to change order and add 'new' segments!
+"call Pl#Theme#Create(
+"    \ Pl#Theme#Buffer(''
+"        \ , 'paste_indicator'
+"        \ , 'mode_indicator'
+"        \ , 'fileinfo'
+"        \ , 'fugitive:branch'
+"        \ , 'hgrev:branch'
+"        \ , 'syntastic:errors'
+"        \ , Pl#Segment#Truncate()
+"        \ , 'cfi:current_function'
+"        \ , Pl#Segment#Split()
+"        \ , 'fileformat'
+"        \ , 'fileencoding'
+"        \ , 'filetype'
+"        \ , 'scrollpercent'
+"        \ , 'lineinfo'
+"        \)
+"    \)
+
+"--- IndentGuides
+" this mapping (ig) is also the default
+nnoremap <Leader>ig      :IndentGuidesToggle<CR>
+inoremap <Leader>ig <C-C>:IndentGuidesToggle<CR>i
+
+"--- 
+"--- YankStack
+
+"  }}}
+"-------------------------------------------------------------------------------

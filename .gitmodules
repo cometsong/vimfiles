@@ -13,18 +13,12 @@
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/Better-CSS-Syntax-for-Vim"]
-	path = vim/bundle/Better-CSS-Syntax-for-Vim
-	url = git://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
 [submodule "vim/bundle/SQLUtilities"]
 	path = vim/bundle/SQLUtilities
 	url = git://github.com/vim-scripts/SQLUtilities.git
 [submodule "vim/bundle/SuperTab-continued"]
 	path = vim/bundle/SuperTab-continued
 	url = git://github.com/vim-scripts/SuperTab-continued..git
-[submodule "vim/bundle/bufexplorer"]
-	path = vim/bundle/bufexplorer
-	url = git://github.com/vim-scripts/bufexplorer.zip.git
 [submodule "vim/bundle/grep.vim"]
 	path = vim/bundle/grep.vim
 	url = git://github.com/vim-scripts/grep.vim.git
@@ -52,9 +46,6 @@
 [submodule "vim/bundle/smartbd"]
 	path = vim/bundle/smartbd
 	url = git://github.com/vim-scripts/smartbd.git
-[submodule "vim/bundle/taglist-plus"]
-	path = vim/bundle/taglist-plus
-	url = git://github.com/vim-scripts/taglist-plus.git
 [submodule "vim/bundle/bash-support.vim"]
 	path = vim/bundle/bash-support.vim
 	url = git@github.com:JaminOne/bash-support.vim.git
@@ -64,9 +55,6 @@
 [submodule "vim/bundle/perl-support.vim"]
 	path = vim/bundle/perl-support.vim
 	url = git@github.com:JaminOne/perl-support.vim.git
-[submodule "vim/bundle/vim-bufstat"]
-	path = vim/bundle/vim-bufstat
-	url = git://github.com/rson/vim-bufstat.git
 [submodule "vim/bundle/indexer"]
 	path = vim/bundle/indexer
 	url = git://github.com/vim-scripts/indexer.tar.gz.git
@@ -94,6 +82,42 @@
 [submodule "vim/bundle/CommentFrame.vim"]
 	path = vim/bundle/CommentFrame.vim
 	url = git@github.com:JaminOne/CommentFrame.vim.git
-[submodule "vim/bundle/AutoClose"]
-	path = vim/bundle/AutoClose
-	url = https://github.com/vim-scripts/AutoClose.git
+[submodule "vim/bundle/Vim-JDE"]
+	path = vim/bundle/Vim-JDE
+	url = git://github.com/vim-scripts/Vim-JDE.git
+[submodule "vim/bundle/gundo"]
+	path = vim/bundle/gundo
+	url = git://github.com/nvie/gundo.vim.git
+[submodule "vim/bundle/camelcasemotion"]
+	path = vim/bundle/camelcasemotion
+	url = git://github.com/vim-scripts/camelcasemotion.git
+[submodule "vim/bundle/thermometer"]
+	path = vim/bundle/thermometer
+	url = git://github.com/vim-scripts/thermometer.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/delimitMate"]
+	path = vim/bundle/delimitMate
+	url = git://github.com/Raimondi/delimitMate.git
+[submodule "vim/bundle/ZoomWin"]
+	path = vim/bundle/ZoomWin
+	url = git://github.com/vim-scripts/ZoomWin.git
+[submodule "vim/bundle/powerline"]
+	path = vim/bundle/powerline
+	url = git@github.com:JaminOne/vim-powerline.git
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
+[submodule "vim/bundle/yankring"]
+	path = vim/bundle/yankring
+	url = git@github.com:JaminOne/YankRing.git
+[submodule "vim/bundle/Buffet.vim"]
+	path = vim/bundle/Buffet.vim
+	url = git://github.com/sandeepcr529/Buffet.vim.git
+[submodule "vim/bundle/indent-guides"]
+	path = vim/bundle/indent-guides
+	url = git://github.com/mutewinter/vim-indent-guides.git
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim.git
