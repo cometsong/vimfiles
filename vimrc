@@ -39,7 +39,9 @@ set matchtime=3       " Show matching brackets for only 0.3 seconds
 
 set number            " line numbers
 set numberwidth=1     " line numbers minimum gutter width
-set relativenumber    " linenumber shows num of lines apart from current line
+if version >= 730
+    set relativenumber  " linenumber shows num of lines apart from current line
+endif
 " for line number colors, see colorscheme.vim file, LineNr
 
 set incsearch         " incremental searching as you type
