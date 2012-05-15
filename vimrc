@@ -454,8 +454,6 @@ let g:ctrlp_working_path_mode = 1
 nnoremap <Leader>ig      :IndentGuidesToggle<CR>
 inoremap <Leader>ig <C-C>:IndentGuidesToggle<CR>i
 
-"--- 
-"--- YankStack
 
 "  }}}
 "-------------------------------------------------------------------------------
