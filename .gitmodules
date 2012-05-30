@@ -124,3 +124,6 @@
 [submodule "vim/bundle/TinyBufferExplorer"]
 	path = vim/bundle/TinyBufferExplorer
 	url = git://github.com/vim-scripts/TinyBufferExplorer.git
+[submodule "vim/bundle/minibufexpl"]
+	path = vim/bundle/minibufexpl
+	url = git://github.com/fholgado/minibufexpl.vim.git
