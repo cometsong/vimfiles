@@ -121,3 +121,6 @@
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim.git
+[submodule "vim/bundle/TinyBufferExplorer"]
+	path = vim/bundle/TinyBufferExplorer
+	url = git://github.com/vim-scripts/TinyBufferExplorer.git
