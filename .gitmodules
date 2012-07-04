@@ -136,3 +136,6 @@
 [submodule "vim/bundle/VisIncr"]
 	path = vim/bundle/VisIncr
 	url = git://github.com/vim-scripts/VisIncr.git
+[submodule "vim/bundle/Archive"]
+	path = vim/bundle/Archive
+	url = git://github.com/vim-scripts/Archive.git
