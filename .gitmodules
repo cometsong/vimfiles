@@ -139,3 +139,9 @@
 [submodule "vim/bundle/Archive"]
 	path = vim/bundle/Archive
 	url = git://github.com/vim-scripts/Archive.git
+[submodule "vim/bundle/Headlights"]
+	path = vim/bundle/Headlights
+	url = git://github.com/vim-scripts/Headlights.git
+[submodule "vim/bundle/vim-abolish"]
+	path = vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git

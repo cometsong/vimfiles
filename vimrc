@@ -363,7 +363,14 @@ inoremap Q :qa<CR>
 "--- Plugged In  {{{
 
 "---- Load all Plugins using the Pathogen plugin ---- {{
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
+"}}
+
+"---- Headlights ---- {{
+"let g:loaded_headlights = 1
+let g:headlights_use_plugin_menu = 1
+let g:headlights_show_commands = 1
+" loaded only in gui, see options there
 "}}
 
 "---- NERDTreeOptions ---- {{
