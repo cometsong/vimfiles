@@ -26,7 +26,10 @@ set scrolloff=1       " Minimum lines between cursor and window edge
 set showcmd           " Show partially typed commands
 set nobackup          " Don't use a backup file (also see writebackup)
 "set writebackup       " Write temporary backup files in case we crash
+
 set nowrap            " do not wrap lines; see also |Wrap Setup|
+set textwidth=100     " max width of line of text
+set formatoptions=crqnl " how Vim auto-formats text
 set encoding=utf-8    " Necessary to show unicode glyphs
 set t_Co=256          " Explicitly tell vim that the terminal supports 256 colors
 set hidden            " keep buffer mods hidden, allow switching buffers without saving
@@ -39,42 +42,45 @@ set matchtime=3       " Show matching brackets for only 0.3 seconds
 
 set number            " line numbers
 set numberwidth=1     " line numbers minimum gutter width
-if version >= 730
-    set relativenumber  " linenumber shows num of lines apart from current line
-endif
+"if version >= 730
+"    set relativenumber  " linenumber shows num of lines apart from current line
+"endif
 " for line number colors, see colorscheme.vim file, LineNr
 
 set incsearch         " incremental searching as you type
 set hlsearch          " highlight all search results
 
-"-------------------------------------------------------------------------------
-" StatusLine : 
+set wildmenu          " command-line completion operates in an enhanced mode
 set laststatus=2      " always show status line
 
-" function! Set_Status_Line()
-"     let CurDir = getcwd() 
-"     if filereadable(CurDir.'.git') " Check for .git folder to include fugitive bits
-"        set statusline=%{fugitive#statusline()}\ \ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
-"     else
-"        set statusline=(%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
-"     endif
-" endfunction 
-" call Set_Status_Line()
-
-" TODO : function remains to be repaired, debugged, implemented
-"set statusline=%{fugitive#statusline()}\ \ (%{strlen(&ft)?&ft:'?'},%{&fenc},%{&ff})\ \ %-9.(%l,%c%V%)\ \ %<%P
-
-"-------------------------------------------------------------------------------
 "--- Invisible characters   " If you ':set list', shows trailing spaces
 set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:⏎
 set nolist                          " do not show trailinginsert mode characters
-:noremap <Leader>i :set list!<CR> " Toggle invisible chars
 
 "-------------------------------------------------------------------------------
 "--- Color specification files (in $HOME/.vim/colors)
 "    -> colorscheme COLORSCHEME-File-Name
 " colorscheme dante-mods
 colorscheme darkdevel
+"  }}}
+"-------------------------------------------------------------------------------
+"--- Cometsong Menu Init!  {{{
+" TODO create menus for my schmancy plugins
+aunmenu Cometsong
+" all items in menu are coded with the corresponding keymaps
+amenu 1114.1 &Cometsong.All\ My\ Shortcuts!  :echo "how do I show the maps specific to this menu?"<CR>
+
+amenu .10 &Cometsong.-Views- :
+" items 11-98 are view/buffer toggles
+amenu .99 &Cometsong.-Submenus- :
+" items 100-198 are submenus
+amenu .199 &Cometsong.-Switches- :
+" items 200+ are misc switches
+"}}}
+"-------------------------------------------------------------------------------
+"--- List hotkey  {{{
+noremap <Leader>i :set list!<CR> " Toggle invisible chars
+amenu <silent> .900 &Cometsong.Show\ &invisible\ chars\ <Tab>i   <Leader>i   " Cometsong Menu!
 "  }}}
 "-------------------------------------------------------------------------------
 "--- Syntax highlighting  {{{
@@ -104,7 +110,6 @@ vnoremap <C-F9> zf
 filetype on
 filetype plugin indent on
 let b:did_ftplugin = 1
-au FileType * setl fo-=cro " disable auto-commenting
 
 " On CGI files, determine type by reading in a line.
 fun! CGICheck()
@@ -126,6 +131,7 @@ if v:version > 700
   hi  CursorColumn cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=undercurl
    noremap <silent> <Leader>curt      :set   cursorcolumn!  cursorline! <CR>
   inoremap <silent> <Leader>curt <Esc>:set   cursorcolumn!  cursorline! <CR>a
+  amenu <silent> .500 &Cometsong.&Cursor\ position\ toggle<Tab>curt     <Leader>curt
 endif
 "  }}}
 "-------------------------------------------------------------------------------
@@ -135,17 +141,30 @@ if has("autocmd")
   autocmd BufEnter * :lchdir %:p:h
 
   " When vimrc is edited, reload it
-  autocmd! Bufwritepost vimrc source ~/.vimrc
+  function! Reload_vimrc()
+    source ~/.vimrc
+    source ~/.gvimrc
+  endfunction
+  "autocmd! Bufwritepost  vimrc  :call Reload_vimrc()
+  "autocmd! Bufwritepost  gvimrc :call Reload_vimrc()
+  autocmd! Bufwritepost  vimrc  :source ~/.vimrc | :source ~/.gvimrc
+  autocmd! Bufwritepost  gvimrc :source ~/.vimrc | :source ~/.gvimrc
 
   " On plain text files, no keyword chars, because we don't want tab completion
-" commented out because we DO want word boundaries to actual word boundaries
-"  au BufNewFile,BufRead *.txt,*.log set iskeyword=
+  " commented out because we DO want word boundaries to actual word boundaries
+  "  au BufNewFile,BufRead *.txt,*.log set iskeyword=
+  autocmd FileType * setl fo-=cro " disable auto-commenting
 
-  " On HTML files don't use indenting.
-  au BufNewFile,BufRead *.html set noautoindent nosmartindent nocindent
-
-  " In text files, always limit the width of text
-  "autocmd BufRead *.txt,*.log set tw=100
+  " tabs/spaces based on Syntax of languages
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+  " }}
 
   " for all 'grep' commands, open in QuickFix window
   autocmd QuickFixCmdPost *grep* cwindow
@@ -163,6 +182,7 @@ function! Tabstyle_tabs()
   set tabstop=8
   set noexpandtab
 endfunction
+amenu <silent> .300 &Cometsong.&Tab\ style\ (tabwidth\ 8)  :call Tabstyle_tabs()<CR>
 
 function! Tabstyle_spaces()
   " Default to using 4 column indents
@@ -171,6 +191,7 @@ function! Tabstyle_spaces()
   set tabstop=4
   set expandtab
 endfunction
+amenu <silent> .300 &Cometsong.&Tab\ style\ (spaces\ 4)  :call Tabstyle_spaces()<CR>
 
 function! Tabstyle_set(ts)
   if exists("a:ts")
@@ -184,6 +205,7 @@ function! Tabstyle_set(ts)
   let &tabstop     = tsize
   set expandtab
 endfunction
+"amenu .300 &Cometsong.&Tab\ style\.\.\.\ (custom)  :call Tabstyle_set(
 
 call Tabstyle_spaces()
 "  }}}
@@ -196,55 +218,86 @@ set sessionoptions-=help,options,tabpages
 "-------------------------------------------------------------------------------
 "--- Key Mapping  {{{
 
-"--- set capital Y to do same as D&C, yank to end of line ---"
+"--- if Leader=\ then set 2xLeader=\ (to allow fast typing of the <Leader>
+"---    instead of waiting for vim to catch up with you.)
+inoremap <Leader><Leader> <Leader>
+
+"--- Fast editing of vimrc
+nnoremap <leader>vi   :vsplit $MYVIMRC<cr>
+
+"--- Edit hotkey command appends current dir to :e, :sp, :vsp
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+
+"--- set capital Y to do same as D&C, yank to end of line
 nnoremap Y  y$
 
-" for regex matching with 'very magic' to match other:wa
+"--- for regex matching with 'very magic' to match other:wa
 nnoremap ? ?\v
 vnoremap ? ?\v
 nnoremap / /\v
 vnoremap / /\v
 
-"--- autocomplete (parentheses), [brackets] and {braces} ---"
-"--+ surround visual content with additional spaces      ---"
-"--+ See also plugin AutoComplete toggle below.          ---"
-inoremap  <Leader>(  (  )<Left><Left>
- noremap  <Leader>(  s(  )<Esc><Left>P<Right><Right>%
-inoremap  <Leader>)  ()<Esc>i
- noremap  <Leader>)  s()<Esc>P<Right>%
+"--- autocomplete (parentheses), [brackets] and {braces}
+"--+ surround visual content with additional spaces
+"--+ See also plugin AutoComplete toggle below.
+inoremap  <Leader>(   (  )<Esc>hi
+ noremap  <Leader>(  i(  )<Esc>hi
+inoremap  <Leader>)   ()<Esc>i
+ noremap  <Leader>)  i()<Esc>i
+imenu <silent> .130 &Cometsong.&Delimiters.&Parentheses:\ (\ \ )<Tab>(  <Leader>(
+nmenu <silent> .130 &Cometsong.&Delimiters.&Parentheses:\ (\ \ )<Tab>(  <Leader>(
+imenu <silent> .130 &Cometsong.&Delimiters.&Parentheses:\ ()<Tab>)      <Leader>)
+nmenu <silent> .130 &Cometsong.&Delimiters.&Parentheses:\ ()<Tab>)      <Leader>)
 
-inoremap  <Leader>[  [  ]<Left><Left>
- noremap  <Leader>[  s[  ]<Esc><Left>P<Right><Right>%
-inoremap  <Leader>]  []<Esc>i
- noremap  <Leader>]  s[]<Esc>P<Right>%
+inoremap  <Leader>[   [  ]<Esc>hi
+ noremap  <Leader>[  i[  ]<Esc>hi
+inoremap  <Leader>]   []<Esc>i
+ noremap  <Leader>]  i[]<Esc>i
+imenu <silent> .130 &Cometsong.&Delimiters.&Brackets:\ [\ \ ]<Tab>[     <Leader>[
+nmenu <silent> .130 &Cometsong.&Delimiters.&Brackets:\ [\ \ ]<Tab>[     <Leader>[
+imenu <silent> .130 &Cometsong.&Delimiters.&Brackets:\ []<Tab>]         <Leader>]
+nmenu <silent> .130 &Cometsong.&Delimiters.&Brackets:\ []<Tab>]         <Leader>]
 
-inoremap  <Leader>{  {  }<Left><Left>
- noremap  <Leader>{  s{  }<Esc><Left>P<Right><Right>%
+inoremap  <Leader>{  { }<Esc>hi 
+nnoremap  <Leader>{ i{ }<Esc>hi 
 inoremap  <Leader>}  {}<Esc>i
- noremap  <Leader>}  s{}<Esc>P<Right>%
+nnoremap  <Leader>} i{}<Esc>i  
+imenu <silent> .130 &Cometsong.&Delimiters.&Braces:\ {\ \ }<Tab>{       <Leader>{
+nmenu <silent> .130 &Cometsong.&Delimiters.&Braces:\ {\ \ }<Tab>{       <Leader>{
+imenu <silent> .130 &Cometsong.&Delimiters.&Braces:\ {}<Tab>}           <Leader>}
+nmenu <silent> .130 &Cometsong.&Delimiters.&Braces:\ {}<Tab>}           <Leader>}
 
-
-"---  Make p in Visual mode replace the selected text with the "" register. ---"
+"---  Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
-"--- automatic tab completion of keywords ---"
-"set completeopt=longest,menuone
+"--- automatic tab completion of keywords
 let g:SuperTabMappingForward  = '<s-tab>'
 let g:SuperTabMappingBackward = '<s-c-tab>'
 
-"--- Wrap Setup ---"
+"--- Wrap Setup
+set showbreak=\ …   " shows at beginning of each wrapped line
+set cpoptions+=n    " sets the showbreak in between the line numbers
+command! -nargs=* Wrap set wrap linebreak nolist
+command! -nargs=* WrapOff set nowrap nolinebreak
  noremap <Leader>w       :set wrap!<CR>
 inoremap <Leader>w  <C-C>:set wrap!<CR>a
+amenu .110 &Cometsong.&Wraps.Wrap<Tab>w  :set wrap!<CR>
  noremap <Leader>l       :set linebreak!<CR>
 inoremap <Leader>l  <C-C>:set linebreak!<CR>a
+amenu .110 &Cometsong.&Wraps.&Linebreak<Tab>l :set linebreak!<CR>
  noremap <Leader>wl      :set wrap!<CR> :set linebreak!<CR>
 inoremap <Leader>wl <C-C>:set wrap!<CR> :set linebreak!<CR>a
+amenu .110 &Cometsong.&Wraps.&Wrap\ \&\ Linebreak<Tab>wl  :set wrap!<CR> :set linebreak!<CR>
 
-"---Pastin' Setup ---"
+"---Pastin' Setup
  noremap <Leader>p       :set paste!<CR>
 inoremap <Leader>p  <C-C>:set paste!<CR>
+amenu <silent> .210 &Cometsong.&Paste\ mode<Tab>p  <Leader>p
 
-"--- Buffer Access Setup ---"
+"--- Buffer Access Setup
  noremap <C-PageUp>        :bprev<CR>
 inoremap <C-PageUp>   <C-C>:bprev<CR>
  noremap <C-PageDown>      :bnext<CR>
@@ -260,58 +313,67 @@ inoremap <C-k> <C-C>:bprev<CR>
  noremap <C-j>      :bnext<CR>
 inoremap <C-j> <C-C>:bnext<CR>
 
-"--- datetime stamps ---"
- noremap <Leader>dt        "=strftime("%Y%m%d_%H%M%S")<CR>p
-inoremap <Leader>dt    <C-R>=strftime("%Y%m%d_%H%M%S")<CR>
- noremap <Leader>dts       "=strftime("%F %T%z")<CR>p
-inoremap <Leader>dts   <C-R>=strftime("%F %T%z")<CR>
+"--- datetime stamps
+ noremap <Leader>dts       "=strftime("%Y%m%d_%H%M%S")<CR>p
+inoremap <Leader>dts   <C-R>=strftime("%Y%m%d_%H%M%S")<CR>
+amenu <silent> .110 &Cometsong.&Dating.&Datetime:\ ccyymmdd_hhmiss<Tab>dts          <Leader>dts
+ noremap <Leader>dtz       "=strftime("%F %T%z")<CR>p
+inoremap <Leader>dtz   <C-R>=strftime("%F %T%z")<CR>
+amenu <silent> .110 &Cometsong.&Dating.&Datetime:\ ccyy-mm-dd\ hh:mi:ss+tz<Tab>dtz  <Leader>dtz
+
+"--- date stamps
  noremap <Leader>ymd       "=strftime("%Y%m%d")<CR>p
 inoremap <Leader>ymd   <C-R>=strftime("%Y%m%d")<CR>
+amenu <silent> .110 &Cometsong.&Dating.Date:\ ccyy-mm-dd<Tab>ymd                    <Leader>ymd
  noremap <Leader>dny       "=strftime("%d-%b-%Y")<CR>p
 inoremap <Leader>dny   <C-R>=strftime("%d-%b-%Y")<CR>
+amenu <silent> .110 &Cometsong.&Dating.Date:\ dd-mon-ccyy<Tab>dny                   <Leader>dny
 
-"--- time stamps ---"
+"--- time stamps
  noremap <Leader>tz        "=strftime("%T%z")<CR>p
 inoremap <Leader>tz    <C-R>=strftime("%T%z")<CR>
+amenu <silent> .110 &Cometsong.&Dating.Time:\ hh:mi:ss+tz<Tab>tz                    <Leader>tz
  noremap <Leader>ts        "=strftime("%H%M%S")<CR>p
 inoremap <Leader>ts    <C-R>=strftime("%T")<CR>
+amenu <silent> .110 &Cometsong.&Dating.Time:\ hhmiss<Tab>ts                         <Leader>ts
 
-"--- ignorecase ---"
+"--- ignorecase
  noremap <Leader>ic      :set ignorecase!<CR>
 inoremap <Leader>ic <C-C>:set ignorecase!<CR>
+amenu .350 &Cometsong.&Ignore\ Case<Tab>ic  <Leader>ic
 
-"--- if Leader=\ then set 2xLeader=\ (to allow fast typing of the <Leader>
-"---    instead of waiting for vim to catch up with you.)
-inoremap <Leader><Leader> <Leader>
-
-"--- operating system clipboard use
-nnoremap <s-c-c> "+y
-" <s-c-v> also maps <c-v>
-""nnoremap <s-c-v> "+p
+"--- operating system clipboard
+" cut
+noremap <Leader>,x "+x
+" copy
+noremap <Leader>,c "+y
+" paste
+noremap <Leader>,v "+p
 
 "--- delete whole line (cf. eclipse) in insert-mode or normal
-imap <C-d> <C-C>ddi
-nmap <C-d> dd
+inoremap <C-d> <C-C>ddi
+ noremap <C-d> dd
 
+"--- Q=quit-all instead of going to Ex mod
+inoremap Q :qa<CR>
+ noremap Q :qa<CR>
 
 "  }}}
 "-------------------------------------------------------------------------------
 "--- Plugged In  {{{
-"--- Load all Plugins using the Pathogen plugin
+
+"---- Load all Plugins using the Pathogen plugin ---- {{
 call pathogen#runtime_append_all_bundles()
+"}}
 
-"--- gundo: disable when no gui (unexplained python errors), see gvimrc for gundo settings
-let g:gundo_disable=1
-
-"--- NERDTreeOptions ---"
- noremap <C-F12>          :NERDTreeToggle<CR>
-inoremap <C-F12>    <C-C> :NERDTreeToggle<CR>
+"---- NERDTreeOptions ---- {{
  noremap <Leader>nt       :NERDTreeToggle<Esc>
 inoremap <Leader>nt <C-C> :NERDTreeToggle<Esc>
+amenu <silent> .10 &Cometsong.&NERDTree\ Toggle<Tab>nt  <Leader>nt
 " let loaded_nerd_tree            = 0 " set to 1 to turn off plugin
 let NERDTreeHijackNetrw         = 1 " opening a dir will use Nerd Tree, not built-in
 let NERDChristmasTree           = 1 " make more colourful
-let NERDTreeAutoCenter          = 1 " center around the cursor if it moves
+let NERDTreeAutoCenter          = 1 " center around the cursor if it moves:\ {}
 let NERDTreeAutoCenterThreshold = 4 " sensitivity of auto centering
 let NERDTreeCaseSensitiveSort   = 0 " 0=case-INsensitive sort
 let NERDTreeChDirMode           = 1 " [0,1,2] 0=never, 1=startup, 2=always
@@ -321,19 +383,20 @@ let NERDTreeIgnore              = ['\~$'] " a list of regular expressions
 let NERDTreeShowBookmarks       = 1
 let NERDTreeQuitOnOpen          = 1 " if NERDTree will close after opening a file
 let NERDTreeShowLineNumbers     = 0 " no line numbers in the tree window
+"}}
 
-"--- TagBar ---"
+"---- TagBar ---- {{
 let g:tagbar_left = 1
 let g:tagbar_width = 50
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
- noremap <S-F11>          :TagbarToggle<CR>
-inoremap <S-F11> <C-C>    :TagbarToggle<CR>
  noremap <Leader>tt       :TagbarToggle<Esc>
 inoremap <Leader>tt <C-C> :TagbarToggle<Esc>
+amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tt  <Leader>tt
 "let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
+"}}
 
-"--- Perl-Support ---"
+"---- Perl-Support ---- {{
 let g:Perl_GlobalTemplateFile     = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
 let g:Perl_LocalTemplateFile      = $HOME.'/.vim/misc/perl-support/Templates'
 let g:Perl_CodeSnippets           = $HOME.'/.vim/misc/perl-support/codesnippets'
@@ -342,8 +405,9 @@ let g:Perl_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
 let g:Perl_MenuHeader             = 'off'
 let g:Perl_TemplateOverwrittenMsg = 'no'
 let g:Perl_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
+"}}
 
-"--- Bash-Support ---"
+"---- Bash-Support ---- {{
 let g:BASH_GlobalTemplateFile     = $HOME.'/.vim/bundle/bash-support.vim/bash-support/templates/Templates'
 let g:BASH_LocalTemplateFile      = $HOME.'/.vim/misc/bash-support/Templates'
 let g:BASH_CodeSnippets           = $HOME.'/.vim/misc/bash-support/codesnippets'
@@ -352,39 +416,30 @@ let g:BASH_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
 let g:BASH_MenuHeader             = 'off'
 let g:BASH_TemplateOverwrittenMsg = 'no'
 let g:BASH_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
+"}}
 
-"--- Buffet
-nnoremap <Leader>be      :Bufferlist<CR>
-inoremap <Leader>be <C-C>:Bufferlist<CR>i
+"---- TinyBufferExplorer ---- {{
+nnoremap <Leader>be       :TBE<CR>
+inoremap <Leader>be  <C-C>:TBE<CR>i
+nnoremap <Leader>tbe      :TBE<CR>
+inoremap <Leader>tbe <C-C>:TBE<CR>i
+amenu <silent> .30 &Cometsong.&TinyBufferExplorer\ Toggle<Tab>be  <Leader>be
+"}}
 
-"--- bufstat ---"
-let g:bufstat_debug = 1
-highlight InactiveBuffer ctermfg=DarkGray ctermbg=White
-let g:bufstat_inactive_hl_group = "InactiveBuffer"
-highlight ActiveBuffer ctermfg=White ctermbg=blue
-let g:bufstat_active_hl_group = "ActiveBuffer"
-let g:bufstat_alternate_list_char = '^'
-let g:bufstat_modified_list_char  = '+'
-let g:bufstat_number_before_bufname   = 1
-let g:bufstat_surround_buffers = '[:]'
-let g:bufstat_surround_flags = ':'
-let g:bufstat_join_string = ' '
-let g:bufstat_sort_function = "BufstatSortNumeric"
-let g:bufstat_update_old_windows = 1
-map <C-Left>  <plug>bufstat_scroll_left
-map <C-Right> <plug>bufstat_scroll_right
-
-"--- indexer ---"
+"---- indexer ---- {{
 let g:easytags_cmd = $HOME.'/bin/ctags'
 let g:indexer_indexerListFilename = '~/.indexer_files'
 "let g:indexer_ctagsCommandLineOptions = ''   "default: --c++-kinds=+p+l --fields=+iaS --extra=+q
 let g:indexer_ctagsJustAppendTagsAtFileSave = 1
+"}}
 
-"--- MRU ---"
+"---- MRU ---- {{
 let MRU_Max_Entries = 400
-map <leader>r :MRU<CR>
+map <Leader>r :MRU<CR>
+amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab>r   <Leader>r
+"}}
 
-"--- netrw ---"
+"---- netrw ---- {{
 if v:version > 702
     let g:netrw_home = "~"
     let g:netrw_ctags =$HOME.'/bin/ctags'
@@ -395,39 +450,59 @@ else " do not load netrw if ver < 7.2
     let g:loaded_netrw = 1
     let g:loaded_netrwPlugin = 1
 endif
+"}}
 
-"--- delimitMate
+"---- delimitMate ---- {{
 let delimitMate_autoclose = 1
 inoremap <Leader>dc <C-C>:DelimitMateSwitch<CR>a
  noremap <Leader>dc      :DelimitMateSwitch<CR>
+amenu <silent> .100.1 &Cometsong.&Delimiters.&DelimitMateSwitch<Tab>dc   :DelimitMateSwitch<CR> 
+"}}
 
-"--- vim-session plugin settings ---"
+"---- vim-session plugin settings ---- {{
 let g:session_directory = $HOME . '/.vimsessions/'
 let g:session_autosave  = 'yes'
 let g:session_autoload  = 'no'
 let g:session_command_aliases = 1
-"--- v:this_session var does not get expanded, just used as filename
- "noremap <Leader>sst      :SaveSession v:this_session<CR>
-"inoremap <Leader>sst <C-C>:SaveSession v:this_session<CR>
- "noremap <F7>             :SaveSession v:this_session<CR>
-"inoremap <F7>        <C-C>:SaveSession v:this_session<CR>
+"}}
+
+"---- write viminfo file alongside sessions to also save marks and ---- {{
+function! SaveSessionFolds()
+    let g:sessname = "untitled"
+    if strlen(v:this_session) 
+        setlocal viminfo='1000,f1,<1000,:25,@25,/25,s50
+        exe "SaveSession"
+    else
+        :SaveSession g:sessname
+    endif
+    exe "wviminfo! ".v:this_session.".viminfo"
+    "echo "Saved session as: ". expand(v:this_session)
+endfunction
  noremap <Leader>sv       :SaveSession
-inoremap <Leader>sv  <C-C>:SaveSession
+ noremap <Leader>ss       :call SaveSessionFolds()<CR>
  noremap <Leader>so       :OpenSession
-inoremap <Leader>so  <C-C>:OpenSession
- noremap <Leader>ms       :mksession! ~/.vimsessions/untitled.vim<CR>
-inoremap <Leader>ms  <C-C>:mksession! ~/.vimsessions/untitled.vim<CR>
- noremap <C-F7>           :mksession! ~/.vimsessions/untitled.vim<CR>
-inoremap <C-F7>      <C-C>:mksession! ~/.vimsessions/untitled.vim<CR>
+ noremap <Leader>rv       :exe "rviminfo! ".v:this_session.".viminfo"<CR>
+ noremap <Leader>wv       :exe "wviminfo! ".v:this_session.".viminfo"<CR>
+
+amenu <silent> .190 &Cometsong.&Sessions.&Save\ Session\ with\ Folds<Tab>ss  <Leader>ss
+amenu <silent> .190 &Cometsong.&Sessions.&Open\ Session<Tab>so  <Leader>so
+amenu <silent> .190 &Cometsong.&Sessions.&Save\ Session<Tab>sv  <Leader>sv
+amenu <silent> .190 &Cometsong.&Sessions.&Write\ viminfo<Tab>wv  <Leader>wv
+amenu <silent> .190 &Cometsong.&Sessions.&Read\ viminfo<Tab>rv  <Leader>rv
+
+ "noremap <Leader>ms       :mksession! ~/.vimsessions/untitled.vim<CR>
+"inoremap <Leader>ms  <C-C>:mksession! ~/.vimsessions/untitled.vim<CR>
 
 "--- if v:this_session, also save marks to the same folder (for use with 'bin/vims')
 "au VimLeave * exe 'if strlen(v:this_session) | exe "wviminfo!  " . v:this_session . ".viminfo" | endif '
 "au VimLeave * exe 'if strlen(v:this_session) | exe "mksession! " . v:this_session | endif '
+"}}
 
-"--- CtrlP
+"---- CtrlP ---- {{
 let g:ctrlp_working_path_mode = 1
+"}}
 
-"--- Powerline
+"---- Powerline ---- {{
 "let g:Powerline_symbols = 'fancy'
 "" PL#Theme... mod default to change order and add 'new' segments!
 "call Pl#Theme#Create(
@@ -448,11 +523,32 @@ let g:ctrlp_working_path_mode = 1
 "        \ , 'lineinfo'
 "        \)
 "    \)
+"}}
 
-"--- IndentGuides
+"---- IndentGuides ---- {{
 " this mapping (ig) is also the default
 nnoremap <Leader>ig      :IndentGuidesToggle<CR>
 inoremap <Leader>ig <C-C>:IndentGuidesToggle<CR>i
+amenu .350 &Cometsong.Indent\ &Guides<Tab>ig  <Leader>ig
+"}}
+
+"---- Menu entries for HotKeys listed... TODO bother to fix this, just for fun :)  {{
+function! ListMenuItems () 
+    let menu_name = "&Cometsong"
+    let file_name = "~/.vimrc"
+    let theleader = exists('mapleader') ? mapleader : 'foo'
+    echo "leader: " theleader
+
+    "let menu_list = 'grep -h "' . menu_name . '" ' . file_name
+    let menu_list = '!grep -h "' . menu_name . '" ' . file_name .
+        \ '| sed -e "s/^.*(\' . menu_name . ')//"' .
+        \ '| sed -e "s/\\//"'
+
+    echo menu_list
+    execute menu_list
+endfunction
+
+"}}
 
 
 "  }}}
