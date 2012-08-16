@@ -118,21 +118,12 @@
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim.git
-[submodule "vim/bundle/TinyBufferExplorer"]
-	path = vim/bundle/TinyBufferExplorer
-	url = git://github.com/vim-scripts/TinyBufferExplorer.git
 [submodule "vim/bundle/minibufexpl"]
 	path = vim/bundle/minibufexpl
 	url = git://github.com/fholgado/minibufexpl.vim.git
 [submodule "vim/bundle/bufkill"]
 	path = vim/bundle/bufkill
 	url = git://github.com/vim-scripts/bufkill.vim.git
-[submodule "vim/bundle/bufmap"]
-	path = vim/bundle/bufmap
-	url = git://github.com/vim-scripts/bufmap.vim.git
-[submodule "vim/bundle/buffergator"]
-	path = vim/bundle/buffergator
-	url = git://github.com/jeetsukumaran/vim-buffergator.git
 [submodule "vim/bundle/VisIncr"]
 	path = vim/bundle/VisIncr
 	url = git://github.com/vim-scripts/VisIncr.git
@@ -148,3 +139,6 @@
 [submodule "vim/bundle/python-mode"]
 	path = vim/bundle/python-mode
 	url = git://github.com/klen/python-mode.git
+[submodule "vim/bundle/xptemplate"]
+	path = vim/bundle/xptemplate
+	url = git@github.com:JaminOne/xptemplate.git

@@ -127,7 +127,7 @@ au BufRead *.cgi    call CGICheck()
 if v:version > 700
   set nocursorline
   set nocursorcolumn
-  hi  CursorLine   cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=undercurl 
+  hi  CursorLine   cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=undercurl
   hi  CursorColumn cterm=underline ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE gui=undercurl
    noremap <silent> <Leader>curt      :set   cursorcolumn!  cursorline! <CR>
   inoremap <silent> <Leader>curt <Esc>:set   cursorcolumn!  cursorline! <CR>a
@@ -163,6 +163,7 @@ if has("autocmd")
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType vim Fold {{
   autocmd BufNewFile,BufRead *.rss setfiletype xml
   " }}
 
@@ -196,7 +197,7 @@ amenu <silent> .300 &Cometsong.&Tab\ style\ (spaces\ 4)  :call Tabstyle_spaces()
 function! Tabstyle_set(ts)
   if exists("a:ts")
     let tsize = a:ts
-  else 
+  else
     let tsize = 4
   endif
 
@@ -244,27 +245,27 @@ vnoremap / /\v
 "--+ surround visual content with additional spaces
 "--+ See also plugin AutoComplete toggle below.
 inoremap  <Leader>(   (  )<Esc>hi
- noremap  <Leader>(  i(  )<Esc>hi
+nnoremap  <Leader>(  i(  )<Esc>hi
 inoremap  <Leader>)   ()<Esc>i
- noremap  <Leader>)  i()<Esc>i
+nnoremap  <Leader>)  i()<Esc>i
 imenu <silent> .130 &Cometsong.&Delimiters.&Parentheses:\ (\ \ )<Tab>(  <Leader>(
 nmenu <silent> .130 &Cometsong.&Delimiters.&Parentheses:\ (\ \ )<Tab>(  <Leader>(
 imenu <silent> .130 &Cometsong.&Delimiters.&Parentheses:\ ()<Tab>)      <Leader>)
 nmenu <silent> .130 &Cometsong.&Delimiters.&Parentheses:\ ()<Tab>)      <Leader>)
 
 inoremap  <Leader>[   [  ]<Esc>hi
- noremap  <Leader>[  i[  ]<Esc>hi
+nnoremap  <Leader>[  i[  ]<Esc>hi
 inoremap  <Leader>]   []<Esc>i
- noremap  <Leader>]  i[]<Esc>i
+nnoremap  <Leader>]  i[]<Esc>i
 imenu <silent> .130 &Cometsong.&Delimiters.&Brackets:\ [\ \ ]<Tab>[     <Leader>[
 nmenu <silent> .130 &Cometsong.&Delimiters.&Brackets:\ [\ \ ]<Tab>[     <Leader>[
 imenu <silent> .130 &Cometsong.&Delimiters.&Brackets:\ []<Tab>]         <Leader>]
 nmenu <silent> .130 &Cometsong.&Delimiters.&Brackets:\ []<Tab>]         <Leader>]
 
-inoremap  <Leader>{  { }<Esc>hi 
-nnoremap  <Leader>{ i{ }<Esc>hi 
+inoremap  <Leader>{  { }<Esc>hi
+nnoremap  <Leader>{ i{ }<Esc>hi
 inoremap  <Leader>}  {}<Esc>i
-nnoremap  <Leader>} i{}<Esc>i  
+nnoremap  <Leader>} i{}<Esc>i
 imenu <silent> .130 &Cometsong.&Delimiters.&Braces:\ {\ \ }<Tab>{       <Leader>{
 nmenu <silent> .130 &Cometsong.&Delimiters.&Braces:\ {\ \ }<Tab>{       <Leader>{
 imenu <silent> .130 &Cometsong.&Delimiters.&Braces:\ {}<Tab>}           <Leader>}
@@ -355,8 +356,7 @@ inoremap <C-d> <C-C>ddi
  noremap <C-d> dd
 
 "--- Q=quit-all instead of going to Ex mod
-inoremap Q :qa<CR>
- noremap Q :qa<CR>
+noremap Q :qa<CR>
 
 "  }}}
 "-------------------------------------------------------------------------------
@@ -364,13 +364,30 @@ inoremap Q :qa<CR>
 
 "---- Load all Plugins using the Pathogen plugin ---- {{
 call pathogen#infect()
+call pathogen#helptags()
 "}}
 
 "---- Headlights ---- {{
-"let g:loaded_headlights = 1
-let g:headlights_use_plugin_menu = 1
-let g:headlights_show_commands = 1
-" loaded only in gui, see options there
+let g:headlights_debug_mode = 1
+if has("python")
+python << endpython
+import vim, sys
+if (sys.version_info[0:2]) < (2, 6):
+  vim.command("let g:loaded_headlights = 1")
+else:
+  vim.command("let g:headlights_use_plugin_menu = 1")
+  vim.command("let g:headlights_show_commands = 1")
+endpython
+endif
+"}}
+
+
+"---- Yankring ---- {{
+" custom mappings (don't screw with my Y=y$ and my ctrl-P plugin!)
+function! YRRunAfterMaps()
+  nnoremap Y      :<C-U>YRYankCount 'y$'<CR>
+  nnoremap <c-p>  :CtrlP<CR>
+endfunction
 "}}
 
 "---- NERDTreeOptions ---- {{
@@ -403,6 +420,23 @@ amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tt  <Leader>tt
 "let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 "}}
 
+"---- Pymode ---- {{
+let g:pymode_lint_hold = 0
+let g:pymode_lint_onfly = 0
+let g:pymode_lint_write = 0
+let g:pymode_folding = 1
+
+let g:pymode_rope_goto_def_newwin = "new"
+let g:pymode_rope_vim_completion = 1
+let g:pymode_rope_extended_complete = 1
+
+let g:pymode_syntax_builtin_objs = 0
+let g:pymode_syntax_builtin_funcs = 1
+let g:pymode_syntax_print_as_function = 1
+
+let g:pymode_utils_whitespaces = 0
+"}}
+
 "---- Perl-Support ---- {{
 let g:Perl_GlobalTemplateFile     = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
 let g:Perl_LocalTemplateFile      = $HOME.'/.vim/misc/perl-support/Templates'
@@ -425,14 +459,6 @@ let g:BASH_TemplateOverwrittenMsg = 'no'
 let g:BASH_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
 "}}
 
-"---- TinyBufferExplorer ---- {{
-nnoremap <Leader>be       :TBE<CR>
-inoremap <Leader>be  <C-C>:TBE<CR>i
-nnoremap <Leader>tbe      :TBE<CR>
-inoremap <Leader>tbe <C-C>:TBE<CR>i
-amenu <silent> .30 &Cometsong.&TinyBufferExplorer\ Toggle<Tab>be  <Leader>be
-"}}
-
 "---- indexer ---- {{
 let g:easytags_cmd = $HOME.'/bin/ctags'
 let g:indexer_indexerListFilename = '~/.indexer_files'
@@ -448,14 +474,14 @@ amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab>r   <Leader>r
 
 "---- netrw ---- {{
 if v:version > 702
-    let g:netrw_home = "~"
-    let g:netrw_ctags =$HOME.'/bin/ctags'
-    let g:netrw_dirhistmax = 10
-    let g:netrw_special_syntax = 1
-    let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
+  let g:netrw_home = "~"
+  let g:netrw_ctags =$HOME.'/bin/ctags'
+  let g:netrw_dirhistmax = 10
+  let g:netrw_special_syntax = 1
+  let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
 else " do not load netrw if ver < 7.2
-    let g:loaded_netrw = 1
-    let g:loaded_netrwPlugin = 1
+  let g:loaded_netrw = 1
+  let g:loaded_netrwPlugin = 1
 endif
 "}}
 
@@ -463,7 +489,7 @@ endif
 let delimitMate_autoclose = 1
 inoremap <Leader>dc <C-C>:DelimitMateSwitch<CR>a
  noremap <Leader>dc      :DelimitMateSwitch<CR>
-amenu <silent> .100.1 &Cometsong.&Delimiters.&DelimitMateSwitch<Tab>dc   :DelimitMateSwitch<CR> 
+amenu <silent> .100.1 &Cometsong.&Delimiters.&DelimitMateSwitch<Tab>dc   :DelimitMateSwitch<CR>
 "}}
 
 "---- vim-session plugin settings ---- {{
@@ -473,17 +499,18 @@ let g:session_autoload  = 'no'
 let g:session_command_aliases = 1
 "}}
 
-"---- write viminfo file alongside sessions to also save marks and ---- {{
+"---- SaveSessionFolds ---- {{
+" write viminfo file alongside sessions to also save marks
 function! SaveSessionFolds()
-    let g:sessname = "untitled"
-    if strlen(v:this_session) 
-        setlocal viminfo='1000,f1,<1000,:25,@25,/25,s50
-        exe "SaveSession"
-    else
-        :SaveSession g:sessname
-    endif
-    exe "wviminfo! ".v:this_session.".viminfo"
-    "echo "Saved session as: ". expand(v:this_session)
+  let g:sessname = "untitled"
+  if strlen(v:this_session)
+    setlocal viminfo='1000,f1,<1000,:25,@25,/25,s50
+    exe "SaveSession"
+  else
+    :SaveSession g:sessname
+  endif
+  exe "wviminfo! ".v:this_session.".viminfo"
+  "echo "Saved session as: ". expand(v:this_session)
 endfunction
  noremap <Leader>sv       :SaveSession
  noremap <Leader>ss       :call SaveSessionFolds()<CR>
@@ -506,7 +533,9 @@ amenu <silent> .190 &Cometsong.&Sessions.&Read\ viminfo<Tab>rv  <Leader>rv
 "}}
 
 "---- CtrlP ---- {{
-let g:ctrlp_working_path_mode = 1
+let b:ctrlp_working_path_mode = 1
+let g:ctrlp_regexp = 1
+let g:ctrlp_map = '<c-p>'
 "}}
 
 "---- Powerline ---- {{
@@ -539,24 +568,37 @@ inoremap <Leader>ig <C-C>:IndentGuidesToggle<CR>i
 amenu .350 &Cometsong.Indent\ &Guides<Tab>ig  <Leader>ig
 "}}
 
+"---- XPTemplate ---- {{
+let g:xptemplate_vars=
+    \  '$author=B.Leopold (cometsong)'
+    \. '&$email=benjamin (at) cometsong (dot) net'
+    \. '&$author_head=AUTHOR:  '. $author
+    \. '&$email_head=EMAIL:  '. $email
+    "\. '&$foo=bar'
+    "!! Vars other than 'author' and 'email' do not get set.
+"amenu .142 &Cometsong.&XPTemplate.&Keymaps<Tab>XPT  <C-r>
+"}}
+
 "---- Menu entries for HotKeys listed... TODO bother to fix this, just for fun :)  {{
-function! ListMenuItems () 
-    let menu_name = "&Cometsong"
-    let file_name = "~/.vimrc"
-    let theleader = exists('mapleader') ? mapleader : 'foo'
-    echo "leader: " theleader
+function! ListMenuItems ()
+  let menu_name = "&Cometsong"
+  let file_name = "~/.vimrc"
+  let theleader = exists('mapleader') ? mapleader : '<ldr>'
+  echo "leader: " theleader
 
-    "let menu_list = 'grep -h "' . menu_name . '" ' . file_name
-    let menu_list = '!grep -h "' . menu_name . '" ' . file_name .
-        \ '| sed -e "s/^.*(\' . menu_name . ')//"' .
-        \ '| sed -e "s/\\//"'
+  let menu_list = 'grep -h "' . menu_name . '" ' . file_name . '| grep -v "'. menu_name .'^\.-"'
+  let menu_show = '!'. menu_list .' | sed -E "s/^.*(\' . menu_name . '\.)//" '
+"  .
+"     \ '| sed -e "s/^.*(\' . menu_name . ')//"' .
+"     \ '| sed -e "s/\\//"'
 
-    echo menu_list
-    execute menu_list
+  echo menu_list
+  echo menu_show
+  execute menu_show
 endfunction
 
 "}}
 
 
-"  }}}
+"}}}
 "-------------------------------------------------------------------------------
