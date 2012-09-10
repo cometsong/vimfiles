@@ -362,6 +362,17 @@ noremap Q :qa<CR>
 "-------------------------------------------------------------------------------
 "--- Plugged In  {{{
 
+"---- Define invalid plugins ---- {{
+
+" headlights
+if has("gui_running")
+  let g:loaded_headlights = 0
+else
+  let g:loaded_headlights = 1
+endif
+
+"}}
+
 "---- Load all Plugins using the Pathogen plugin ---- {{
 call pathogen#infect()
 call pathogen#helptags()
