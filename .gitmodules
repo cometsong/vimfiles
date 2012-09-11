@@ -39,22 +39,19 @@
 	url = git://github.com/vim-scripts/reload.vim.git
 [submodule "vim/bundle/simplefold"]
 	path = vim/bundle/simplefold
-	url = git@github.com:JaminOne/vim-simplefold.git
+	url = git@github.com:cometsong/vim-simplefold.git
 [submodule "vim/bundle/smartbd"]
 	path = vim/bundle/smartbd
 	url = git://github.com/vim-scripts/smartbd.git
 [submodule "vim/bundle/bash-support.vim"]
 	path = vim/bundle/bash-support.vim
-	url = git@github.com:JaminOne/bash-support.vim.git
+	url = git@github.com:cometsong/bash-support.vim.git
 [submodule "vim/bundle/NERDcommenter"]
 	path = vim/bundle/NERDcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/perl-support.vim"]
 	path = vim/bundle/perl-support.vim
-	url = git@github.com:JaminOne/perl-support.vim.git
-[submodule "vim/bundle/indexer"]
-	path = vim/bundle/indexer
-	url = git://github.com/vim-scripts/indexer.tar.gz.git
+	url = git@github.com:cometsong/perl-support.vim.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
@@ -78,7 +75,7 @@
 	url = git://github.com/AndrewRadev/ack.vim.git
 [submodule "vim/bundle/CommentFrame.vim"]
 	path = vim/bundle/CommentFrame.vim
-	url = git@github.com:JaminOne/CommentFrame.vim.git
+	url = git@github.com:cometsong/CommentFrame.vim.git
 [submodule "vim/bundle/Vim-JDE"]
 	path = vim/bundle/Vim-JDE
 	url = git://github.com/vim-scripts/Vim-JDE.git
@@ -102,13 +99,13 @@
 	url = git://github.com/vim-scripts/ZoomWin.git
 [submodule "vim/bundle/powerline"]
 	path = vim/bundle/powerline
-	url = git@github.com:JaminOne/vim-powerline.git
+	url = git@github.com:cometsong/vim-powerline.git
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
 [submodule "vim/bundle/yankring"]
 	path = vim/bundle/yankring
-	url = git@github.com:JaminOne/YankRing.git
+	url = git@github.com:cometsong/YankRing.git
 [submodule "vim/bundle/Buffet.vim"]
 	path = vim/bundle/Buffet.vim
 	url = git://github.com/sandeepcr529/Buffet.vim.git
@@ -141,4 +138,7 @@
 	url = git://github.com/klen/python-mode.git
 [submodule "vim/bundle/xptemplate"]
 	path = vim/bundle/xptemplate
-	url = git@github.com:JaminOne/xptemplate.git
+	url = git@github.com:cometsong/xptemplate.git
+[submodule "vim/bundle/ultisnips"]
+	path = vim/bundle/ultisnips
+	url = git://github.com/SirVer/ultisnips.git

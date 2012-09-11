@@ -140,16 +140,22 @@ if has("autocmd")
   " The current directory is the directory of the file in the current window.
   autocmd BufEnter * :lchdir %:p:h
 
-  " When vimrc is edited, reload it
-  function! Reload_vimrc()
-    source ~/.vimrc
-    source ~/.gvimrc
-  endfunction
+  " When vimrc is edited, reload it  
+  autocmd! Bufwritepost vimrc  source ~/.vimrc
+  if has("gui_running")
+    autocmd! Bufwritepost vimrc  source ~/.gvimrc
+  endif
+  " Using this function gives error on re-creating a function that is running.
+  "function! Reload_vimrc()
+  "  source ~/.vimrc
+  "  if has("gui_running")
+  "    source ~/.gvimrc
+  "  endif
+  "endfunction
   "autocmd! Bufwritepost  vimrc  :call Reload_vimrc()
   "autocmd! Bufwritepost  gvimrc :call Reload_vimrc()
-  autocmd! Bufwritepost  vimrc  :source ~/.vimrc | :source ~/.gvimrc
-  autocmd! Bufwritepost  gvimrc :source ~/.vimrc | :source ~/.gvimrc
 
+  
   " On plain text files, no keyword chars, because we don't want tab completion
   " commented out because we DO want word boundaries to actual word boundaries
   "  au BufNewFile,BufRead *.txt,*.log set iskeyword=
@@ -365,11 +371,11 @@ noremap Q :qa<CR>
 "---- Define invalid plugins ---- {{
 
 " headlights
-if has("gui_running")
-  let g:loaded_headlights = 0
-else
-  let g:loaded_headlights = 1
-endif
+"if has("gui_running")
+"  let g:loaded_headlights = 0
+"else
+"  let g:loaded_headlights = 1
+"endif
 
 "}}
 
