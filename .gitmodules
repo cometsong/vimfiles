@@ -19,9 +19,6 @@
 [submodule "vim/bundle/grep.vim"]
 	path = vim/bundle/grep.vim
 	url = git://github.com/vim-scripts/grep.vim.git
-[submodule "vim/bundle/html5.vim"]
-	path = vim/bundle/html5.vim
-	url = git://github.com/vim-scripts/html5.vim.git
 [submodule "vim/bundle/iptables"]
 	path = vim/bundle/iptables
 	url = git://github.com/vim-scripts/iptables.git
@@ -40,9 +37,6 @@
 [submodule "vim/bundle/simplefold"]
 	path = vim/bundle/simplefold
 	url = git@github.com:cometsong/vim-simplefold.git
-[submodule "vim/bundle/smartbd"]
-	path = vim/bundle/smartbd
-	url = git://github.com/vim-scripts/smartbd.git
 [submodule "vim/bundle/bash-support.vim"]
 	path = vim/bundle/bash-support.vim
 	url = git@github.com:cometsong/bash-support.vim.git
@@ -64,9 +58,6 @@
 [submodule "vim/bundle/vim-session"]
 	path = vim/bundle/vim-session
 	url = git://github.com/xolox/vim-session.git
-[submodule "vim/bundle/better-snipmate-snippet"]
-	path = vim/bundle/better-snipmate-snippet
-	url = git://github.com/vim-scripts/better-snipmate-snippet.git
 [submodule "vim/bundle/ShowMarks7"]
 	path = vim/bundle/ShowMarks7
 	url = git://github.com/vim-scripts/ShowMarks7.git
@@ -79,9 +70,6 @@
 [submodule "vim/bundle/Vim-JDE"]
 	path = vim/bundle/Vim-JDE
 	url = git://github.com/vim-scripts/Vim-JDE.git
-[submodule "vim/bundle/gundo"]
-	path = vim/bundle/gundo
-	url = git://github.com/nvie/gundo.vim.git
 [submodule "vim/bundle/camelcasemotion"]
 	path = vim/bundle/camelcasemotion
 	url = git://github.com/vim-scripts/camelcasemotion.git
@@ -106,9 +94,6 @@
 [submodule "vim/bundle/yankring"]
 	path = vim/bundle/yankring
 	url = git@github.com:cometsong/YankRing.git
-[submodule "vim/bundle/Buffet.vim"]
-	path = vim/bundle/Buffet.vim
-	url = git://github.com/sandeepcr529/Buffet.vim.git
 [submodule "vim/bundle/indent-guides"]
 	path = vim/bundle/indent-guides
 	url = git://github.com/mutewinter/vim-indent-guides.git
@@ -139,6 +124,3 @@
 [submodule "vim/bundle/xptemplate"]
 	path = vim/bundle/xptemplate
 	url = git@github.com:cometsong/xptemplate.git
-[submodule "vim/bundle/ultisnips"]
-	path = vim/bundle/ultisnips
-	url = git://github.com/SirVer/ultisnips.git

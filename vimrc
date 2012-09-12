@@ -368,15 +368,12 @@ noremap Q :qa<CR>
 "-------------------------------------------------------------------------------
 "--- Plugged In  {{{
 
-"---- Define invalid plugins ---- {{
-
-" headlights
-"if has("gui_running")
-"  let g:loaded_headlights = 0
-"else
-"  let g:loaded_headlights = 1
-"endif
-
+"---- Disable Invalid Plugins ---- {{
+" python requirements...
+if !has("python") || !has("python3")
+    let g:loaded_headlights = 1   " headlights
+    let g:pymode = 1              " pymode
+endif
 "}}
 
 "---- Load all Plugins using the Pathogen plugin ---- {{
@@ -386,16 +383,6 @@ call pathogen#helptags()
 
 "---- Headlights ---- {{
 let g:headlights_debug_mode = 1
-if has("python")
-python << endpython
-import vim, sys
-if (sys.version_info[0:2]) < (2, 6):
-  vim.command("let g:loaded_headlights = 1")
-else:
-  vim.command("let g:headlights_use_plugin_menu = 1")
-  vim.command("let g:headlights_show_commands = 1")
-endpython
-endif
 "}}
 
 
@@ -406,6 +393,7 @@ function! YRRunAfterMaps()
   nnoremap <c-p>  :CtrlP<CR>
 endfunction
 "}}
+
 
 "---- NERDTreeOptions ---- {{
  noremap <Leader>nt       :NERDTreeToggle<Esc>
@@ -474,13 +462,6 @@ let g:BASH_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
 let g:BASH_MenuHeader             = 'off'
 let g:BASH_TemplateOverwrittenMsg = 'no'
 let g:BASH_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
-"}}
-
-"---- indexer ---- {{
-let g:easytags_cmd = $HOME.'/bin/ctags'
-let g:indexer_indexerListFilename = '~/.indexer_files'
-"let g:indexer_ctagsCommandLineOptions = ''   "default: --c++-kinds=+p+l --fields=+iaS --extra=+q
-let g:indexer_ctagsJustAppendTagsAtFileSave = 1
 "}}
 
 "---- MRU ---- {{
@@ -586,14 +567,17 @@ amenu .350 &Cometsong.Indent\ &Guides<Tab>ig  <Leader>ig
 "}}
 
 "---- XPTemplate ---- {{
+let g:xptemplate_always_show_pum = 1
 let g:xptemplate_vars=
-    \  '$author=B.Leopold (cometsong)'
-    \. '&$email=benjamin (at) cometsong (dot) net'
-    \. '&$author_head=AUTHOR:  '. $author
-    \. '&$email_head=EMAIL:  '. $email
+    \        '$author=B.Leopold (cometsong)'
+    \. '&' . '$email=benjamin (at) cometsong (dot) net'
+    \. '&' . '$author_head=AUTHOR:  '. $author
+    \. '&' . '$email_head=EMAIL:  '. $email
+
     "\. '&$foo=bar'
     "!! Vars other than 'author' and 'email' do not get set.
-"amenu .142 &Cometsong.&XPTemplate.&Keymaps<Tab>XPT  <C-r>
+
+"amenu .142 &Cometsong.&XPTemplate.&Keymaps<Tab>XPT  <C-\>
 "}}
 
 "---- Menu entries for HotKeys listed... TODO bother to fix this, just for fun :)  {{
