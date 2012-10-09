@@ -370,10 +370,9 @@ noremap Q :qa<CR>
 
 "---- Disable Invalid Plugins ---- {{
 " python requirements...
-"if !has("python") || !has("python3")
-"    let g:loaded_headlights = 1   " headlights
-"    let g:pymode = 1              " pymode
-"endif
+if !has("python")
+    let g:pymode = 1              " pymode
+endif
 "}}
 
 "---- Load all Plugins using the Pathogen plugin ---- {{
@@ -422,23 +421,22 @@ amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tt  <Leader>tt
 "}}
 
 "---- Pymode ---- {{
-"let g:pymode = 0            " disable loading pymode
 let g:pymode_lint_hold = 0
-let g:pymode_lint_onfly = 1
+let g:pymode_lint_onfly = 0
 let g:pymode_lint_write = 0
 let g:pymode_folding = 1
 
-let g:pymode_rope = 0
+let g:pymode_rope = 1
+let g:pymode_rope_auto_project = 0
 let g:pymode_rope_guess_project = 0
 let g:pymode_rope_vim_completion = 1
 let g:pymode_rope_extended_complete = 1
-"??? let g:pymode_rope_goto_def_newwin = "new"
+let g:pymode_rope_goto_def_newwin = "vnew"
 
 "let g:pymode_syntax_builtin_objs = 0
-"let g:pymode_syntax_builtin_funcs = 1
-"let g:pymode_syntax_print_as_function = 1
-
-"let g:pymode_utils_whitespaces = 0
+"let g:pymode_syntax_builtin_funcs = 0
+let g:pymode_syntax_print_as_function = 1
+let g:pymode_utils_whitespaces = 0
 "}}
 
 "---- Perl-Support ---- {{
