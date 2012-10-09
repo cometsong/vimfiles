@@ -1,9 +1,0 @@
-perl-completion.vim
-2.42
-/Users/leopold/.vim/ftplugin/perl/perlomni.vim
-/Users/leopold/.vim/plugin/perlomni-data.vim
-/Users/leopold/.vim/plugin/perlomni-util.vim
-/Users/leopold/.vim/bin/grep-hashkeys.pl
-/Users/leopold/.vim/bin/grep-objvar.pl
-/Users/leopold/.vim/bin/grep-pattern.pl
-/Users/leopold/.vim//test.vim

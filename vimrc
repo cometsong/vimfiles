@@ -370,19 +370,15 @@ noremap Q :qa<CR>
 
 "---- Disable Invalid Plugins ---- {{
 " python requirements...
-if !has("python") || !has("python3")
-    let g:loaded_headlights = 1   " headlights
-    let g:pymode = 1              " pymode
-endif
+"if !has("python") || !has("python3")
+"    let g:loaded_headlights = 1   " headlights
+"    let g:pymode = 1              " pymode
+"endif
 "}}
 
 "---- Load all Plugins using the Pathogen plugin ---- {{
 call pathogen#infect()
 call pathogen#helptags()
-"}}
-
-"---- Headlights ---- {{
-let g:headlights_debug_mode = 1
 "}}
 
 
@@ -426,20 +422,23 @@ amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tt  <Leader>tt
 "}}
 
 "---- Pymode ---- {{
+"let g:pymode = 0            " disable loading pymode
 let g:pymode_lint_hold = 0
-let g:pymode_lint_onfly = 0
+let g:pymode_lint_onfly = 1
 let g:pymode_lint_write = 0
 let g:pymode_folding = 1
 
-let g:pymode_rope_goto_def_newwin = "new"
+let g:pymode_rope = 0
+let g:pymode_rope_guess_project = 0
 let g:pymode_rope_vim_completion = 1
 let g:pymode_rope_extended_complete = 1
+"??? let g:pymode_rope_goto_def_newwin = "new"
 
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 1
-let g:pymode_syntax_print_as_function = 1
+"let g:pymode_syntax_builtin_objs = 0
+"let g:pymode_syntax_builtin_funcs = 1
+"let g:pymode_syntax_print_as_function = 1
 
-let g:pymode_utils_whitespaces = 0
+"let g:pymode_utils_whitespaces = 0
 "}}
 
 "---- Perl-Support ---- {{
@@ -566,19 +565,6 @@ inoremap <Leader>ig <C-C>:IndentGuidesToggle<CR>i
 amenu .350 &Cometsong.Indent\ &Guides<Tab>ig  <Leader>ig
 "}}
 
-"---- XPTemplate ---- {{
-let g:xptemplate_always_show_pum = 1
-let g:xptemplate_vars=
-    \        '$author=B.Leopold (cometsong)'
-    \. '&' . '$email=benjamin (at) cometsong (dot) net'
-    \. '&' . '$author_head=AUTHOR:  '. $author
-    \. '&' . '$email_head=EMAIL:  '. $email
-
-    "\. '&$foo=bar'
-    "!! Vars other than 'author' and 'email' do not get set.
-
-"amenu .142 &Cometsong.&XPTemplate.&Keymaps<Tab>XPT  <C-\>
-"}}
 
 "---- Menu entries for HotKeys listed... TODO bother to fix this, just for fun :)  {{
 function! ListMenuItems ()
