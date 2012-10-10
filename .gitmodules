@@ -139,3 +139,6 @@
 [submodule "vim/bundle/archive"]
 	path = vim/bundle/archive
 	url = git://github.com/ervandew/archive.git
+[submodule "vim/bundle/undotree"]
+	path = vim/bundle/undotree
+	url = git://github.com/mbbill/undotree.git

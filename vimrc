@@ -390,6 +390,12 @@ endfunction
 "}}
 
 
+"---- UndoTree ---- {{
+inoremap <Leader>ut  <C-C>:UndotreeToggle<cr>
+nnoremap <Leader>ut       :UndotreeToggle<cr>
+"}}
+
+
 "---- NERDTreeOptions ---- {{
  noremap <Leader>nt       :NERDTreeToggle<Esc>
 inoremap <Leader>nt <C-C> :NERDTreeToggle<Esc>
