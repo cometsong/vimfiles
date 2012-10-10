@@ -57,6 +57,13 @@ set laststatus=2      " always show status line
 set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:⏎
 set nolist                          " do not show trailinginsert mode characters
 
+"--- persistent undo storage for files after they are closed
+if has("persistent_undo")
+  set undofile          " Maintain undo history between sessions
+  set undodir=$HOME/.vimundos   " dir to store undo files in
+endif
+
+
 "-------------------------------------------------------------------------------
 "--- Color specification files (in $HOME/.vim/colors)
 "    -> colorscheme COLORSCHEME-File-Name
