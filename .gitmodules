@@ -112,12 +112,9 @@
 [submodule "vim/bundle/vim-abolish"]
 	path = vim/bundle/vim-abolish
 	url = git://github.com/tpope/vim-abolish.git
-[submodule "vim/bundle/python-mode"]
-	path = vim/bundle/python-mode
-	url = git://github.com/klen/python-mode.git
 [submodule "vim/bundle/xptemplate"]
 	path = vim/bundle/xptemplate
-	url = git@github.com:cometsong/xptemplate.git
+	url = git://github.com/drmingdrmer/xptemplate.git
 [submodule "vim/bundle/snipmate"]
 	path = vim/bundle/snipmate
 	url = git://github.com/garbas/vim-snipmate.git
@@ -142,3 +139,15 @@
 [submodule "vim/bundle/undotree"]
 	path = vim/bundle/undotree
 	url = git://github.com/mbbill/undotree.git
+[submodule "vim/bundle/pyref"]
+	path = vim/bundle/pyref
+	url = git://github.com/xolox/vim-pyref.git
+[submodule "vim/bundle/pydiction"]
+	path = vim/bundle/pydiction
+	url = git://github.com/rkulla/pydiction.git
+[submodule "vim/bundle/jedi-python"]
+	path = vim/bundle/jedi-python
+	url = git://github.com/davidhalter/jedi-vim.git
+[submodule "vim/bundle/tasklist"]
+	path = vim/bundle/tasklist
+	url = git://github.com/vim-scripts/TaskList.vim.git
