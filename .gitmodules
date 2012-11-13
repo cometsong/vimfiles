@@ -151,3 +151,6 @@
 [submodule "vim/bundle/tasklist"]
 	path = vim/bundle/tasklist
 	url = git://github.com/vim-scripts/TaskList.vim.git
+[submodule "vim/bundle/python-SimpylFold"]
+	path = vim/bundle/python-SimpylFold
+	url = git://github.com/tmhedberg/SimpylFold.git
