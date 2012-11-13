@@ -84,7 +84,7 @@
 	url = git://github.com/vim-scripts/ZoomWin.git
 [submodule "vim/bundle/powerline"]
 	path = vim/bundle/powerline
-	url = git@github.com:cometsong/vim-powerline.git
+	url = git://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
