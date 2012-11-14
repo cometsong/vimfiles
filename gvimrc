@@ -1,12 +1,13 @@
 "-------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 " GUI VIM Settings
 "-------------------------------------------------------------------------------
 
 
 "-------------------------------------------------------------------------------
-"--- OS Specific {{{
+"--- OS Specific {{{1
 if has("gui_macvim")
-"    set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
+    "set fuoptions=maxvert,maxhorz   " fullscreen options (MacVim only), resized window when changed to fullscreen
     "set guifont=Monaco\ 8           " set font and size
     set guifont=Menlo\ for\ Powerline
 
@@ -16,9 +17,9 @@ elseif has("gui_gtk2")
 elseif has("x11")
 elseif has("gui_win32")
 end
-"}}}
+"}}}1
 "--------------------------------------------------------------------------------
-"--- General {{{
+"--- General {{{1
 
 syntax on
 set nohlsearch                      " Don't highlight search terms
@@ -30,10 +31,9 @@ set anti                            " Antialias font
 " Default Starting size of window
 set columns=150 
 set lines=60
-"}}}
+"}}}1
 
-"---- Plugins {{{
+"---- Plugins {{{1
 " these settings are gui-specific (clearly)
 
-"}}}
-
+"}}}1
