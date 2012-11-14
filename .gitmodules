@@ -13,9 +13,6 @@
 [submodule "vim/bundle/SQLUtilities"]
 	path = vim/bundle/SQLUtilities
 	url = git://github.com/vim-scripts/SQLUtilities.git
-[submodule "vim/bundle/SuperTab-continued"]
-	path = vim/bundle/SuperTab-continued
-	url = git://github.com/vim-scripts/SuperTab-continued..git
 [submodule "vim/bundle/grep.vim"]
 	path = vim/bundle/grep.vim
 	url = git://github.com/vim-scripts/grep.vim.git
@@ -154,3 +151,6 @@
 [submodule "vim/bundle/python-SimpylFold"]
 	path = vim/bundle/python-SimpylFold
 	url = git://github.com/tmhedberg/SimpylFold.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
