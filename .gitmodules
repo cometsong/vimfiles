@@ -157,9 +157,6 @@
 [submodule "vim/bundle/autocomplpop"]
 	path = vim/bundle/autocomplpop
 	url = git@github.com:cometsong/vim-autocomplpop.git
-[submodule "vim/bundle/pydoc"]
-	path = vim/bundle/pydoc
-	url = git://github.com/fs111/pydoc.vim.git
 [submodule "vim/bundle/signature"]
 	path = vim/bundle/signature
 	url = git://github.com/kshenoy/vim-signature.git
