@@ -136,9 +136,6 @@
 [submodule "vim/bundle/pyref"]
 	path = vim/bundle/pyref
 	url = git://github.com/xolox/vim-pyref.git
-[submodule "vim/bundle/pydiction"]
-	path = vim/bundle/pydiction
-	url = git://github.com/rkulla/pydiction.git
 [submodule "vim/bundle/jedi-python"]
 	path = vim/bundle/jedi-python
 	url = git://github.com/davidhalter/jedi-vim.git
