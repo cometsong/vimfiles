@@ -82,9 +82,6 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
-[submodule "vim/bundle/yankring"]
-	path = vim/bundle/yankring
-	url = git@github.com:cometsong/YankRing.git
 [submodule "vim/bundle/indent-guides"]
 	path = vim/bundle/indent-guides
 	url = git://github.com/mutewinter/vim-indent-guides.git
