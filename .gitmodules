@@ -157,3 +157,6 @@
 [submodule "vim/bundle/eunuch"]
 	path = vim/bundle/eunuch
 	url = git://github.com/tpope/vim-eunuch.git
+[submodule "vim/bundle/python_fold_compact"]
+	path = vim/bundle/python_fold_compact
+	url = git://github.com/sunsol/vim_python_fold_compact.git
