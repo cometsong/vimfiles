@@ -160,3 +160,6 @@
 [submodule "vim/bundle/python_fold_compact"]
 	path = vim/bundle/python_fold_compact
 	url = git://github.com/sunsol/vim_python_fold_compact.git
+[submodule "vim/bundle/gitv"]
+	path = vim/bundle/gitv
+	url = git://github.com/gregsexton/gitv.git
