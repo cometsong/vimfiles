@@ -22,14 +22,15 @@ end
 "--- General {{{1
 
 syntax on
-set nohlsearch                      " Don't highlight search terms
+set hlsearch                        " Highlight search terms
 colorscheme metacosm                " dark and stylin colors
 set guioptions+=mT                  " show menu and toolbar
-set showtabline=1                   " show tabline only if there are 2 or more.
+set guioptions-=e                   " never show tabline
+set showtabline=0                   " never show tabline
 set anti                            " Antialias font
 
 " Default Starting size of window
-set columns=150 
+set columns=120 
 set lines=60
 "}}}1
 
