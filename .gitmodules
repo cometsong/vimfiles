@@ -85,9 +85,6 @@
 [submodule "vim/bundle/indent-guides"]
 	path = vim/bundle/indent-guides
 	url = git://github.com/mutewinter/vim-indent-guides.git
-[submodule "vim/bundle/ctrlp.vim"]
-	path = vim/bundle/ctrlp.vim
-	url = git://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/minibufexpl"]
 	path = vim/bundle/minibufexpl
 	url = git://github.com/fholgado/minibufexpl.vim.git
@@ -166,3 +163,9 @@
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = vim/bundle/rainbow_parentheses
 	url = git://github.com/kien/rainbow_parentheses.vim.git
+[submodule "vim/bundle/bccalc"]
+	path = vim/bundle/bccalc
+	url = git://github.com/vim-scripts/bccalc.vim.git
+[submodule "vim/bundle/FuzzyFinder"]
+	path = vim/bundle/FuzzyFinder
+	url = git://github.com/vim-scripts/FuzzyFinder.git
