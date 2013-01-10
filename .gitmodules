@@ -10,9 +10,6 @@
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/SQLUtilities"]
-	path = vim/bundle/SQLUtilities
-	url = git://github.com/vim-scripts/SQLUtilities.git
 [submodule "vim/bundle/grep.vim"]
 	path = vim/bundle/grep.vim
 	url = git://github.com/vim-scripts/grep.vim.git
@@ -28,9 +25,6 @@
 [submodule "vim/bundle/numbered"]
 	path = vim/bundle/numbered
 	url = git://github.com/vim-scripts/numbered.vim.git
-[submodule "vim/bundle/reload"]
-	path = vim/bundle/reload
-	url = git://github.com/vim-scripts/reload.vim.git
 [submodule "vim/bundle/simplefold"]
 	path = vim/bundle/simplefold
 	url = git@github.com:cometsong/vim-simplefold.git
@@ -94,9 +88,6 @@
 [submodule "vim/bundle/VisIncr"]
 	path = vim/bundle/VisIncr
 	url = git://github.com/vim-scripts/VisIncr.git
-[submodule "vim/bundle/Headlights"]
-	path = vim/bundle/Headlights
-	url = git://github.com/vim-scripts/Headlights.git
 [submodule "vim/bundle/vim-abolish"]
 	path = vim/bundle/vim-abolish
 	url = git://github.com/tpope/vim-abolish.git
