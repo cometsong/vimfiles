@@ -70,9 +70,6 @@
 [submodule "vim/bundle/ZoomWin"]
 	path = vim/bundle/ZoomWin
 	url = git://github.com/vim-scripts/ZoomWin.git
-[submodule "vim/bundle/powerline"]
-	path = vim/bundle/powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
@@ -166,3 +163,21 @@
 [submodule "vim/bundle/ferm.vim"]
 	path = vim/bundle/ferm.vim
 	url = git@github.com:cometsong/ferm.vim.git
+[submodule "vim/bundle/align"]
+	path = vim/bundle/align
+	url = git://github.com/tsaleh/vim-align.git
+[submodule "vim/bundle/molokai-colors"]
+	path = vim/bundle/molokai-colors
+	url = git://github.com/tomasr/molokai.git
+[submodule "vim/bundle/toggle_maximize"]
+	path = vim/bundle/toggle_maximize
+	url = git://github.com/vim-scripts/toggle_maximize.vim.git
+[submodule "vim/bundle/matchit.zip"]
+	path = vim/bundle/matchit.zip
+	url = git://github.com/vim-scripts/matchit.zip.git
+[submodule "vim/bundle/a.vim"]
+	path = vim/bundle/a.vim
+	url = git://github.com/vim-scripts/a.vim.git
+[submodule "vim/bundle/statline"]
+	path = vim/bundle/statline
+	url = git://github.com/millermedeiros/vim-statline.git
