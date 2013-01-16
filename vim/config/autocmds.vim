@@ -11,6 +11,13 @@ if has("autocmd")
   
   " filetype specs  {{{
 
+  "detect filetype
+  augroup filetypedetect
+    au BufNewFile,BufRead .tmux.conf*,tmux.conf*  setf tmux
+    au BufNewFile,BufRead iptables.*,*.iptables   setf iptables
+    au BufNewFile,BufRead ferm.conf*,*.ferm       setf ferm
+  augroup END
+
   " all filetypes
   autocmd FileType * setl fo-=cro " disable auto-commenting
 
