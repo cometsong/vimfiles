@@ -2,11 +2,16 @@
 if has("autocmd")
 
   " When vimrc is edited, reload it  {{{
-  autocmd! Bufwritepost vimrc  source $MYVIMRC
-  if has("gui_running")
-    autocmd! Bufwritepost vimrc  source $MYGVIMRC
-    autocmd! Bufwritepost gvimrc source $MYGVIMRC
-  endif
+  augroup AutoReloadVimRC
+    au!
+    " automatically reload vimrc when it's saved
+    au BufWritePost $MYVIMRC so $MYVIMRC
+    if has("gui_running")
+      autocmd! Bufwritepost $MYVIMRC  :source $MYVIMRC
+      autocmd! Bufwritepost $MYVIMRC  :source $MYGVIMRC
+      autocmd! Bufwritepost $MYGVIMRC :source $MYGVIMRC
+    endif
+  augroup END
   "}}} 
   
   " filetype specs  {{{
