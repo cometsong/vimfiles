@@ -119,10 +119,6 @@ if v:version > 700
 endif
 "}}} --------------------------------------------------------------------------
 
-"--- Avoid accidental hits of <F1> while aiming for <Esc>   {{{
-call MapKeys('', '<F1>', '<ESC>')
-"}}}
-
 "--- matchit   {{{
 call MapKeys('n', ',mi', ':runtime macros/matchit.vim<CR>') " run the macros matchit (% for if/endif,etc)
 amenu <silent> .900 &Cometsong.Matchit<Tab>,mi   <Leader>,mi   " Cometsong Menu!

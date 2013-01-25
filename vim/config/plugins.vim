@@ -27,7 +27,7 @@ let g:NERDCustomDelimiters = {
 
 "---- NERDTreeOptions ---- {{{
 call MapKeys('ni', 'nt', ':NERDTreeToggle<CR>')
-call MapKeys('ni', '<F1>', ':NERDTreeToggle<CR>', '')
+call MapKeys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
 amenu <silent> .10 &Cometsong.&NERDTree\ Toggle<Tab>nt/F1  <Leader>nt
 " let loaded_nerd_tree            = 0 " set to 1 to turn off plugin
 let NERDTreeHijackNetrw         = 1 " opening a dir will use Nerd Tree, not built-in
@@ -50,7 +50,7 @@ let g:tagbar_width = 50
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 call MapKeys('ni', 'tb', ':TagbarToggle<CR>')
-call MapKeys('ni', '<F3>', ':TagbarToggle<CR>', '')
+call MapKeys('ni', '<F6>', ':TagbarToggle<CR>', '')
 amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tb  <Leader>tb
 "let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 "}}}
@@ -94,14 +94,18 @@ let g:BASH_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
 "---- MRU ---- {{{
 let MRU_Max_Entries = 400
 call MapKeys('n', 'r', ':MRU<CR>')
-call MapKeys('n', '<F2>', ':MRU<CR>', '')
+call MapKeys('ni', '<S-F2>', ':MRU<CR>', '')
 amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab>r   <Leader>r
 "}}}
 
 "---- snippets ---- {{{
 let g:loaded_snipmate = 0
-let g:__XPTEMPLATE_VIM__ = 1
+let g:snips_author = "Benjamin Leopold (cometsong)"
 
+call MapKeys('ni', '<S-F10>', ':SnipMateOpenSnippetFiles<CR>', '')
+
+
+let g:__XPTEMPLATE_VIM__ = 1
 function! SetPersonalXpVars()
   let l:personal_vars =
     \       'author=Benjamin\ Leopold'
@@ -150,13 +154,13 @@ amenu .350 &Cometsong.Indent\ &Guides<Tab>ig  <Leader>ig
 "---- TaskList ---- {{{
 " this mapping (tl) is also the default
 "call MapKeys('ni', 'tl', ':TaskList<CR>')
-call MapKeys('ni', '<F4>', ':TaskList<CR>', '')
+call MapKeys('ni', '<S-F4>', ':TaskList<CR>', '')
 amenu .60 &Cometsong.TaskList<Tab>tl  <Leader>tl
 "}}}
 
 "---- UndoTree ---- {{{
 call MapKeys('ni', 'ut', ':UndotreeToggle<CR>')
-call MapKeys('ni', '<F5>', ':UndotreeToggle<CR>', '')
+call MapKeys('ni', '<F4>', ':UndotreeToggle<CR>', '')
 amenu <silent> .12 &Cometsong.&UndoTree\ Toggle<Tab>ut  <Leader>ut
 "}}}
 
@@ -165,7 +169,7 @@ amenu <silent> .12 &Cometsong.&UndoTree\ Toggle<Tab>ut  <Leader>ut
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 call MapKeys('ni', 'rpt', ':RainbowParenthesesToggleAll<CR>')
-call MapKeys('ni', '<F6>', ':RainbowParenthesesToggleAll<CR>', '')
+call MapKeys('ni', '<S-F6>', ':RainbowParenthesesToggleAll<CR>', '')
 amenu <silent> .13 &Cometsong.&RainbowParentheses\ Toggle<Tab>rpt  <Leader>rpt
 "}}}
 
@@ -239,8 +243,21 @@ let g:unite_enable_split_vertically = 1
 let g:unite_winwidth = 40
 
 call MapKeys('ni', 'ub', ':UniteWithBufferDir file<CR>')
+call MapKeys('ni', '<S-F3>', ':UniteWithBufferDir file<CR>', '')
 call MapKeys('ni', 'uf', ':Unite file<CR>')
 call MapKeys('ni', 'ur', ':Unite register<CR>')
+call MapKeys('ni', '<F3>', ':Unite register<CR>', '')
+"}}}
+
+"---- Syntastic ---- {{{
+let g:syntastic_error_symbol    ='∆>'
+let g:syntastic_warning_symbol  ='=>'
+let g:syntastic_auto_loc_list   =1
+let g:syntastic_loc_list_height =5
+let g:syntastic_quiet_warnings  =1
+
+call MapKeys('ni', '<F5>', ':SyntasticCheck<CR>', '')
+call MapKeys('ni', '<S-F5>', ':Errors<CR>', '')
 "}}}
 
 
