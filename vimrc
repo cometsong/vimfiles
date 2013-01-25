@@ -12,6 +12,9 @@ source ~/.vim/config/menu_cometsong.vim
 " (need to be sourced before stuff that uses 'em)
 runtime! functions/*.vim
 
+"--- Tabs/Indents Functions
+call Tabstyle_spaces()
+
 "--- Key Mapping
 source ~/.vim/config/key_mapping.vim
 
@@ -20,9 +23,6 @@ source ~/.vim/config/folding.vim
 
 "--- Autocmds
 source ~/.vim/config/autocmds.vim
-
-"--- Tabs/Indents Functions
-call Tabstyle_spaces()
 
 "--- Save My Sessions
 source ~/.vim/config/sessions.vim

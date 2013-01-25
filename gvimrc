@@ -8,8 +8,6 @@
 "--- OS Specific {{{1
 if has("gui_macvim")
     "set fuoptions=maxvert,maxhorz   " fullscreen options (MacVim only), resized window when changed to fullscreen
-    "set guifont=Monaco\ 8           " set font and size
-    set guifont=Menlo\ for\ Powerline
 
 elseif has("gui_gtk2")
     set guifont=Monospace\ 8        " set font and size
