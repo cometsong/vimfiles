@@ -182,3 +182,6 @@
 	path = vim/bundle/statline
 	url = git@github.com:cometsong/vim-statline.git
 	;url = git://github.com/millermedeiros/vim-statline.git
+[submodule "vim/bundle/QuickFixCurrentNumber"]
+	path = vim/bundle/QuickFixCurrentNumber
+	url = git://github.com/vim-scripts/QuickFixCurrentNumber.git
