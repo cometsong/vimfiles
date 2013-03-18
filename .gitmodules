@@ -191,3 +191,6 @@
 [submodule "vim/bundle/scratch.vim"]
 	path = vim/bundle/scratch.vim
 	url = git@github.com:cometsong/scratch.vim.git
+[submodule "vim/bundle/hgrev"]
+	path = vim/bundle/hgrev
+	url = git://github.com/vim-scripts/hgrev.git
