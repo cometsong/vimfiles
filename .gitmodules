@@ -194,3 +194,6 @@
 [submodule "vim/bundle/hgrev"]
 	path = vim/bundle/hgrev
 	url = git://github.com/vim-scripts/hgrev.git
+[submodule "bash-completion"]
+	path = bash-completion
+	url = git://github.com/GArik/bash-completion.git
