@@ -130,8 +130,8 @@ amenu <silent> .59 &Cometsong.Spell\ Checking\ Toggle<Tab>sp   <Leader>sp   " Co
 "}}}
 
 "--- ScratchToggle   {{{
-call MapKeys('ni', 'st', ':ScratchToggle<CR>')
-amenu <silent> .61 &Cometsong.ScratchToggle<Tab>st   <Leader>st   " Cometsong Menu!
+call MapKeys('ni', 'ts', ':ScratchToggle<CR>')
+amenu <silent> .61 &Cometsong.ScratchToggle<Tab>ts   <Leader>ts   " Cometsong Menu!
 "}}}
 
 "--- Remove EOL spaces   {{{
