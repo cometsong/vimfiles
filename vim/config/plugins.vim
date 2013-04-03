@@ -13,7 +13,7 @@ call pathogen#helptags()
 "}}}
 
 "---- statline ---- {{{
-let g:statline_fugitive = 1
+let g:statline_scmfrontend = 1
 let g:statline_no_encoding_string = 'NoEnc'
 "}}}
 
