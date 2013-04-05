@@ -135,7 +135,7 @@
 	url = git@github.com:cometsong/IndexedSearch.vim.git
 [submodule "vim/bundle/autocomplpop"]
 	path = vim/bundle/autocomplpop
-	url = git@github.com:cometsong/autocomplpop.vimvim-vim-.git
+	url = git@github.com:cometsong/autocomplpop.vim.git
 [submodule "vim/bundle/signature"]
 	path = vim/bundle/signature
 	url = git://github.com/kshenoy/vim-signature.git
