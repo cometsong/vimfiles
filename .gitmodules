@@ -81,7 +81,7 @@
 	url = git://github.com/fholgado/minibufexpl.vim.git
 [submodule "vim/bundle/bufkill"]
 	path = vim/bundle/bufkill
-	url = git://github.com/vim-scripts/bufkill.vim.git
+	url = git@github.com:cometsong/bufkill.vim.git
 [submodule "vim/bundle/VisIncr"]
 	path = vim/bundle/VisIncr
 	url = git://github.com/vim-scripts/VisIncr.git
