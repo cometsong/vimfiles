@@ -94,9 +94,6 @@
 [submodule "vim/bundle/snipmate"]
 	path = vim/bundle/snipmate
 	url = git://github.com/garbas/vim-snipmate.git
-[submodule "vim/bundle/snipmate-snippets"]
-	path = vim/bundle/snipmate-snippets
-	url = git://github.com/honza/snipmate-snippets.git
 [submodule "vim/bundle/SnipMgr"]
 	path = vim/bundle/SnipMgr
 	url = git://github.com/tlavi/SnipMgr.git
@@ -193,3 +190,6 @@
 [submodule "vim/bundle/hgrev"]
 	path = vim/bundle/hgrev
 	url = git://github.com/vim-scripts/hgrev.git
+[submodule "vim/bundle/snippets.vim"]
+	path = vim/bundle/snippets.vim
+	url = git://github.com/honza/vim-snippets.git
