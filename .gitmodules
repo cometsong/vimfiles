@@ -27,7 +27,7 @@
 	url = git://github.com/vim-scripts/numbered.vim.git
 [submodule "vim/bundle/simplefold"]
 	path = vim/bundle/simplefold
-	url = git@github.com:cometsong/vim-simplefold.git
+	url = git@github.com:cometsong/simplefold.vim.git
 [submodule "vim/bundle/bash-support.vim"]
 	path = vim/bundle/bash-support.vim
 	url = git@github.com:cometsong/bash-support.vim.git
@@ -132,10 +132,10 @@
 	url = git://github.com/ervandew/supertab.git
 [submodule "vim/bundle/IndexedSearch"]
 	path = vim/bundle/IndexedSearch
-	url = git@github.com:cometsong/IndexedSearch.git
+	url = git@github.com:cometsong/IndexedSearch.vim.git
 [submodule "vim/bundle/autocomplpop"]
 	path = vim/bundle/autocomplpop
-	url = git@github.com:cometsong/vim-autocomplpop.git
+	url = git@github.com:cometsong/autocomplpop.vimvim-vim-.git
 [submodule "vim/bundle/signature"]
 	path = vim/bundle/signature
 	url = git://github.com/kshenoy/vim-signature.git
@@ -180,8 +180,7 @@
 	url = git://github.com/vim-scripts/a.vim.git
 [submodule "vim/bundle/statline"]
 	path = vim/bundle/statline
-	url = git@github.com:cometsong/vim-statline.git
-	;url = git://github.com/millermedeiros/vim-statline.git
+	url = git@github.com:cometsong/statline.vim.git
 [submodule "vim/bundle/QuickFixCurrentNumber"]
 	path = vim/bundle/QuickFixCurrentNumber
 	url = git://github.com/vim-scripts/QuickFixCurrentNumber.git
