@@ -28,7 +28,7 @@ let g:NERDCustomDelimiters = {
 "---- NERDTreeOptions ---- {{{
 call MapKeys('ni', 'nt', ':NERDTreeToggle<CR>')
 call MapKeys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
-amenu <silent> .10 &Cometsong.&NERDTree\ Toggle<Tab>nt/F1  <Leader>nt
+amenu <silent> .10 &Cometsong.&NERDTree\ Toggle<Tab>nt/F2  <Leader>nt
 " let loaded_nerd_tree            = 0 " set to 1 to turn off plugin
 let NERDTreeHijackNetrw         = 1 " opening a dir will use Nerd Tree, not built-in
 let NERDChristmasTree           = 1 " make more colourful
@@ -51,7 +51,7 @@ let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 call MapKeys('ni', 'tb', ':TagbarToggle<CR>')
 call MapKeys('ni', '<F6>', ':TagbarToggle<CR>', '')
-amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tb  <Leader>tb
+amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tb/F6  <Leader>tb
 "let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 "}}}
 
@@ -96,7 +96,7 @@ let g:BASH_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
 let MRU_Max_Entries = 400
 call MapKeys('n', 'r', ':MRU<CR>')
 call MapKeys('ni', '<S-F2>', ':MRU<CR>', '')
-amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab>r   <Leader>r
+amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab>r/S-F2   <S-F2> 
 "}}}
 
 "---- snippets ---- {{{
@@ -104,6 +104,7 @@ let g:loaded_snipmate = 0
 let g:snips_author = "Benjamin Leopold (cometsong)"
 
 call MapKeys('ni', '<S-F10>', ':SnipMateOpenSnippetFiles<CR>', '')
+amenu <silent> .200 &Cometsong.&SnipMate\ OpenSnippetFiles<Tab>S-F10   <S-F10>
 
 
 let g:__XPTEMPLATE_VIM__ = 1
@@ -156,13 +157,13 @@ amenu .350 &Cometsong.Indent\ &Guides<Tab>ig  <Leader>ig
 " this mapping (tl) is also the default
 "call MapKeys('ni', 'tl', ':TaskList<CR>')
 call MapKeys('ni', '<S-F4>', ':TaskList<CR>', '')
-amenu .60 &Cometsong.TaskList<Tab>tl  <Leader>tl
+amenu .60 &Cometsong.TaskList<Tab>tl/S-F4  <Leader>tl
 "}}}
 
 "---- UndoTree ---- {{{
 call MapKeys('ni', 'ut', ':UndotreeToggle<CR>')
 call MapKeys('ni', '<F4>', ':UndotreeToggle<CR>', '')
-amenu <silent> .12 &Cometsong.&UndoTree\ Toggle<Tab>ut  <Leader>ut
+amenu <silent> .12 &Cometsong.&UndoTree\ Toggle<Tab>ut/F4  <Leader>ut
 "}}}
 
 "---- Better Rainbow Parentheses ---- {{{
@@ -171,7 +172,7 @@ let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 call MapKeys('ni', 'rpt', ':RainbowParenthesesToggleAll<CR>')
 call MapKeys('ni', '<S-F6>', ':RainbowParenthesesToggleAll<CR>', '')
-amenu <silent> .13 &Cometsong.&RainbowParentheses\ Toggle<Tab>rpt  <Leader>rpt
+amenu <silent> .80 &Cometsong.&RainbowParentheses\ Toggle<Tab>rpt/S-F6  <Leader>rpt
 "}}}
 
 "---- Git it to Me! ---- {{{
@@ -197,8 +198,10 @@ amenu <silent> .192 &Cometsong.&Git.&Git\ Diff<Tab>gd  <Leader>gd
 "---- bcCalc ---- {{{
 "" calculate expression from selection
 call MapKeys('v', 'bc', '"ey:call CalcLines(1)<CR>')
+vmenu <silent> .255 &Cometsong.&calculate\ selected\ lines<Tab>bc  <Leader>bc
 "" calculate expression on current line
 call MapKeys('', 'bc', '"eyy:call CalcLines(0)<CR>')
+amenu <silent> .255 &Cometsong.&calculate\ current\ line<Tab>bc  <Leader>bc
 "}}}
 
 "---- FuzzyFinder ---- {{{
@@ -248,6 +251,9 @@ call MapKeys('ni', '<S-F3>', ':UniteWithBufferDir file<CR>', '')
 call MapKeys('ni', 'uf', ':Unite file<CR>')
 call MapKeys('ni', 'ur', ':Unite register<CR>')
 call MapKeys('ni', '<F3>', ':Unite register<CR>', '')
+
+amenu <silent> .13 &Cometsong.&Unite:\ registers<Tab>F3  <F3>
+amenu <silent> .13 &Cometsong.&Unite:\ Files\ BufferDir<Tab>S-F3  <S-F3>
 "}}}
 
 "---- Syntastic ---- {{{
@@ -259,6 +265,8 @@ let g:syntastic_quiet_warnings  =1
 
 call MapKeys('ni', '<F5>', ':SyntasticCheck<CR>', '')
 call MapKeys('ni', '<S-F5>', ':Errors<CR>', '')
+amenu <silent> .225 &Cometsong.&Syntastic:\ Check<Tab>F5  <F5>
+amenu <silent> .225 &Cometsong.&Syntastic:\ ErrorShow<Tab>S-F5  <S-F5>
 "}}}
 
 
