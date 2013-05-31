@@ -139,3 +139,8 @@ call MapKeys('ni', 'ers', ':%s+ *$++<CR>')
 amenu <silent> .61 &Cometsong.Remove\ EOL\ Spaces<Tab>ers   <Leader>ers   " Cometsong Menu!
 "}}}
 
+"--- QuickRun   {{{
+call MapKeys('niv', 'qr', ':QuickRun<CR>')
+amenu <silent> .66 &Cometsong.QuickRun\ file<Tab>qr   <Leader>qr   " Cometsong Menu!
+"}}}
+
