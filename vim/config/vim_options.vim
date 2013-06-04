@@ -16,6 +16,8 @@ set cinkeys=0{,0},:,!^F,o,O,e  " See 'cinkeys'; this stops '#' from indenting
 set ruler             " show the cursor position all the time
 set fileformat=unix   " No crazy CR/LF
 set mouse=a           " the mouse in VIM in a=all modes
+set mousemodel=popup_setpos "extend, popup or popup_setpos; what the right mouse button is used for
+
 set nojoinspaces      " One space after a '.' rather than 2
 set scrolloff=1       " Minimum lines between cursor and window edge
 set showcmd           " Show partially typed commands
