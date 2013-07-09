@@ -193,3 +193,6 @@
 [submodule "vim/bundle/snippets.vim"]
 	path = vim/bundle/snippets.vim
 	url = git://github.com/honza/vim-snippets.git
+[submodule "vim/bundle/vim-misc"]
+	path = vim/bundle/vim-misc
+	url = git@github.com:xolox/vim-misc.git
