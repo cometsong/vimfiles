@@ -55,6 +55,8 @@ set incsearch         " incremental searching as you type
 set hlsearch          " highlight all search results
 
 set wildmenu          " command-line completion operates in an enhanced mode
+set wildmode=longest:full,list:full "Complete longest common string, then list alternatives.
+
 
 set laststatus=2      " always show status line
  
