@@ -199,3 +199,6 @@
 [submodule "apps/vcprompt"]
 	path = apps/vcprompt
 	url = git://github.com/djl/vcprompt.git
+[submodule "vim/bundle/csv.vim"]
+	path = vim/bundle/csv.vim
+	url = https://github.com/chrisbra/csv.vim.git
