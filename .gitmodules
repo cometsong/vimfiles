@@ -73,9 +73,6 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
-[submodule "vim/bundle/indent-guides"]
-	path = vim/bundle/indent-guides
-	url = git://github.com/mutewinter/vim-indent-guides.git
 [submodule "vim/bundle/minibufexpl"]
 	path = vim/bundle/minibufexpl
 	url = git://github.com/fholgado/minibufexpl.vim.git
@@ -205,3 +202,6 @@
 [submodule "vim/bundle/pathogen.vim"]
 	path = vim/bundle/pathogen.vim
 	url = git@github.com:tpope/vim-pathogen.git
+[submodule "vim/bundle/indent-guides.vim"]
+	path = vim/bundle/indent-guides.vim
+	url = git://github.com/nathanaelkane/vim-indent-guides.git
