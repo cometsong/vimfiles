@@ -8,8 +8,9 @@ endif
 "}}}
 
 "---- Load all Plugins using the Pathogen plugin ---- {{{
-call pathogen#infect()
-call pathogen#helptags()
+runtime bundle/pathogen.vim/autoload/pathogen.vim
+exec pathogen#infect()
+exec pathogen#helptags()
 "}}}
 
 "---- statline ---- {{{
