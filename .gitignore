@@ -1,5 +1,4 @@
-#  rcfiles ignores
-my_aliases
+#  vimfiles ignores
 vim/perl-support/*
 vim/bash-support/*
 
