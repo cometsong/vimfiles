@@ -37,6 +37,5 @@ bins:
 
 submodules:
 	@echo Git submodule init and update
-	@git submodule init
-	@git submodule update
+	@git submodule update --init --recursive
 
