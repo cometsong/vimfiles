@@ -169,9 +169,6 @@
 [submodule "vim/bundle/matchit.zip"]
 	path = vim/bundle/matchit.zip
 	url = git://github.com/vim-scripts/matchit.zip.git
-[submodule "vim/bundle/a.vim"]
-	path = vim/bundle/a.vim
-	url = git://github.com/vim-scripts/a.vim.git
 [submodule "vim/bundle/statline"]
 	path = vim/bundle/statline
 	url = git@github.com:cometsong/statline.vim.git
