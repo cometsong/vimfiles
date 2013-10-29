@@ -60,6 +60,7 @@ amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tb/F6  <Leader>tb
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#rename_command = "<leader>re"
+let g:jedi#squelch_py_warning	= 1
 "}}}
 
 "---- Python Folding ---- {{{
@@ -183,7 +184,6 @@ let g:Gitv_OpenHorizontal = 1
 let g:Gitv_WipeAllOnClose = 1
 let g:Gitv_OpenPreviewOnLaunch = 1
 let g:Gitv_DoNotMapCtrlKey = 1
-cabbrev git Git
 call MapKeys('nv', 'gv', ':Gitv --all<CR>')
 amenu <silent> .192 &Cometsong.&Git.&Git\ Repo\ Log\ Toggle<Tab>gv  <Leader>gv
 call MapKeys('nv', 'gV', ':Gitv! --all<CR>')
