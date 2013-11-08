@@ -270,4 +270,13 @@ amenu <silent> .225 &Cometsong.&Syntastic:\ Check<Tab>F5  <F5>
 amenu <silent> .225 &Cometsong.&Syntastic:\ ErrorShow<Tab>S-F5  <S-F5>
 "}}}
 
+"---- Sneak ---- {{{
+call MapKeys('n', 'f', '<Plug>SneakForward', '')
+call MapKeys('x', 'f', '<Plug>VSneakForward', '')
+call MapKeys('n', 'F', '<Plug>SneakBackward', '')
+call MapKeys('x', 'F', '<Plug>VSneakBackward', '')
+amenu <silent> .226 &Cometsong.&SneakForward f
+amenu <silent> .226 &Cometsong.&SneakBackward F
+"}}}
+
 

@@ -202,3 +202,9 @@
 [submodule "vim/bundle/indent-guides.vim"]
 	path = vim/bundle/indent-guides.vim
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "vim/bundle/dbext.vim"]
+	path = vim/bundle/dbext.vim
+	url = git@github.com:vim-scripts/dbext.vim.git
+[submodule "vim/bundle/sneak"]
+	path = vim/bundle/sneak
+	url = github:justinmk/vim-sneak.git
