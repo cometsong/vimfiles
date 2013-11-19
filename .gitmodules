@@ -196,3 +196,6 @@
 [submodule "vim/bundle/perl-support.vim"]
 	path = vim/bundle/perl-support.vim
 	url = git@github.com:vim-scripts/perl-support.vim.git
+[submodule "vim/bundle/vim-support"]
+	path = vim/bundle/vim-support
+	url = git@github.com:vim-scripts/Vim-Support.git
