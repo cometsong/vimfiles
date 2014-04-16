@@ -205,3 +205,6 @@
 [submodule "vim/bundle/lesscss"]
 	path = vim/bundle/lesscss
 	url = https://github.com/vitalk/vim-lesscss.git
+[submodule "vim/bundle/writepath"]
+	path = vim/bundle/writepath
+	url = https://github.com/artnez/vim-writepath.git
