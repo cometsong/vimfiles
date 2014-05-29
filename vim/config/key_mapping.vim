@@ -144,3 +144,9 @@ call MapKeys('niv', 'qr', ':QuickRun<CR>')
 amenu <silent> .66 &Cometsong.QuickRun\ file<Tab>qr   <Leader>qr   " Cometsong Menu!
 "}}}
 
+"--- Rolodex   {{{
+call MapKeys('niv', 'tw', ':call ToggleRolodexTab()<CR>')
+call MapKeys('niv', 'tr', ':call ToggleRolodexTab()<CR>')
+amenu <silent> .66 &Cometsong.ToggleRolodex<Tab>tr,tw   <Leader>tr   " Cometsong Menu!
+"}}}
+
