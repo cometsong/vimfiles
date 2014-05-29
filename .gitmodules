@@ -148,9 +148,6 @@
 [submodule "vim/bundle/molokai-colors"]
 	path = vim/bundle/molokai-colors
 	url = git://github.com/tomasr/molokai.git
-[submodule "vim/bundle/toggle_maximize"]
-	path = vim/bundle/toggle_maximize
-	url = git://github.com/vim-scripts/toggle_maximize.vim.git
 [submodule "vim/bundle/matchit.zip"]
 	path = vim/bundle/matchit.zip
 	url = git://github.com/vim-scripts/matchit.zip.git
@@ -214,3 +211,9 @@
 [submodule "vim/bundle/markdown"]
 	path = vim/bundle/markdown
 	url = https://github.com/tpope/vim-markdown.git
+[submodule "vim/bundle/less.vim"]
+	path = vim/bundle/less.vim
+	url = https://github.com/groenewege/vim-less.git
+[submodule "vim/bundle/Jinja2-Syntax"]
+	path = vim/bundle/Jinja2-Syntax
+	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
