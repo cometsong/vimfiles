@@ -135,7 +135,7 @@ amenu <silent> .61 &Cometsong.ScratchToggle<Tab>ts   <Leader>ts   " Cometsong Me
 "}}}
 
 "--- Remove EOL spaces   {{{
-call MapKeys('ni', 'ers', ':%s+ *$++<CR>')
+call MapKeys('ni', 'ers', ':%s/\s\+$//<CR>')
 amenu <silent> .61 &Cometsong.Remove\ EOL\ Spaces<Tab>ers   <Leader>ers   " Cometsong Menu!
 "}}}
 
