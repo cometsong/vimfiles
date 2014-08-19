@@ -280,7 +280,7 @@ amenu <silent> .226 &Cometsong.&SneakBackward F
 "}}}
 
 "---- Tube ---- {{{
-call MapKeys('nxv', 'uu', ':Tube ', '')
+call MapKeys('nxv', 'uu', ':Tube ')
 let g:tube_terminal ='iterm'
 "}}}
 
