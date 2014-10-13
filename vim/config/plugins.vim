@@ -284,3 +284,6 @@ call MapKeys('nxv', 'uu', ':Tube ')
 let g:tube_terminal ='iterm'
 "}}}
 
+"---- AlignMaps ---- {{{
+let g:DrChipTopLvlMenu= "Plugin."
+"}}}
