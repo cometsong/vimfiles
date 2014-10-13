@@ -287,3 +287,7 @@ let g:tube_terminal ='iterm'
 "---- AlignMaps ---- {{{
 let g:DrChipTopLvlMenu= "Plugin."
 "}}}
+
+"---- LessCss ---- {{{
+let g:lesscss_toggle_key = "<leader>lc"
+"}}}
