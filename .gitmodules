@@ -220,3 +220,9 @@
 [submodule "vim/bundle/tube.vim"]
 	path = vim/bundle/tube.vim
 	url = https://github.com/gcmt/tube.vim.git
+[submodule "vim/bundle/yaml-vim"]
+	path = vim/bundle/yaml-vim
+	url = https://github.com/ingydotnet/yaml-vim.git
+[submodule "vim/bundle/find_yaml_key"]
+	path = vim/bundle/find_yaml_key
+	url = https://github.com/munen/find_yaml_key.git
