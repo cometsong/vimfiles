@@ -226,3 +226,6 @@
 [submodule "vim/bundle/find_yaml_key"]
 	path = vim/bundle/find_yaml_key
 	url = https://github.com/munen/find_yaml_key.git
+[submodule "vim/bundle/vcscommand"]
+	path = vim/bundle/vcscommand
+	url = https://github.com/vim-scripts/vcscommand.vim.git
