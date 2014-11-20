@@ -138,7 +138,7 @@
 	url = git://github.com/vim-scripts/FuzzyFinder.git
 [submodule "vim/bundle/unite"]
 	path = vim/bundle/unite
-	url = git://github.com/Shougo/unite.vim.git
+	url = https://github.com/Shougo/unite.vim.git
 [submodule "vim/bundle/ferm.vim"]
 	path = vim/bundle/ferm.vim
 	url = git@github.com:cometsong/ferm.vim.git
