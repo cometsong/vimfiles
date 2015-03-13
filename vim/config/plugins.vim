@@ -26,23 +26,12 @@ let g:NERDCustomDelimiters = {
   \ }
 "}}}
 
-"---- NERDTreeOptions ---- {{{
-call MapKeys('ni', 'nt', ':NERDTreeToggle<CR>')
-call MapKeys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
-amenu <silent> .10 &Cometsong.&NERDTree\ Toggle<Tab>nt/F2  <Leader>nt
-" let loaded_nerd_tree            = 0 " set to 1 to turn off plugin
-let NERDTreeHijackNetrw         = 1 " opening a dir will use Nerd Tree, not built-in
-let NERDChristmasTree           = 1 " make more colourful
-let NERDTreeAutoCenter          = 1 " center around the cursor if it moves:\ {}
-let NERDTreeAutoCenterThreshold = 4 " sensitivity of auto centering
-let NERDTreeCaseSensitiveSort   = 0 " 0=case-INsensitive sort
-let NERDTreeChDirMode           = 1 " [0,1,2] 0=never, 1=startup, 2=always
-let NERDTreeHighlightCursorline = 1
-let NERDTreeIgnore              = ['\~$'] " a list of regular expressions
-" let NERDTreeBookmarksFile       = $HOME/.NERDTreeBookmarks
-let NERDTreeShowBookmarks       = 1
-let NERDTreeQuitOnOpen          = 1 " if NERDTree will close after opening a file
-let NERDTreeShowLineNumbers     = 0 " no line numbers in the tree window
+"---- VimFiler ---- {{{
+call MapKeys('ni', 'vf', ':VimFilerExplorer<CR>')
+call MapKeys('ni', '<F2>', ':VimFilerExplorer<CR>', '')
+amenu <silent> .10 &Cometsong.&VimFilerExplorer\ Toggle<Tab>vf/F2  <Leader>vf
+call MapKeys('ni', 'vb', ':VimFilerBufferDir<CR>')
+amenu <silent> .10 &Cometsong.&VimFilerExplorer\ Toggle<Tab>vb  <Leader>vb
 "}}}
 
 "---- TagBar ---- {{{
