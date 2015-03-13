@@ -229,3 +229,6 @@
 [submodule "vim/bundle/vimfiler"]
 	path = vim/bundle/vimfiler
 	url = https://github.com/Shougo/vimfiler.vim.git
+[submodule "vim/bundle/windowswap"]
+	path = vim/bundle/windowswap
+	url = git@github.com:wesQ3/vim-windowswap.git
