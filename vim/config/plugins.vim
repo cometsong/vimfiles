@@ -5,6 +5,10 @@
 if !has("python")
   let g:loaded_jedi = 1
 endif
+" ruby requirements...
+if !has("ruby")
+  let g:find_yaml_key = 1
+endif"
 "}}}
 
 "---- Load all Plugins using the Pathogen plugin ---- {{{
