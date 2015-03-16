@@ -255,7 +255,7 @@ let g:syntastic_error_symbol    ='∆>'
 let g:syntastic_warning_symbol  ='=>'
 let g:syntastic_auto_loc_list   =1
 let g:syntastic_loc_list_height =5
-let g:syntastic_quiet_warnings  =1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 call MapKeys('ni', '<F5>', ':SyntasticCheck<CR>', '')
 call MapKeys('ni', '<S-F5>', ':Errors<CR>', '')
