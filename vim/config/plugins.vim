@@ -67,24 +67,23 @@ let g:SuperTabMappingBackward = '<s-c-tab>'
 
 "---- Perl-Support ---- {{{
 let g:Perl_GlobalTemplateFile     = $HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
-let g:Perl_LocalTemplateFile      = $HOME.'/.vim/misc/perl-support/Templates'
+let g:Perl_LocalTemplateFile      = $HOME.'/.vim/misc/perl-support/Templates.local'
 let g:Perl_CodeSnippets           = $HOME.'/.vim/misc/perl-support/codesnippets'
-let g:Perl_Ctrl_j                 = 'on'
 let g:Perl_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
-let g:Perl_MenuHeader             = 'off'
 let g:Perl_TemplateOverwrittenMsg = 'no'
-let g:Perl_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
+let g:Perl_PerlTags               = 'on'
+let g:Perl_XtermDefaults          = "-fa courier -fs 10 -geometry 90x50"
 "}}}
 
 "---- Bash-Support ---- {{{
 let g:BASH_GlobalTemplateFile     = $HOME.'/.vim/bundle/bash-support.vim/bash-support/templates/Templates'
-let g:BASH_LocalTemplateFile      = $HOME.'/.vim/misc/bash-support/Templates'
+let g:BASH_LocalTemplateFile      = $HOME.'/.vim/misc/bash-support/Templates.local'
 let g:BASH_CodeSnippets           = $HOME.'/.vim/misc/bash-support/codesnippets'
-let g:BASH_Ctrl_j                 = 'on'
 let g:BASH_TimestampFormat        = '%Y-%m-%d_%H.%M.%S'
 let g:BASH_MenuHeader             = 'off'
 let g:BASH_TemplateOverwrittenMsg = 'no'
-let g:BASH_XtermDefaults          = '-fa courier -fs 12 -geometry 80x24'
+let g:BASH_XtermDefaults          = '-fa courier -fs 10 -geometry 90x50'
+let g:BASH_Debugger               = 'bashdb'
 "}}}
 
 "---- MRU ---- {{{

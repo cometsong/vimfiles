@@ -1,0 +1,22 @@
+§ ===================================================================
+§  User Macros
+§ ===================================================================
+SetMacro( 'AUTHOR'      , 'B. Leopold'                          )
+SetMacro( 'AUTHORREF'   , 'cometsong'                           )
+SetMacro( 'EMAIL2'      , 'benjamin(at)cometsong(dot)net'       )
+SetMacro( 'EMAIL'       , 'benjamin(dot)leopold(at)jax(dot)org' )
+SetMacro( 'ORGANIZATION', 'Jackson Lab for Genomic Medicine'    )
+SetMacro( 'COPYRIGHT'   , 'Copyright (c) |YEAR|, |AUTHOR|'      )
+
+§ ===================================================================
+§  File Includes and Shortcuts
+§ ===================================================================
+MenuShortcut( 'Comments'          , 'c' )
+MenuShortcut( 'Idioms'            , 'i' )
+MenuShortcut( 'Pod'               , 'd' )
+MenuShortcut( 'Statements'        , 's' )
+MenuShortcut( 'Special Variables' , 'v' )
+MenuShortcut( 'Regex'             , 'r' )
+MenuShortcut( 'Snippets'          , 'n' )
+
+IncludeFile( 'templates/comments.templates' )
