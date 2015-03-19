@@ -4,7 +4,8 @@
 " python requirements...
 if !has("python")
   let g:loaded_jedi = 1
-  " Add the virtualenv's site-packages to vim path
+else
+  " Add the python virtualenv's site-packages to vim path "{{{
   py << EOF
 import os.path
 import sys
@@ -15,13 +16,14 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 EOF
-
+"}}}
 endif
 " ruby requirements...
 if !has("ruby")
   let g:find_yaml_key = 1
 endif"
 "}}}
+
 
 "---- Load all Plugins using the Pathogen plugin ---- {{{
 runtime bundle/pathogen.vim/autoload/pathogen.vim
