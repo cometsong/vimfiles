@@ -184,9 +184,6 @@
 [submodule "vim/bundle/sneak"]
 	path = vim/bundle/sneak
 	url = github:justinmk/vim-sneak.git
-[submodule "vim/bundle/bash-support.vim"]
-	path = vim/bundle/bash-support.vim
-	url = git@github.com:vim-scripts/bash-support.vim.git
 [submodule "vim/bundle/perl-support.vim"]
 	path = vim/bundle/perl-support.vim
 	url = git@github.com:vim-scripts/perl-support.vim.git
@@ -232,3 +229,6 @@
 [submodule "vim/bundle/windowswap"]
 	path = vim/bundle/windowswap
 	url = git@github.com:wesQ3/vim-windowswap.git
+[submodule "vim/bundle/bash-support.vim"]
+	path = vim/bundle/bash-support.vim
+	url = git@github.com:vim-scripts/bash-support.vim.git
