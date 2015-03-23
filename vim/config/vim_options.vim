@@ -95,6 +95,7 @@ filetype plugin indent on
 "--- Color specification files (in $HOME/.vim/colors)  {{{
 "    -> colorscheme COLORSCHEME-File-Name
 " colorscheme dante-mods
-colorscheme desert256
+" colorscheme desert256
+colorscheme darkdevel
 "}}}
 
