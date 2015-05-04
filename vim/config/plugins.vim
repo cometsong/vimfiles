@@ -104,7 +104,7 @@ let g:BASH_Debugger               = 'bashdb'
 let MRU_Max_Entries = 400
 call MapKeys('n', 'r', ':MRU<CR>')
 call MapKeys('ni', '<S-F2>', ':MRU<CR>', '')
-amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab>r/S-F2   <S-F2> 
+amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab>r/S-F2   <S-F2>
 "}}}
 
 "---- snippets ---- {{{
