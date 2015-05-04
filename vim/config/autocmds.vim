@@ -33,10 +33,12 @@ if has("autocmd")
   autocmd Syntax   * RainbowParenthesesLoadBraces
   " off for text files
   autocmd VimEnter text RainbowParenthesesToggleAll
+  autocmd VimEnter yaml RainbowParenthesesToggleAll
 
   " tabs/spaces based on Syntax of languages
   autocmd FileType make         setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd FileType yaml         setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType json         setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python       setlocal ts=4 sts=4 sw=4 expandtab tw=79
   autocmd FileType html         setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css          setlocal ts=2 sts=2 sw=2 expandtab

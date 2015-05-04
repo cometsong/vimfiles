@@ -150,3 +150,8 @@ call MapKeys('niv', 'tr', ':call ToggleRolodexTab()<CR>')
 amenu <silent> .66 &Cometsong.ToggleRolodex<Tab>tr,tw   <Leader>tr   " Cometsong Menu!
 "}}}
 
+"--- JSON   {{{
+call MapKeys('niv', '=j', ':%!python -m json.tool<CR>', '')
+amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong Menu!
+"}}}
+
