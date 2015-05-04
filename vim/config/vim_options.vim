@@ -49,7 +49,7 @@ set numberwidth=1     " line numbers minimum gutter width
 "endif
 " for line number colors, see colorscheme.vim file, LineNr
 
-"set clipboard+=unnamed " all unnamed Yanks/dels go to clipboard, and try to come from it only!
+set clipboard=unnamed " all unnamed Yanks/dels go to clipboard, and try to come from it only!
 
 set incsearch         " incremental searching as you type
 set hlsearch          " highlight all search results
