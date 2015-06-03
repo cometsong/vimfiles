@@ -33,7 +33,7 @@ set encoding=utf-8    " Necessary to show unicode glyphs
 set t_Co=256          " Explicitly tell vim that the terminal supports 256 colors
 set hidden            " keep buffer mods hidden, allow switching buffers without saving
 set splitright        " set split default on the right
-set equalalways       " all new windows equal size
+"set equalalways       " all new windows equal size
 
 set modeline          " Enable check for modeline
 "set modelines=5       " set number of lines checked for modeline (default 5)
@@ -98,4 +98,3 @@ filetype plugin indent on
 " colorscheme desert256
 colorscheme darkdevel
 "}}}
-
