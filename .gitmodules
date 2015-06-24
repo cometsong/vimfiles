@@ -58,9 +58,6 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
-[submodule "vim/bundle/minibufexpl"]
-	path = vim/bundle/minibufexpl
-	url = git://github.com/fholgado/minibufexpl.vim.git
 [submodule "vim/bundle/bufkill"]
 	path = vim/bundle/bufkill
 	url = git@github.com:cometsong/bufkill.vim.git
