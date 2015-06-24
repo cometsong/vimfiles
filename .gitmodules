@@ -232,3 +232,6 @@
 [submodule "vim/bundle/selection"]
 	path = vim/bundle/selection
 	url = https://github.com/arecarn/selection.vim.git
+[submodule "vim/bundle/minibufexpl"]
+	path = vim/bundle/minibufexpl
+	url = https://github.com/cometsong/minibufexpl.vim.git
