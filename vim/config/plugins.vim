@@ -2,22 +2,50 @@
 
 "---- Disable Potentially Invalid Plugins ---- {{{
 " python requirements...
-if !has("python")
-  let g:loaded_jedi = 1
-else
-  " Add the python virtualenv's site-packages to vim path "{{{
-  py << EOF
+function! Py_add_virtualenv_sys_path() "{{{
+  " Add the python virtualenv's site-packages to vim path
+Py << EOF
 import os.path
 import sys
 import vim
 if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
+  #project_base_dir = os.environ['VIRTUAL_ENV']
+  #sys.path.insert(0, project_base_dir)
+  #activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  #execfile(activate_this, dict(__file__=activate_this))
+
+  def add_virtualenv_path():
+      """Add virtualenv's site-packages to `sys.path`."""
+      venv = os.getenv('VIRTUAL_ENV')
+      #vim.cmd("echo VENV="+venv)
+      if not venv:
+          return
+      venv = os.path.abspath(venv)
+      path = os.path.join(
+          venv, 'lib', 'python%d.%d' % sys.version_info[:2], 'site-packages')
+      sys.path.insert(0, path)
+
+  add_virtualenv_path()
 EOF
-"}}}
+endfunction "}}}
+
+if has('python')
+  command! -nargs=* Py py
+  let g:jedi#force_py_version = 2
+  let g:syntastic_python_python_exec = 'python2'
+  "let g:pymode_python = 'python2'
+  call Py_add_virtualenv_sys_path()
+elseif has('python3')
+  command! -nargs=* Py py3 <args>
+  "command! Py py3
+  let g:jedi#force_py_version = 3
+  let g:syntastic_python_python_exec = 'python3'
+  "let g:pymode_python = 'python3'
+  call Py_add_virtualenv_sys_path()
+else
+  let g:loaded_jedi = 1
 endif
+
 " ruby requirements...
 if !has("ruby")
   let g:find_yaml_key = 1
@@ -202,13 +230,8 @@ call MapKeys('ni', 'gd', ':Gdiff<CR>')
 amenu <silent> .192 &Cometsong.&Git.&Git\ Diff<Tab>gd  <Leader>gd
 "}}}
 
-"---- bcCalc ---- {{{
-"" calculate expression from selection
-call MapKeys('v', 'bc', '"ey:call CalcLines(1)<CR>')
-vmenu <silent> .255 &Cometsong.&calculate\ selected\ lines<Tab>bc  <Leader>bc
-"" calculate expression on current line
-call MapKeys('', 'bc', '"eyy:call CalcLines(0)<CR>')
-amenu <silent> .255 &Cometsong.&calculate\ current\ line<Tab>bc  <Leader>bc
+"---- Crunch Calc ---- {{{
+let g:util_debug = 0
 "}}}
 
 "---- FuzzyFinder ---- {{{
