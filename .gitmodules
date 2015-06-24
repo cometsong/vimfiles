@@ -127,9 +127,6 @@
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = vim/bundle/rainbow_parentheses
 	url = git://github.com/kien/rainbow_parentheses.vim.git
-[submodule "vim/bundle/bccalc"]
-	path = vim/bundle/bccalc
-	url = git://github.com/vim-scripts/bccalc.vim.git
 [submodule "vim/bundle/FuzzyFinder"]
 	path = vim/bundle/FuzzyFinder
 	url = git://github.com/vim-scripts/FuzzyFinder.git
@@ -232,3 +229,9 @@
 [submodule "vim/bundle/bash-support.vim"]
 	path = vim/bundle/bash-support.vim
 	url = git@github.com:vim-scripts/bash-support.vim.git
+[submodule "vim/bundle/crunch"]
+	path = vim/bundle/crunch
+	url = https://github.com/arecarn/crunch.vim.git
+[submodule "vim/bundle/selection"]
+	path = vim/bundle/selection
+	url = https://github.com/arecarn/selection.vim.git
