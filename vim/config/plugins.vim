@@ -30,14 +30,13 @@ EOF
 endfunction "}}}
 
 if has('python')
-  command! -nargs=* Py py
+  command! -nargs=* Py python <args>
   let g:jedi#force_py_version = 2
   let g:syntastic_python_python_exec = 'python2'
   "let g:pymode_python = 'python2'
   call Py_add_virtualenv_sys_path()
 elseif has('python3')
-  command! -nargs=* Py py3 <args>
-  "command! Py py3
+  command! -nargs=* Py python3 <args>
   let g:jedi#force_py_version = 3
   let g:syntastic_python_python_exec = 'python3'
   "let g:pymode_python = 'python3'
