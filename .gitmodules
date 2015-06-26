@@ -238,3 +238,6 @@
 [submodule "vim/vim/bundle/vizardry"]
 	path = vim/vim/bundle/vizardry
 	url = git@github.com:ardagnir/vizardry.git
+[submodule "vim/bundle/vizardry"]
+	path = vim/bundle/vizardry
+	url = git@github.com:ardagnir/vizardry.git
