@@ -235,3 +235,6 @@
 [submodule "vim/bundle/minibufexpl"]
 	path = vim/bundle/minibufexpl
 	url = https://github.com/cometsong/minibufexpl.vim.git
+[submodule "vim/vim/bundle/vizardry"]
+	path = vim/vim/bundle/vizardry
+	url = git@github.com:ardagnir/vizardry.git
