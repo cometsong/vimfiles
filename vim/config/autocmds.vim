@@ -40,7 +40,7 @@ if has("autocmd")
   autocmd FileType yaml         setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType json         setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python       setlocal ts=4 sts=4 sw=4 expandtab tw=79
-  autocmd FileType html         setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType html,xml     setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css          setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript   setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType vim          setlocal ts=2 sts=2 sw=2 expandtab fdm=marker
