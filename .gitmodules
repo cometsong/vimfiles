@@ -225,4 +225,4 @@
 	url = https://github.com/vim-scripts/bash-support.vim.git
 [submodule "vim/bundle/jedi-python"]
 	path = vim/bundle/jedi-python
-	url = https://github.com/davidhalter/jedi-vim.git
+	url = https://github.com/davidhalter/jedi-vim
