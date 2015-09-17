@@ -7,9 +7,6 @@
 [submodule "vim/bundle/grep.vim"]
 	path = vim/bundle/grep.vim
 	url = git://github.com/vim-scripts/grep.vim.git
-[submodule "vim/bundle/iptables"]
-	path = vim/bundle/iptables
-	url = git://github.com/vim-scripts/iptables.git
 [submodule "vim/bundle/loremipsum"]
 	path = vim/bundle/loremipsum
 	url = git://github.com/vim-scripts/loremipsum.git
@@ -127,15 +124,9 @@
 [submodule "vim/bundle/unite"]
 	path = vim/bundle/unite
 	url = https://github.com/Shougo/unite.vim.git
-[submodule "vim/bundle/ferm.vim"]
-	path = vim/bundle/ferm.vim
-	url = git@github.com:cometsong/ferm.vim.git
 [submodule "vim/bundle/align"]
 	path = vim/bundle/align
 	url = git://github.com/tsaleh/vim-align.git
-[submodule "vim/bundle/molokai-colors"]
-	path = vim/bundle/molokai-colors
-	url = git://github.com/tomasr/molokai.git
 [submodule "vim/bundle/matchit.zip"]
 	path = vim/bundle/matchit.zip
 	url = git://github.com/vim-scripts/matchit.zip.git
@@ -190,21 +181,15 @@
 [submodule "vim/bundle/writepath"]
 	path = vim/bundle/writepath
 	url = https://github.com/artnez/vim-writepath.git
-[submodule "vim/bundle/coffee-script"]
-	path = vim/bundle/coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "vim/bundle/markdown"]
 	path = vim/bundle/markdown
 	url = https://github.com/tpope/vim-markdown.git
 [submodule "vim/bundle/less.vim"]
 	path = vim/bundle/less.vim
 	url = https://github.com/groenewege/vim-less.git
-[submodule "vim/bundle/Jinja2-Syntax"]
-	path = vim/bundle/Jinja2-Syntax
-	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
 [submodule "vim/bundle/tube.vim"]
 	path = vim/bundle/tube.vim
-	url = https://github.com/gcmt/tube.vim.git
+	url = https://github.com/tolinwei/tube-vim.git
 [submodule "vim/bundle/yaml-vim"]
 	path = vim/bundle/yaml-vim
 	url = https://github.com/ingydotnet/yaml-vim.git
@@ -240,4 +225,4 @@
 	url = https://github.com/vim-scripts/bash-support.vim.git
 [submodule "vim/bundle/jedi-python"]
 	path = vim/bundle/jedi-python
-	url = https://github.com/davidhalter/jedi.git
+	url = https://github.com/davidhalter/jedi-vim.git
