@@ -13,7 +13,7 @@ source ~/.vim/config/menu_cometsong.vim
 runtime! functions/*.vim
 
 "--- Tabs/Indents Functions
-call Tabstyle_spaces()
+call Tabspaces()
 
 "--- Key Mapping
 source ~/.vim/config/key_mapping.vim
