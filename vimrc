@@ -25,7 +25,8 @@ source ~/.vim/config/folding.vim
 source ~/.vim/config/autocmds.vim
 
 "--- Save My Sessions
-source ~/.vim/config/sessions.vim
+"source ~/.vim/config/sessions.vim
+" test using session manager plugin
 
 "--- We Are Plugged In!
 source ~/.vim/config/plugins.vim

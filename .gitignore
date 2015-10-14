@@ -5,3 +5,5 @@ vim/bash-support/*
 # override gitignore_global
 !bin/**
 
+# use plugin manager, ignore 'bundle' dir
+vim/bundle
