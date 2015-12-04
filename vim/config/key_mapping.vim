@@ -155,3 +155,9 @@ call MapKeys('niv', '=j', ':%!python -m json.tool<CR>', '')
 amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong Menu!
 "}}}
 
+"--- EasyAlign   {{{
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+amenu <silent> .901 &Cometsong.EasyAlign<Tab>\ga   ga   " Cometsong Menu!
+"}}}
+
