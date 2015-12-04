@@ -62,7 +62,7 @@ set visualbell        " any bell transmogrifies to a blink
 set laststatus=2      " always show status line
  
 "--- Invisible characters   " If you ':set list', shows trailing spaces, etc
-set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:⏎
+set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:$
 set nolist            " do not show trailinginsert mode characters
 
 "--- persistent undo storage for files after they are closed
