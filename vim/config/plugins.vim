@@ -475,7 +475,29 @@ amenu <silent> .226 &Cometsong.&SneakBackward F
 "}}}
 
 "---- Easy Align ---- {{{
-call MapKeys('nv', 'ga', '<Plug>(EasyAlign)')
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+augroup FileType sh,perl
+  let g:easy_align_delimiters = {
+      \ 's': {
+      \     'pattern':       '\$',
+      \     'ignore_groups': ['Comment'],
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'indentation':   'shallow',
+      \     'stick_to_left': 0
+      \     },
+      \ '=': {
+      \     'pattern':       '=',
+      \     'ignore_groups': ['Comment'],
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'indentation':   'deep',
+      \     'stick_to_left': 0
+      \     }
+  \}
+  augroup END
 "}}}
 
 "---- LessCss ---- {{{
