@@ -480,6 +480,27 @@ vmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 amenu <silent> .901 &Cometsong.EasyAlign<Tab>\ga   ga   " Cometsong Menu!
+
+augroup FileType sh,perl
+  let g:easy_align_delimiters = {
+      \ 's': {
+      \     'pattern':       '\$',
+      \     'ignore_groups': ['Comment'],
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'indentation':   'shallow',
+      \     'stick_to_left': 0
+      \     },
+      \ '=': {
+      \     'pattern':       '=',
+      \     'ignore_groups': ['Comment'],
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'indentation':   'deep',
+      \     'stick_to_left': 0
+      \     }
+  \}
+  augroup END
 "}}}
 
 "---- LessCss ---- {{{
