@@ -475,7 +475,11 @@ amenu <silent> .226 &Cometsong.&SneakBackward F
 "}}}
 
 "---- Easy Align ---- {{{
-call MapKeys('nv', 'ga', '<Plug>(EasyAlign)')
+"call MapKeys('nv', 'ga', '<Plug>(EasyAlign)') " MapKeys does not work with this keymapping
+vmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+amenu <silent> .901 &Cometsong.EasyAlign<Tab>\ga   ga   " Cometsong Menu!
 "}}}
 
 "---- LessCss ---- {{{
