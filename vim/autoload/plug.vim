@@ -2042,12 +2042,8 @@ function! s:diff()
   let total = filter(copy(g:plugs), 's:is_managed(v:key) && isdirectory(v:val.dir)')
   call s:progress_bar(2, bar, len(total))
   for origin in [1, 0]
-    let plugs = reverse(sort(items(filter(copy(total), (origin ? '' : '!').'(has_key(v:val, "commit") || has_key(v:val, "tag"))'))))
-    if empty(plugs)
-      continue
-    endif
     call s:append_ul(2, origin ? 'Pending updates:' : 'Last update:')
-    for [k, v] in plugs
+    for [k, v] in reverse(sort(items(filter(copy(total), (origin ? '' : '!').'(has_key(v:val, "commit") || has_key(v:val, "tag"))'))))
       let range = origin ? '..origin/'.v.branch : 'HEAD@{1}..'
       let diff = s:system_chomp('git log --pretty=format:"%h%x01%d%x01%s%x01%cr" '.s:shellesc(range), v.dir)
       if !empty(diff)
