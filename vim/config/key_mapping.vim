@@ -155,3 +155,9 @@ call MapKeys('niv', '=j', ':%!python -m json.tool<CR>', '')
 amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong Menu!
 "}}}
 
+"--- JAX work mappings {{{
+command! MinutesDatestamp normggo- datetime: "\dtzggO\dtsyiw"tdd/event<CR>$diW
+call MapKeys('n', '=md', ':MinutesDatestamp<CR>', '')
+call MapKeys('n', '=ms', ':saveas t<BS>--mtg.yaml<Left><Left><Left><Left><Left><Left><Left><Left><Left>', '')
+call MapKeys('n', '=mi', '=md=ms', '')
+"}}}
