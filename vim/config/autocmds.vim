@@ -37,7 +37,7 @@ if has("autocmd")
 
   " tabs/spaces based on Syntax of languages
   autocmd FileType make         setlocal ts=8 sts=8 sw=8 noexpandtab
-  autocmd FileType yaml         setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType yaml         setlocal fdm=indent tw=100 ts=2 sts=2 sw=2 expandtab wrap linebreak
   autocmd FileType json         setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python       setlocal ts=4 sts=4 sw=4 expandtab tw=79
   autocmd FileType html,xml     setlocal ts=2 sts=2 sw=2 expandtab
