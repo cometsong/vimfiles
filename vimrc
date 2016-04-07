@@ -31,4 +31,7 @@ source ~/.vim/config/autocmds.vim
 "--- We Are Plugged In!
 source ~/.vim/config/plugins.vim
 
+"--- Set Colors
+colorscheme jellybeans
+
 " vim: ft=vim fdm=marker

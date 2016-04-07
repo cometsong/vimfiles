@@ -21,7 +21,7 @@ end
 
 syntax on
 set hlsearch                        " Highlight search terms
-colorscheme desert256               " dark and stylin colors
+colorscheme jellybeans               " dark and stylin colors
 set guioptions+=mT                  " show menu and toolbar
 set guioptions-=e                   " never show tabline
 set showtabline=0                   " never show tabline
