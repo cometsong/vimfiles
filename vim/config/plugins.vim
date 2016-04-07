@@ -37,7 +37,6 @@ if has('python')
   call Py_add_virtualenv_sys_path()
 elseif has('python3')
   command! -nargs=* Py python3 <args>
-  let g:loaded_youcompleteme = 1
   let g:jedi#force_py_version = 3
   let g:syntastic_python_python_exec = 'python3'
   "let g:pymode_python = 'python3'
@@ -53,7 +52,6 @@ if !has("ruby")
 endif"
 "}}}
 
-
 "---- Load all Plugins using plug.vim ---- {{{
 " Automatic plug.vim installation {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -66,99 +64,106 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
+  " the basics
   Plug 'cometsong/statline.vim'           " status line definition
   Plug 'yegappan/mru'                     " most recently used files
   Plug 'cometsong/minibufexpl.vim'        " buffers listed in top window
   Plug 'cometsong/bufkill.vim'            " delete buffer without closing the window
-
-  " netrw, oil and vinegar
-  Plug 'tpope/vim-vinegar'
-
-  Plug 'scrooloose/nerdcommenter'         " comments smartly by filetype
-  Plug 'cometsong/CommentFrame.vim'       " frame and full line comment styles
-
-  Plug 'scrooloose/syntastic'             " syntax checking
-  Plug 'thinca/vim-quickrun'              " quick make, many filetypes
-
-  Plug 'cometsong/vim-template'           " forked set of template files
-
   Plug 'kshenoy/vim-signature'            " place, toggle and display marks
   Plug 'vim-scripts/camelcasemotion'      " TraverseCamelStrings
   Plug 'cometsong/simplefold.vim'         " custom folding for some syntaxes
   Plug 'tpope/vim-surround'               " surround strings with things
-
-  Plug 'tpope/vim-eunuch'                 " unix
-  "Plug 'benmills/vimux'                   "interact with tmux
-
   Plug 'tpope/vim-repeat'                 " repeat many many tasks
   Plug 'vim-scripts/visualrepeat'         " cf. vim-repeat, but in visual mode
-
   Plug 'mbbill/undotree'                  " shows window with all previous undos
   Plug 'vim-scripts/TaskList.vim'         " list all TODOs
   Plug 'tpope/vim-abolish'                " Abbreviation, Subvert, Coercion
   Plug 'junegunn/vim-easy-align'          " aligning power!
   Plug 'cometsong/IndexedSearch.vim'      " shows 'Nth match out of M' at every search
   Plug 'cometsong/scratch.vim'            " create a temporary scratch buffer while running vim
-  Plug 'flazz/vim-colorschemes'           " plethora of colorschemes to choose from
   Plug 'nathanaelkane/vim-indent-guides'  " colors each indent level
   Plug 'wesQ3/vim-windowswap'             " swap window locations
-  Plug 'artnez/vim-writepath'             " e some/new/path/file.foo
-  "Plug 'ervandew/archive'                 "browse contents of archive files
+  Plug 'ervandew/archive'                 " browse contents of archive files
 
-  " matches
+  " netrw, oil and vinegar
+  Plug 'tpope/vim-vinegar'
+
+  " commentary
+  Plug 'scrooloose/nerdcommenter'         " comments smartly by filetype
+  Plug 'cometsong/CommentFrame.vim'       " frame and full line comment styles
+
+  " compilation
+  Plug 'benekastah/neomake'               " syntax checking
+  Plug 'thinca/vim-quickrun'              " quick make, many filetypes
+  Plug 'JarrodCTaylor/vim-shell-executor' " execute al or selected with any shell command
+
+  " template files
+  Plug 'cometsong/vim-template'           " forked set of template files
+
+  Plug 'tpope/vim-eunuch'                 " unix
+  "Plug 'benmills/vimux'                   "interact with tmux
+  Plug 'artnez/vim-writepath'             " e some/new/path/file.foo
+
+  " colorful  "{{{
+  "Plug 'flazz/vim-colorschemes'          " plethora of colorschemes to choose from
+  Plug 'junegunn/limelight.vim'           " highlights each paragraph/section of the file (puts it in the limelight)
+    " Background Color name (:help cterm-colors)
+    let g:limelight_conceal_ctermfg = 'DarkGrey'
+    let g:limelight_conceal_guifg = 'DarkGrey'
+    call MapKeys('nvx', 'lm', ':Limelight!!<CR>')  " LimeLight Toggle
+  Plug 'Lokaltog/vim-distinguished'       " distinguished colors
+  Plug 'nanotech/jellybeans.vim'          " jellybeans colors
+  Plug 'mkarmona/colorsbox'               " colorsbox color set
+  "}}}
+
+  " matches  "{{{
   Plug 'Raimondi/delimitMate'             " autoclose {([, etc
   Plug 'vim-scripts/matchit.zip'          " show matches of words, not just chars
   Plug 'Valloric/MatchTagAlways'          " show matching x[ht]ml tags
+  "}}}
 
-  " snippets galore
-  Plug 'MarcWeber/vim-addon-mw-utils'     " utils prereq
-    \ | Plug 'tomtom/tlib_vim'            " utils prereq
-    \ | Plug 'garbas/vim-snipmate'        " snippet deliverer
-    \ | Plug 'honza/vim-snippets'         " collections of various snippets
-    \ | Plug 'tlavi/SnipMgr'              " manage snippet collections
+  " snippet completions galore  "{{{
+  Plug 'MarcWeber/vim-addon-mw-utils'
+    \| Plug 'tomtom/tlib_vim'
+    \| Plug 'garbas/vim-snipmate'
+    \| Plug 'honza/vim-snippets'
+    \| Plug 'tlavi/SnipMgr'
+  Plug 'ervandew/supertab'
+  "}}}
 
   " unite: search and display information from arbitrary sources like files, buffers, recently used files or registers
   Plug 'Shougo/unite.vim'
-    "\ | Plug 'Shougo/vimfiler.vim'       " filebrowser and explorer
 
-  "omni-completer
-  function! BuildYCM(info) "taken from github/junegunn/vim-plug page {{{
-    " info is a dictionary with 3 fields
-    " - name:   name of the plugin
-    " - status: 'installed', 'updated', or 'unchanged'
-    " - force:  set on PlugInstall! or PlugUpdate!
-    if a:info.status == 'installed' || a:info.force
-      !./install.py --clang-completer
-    endif
-  endfunction "}}}
-  "Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')} "omni-complete on steroids {requires python2}
-  " Py2/3 conflictions "{{{
-  "if has("python3")
-    "Plug 'Shougo/neocomplete.vim'
-  "elif has("python")
-    "Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
-  "endif
-
-  " from: oblitum/dotfiles/osx/.vimrc
-  "let completer = "'Valloric/YouCompleteMe', {'do': function('BuildYCM')}"
-  "if has("python3") && !has("python")
-  "    let completer = 'Shougo/neocomplete.vim'
-  "endif
-   "}}}
-  Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'} "omni-completer on steroids {requires +python2}
-
-  " versionizing
+  " versionizing  "{{{
   Plug 'inkarkat/vcscommand.vim'                       " all version controllers
   Plug 'tpope/vim-fugitive'                            " gutsy gitsiness
-    \| Plug 'gregsexton/gitv'                          " git visuals
+  Plug 'gregsexton/gitv'                               " git visuals
   Plug 'vim-scripts/thermometer'                       " mercurial
+  "}}}
 
-  " tag sale!
+  " tag sale!  "{{{
   Plug 'xolox/vim-misc'
     \| Plug 'xolox/vim-easytags'                       " UpdateTags! HighlightTags
     set tags=./tags;
     let g:easytags_dynamic_files = 1
   Plug 'majutsushi/tagbar'                             " shows all tags in sidebar window
+  "}}}
+
+  Plug 'kien/rainbow_parentheses.vim' "colors diff levels of parens
+  Plug 'arecarn/selection.vim'
+  \| Plug 'arecarn/crunch.vim'  "calculator
+
+  "Plug 'justinmk/vim-sneak' "minimalist, versatile Vim motion plugin
+  "Plug 'vim-scripts/dbext.vim' "database connections
+  "Plug 'vim-scripts/grep.vim' "various greppers
+  "Plug 'vim-scripts/numbered.vim' "number or renumber lines
+  "Plug 'xolox/vim-session' "session manager
+  "Plug 'tpope/vim-obsession' "session manager
+  "Plug 'vim-scripts/FuzzyFinder' "fuzzy char find in buffers, files, tags, etc (ns9tks)
+  "Plug 'vim-scripts/QuickFixCurrentNumber' "navigation extension on quickfix items
+
+  "Plug 'vim-scripts/L9' "utils
+    "\ | Plug 'vim-scripts/VisIncr' "making a column of increasing or decreasing numbers, dates, or daynames
 
   "FileTypes "{{{
 
@@ -168,7 +173,7 @@ call plug#begin('~/.vim/bundle')
   " python[2/3]
   Plug 'davidhalter/jedi-vim', {'for': ['python']}     " python awesomeness
   Plug 'tmhedberg/SimpylFold', {'for': ['python']}     " python folding
-  Plug 'xolox/vim-misc'                                " utils prereq
+  Plug 'xolox/vim-misc'
     \ | Plug 'xolox/vim-pyref', {'for': ['python']}    " python docs
   "Plug 'jmcantrell/vim-virtualenv, {'for': ['python']}'
 
@@ -187,25 +192,10 @@ call plug#begin('~/.vim/bundle')
   Plug 'groenewege/vim-less', {'for': 'less'}          " syntax for lesscss files
   Plug 'vitalk/vim-lesscss', {'for': 'less'}           " lessc compilation
 
-  "Plug 'vim-scripts/Vim-Support', {'for': 'vim'} "WolfgangMehner vim stuff
+  Plug 'vim-scripts/Vim-Support', {'for': 'vim'} "WolfgangMehner vim stuff
   "Plug 'vim-scripts/perl-support.vim', {'for': 'perl'} "WolfgangMehner perl stuff
 
    "}}}
-
-  "Plug 'kien/rainbow_parentheses.vim' "colors diff levels of parens
-  "Plug 'arecarn/selection.vim'
-    "\ | Plug 'arecarn/crunch.vim' | "calculator
-  "Plug 'justinmk/vim-sneak' "minimalist, versatile Vim motion plugin
-  "Plug 'vim-scripts/dbext.vim' "database connections
-  "Plug 'vim-scripts/grep.vim' "various greppers
-  "Plug 'vim-scripts/numbered.vim' "number or renumber lines
-  "Plug 'xolox/vim-session' "session manager
-  "Plug 'tpope/vim-obsession' "session manager
-  "Plug 'vim-scripts/FuzzyFinder' "fuzzy char find in buffers, files, tags, etc (ns9tks)
-  "Plug 'vim-scripts/QuickFixCurrentNumber' "navigation extension on quickfix items
-
-  "Plug 'vim-scripts/L9' "utils
-    "\ | Plug 'vim-scripts/VisIncr' "making a column of increasing or decreasing numbers, dates, or daynames
 
   " Sample of Unmanaged plugin (manually installed and updated)
   "Plug '~/my-prototype-plugin'
@@ -235,14 +225,6 @@ let g:NERDCustomDelimiters = {
   \ }
 "}}}
 
-"---- VimFiler ---- {{{
-call MapKeys('ni', 'vf', ':VimFilerExplorer<CR>')
-call MapKeys('ni', '<F2>', ':VimFilerExplorer<CR>', '')
-amenu <silent> .10 &Cometsong.&VimFilerExplorer\ Toggle<Tab>vf/F2  <Leader>vf
-call MapKeys('ni', 'vb', ':VimFilerBufferDir<CR>')
-amenu <silent> .10 &Cometsong.&VimFilerExplorer\ Toggle<Tab>vb  <Leader>vb
-"}}}
-
 "---- TagBar ---- {{{
 let g:tagbar_left = 1
 let g:tagbar_width = 50
@@ -259,25 +241,12 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 1
 let g:jedi#rename_command = "<leader>re"
 let g:jedi#squelch_py_warning	= 1
+"let g:jedi#auto_vim_configuration = 0
+let g:jedi#completions_enabled = 0
 "}}}
 
 "---- Python Folding ---- {{{
 let g:SimpylFold_docstring_preview = 1
-"}}}
-
-"---- YouCompleteMe automatic tab completion of keywords {{{
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1
-      \}
-      "'markdown' : 1,
 "}}}
 
 "---- Perl-Support ---- {{{
@@ -301,35 +270,51 @@ let g:BASH_XtermDefaults          = '-fa courier -fs 10 -geometry 90x50'
 let g:BASH_Debugger               = 'bashdb'
 "}}}
 
+"---- completion ---- {{{
+
+
+"}}}
+
 "---- snippets ---- {{{
-let g:loaded_snipmate = 0
 let g:snips_author = "Benjamin Leopold (cometsong)"
+let g:snippets_dir = '~/.vim/snippets'
 
-call MapKeys('ni', '<S-F10>', ':SnipMateOpenSnippetFiles<CR>', '')
-amenu <silent> .200 &Cometsong.&SnipMate\ OpenSnippetFiles<Tab>S-F10   <S-F10>
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['python'] = 'python,python3,django'
 
-let g:__XPTEMPLATE_VIM__ = 1
-function! SetPersonalXpVars()
-  let l:personal_vars =
-    \       'author=Benjamin\ Leopold'
-    \ .'&'. 'email=benjamin(at)cometsong(dot)net'
-    "\ .'&'. ''
+" Plugin key-mappings.
+" map....    ":SnipMateOpenSnippetFiles
+call MapKeys('ni', 'ss', '<C-c>:SnipMateOpenSnippetFiles<CR>')
 
-  let g:xptemplate_vars = exists('g:xptemplate_vars') ?
-    \ g:xptemplate_vars . '&' . l:personal_vars
-    \ : l:personal_vars
-endfunction
-call SetPersonalXpVars()
+"call MapKeys('ni', '<C-s>', '<Plug>(neosnippet_expand_or_jump)')
+"amenu <silent> .200 &Cometsong.&OpenSnippet\ Files<Tab>sn sn
+
 "}}}
 
 "---- netrw ---- {{{
 if v:version > 702
   let g:netrw_home = "~"
   let g:netrw_ctags =$HOME.'/bin/ctags'
-  let g:netrw_dirhistmax = 10
+  let g:netrw_dirhistmax = 50
   let g:netrw_special_syntax = 1
   let g:netrw_timefmt = "%Y-%m-%d %H-%M-%S"
+  let g:netrw_winsize = 25
+  let g:netrw_liststyle = 3
+  let g:netrw_browse_split = 0
+
+  call MapKeys('ni', 'vf', ':Vex<CR>')
+  call MapKeys('ni', '<F2>', ':Vex<CR>', '')
+  amenu <silent> .10 &Cometsong.&Vexplore\ Toggle<Tab>vf/F2  <Leader>vf
+
+  call MapKeys('ni', '<S-F2>', ':Lex<CR>', '')
+  call MapKeys('ni', 'vl', ':Lex<CR>', '')
+  amenu <silent> .10 &Cometsong.&Lexplore\ Toggle<Tab>vl/S-F2  <Leader>vl
 else " do not load netrw if ver < 7.2
   let g:loaded_netrw = 1
   let g:loaded_netrwPlugin = 1
@@ -452,17 +437,16 @@ amenu <silent> .13 &Cometsong.&Unite:\ registers<Tab>F3  <F3>
 amenu <silent> .13 &Cometsong.&Unite:\ Files\ BufferDir<Tab>S-F3  <S-F3>
 "}}}
 
-"---- Syntastic ---- {{{
-let g:syntastic_error_symbol    ='∆>'
-let g:syntastic_warning_symbol  ='?>'
-let g:syntastic_auto_loc_list   =1
-let g:syntastic_loc_list_height =5
-let g:syntastic_quiet_messages = {'level': 'warnings'}
+"---- NeoMake ---- {{{
+let g:neomake_open_list = 2
+let g:neomake_list_height = 15
 
-call MapKeys('ni', '<F5>', ':SyntasticCheck<CR>', '')
-call MapKeys('ni', '<S-F5>', ':Errors<CR>', '')
-amenu <silent> .225 &Cometsong.&Syntastic:\ Check<Tab>F5  <F5>
-amenu <silent> .225 &Cometsong.&Syntastic:\ ErrorShow<Tab>S-F5  <S-F5>
+call MapKeys('ni', '<F5>', ':Neomake<CR>', '')
+amenu <silent> .225 &Cometsong.&NeomakeTab>F5  <F5>
+"}}}
+
+"---- CSV ---- {{{
+let g:csv_table_leftalign = 1
 "}}}
 
 "---- Sneak ---- {{{
@@ -505,6 +489,10 @@ augroup FileType sh,perl
 
 "---- LessCss ---- {{{
 let g:lesscss_toggle_key = "<leader>lc"
+"}}}
+
+"---- Signature Marks ---- {{{
+let g:SignatureMarkLineHL = "'Exception'"
 "}}}
 
 "---- Templates ---- {{{
