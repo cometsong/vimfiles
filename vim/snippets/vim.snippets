@@ -1,0 +1,13 @@
+snippet head standard Vim script file header
+	" File:          ${1:`expand('%:t')`}
+	" Author:        ${2:`g:snips_author`}
+	" Description:   ${3}
+	${0:" Last Modified: `strftime("%F %T")`}
+snippet plug Plug.vim definition
+	Plug '${0}'    " ${1:plug description}
+snippet map MapKeys cmd
+	call MapKeys('${0:ni}', '${1:keys}', '${2:command}'${3:, '<leader>'})
+snippet section Section of Vim file
+	"---- ${0:Section Header} ---- "{{{
+		${1:section stuff}
+	"}}}
