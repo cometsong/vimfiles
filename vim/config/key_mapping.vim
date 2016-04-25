@@ -27,12 +27,6 @@ call MapKeys('n', 'ev', ':vsp %%')
 call MapKeys('n', 'Y', 'y$', '')
 "}}}
 
-"--- for regex matching with 'very magic'  {{{
-"call MapKeys('nv', '?', '?\v')
-"call MapKeys('nv', '/', '/\v')
-" now done in bundle IndexedSearch
-"}}}
-
 "--- Make p in Visual mode replace the selected text with the "" register.  {{{
 call MapKeys('v', 'p', '<Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>', '')
 "}}}
@@ -142,12 +136,6 @@ amenu <silent> .61 &Cometsong.Remove\ EOL\ Spaces<Tab>ers   <Leader>ers   " Come
 "--- QuickRun   {{{
 call MapKeys('niv', 'qr', ':QuickRun<CR>')
 amenu <silent> .66 &Cometsong.QuickRun\ file<Tab>qr   <Leader>qr   " Cometsong Menu!
-"}}}
-
-"--- Rolodex   {{{
-call MapKeys('niv', 'tw', ':call ToggleRolodexTab()<CR>')
-call MapKeys('niv', 'tr', ':call ToggleRolodexTab()<CR>')
-amenu <silent> .66 &Cometsong.ToggleRolodex<Tab>tr,tw   <Leader>tr   " Cometsong Menu!
 "}}}
 
 "--- JSON   {{{
