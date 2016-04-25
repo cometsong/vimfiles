@@ -65,69 +65,72 @@ endif
 call plug#begin('~/.vim/bundle')
 
   " the basics
-  Plug 'cometsong/statline.vim'           " status line definition
-  Plug 'yegappan/mru'                     " most recently used files
-  Plug 'cometsong/minibufexpl.vim'        " buffers listed in top window
-  Plug 'cometsong/bufkill.vim'            " delete buffer without closing the window
-  Plug 'kshenoy/vim-signature'            " place, toggle and display marks
-  Plug 'vim-scripts/camelcasemotion'      " TraverseCamelStrings
-  Plug 'cometsong/simplefold.vim'         " custom folding for some syntaxes
-  Plug 'tpope/vim-surround'               " surround strings with things
-  Plug 'tpope/vim-repeat'                 " repeat many many tasks
-  Plug 'vim-scripts/visualrepeat'         " cf. vim-repeat, but in visual mode
-  Plug 'mbbill/undotree'                  " shows window with all previous undos
-  Plug 'vim-scripts/TaskList.vim'         " list all TODOs
-  Plug 'tpope/vim-abolish'                " Abbreviation, Subvert, Coercion
-  Plug 'junegunn/vim-easy-align'          " aligning power!
-  Plug 'cometsong/IndexedSearch.vim'      " shows 'Nth match out of M' at every search
-  Plug 'cometsong/scratch.vim'            " create a temporary scratch buffer while running vim
-  Plug 'nathanaelkane/vim-indent-guides'  " colors each indent level
-  Plug 'wesQ3/vim-windowswap'             " swap window locations
-  Plug 'ervandew/archive'                 " browse contents of archive files
+  Plug 'cometsong/statline.vim'             " status line definition
+  Plug 'yegappan/mru'                       " most recently used files
+  Plug 'cometsong/minibufexpl.vim'          " buffers listed in top window
+  Plug 'cometsong/bufkill.vim'              " delete buffer without closing the window
+  Plug 'kshenoy/vim-signature'              " place, toggle and display marks
+  Plug 'vim-scripts/camelcasemotion'        " TraverseCamelStrings
+  Plug 'cometsong/simplefold.vim'           " custom folding for some syntaxes
+  Plug 'tpope/vim-surround'                 " surround strings with things
+  Plug 'tpope/vim-repeat'                   " repeat many many tasks
+  Plug 'vim-scripts/visualrepeat'           " cf. vim-repeat, but in visual mode
+  Plug 'mbbill/undotree'                    " shows window with all previous undos
+  Plug 'vim-scripts/TaskList.vim'           " list all TODOs
+  Plug 'tpope/vim-abolish'                  " Abbreviation, Subvert, Coercion
+  Plug 'junegunn/vim-easy-align'            " aligning power!
+  Plug 'cometsong/IndexedSearch.vim'        " shows 'Nth match out of M' at every search
+  Plug 'cometsong/scratch.vim'              " create a temporary scratch buffer while running vim
+  Plug 'nathanaelkane/vim-indent-guides'    " colors each indent level
+  Plug 'wesQ3/vim-windowswap'               " swap window locations
+  Plug 'ervandew/archive'                   " browse contents of archive files
+  Plug 'ervandew/maximize'                  " max/minimize windows in multi-window layout
 
   " netrw, oil and vinegar
   Plug 'tpope/vim-vinegar'
+  Plug 'justinmk/vim-dirvish'               " directory viewer, path navigator (instead of netrw, alongside vinegar)
 
   " commentary
-  Plug 'scrooloose/nerdcommenter'         " comments smartly by filetype
-  Plug 'cometsong/CommentFrame.vim'       " frame and full line comment styles
+  Plug 'scrooloose/nerdcommenter'           " comments smartly by filetype
+  Plug 'cometsong/CommentFrame.vim'         " frame and full line comment styles
 
   " compilation
-  Plug 'benekastah/neomake'               " syntax checking
-  Plug 'thinca/vim-quickrun'              " quick make, many filetypes
-  Plug 'JarrodCTaylor/vim-shell-executor' " execute al or selected with any shell command
+  Plug 'benekastah/neomake'                 " syntax checking
+  Plug 'thinca/vim-quickrun'                " quick make, many filetypes
+  Plug 'JarrodCTaylor/vim-shell-executor'   " execute al or selected with any shell command
 
   " template files
-  Plug 'cometsong/vim-template'           " forked set of template files
+  Plug 'cometsong/vim-template'             " forked set of template files
 
-  Plug 'tpope/vim-eunuch'                 " unix
-  "Plug 'benmills/vimux'                   "interact with tmux
-  Plug 'artnez/vim-writepath'             " e some/new/path/file.foo
+  Plug 'tpope/vim-eunuch'                   " unix
+  "Plug 'benmills/vimux'                     " interact with tmux
+  "Plug 'ervandew/screen'                    " simulate a split shell in vim using either gnu screen or tmux
+  Plug 'artnez/vim-writepath'               " e some/new/path/file.foo
 
   " colorful  "{{{
-  "Plug 'flazz/vim-colorschemes'          " plethora of colorschemes to choose from
-  Plug 'junegunn/limelight.vim'           " highlights each paragraph/section of the file (puts it in the limelight)
+  "Plug 'flazz/vim-colorschemes'             " plethora of colorschemes to choose from
+  Plug 'junegunn/limelight.vim'             " highlights each paragraph/section of the file (puts it in the limelight)
     " Background Color name (:help cterm-colors)
     let g:limelight_conceal_ctermfg = 'DarkGrey'
     let g:limelight_conceal_guifg = 'DarkGrey'
     call MapKeys('nvx', 'lm', ':Limelight!!<CR>')  " LimeLight Toggle
-  Plug 'Lokaltog/vim-distinguished'       " distinguished colors
-  Plug 'nanotech/jellybeans.vim'          " jellybeans colors
-  Plug 'mkarmona/colorsbox'               " colorsbox color set
+  Plug 'Lokaltog/vim-distinguished'         " distinguished colors
+  Plug 'nanotech/jellybeans.vim'            " jellybeans colors
+  Plug 'mkarmona/colorsbox'                 " colorsbox color set
   "}}}
 
   " matches  "{{{
-  Plug 'Raimondi/delimitMate'             " autoclose {([, etc
-  Plug 'vim-scripts/matchit.zip'          " show matches of words, not just chars
-  Plug 'Valloric/MatchTagAlways'          " show matching x[ht]ml tags
+  Plug 'Raimondi/delimitMate'               " autoclose {([, etc
+  Plug 'vim-scripts/matchit.zip'            " show matches of words, not just chars
+  Plug 'Valloric/MatchTagAlways'            " show matching x[ht]ml tags
   "}}}
 
   " snippet completions galore  "{{{
   Plug 'MarcWeber/vim-addon-mw-utils'
-    \| Plug 'tomtom/tlib_vim'
-    \| Plug 'garbas/vim-snipmate'
-    \| Plug 'honza/vim-snippets'
-    \| Plug 'tlavi/SnipMgr'
+  \| Plug 'tomtom/tlib_vim'
+  \| Plug 'garbas/vim-snipmate'
+  \| Plug 'honza/vim-snippets'
+  \| Plug 'tlavi/SnipMgr'
   Plug 'ervandew/supertab'
   "}}}
 
@@ -135,35 +138,36 @@ call plug#begin('~/.vim/bundle')
   Plug 'Shougo/unite.vim'
 
   " versionizing  "{{{
-  Plug 'inkarkat/vcscommand.vim'                       " all version controllers
-  Plug 'tpope/vim-fugitive'                            " gutsy gitsiness
-  Plug 'gregsexton/gitv'                               " git visuals
-  Plug 'vim-scripts/thermometer'                       " mercurial
+  Plug 'inkarkat/vcscommand.vim'            " all version controllers
+  Plug 'tpope/vim-fugitive'                 " gutsy gitsiness
+  Plug 'gregsexton/gitv'                    " git visuals
+  Plug 'vim-scripts/thermometer'            " mercurial
   "}}}
 
   " tag sale!  "{{{
   Plug 'xolox/vim-misc'
-    \| Plug 'xolox/vim-easytags'                       " UpdateTags! HighlightTags
+  \| Plug 'xolox/vim-easytags'              " UpdateTags! HighlightTags
     set tags=./tags;
     let g:easytags_dynamic_files = 1
-  Plug 'majutsushi/tagbar'                             " shows all tags in sidebar window
-  "}}}
+  Plug 'majutsushi/tagbar'                  " shows all tags in sidebar window
+  " }}}
 
-  Plug 'kien/rainbow_parentheses.vim' "colors diff levels of parens
+  Plug 'kien/rainbow_parentheses.vim'       " colors diff levels of parens
+
   Plug 'arecarn/selection.vim'
-  \| Plug 'arecarn/crunch.vim'  "calculator
+  \| Plug 'arecarn/crunch.vim'              " calculator
 
-  "Plug 'justinmk/vim-sneak' "minimalist, versatile Vim motion plugin
-  "Plug 'vim-scripts/dbext.vim' "database connections
-  "Plug 'vim-scripts/grep.vim' "various greppers
-  "Plug 'vim-scripts/numbered.vim' "number or renumber lines
-  "Plug 'xolox/vim-session' "session manager
-  "Plug 'tpope/vim-obsession' "session manager
-  "Plug 'vim-scripts/FuzzyFinder' "fuzzy char find in buffers, files, tags, etc (ns9tks)
-  "Plug 'vim-scripts/QuickFixCurrentNumber' "navigation extension on quickfix items
+  "Plug 'justinmk/vim-sneak'                " minimalist, versatile Vim motion plugin
+  "Plug 'vim-scripts/dbext.vim'             " database connections
+  "Plug 'vim-scripts/grep.vim'              " various greppers
+  "Plug 'vim-scripts/numbered.vim'          " number or renumber lines
+  "Plug 'xolox/vim-session'                 " session manager
+  "Plug 'tpope/vim-obsession'               " session manager
+  "Plug 'vim-scripts/FuzzyFinder'           " fuzzy char find in buffers, files, tags, etc (ns9tks)
+  "Plug 'vim-scripts/QuickFixCurrentNumber' " navigation extension on quickfix items
 
-  "Plug 'vim-scripts/L9' "utils
-    "\ | Plug 'vim-scripts/VisIncr' "making a column of increasing or decreasing numbers, dates, or daynames
+  "Plug 'vim-scripts/L9'                    " utils
+    "\ | Plug 'vim-scripts/VisIncr'         " making a column of increasing or decreasing numbers, dates, or daynames
 
   "FileTypes "{{{
 
@@ -270,12 +274,7 @@ let g:BASH_XtermDefaults          = '-fa courier -fs 10 -geometry 90x50'
 let g:BASH_Debugger               = 'bashdb'
 "}}}
 
-"---- completion ---- {{{
-
-
-"}}}
-
-"---- snippets ---- {{{
+"---- snippets, completions ---- {{{
 let g:snips_author = "Benjamin Leopold (cometsong)"
 let g:snippets_dir = '~/.vim/snippets'
 
@@ -284,16 +283,13 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-let g:snipMate = {}
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['python'] = 'python,python3,django'
+"let g:snipMate = {}
+"let g:snipMate.scope_aliases = {}
+"let g:snipMate.scope_aliases['python'] = 'python,python3,django'
 
 " Plugin key-mappings.
-" map....    ":SnipMateOpenSnippetFiles
 call MapKeys('ni', 'ss', '<C-c>:SnipMateOpenSnippetFiles<CR>')
-
-"call MapKeys('ni', '<C-s>', '<Plug>(neosnippet_expand_or_jump)')
-"amenu <silent> .200 &Cometsong.&OpenSnippet\ Files<Tab>sn sn
+amenu <silent> .200 &Cometsong.&OpenSnippet\ Files<Tab>ss ss
 
 "}}}
 
