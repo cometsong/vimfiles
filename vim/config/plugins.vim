@@ -98,6 +98,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'benekastah/neomake'                 " syntax checking
   Plug 'thinca/vim-quickrun'                " quick make, many filetypes
   Plug 'JarrodCTaylor/vim-shell-executor'   " execute al or selected with any shell command
+  Plug 'coala/coala-vim'                    " exec coala on file (optionally autocmd for post-write-buf)
 
 """"--- template files ---
   Plug 'cometsong/vim-template'             " forked set of template files
@@ -444,6 +445,12 @@ amenu <silent> .13 &Cometsong.&Unite:\ Files\ BufferDir<Tab>S-F3  <S-F3>
 """"--- NeoMake ---
 let g:neomake_open_list = 2
 let g:neomake_list_height = 15
+
+let g:neomake_sh_maker = {
+\ 'exe': 'shellcheck',
+\ 'args': '-x -f gcc',
+\ 'cwd': '%:p:h'
+\ }
 
 call MapKeys('ni', '<F5>', ':Neomake<CR>', '')
 amenu <silent> .225 &Cometsong.&NeomakeTab>F5  <F5>
