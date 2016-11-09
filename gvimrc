@@ -21,7 +21,6 @@ end
 
 syntax on
 set hlsearch                        " Highlight search terms
-colorscheme jellybeans               " dark and stylin colors
 set guioptions+=mT                  " show menu and toolbar
 set guioptions-=e                   " never show tabline
 set showtabline=0                   " never show tabline
@@ -29,7 +28,7 @@ set anti                            " Antialias font
 
 " Default Starting size of window
 set columns=120 
-set lines=60
+set lines=80
 "}}}1
 
 "---- Plugins {{{1

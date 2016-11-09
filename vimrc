@@ -32,6 +32,8 @@ source ~/.vim/config/autocmds.vim
 source ~/.vim/config/plugins.vim
 
 """--- Set Colors
-colorscheme jellybeans
+"colorscheme jellybeans
+set background=dark
+colorscheme gruvbox
 
 """ vim:fdm=expr:fdl=0:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='

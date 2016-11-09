@@ -122,6 +122,10 @@ call plug#begin('~/.vim/bundle')
   Plug 'nanotech/jellybeans.vim'            " jellybeans colors
   "Plug 'mkarmona/colorsbox'                 " colorsbox color set
   Plug 'altercation/vim-colors-solarized'   " solarized colorscheme
+  Plug 'andrwb/vim-lapis256'
+  Plug 'sickill/vim-monokai'
+  Plug 'romainl/flattened'
+  Plug 'morhetz/gruvbox'
 
 """"--- matches ---
   Plug 'Raimondi/delimitMate'               " autoclose {([, etc
@@ -234,6 +238,9 @@ let g:jellybeans_overrides = {
 "\              'attr': 'italics' },
 "\    'Comment': { 'guifg': 'cccccc' },
 "\}
+let g:gruvbox_italic = 1 "for terminal improvement
+let g:gruvbox_number_column = 'gray'
+let g:gruvbox_italicize_strings = 1
 
 """"--- MRU ---
 let MRU_Max_Entries = 400
@@ -518,6 +525,13 @@ call MapKeys('n', '<C-F>f', '<Plug>CtrlSFPrompt', '')
 call MapKeys('v', '<C-F>f', '<Plug>CtrlSFVwordPath', '')
 call MapKeys('v', '<C-F>c', '<Plug>CtrlSFCwordPath', '')
 call MapKeys('ni', '<C-F>t', ':CtrlSFToggle<CR>', '')
+
+""""--- MiniBufExplorer ---
+" Maintain MBE window position when moving other windows (from:weynhamz/vim-plugin-minibufexpl/issues/31)
+map <C-w>H <C-w>H:MBEOpen!<CR>
+map <C-w>J <C-w>J:MBEOpen!<CR>
+map <C-w>K <C-w>K:MBEOpen!<CR>
+map <C-w>L <C-w>L:MBEOpen!<CR>
 
 
 """ vim:fdm=expr:fdl=0:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
