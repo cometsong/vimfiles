@@ -181,6 +181,7 @@ call plug#begin('~/.vim/bundle')
 
   Plug 'terryma/vim-multiple-cursors'       " multiple cursors within vim, for quick refactoring, correcting, amazing, etc.
   Plug 'dyng/ctrlsf.vim'                    " An ack/ag/pt/rg powered code search and view tool, w/ edit mode!
+  Plug 'romainl/vim-qf'                     " make the quickfix and location list windows nicer
 
 """"--- FileTypes --
 
