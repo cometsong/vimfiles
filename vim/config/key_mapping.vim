@@ -143,6 +143,11 @@ call MapKeys('niv', '=j', ':%!python -m json.tool<CR>', '')
 amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong Menu!
 "}}}
 
+"--- Center each search result {{{
+call MapKeys('nv', 'n', 'nzz'')
+call MapKeys('nv', 'N', 'Nzz'')
+"}}}
+
 "--- JAX work mappings {{{
 command! MinutesDatestamp normggo- datetime: "\dtzggO\dtsyiw"tdd/event<CR>$diW
 call MapKeys('n', '=md', ':MinutesDatestamp<CR>', '')
