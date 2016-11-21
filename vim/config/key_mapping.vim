@@ -144,8 +144,8 @@ amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong M
 "}}}
 
 "--- Center each search result {{{
-call MapKeys('nv', 'n', 'nzz'')
-call MapKeys('nv', 'N', 'Nzz'')
+call MapKeys('nv', 'n', 'nzz')
+call MapKeys('nv', 'N', 'Nzz')
 "}}}
 
 "--- JAX work mappings {{{
