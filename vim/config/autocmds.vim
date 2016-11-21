@@ -7,8 +7,8 @@ if has("autocmd")
     " automatically reload vimrc when it's saved
     au BufWritePost $MYVIMRC so $MYVIMRC
     if has("gui_running")
-      autocmd! Bufwritepost $MYVIMRC  :source $MYVIMRC
       autocmd! Bufwritepost $MYVIMRC  :source $MYGVIMRC
+      autocmd! Bufwritepost $MYGVIMRC :source $MYVIMRC
       autocmd! Bufwritepost $MYGVIMRC :source $MYGVIMRC
     endif
   augroup END
@@ -37,14 +37,26 @@ if has("autocmd")
 
   " tabs/spaces based on Syntax of languages
   autocmd FileType make         setlocal ts=8 sts=8 sw=8 noexpandtab
-  autocmd FileType yaml         setlocal fdm=indent tw=100 ts=2 sts=2 sw=2 expandtab wrap linebreak
+  autocmd FileType yaml         setlocal ts=2 sts=2 sw=2 expandtab fdm=indent tw=100 wrap linebreak
   autocmd FileType json         setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType python       setlocal ts=4 sts=4 sw=4 expandtab tw=79
+  autocmd FileType python       setlocal ts=4 sts=4 sw=4 expandtab tw=99
   autocmd FileType html,xml     setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css          setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript   setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType vim          setlocal ts=2 sts=2 sw=2 expandtab fdm=marker
+  autocmd FileType *            RainbowParenthesesActivate
   "}}} 
+
+
+  "--- pretty stuff for programming
+  augroup Indentured
+        "\ yaml,python,html,xml,java,javascript,markdown,perl,sh
+    au! FileType *
+        \ IndentGuidesEnable
+    au! FileType
+        \ text,css,sql,help,config,viminfo
+        \ IndentGuidesDisable
+  augroup END
 
   "--- for all 'grep' commands, open in QuickFix window {{{
   autocmd QuickFixCmdPost *grep* cwindow
