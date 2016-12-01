@@ -50,12 +50,10 @@ amenu <silent> .210 &Cometsong.&Paste\ mode<Tab>p  <Leader>p
 "}}}
 
 "--- Buffer Access Setup  {{{
-call MapKeys('ni', "<C-PageUp>",   ':bprev<CR>', '')
-call MapKeys('ni', "<C-PageDown>", ':bnext<CR>', '')
-call MapKeys('ni', "<C-Up>",       ':bprev<CR>', '')
-call MapKeys('ni', "<C-Down>",     ':bnext<CR>', '')
-call MapKeys('ni', "<C-k>",        ':bprev<CR>', '')
-call MapKeys('ni', "<C-j>",        ':bnext<CR>', '')
+call MapKeys('ni', '<C-PageUp>',   ':bprev<CR>', '')
+call MapKeys('ni', '<C-PageDown>', ':bnext<CR>', '')
+call MapKeys('ni', '<C-k>',        ':bprev<CR>', '')
+call MapKeys('ni', '<C-j>',        ':bnext<CR>', '')
 "}}}
 
 "--- datetime stamps  {{{
@@ -123,19 +121,9 @@ call MapKeys('ni', 'sp', ':set spell!<CR>') " toggle spelling
 amenu <silent> .59 &Cometsong.Spell\ Checking\ Toggle<Tab>sp   <Leader>sp   " Cometsong Menu!
 "}}}
 
-"--- ScratchToggle   {{{
-call MapKeys('ni', 'ts', ':ScratchToggle<CR>')
-amenu <silent> .61 &Cometsong.ScratchToggle<Tab>ts   <Leader>ts   " Cometsong Menu!
-"}}}
-
 "--- Remove EOL spaces   {{{
 call MapKeys('ni', 'ers', ':%s/\s\+$//<CR>')
 amenu <silent> .61 &Cometsong.Remove\ EOL\ Spaces<Tab>ers   <Leader>ers   " Cometsong Menu!
-"}}}
-
-"--- QuickRun   {{{
-call MapKeys('niv', 'qr', ':QuickRun<CR>')
-amenu <silent> .66 &Cometsong.QuickRun\ file<Tab>qr   <Leader>qr   " Cometsong Menu!
 "}}}
 
 "--- JSON   {{{
@@ -144,8 +132,9 @@ amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong M
 "}}}
 
 "--- Center each search result {{{
-call MapKeys('nv', 'n', 'nzz')
-call MapKeys('nv', 'N', 'Nzz')
+"call MapKeys('nv', 'n', 'nzz')
+"call MapKeys('nv', 'N', 'Nzz')
+" !fails due to IndexedSearch mapping!
 "}}}
 
 "--- JAX work mappings {{{
