@@ -35,5 +35,6 @@ source ~/.vim/config/plugins.vim
 "colorscheme jellybeans
 set background=dark
 colorscheme gruvbox
+colorscheme hybrid
 
 """ vim:fdm=expr:fdl=0:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
