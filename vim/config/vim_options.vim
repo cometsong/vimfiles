@@ -32,7 +32,7 @@ set t_Co=256          " Explicitly tell vim that the terminal supports 256 color
 set hidden            " keep buffer mods hidden, allow switching buffers without saving
 set splitright        " set split default on the right
 "set equalalways       " all new windows equal size
-set verbose=1         " all cmds default to verbose output
+"set verbose=1         " all cmds default to verbose output
 set modeline          " Enable check for modeline
 "set modelines=5       " set number of lines checked for modeline (default 5)
 
