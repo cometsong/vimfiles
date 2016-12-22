@@ -23,9 +23,7 @@ set scrolloff=1       " Minimum lines between cursor and window edge
 set showcmd           " Show partially typed commands
 set nobackup          " Don't use a backup file (also see writebackup)
 "set writebackup       " Write temporary backup files in case we crash
-
 set shortmess=atoOT   " shortmessage options
-
 set nowrap            " do not wrap lines; see also |Wrap Setup|
 set textwidth=100     " max width of line of text
 set formatoptions=crqnl " how Vim auto-formats text
@@ -34,13 +32,13 @@ set t_Co=256          " Explicitly tell vim that the terminal supports 256 color
 set hidden            " keep buffer mods hidden, allow switching buffers without saving
 set splitright        " set split default on the right
 "set equalalways       " all new windows equal size
-
+set verbose=1         " all cmds default to verbose output
 set modeline          " Enable check for modeline
 "set modelines=5       " set number of lines checked for modeline (default 5)
 
 set showmatch         " Show parentheses matching
 set matchpairs+=<:>   " append pairable chars to the default set '(:),{:},[:]'
-set matchtime=3       " Show matching brackets for only 0.3 seconds
+set matchtime=5       " Show matching brackets for only 0.3 seconds
 
 set number            " line numbers
 set numberwidth=1     " line numbers minimum gutter width
@@ -49,7 +47,7 @@ set numberwidth=1     " line numbers minimum gutter width
 "endif
 " for line number colors, see colorscheme.vim file, LineNr
 
-set clipboard=unnamed " all unnamed Yanks/dels go to clipboard, and try to come from it only!
+"set clipboard=unnamed " all unnamed Yanks/dels go to clipboard, and try to come from it only!
 
 set incsearch         " incremental searching as you type
 set hlsearch          " highlight all search results
@@ -66,7 +64,7 @@ set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:$
 set nolist            " do not show trailinginsert mode characters
 
 "--- persistent undo storage for files after they are closed
-if has("persistent_undo")
+if has('persistent_undo')
   set undofile          " Maintain undo history between sessions
   set undodir=$HOME/.vimundos   " dir to store undo files in
 endif
@@ -81,9 +79,8 @@ set nospell           " start with spell checking off (see keymap for spell! bel
 syntax enable
 
 " Switch syntax highlighting on, when the terminal has colors
-if has("syntax") && &t_Co > 2
+if has('syntax') && &t_Co > 2
   syntax on
-  set nohlsearch      " Don't highlight search terms
 endif
 "}}}
 

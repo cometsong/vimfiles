@@ -9,6 +9,7 @@ function! MapKeys(modes, keys, target, ...)
   let l:leadstr = a:0 >= 1  ?  a:1  :  "<Leader>"
   " begin map construction
   let l:map_start = 'noremap ' . l:leadstr
+  "let l:map_start = 'map ' . l:leadstr
   for l:mode in (a:modes == '') ? [''] : split(a:modes, '\zs')
     if l:mode == 'i'
       let l:target = '<C-C>' . a:target . 'a'
