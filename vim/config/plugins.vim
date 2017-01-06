@@ -321,6 +321,14 @@ endif
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 
+" solarized
+let g:solarized_termcolors = 16
+let g:solarized_contrast = 'high'
+let g:solarized_visibility = 'normal'
+let g:solarized_underline = 0
+let g:solarized_bold = 1
+
+
 """--- MRU --
 let MRU_Max_Entries = 400
 call MapKeys('n', 'mr', ':MRU<CR>')
