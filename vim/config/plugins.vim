@@ -107,7 +107,9 @@ call plug#begin('~/.vim/bundle')
   "Plug 'tpope/vim-dispatch'                 " async Make and Compiler
   Plug 'JarrodCTaylor/vim-shell-executor'   " execute al or selected with any shell command
   "Plug 'coala/coala-vim'                    " exec coala on file (optionally autocmd for post-write-buf)
-  Plug 'w0rp/ale'                           " Asynchronous Lint Engine
+  if has('nvim') || v:version > 8
+    Plug 'w0rp/ale'                           " Asynchronous Lint Engine
+  endif
 
 """--- template files ---
   Plug 'cometsong/vim-template'             " forked set of template files
