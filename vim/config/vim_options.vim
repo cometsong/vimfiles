@@ -60,7 +60,10 @@ set visualbell        " any bell transmogrifies to a blink
 set laststatus=2      " always show status line
  
 "--- Invisible characters   " If you ':set list', shows trailing spaces, etc
-set listchars=tab:⊢∽,trail:⎵,space:⎵,nbsp:·,extends:⋯,precedes:⋯,eol:$
+set listchars=tab:⊢∽,trail:⎵,extends:⋯,precedes:⋯,eol:$
+if has('nvim') || v:version > 8
+  set listchars+=space:⎵,nbsp:·
+endif
 set nolist            " do not show special mode characters   
 
 "--- persistent undo storage for files after they are closed
