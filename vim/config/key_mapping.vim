@@ -54,6 +54,10 @@ call MapKeys('ni', '<C-PageUp>',   ':bprev<CR>', '')
 call MapKeys('ni', '<C-PageDown>', ':bnext<CR>', '')
 call MapKeys('ni', '<C-k>',        ':bprev<CR>', '')
 call MapKeys('ni', '<C-j>',        ':bnext<CR>', '')
+
+" :ls with auto-bufselect begun :b
+" idea from romainl: http://vi.stackexchange.com/a/2124/2303
+call MapKeys('n', 'gls', ':ls<CR>:b<Space>', '')
 "}}}
 
 "--- datetime stamps  {{{
@@ -136,6 +140,7 @@ amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong M
 "call MapKeys('nv', 'N', 'Nzz')
 " !fails due to IndexedSearch mapping!
 "}}}
+
 
 "--- JAX work mappings {{{
 command! MinutesDatestamp normggo- datetime: "\dtzggO\dtsyiw"tdd/event<CR>$diW
