@@ -3,8 +3,8 @@
 set nocompatible      " Use Vim settings, rather then Vi settings (much better!).
 
 "set term=xterm        " xterm allows mouse, home/end/pgup/pgdown, etc.
-set viminfo='1000,f1,<1000,:25,@25,/25,s50 " default string to determine what viminfo file stores
-set history=50        " keep 50 lines of command line history
+set viminfo='1000,f1,<1000,:500,@25,/25,s50 " default string to determine what viminfo file stores
+set history=500       " keep 500 lines of command line history
 set backspace=2       " allow backspacing over everything in insert mode (=indent,eol,start)
 set whichwrap=<,>,[,],h,l    " Allows for left/right keys to wrap across lines
 
@@ -63,6 +63,7 @@ set laststatus=2      " always show status line
 set listchars=tab:⊢∽,trail:⎵,extends:⋯,precedes:⋯,eol:$
 if has('nvim') || v:version > 8
   set listchars+=space:⎵,nbsp:·
+  set showbreak=\ ↪\ 
 endif
 set nolist            " do not show special mode characters   
 
