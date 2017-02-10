@@ -113,7 +113,7 @@ if v:version > 700
   call MapKeys('ni', 'curt', ':set cursorcolumn! cursorline! <CR>')
   amenu <silent> .500 &Cometsong.&Cursor\ position\ toggle<Tab>curt     <Leader>curt
 endif
-"}}} --------------------------------------------------------------------------
+"}}}
 
 "--- matchit   {{{
 call MapKeys('n', ',mi', ':runtime macros/matchit.vim<CR>') " run the macros matchit (% for if/endif,etc)
@@ -141,6 +141,34 @@ amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong M
 " !fails due to IndexedSearch mapping!
 "}}}
 
+"--- OS X: command -> control conversion {{{
+map <d-a> <c-a>
+map <d-b> <c-b>
+map <d-c> <c-c>
+map <d-d> <c-d>
+map <d-e> <c-e>
+map <d-f> <c-f>
+map <d-g> <c-g>
+map <d-h> <c-h>
+map <d-i> <c-i>
+map <d-j> <c-j>
+map <d-k> <c-k>
+map <d-l> <c-l>
+map <d-m> <c-m>
+map <d-n> <c-n>
+map <d-o> <c-o>
+map <d-p> <c-p>
+map <d-q> <c-q>
+map <d-r> <c-r>
+map <d-s> <c-s>
+map <d-t> <c-t>
+map <d-u> <c-u>
+map <d-v> <c-v>
+map <d-w> <c-w>
+map <d-x> <c-x>
+map <d-y> <c-y>
+map <d-z> <c-z>
+"}}}
 
 "--- JAX work mappings {{{
 command! MinutesDatestamp normggo- datetime: "\dtzggO\dtsyiw"tdd/event<CR>$diW
