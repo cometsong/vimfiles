@@ -170,6 +170,11 @@ map <d-y> <c-y>
 map <d-z> <c-z>
 "}}}
 
+"--- word-searching \*, cf *,# keys, but include word within others {{{
+call MapKeys('n', '*', 'yiw/0<CR>')
+call MapKeys('n', '#', 'yiw/0<CR>')
+"}}}
+
 "--- JAX work mappings {{{
 command! MinutesDatestamp normggo- datetime: "\dtzggO\dtsyiw"tdd/event<CR>$diW
 call MapKeys('n', '=md', ':MinutesDatestamp<CR>', '')
