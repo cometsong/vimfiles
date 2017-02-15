@@ -4,10 +4,11 @@
 
 "--- Source Vim basic modules, append nvim-esques ---
 """--- Vim Options ---
-set runtimepath+=~/.vim/
 source ~/.vim/config/vim_options.vim
 
 """--- Nvim Options ---
+set runtimepath+=~/.vim/
+
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1  " switch cursor to line when in insert mode, and block when not
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
