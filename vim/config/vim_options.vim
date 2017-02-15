@@ -17,6 +17,11 @@ set ruler             " show the cursor position all the time
 set fileformat=unix   " No crazy CR/LF
 set mouse=a           " the mouse in VIM in a=all modes
 set mousemodel=popup_setpos "extend, popup or popup_setpos; what the right mouse button is used for
+if has("mouse_sgr")
+	set ttymouse=sgr		" accepts mouse activity past 223 columns
+else
+	set ttymouse=xterm2
+end
 
 set nojoinspaces      " One space after a '.' rather than 2
 set scrolloff=1       " Minimum lines between cursor and window edge
