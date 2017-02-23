@@ -175,6 +175,10 @@ call MapKeys('n', '*', 'yiw/0<CR>')
 call MapKeys('n', '#', 'yiw/0<CR>')
 "}}}
 
+"--- turn off current search highlighting {{{
+call MapKeys('n', '<M-BS>', ':noh<CR>')
+"}}}
+
 "--- JAX work mappings {{{
 command! MinutesDatestamp normggo- datetime: "\dtzggO\dtsyiw"tdd/event<CR>$diW
 call MapKeys('n', '=md', ':MinutesDatestamp<CR>', '')
