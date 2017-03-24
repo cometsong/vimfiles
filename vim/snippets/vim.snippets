@@ -1,13 +1,19 @@
-snippet head standard Vim script file header
+extends vim
+
+snippet head "standard Vim script file header"
 	" File:          ${1:`expand('%:t')`}
 	" Author:        ${2:`g:snips_author`}
-	" Description:   ${3}
+	" Email:         ${3:`g:snips_email`}
+	" Description:   ${4}
 	${0:" Last Modified: `strftime("%F %T")`}
-snippet plug Plug.vim definition
-	Plug '${0}'    " ${1:plug description}
-snippet map MapKeys cmd
+snippet map "MapKeys cmd"
 	call MapKeys('${0:ni}', '${1:keys}', '${2:command}'${3:, '<leader>'})
-snippet section Section of Vim file
+snippet sectexpr "Section of Vim file using modeline_folds snip'd below"
+	"""---- ${0:Section Header} ----
+		${1:section stuff}
+#snippet modeline_folds "modeline with quote-sensitive folding style"  -- !gives line syntax error!
+#    """ vim:fdm=expr:fdl=0:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
+snippet sectmark "Section of Vim file"
 	"---- ${0:Section Header} ---- "{{{
 		${1:section stuff}
 	"}}}
