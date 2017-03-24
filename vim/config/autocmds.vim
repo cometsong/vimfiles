@@ -26,7 +26,6 @@ if has("autocmd")
   " all filetypes
   augroup filetypes
     autocmd FileType * setl fo-=cro " disable auto-commenting
-    autocmd FileType * RainbowToggle " show all parentheses in color
 
     " tabs/spaces based on Syntax of languages
     autocmd FileType make         setlocal ts=8 sts=8 sw=8 noexpandtab
@@ -41,6 +40,9 @@ if has("autocmd")
   "}}} 
 
   "--- pretty stuff for programming {{{
+  augroup Parenthetcial
+    autocmd FileType * RainbowToggle " show all parentheses in color
+  augroup END
   augroup Indentured
     au! FileType * IndentLinesEnable
   augroup END
@@ -49,5 +51,18 @@ if has("autocmd")
   "--- for all 'grep' commands, open in QuickFix window {{{
   autocmd QuickFixCmdPost *grep* cwindow
   "}}} 
+
+  "--- NeoNeoNeovim {{{
+  if has('nvim') " for terminal
+    """"--- Terminicious ---
+    augroup TermsConditions
+      autocmd!
+      au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+      au BufEnter term://* startinsert
+      highlight TermCursor ctermfg=red guifg=red
+    augroup END
+    let g:terminal_scrollback_buffer_size = 50000
+  endif
+  "}}}
 
 endif " has("autocmd")
