@@ -3,19 +3,9 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 "--- Source Vim basic modules, append nvim-esques ---
+set runtimepath+=~/.vim/
 """--- Vim Options ---
 source ~/.vim/config/vim_options.vim
-
-"""--- Nvim Options ---
-set runtimepath+=~/.vim/
-
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1  " switch cursor to line when in insert mode, and block when not
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
-set shada=!,'100,<100,s20,h
-set shortmess=filmnrwxtToO
-set history=10000
-set infercase
 
 """--- Here Be Functions! ---
 " (need to be sourced before stuff that uses 'em)
@@ -48,5 +38,14 @@ colorscheme onedark
 " let g:loaded_python3_provider = 1   " To disable Python 3 support
 
 
+"""--- Nvim Specifics ---
 
-""" vim:fdm=expr:fdl=0:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1  " switch cursor to line when in insert mode, and block when not
+
+set shada=!,'100,<100,s20,h
+set shortmess=filmnrwxtToO
+set history=10000
+set infercase
+
+
+""" vim:fdm=expr:fdl=10:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
