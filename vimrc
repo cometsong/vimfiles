@@ -34,8 +34,11 @@ source ~/.vim/config/plugins.vim
 """--- Set Colors
 "colorscheme jellybeans
 set background=dark
-colorscheme gruvbox
-colorscheme hybrid
+"colorscheme gruvbox
+"colorscheme hybrid
 colorscheme solarized
+if (has('termguicolors'))
+  colorscheme solarized8_dark_high
+endif
 
-""" vim:fdm=expr:fdl=0:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
+""" vim:fdm=expr:fdl=1:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
