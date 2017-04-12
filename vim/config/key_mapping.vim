@@ -57,8 +57,29 @@ call MapKeys('ni', '<C-j>',        ':bnext<CR>', '')
 
 " :ls with auto-bufselect begun :b
 " idea from romainl: http://vi.stackexchange.com/a/2124/2303
-call MapKeys('n', 'gls', ':ls<CR>:b<Space>', '')
+call MapKeys('n', 'gls', ':ls<CR>:b', '')
 "}}}
+
+"--- Terminal Pane Access  {{{
+if has('nvim') " for terminal
+  call MapKeys('t', '<A-h>', '<C-\><C-n><C-w>h', '')
+  call MapKeys('t', '<A-j>', '<C-\><C-n><C-w>j', '')
+  call MapKeys('t', '<A-k>', '<C-\><C-n><C-w>k', '')
+  call MapKeys('t', '<A-l>', '<C-\><C-n><C-w>l', '')
+  tnoremap <m-h> <C-\><C-n><C-w>h
+  tnoremap <m-j> <C-\><C-n><C-w>j
+  tnoremap <m-k> <C-\><C-n><C-w>k
+  tnoremap <m-l> <C-\><C-n><C-w>l
+endif
+"}}}
+
+
+"--- map terminal splits  {{{
+"TODO: convert MapKeys to allow 't' and other 
+nnoremap <C-w>t :vsplit term://bash<CR>
+nnoremap <C-w>T :split term://bash<CR>
+"}}}
+
 
 "--- datetime stamps  {{{
 call MapKeys('ni', 'dts', '"=strftime("%Y%m%d_%H%M%S")<CR>p')

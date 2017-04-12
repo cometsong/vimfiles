@@ -191,6 +191,8 @@ endif
     let g:vimfiler_tree_indentation = 2
     call MapKeys('n', 'vf', ':VimFiler -split -no-status -no-alternate-buffer -winwidth=60 -fnamewidth=30<CR>')
     call MapKeys('n', 'hvf', ':h vimfiler-default-key-mappings<CR>')
+    call MapKeys('ni', '<F2>', '\vf')
+    amenu <silent> .10 &Cometsong.&Explore\ Files<Tab><F2> F2
 
 """--- versionizing ---
   Plug 'inkarkat/vcscommand.vim'            " all version controllers
@@ -324,18 +326,20 @@ let g:solarized_bold = 1
 
 
 """--- vim-airline ---
-let g:airline_theme = 'solarized'
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#neomake#enabled = 0
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#format = 1
 let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#csv#enabled = 1
+let g:airline#extensions#windowswap#enabled = 1
+
+let g:airline_theme = 'onedark'
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts=0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#left_sep = '|'
-let g:airline#extensions#tabline#left_alt_sep = '»'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 else
@@ -412,14 +416,14 @@ let g:SimpylFold_docstring_preview = 1
 """--- Templates ---
 "let g:templates_user_variables = [ ['', ''] ]
 let g:templates_no_autocmd = 1
-let g:user_name = 'Benjamin (cometsong)'
-let g:user_email = 'benjamin(at)cometsong(dot)net'
-let g:user_license = 'GPL v3 http://www.gnu.org/licenses/gpl-3.0.txt'
+let g:username = 'Benjamin (cometsong)'
+let g:email = 'benjamin(at)cometsong(dot)net'
+let g:license = 'GPL v3 http://www.gnu.org/licenses/gpl-3.0.txt'
 
 """--- snippets, completions ---
 let g:snips_author = "Benjamin Leopold (cometsong)"
-let g:snips_email = g:user_email
-let g:snips_username = g:user_name
+let g:snips_email = g:email
+let g:snips_username = g:username
 
 let g:snippets_dir = '~/.vim/snippets'
 let g:snippet_dirs = ['~/.vim/bundle/vim-snippets/snippets', '~/.vim/bundle/vim-snippets/UltiSnips']
