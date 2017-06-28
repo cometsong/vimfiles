@@ -76,7 +76,6 @@ endif
   "Plug 'cometsong/statline.vim'             " status line definition
   Plug 'yegappan/mru'                       " most recently used files
   Plug 'cometsong/minibufexpl.vim'          " buffers listed in top window
-  "Plug 'cometsong/bufkill.vim'              " delete buffer without closing the window
   Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }  " replace 'bufkill' with more sanity
   Plug 'kshenoy/vim-signature'              " place, toggle and display marks
   Plug 'vim-scripts/camelcasemotion'        " TraverseCamelStrings
@@ -91,7 +90,7 @@ endif
   Plug 'cometsong/scratch.vim'              " create a temporary scratch buffer while running vim
   Plug 'xolox/vim-session'                  " session manager
   Plug 'ervandew/archive'                   " browse contents of archive files
-  Plug 'Yggdroot/indentLine'                " marks each indent level with vertical line instead of colors!
+  Plug 'thaerkh/vim-indentguides'           " marks each indent level with vertical line instead of colors!
   Plug 'terryma/vim-multiple-cursors'       " multiple cursors within vim, for quick refactoring, correcting, amazing, etc.
   Plug 'luochen1990/rainbow'                " colors diff levels of parens
   Plug 'wesQ3/vim-windowswap'               " swap window locations
@@ -140,6 +139,8 @@ endif
   Plug 'joshdick/onedark.vim'               " theme w/ airline as well
   Plug 'w0ng/vim-hybrid'                    " mix of Tomorrow-Night, Codecademy, Jellybeans, Solarized, iTerm
   Plug 'lifepillar/vim-solarized8'          " True Colors, halfway between Solarized and Flattened
+  Plug 'rakr/vim-one'                       " light and dark scheme w/ truecolors!
+  Plug 'rakr/vim-two-firewatch'             " light and dark duotone scheme that works with only 256 colors!
 
 """--- matches ---
   Plug 'Raimondi/delimitMate'               " autoclose {([, etc
@@ -189,7 +190,7 @@ endif
     let g:vimfiler_as_default_explorer = 1
     "let g:vimfiler_no_default_key_mappings = 0
     let g:vimfiler_tree_indentation = 2
-    call MapKeys('n', 'vf', ':VimFiler -split -no-status -no-alternate-buffer -winwidth=60 -fnamewidth=30<CR>')
+    call MapKeys('n', 'vf', ':VimFiler -split -no-status -winwidth=60 -fnamewidth=30<CR>')
     call MapKeys('n', 'hvf', ':h vimfiler-default-key-mappings<CR>')
     call MapKeys('ni', '<F2>', '\vf')
     amenu <silent> .10 &Cometsong.&Explore\ Files<Tab><F2> F2
@@ -212,9 +213,10 @@ endif
   \| Plug 'arecarn/crunch.vim'              " calculator
 
   "Plug 'justinmk/vim-sneak'                 " minimalist, versatile Vim motion plugin
+  Plug 'hauleth/sad.vim'                    " Search And Destroy, takes over 's' and 'S' keymaps
   "Plug 'vim-scripts/dbext.vim'              " database connections
-  Plug 'vim-scripts/numbered.vim'           " number or renumber lines
   "Plug 'vim-scripts/QuickFixCurrentNumber'  " navigation extension on quickfix items
+  Plug 'vim-scripts/numbered.vim'           " number or renumber lines
 
   Plug 'vim-scripts/L9'                     " utils
   \| Plug 'cometsong/VisIncr.vim'           " Dr. Chip's Visual Increasing number,date,octal,etc columns
@@ -222,6 +224,8 @@ endif
   "Plug 'romainl/vim-qf'                     " make the quickfix and location list windows nicer
   Plug 'wellle/targets.vim'                 " add various text objects to operate on
   Plug 'junegunn/vim-peekaboo'              " peek at all registers when starting to use one
+
+  Plug 'bronson/vim-visual-star-search'     " Start a * or # search from a visual block
 
   " debug my stuff!
   "Plug 'dahu/bisectly'                      " plugin-manager-agnostic fault-localisation tool
@@ -234,38 +238,39 @@ endif
   if has('nvim') && has('python3')
     Plug 'zchee/deoplete-jedi', {'for': ['python']}
   else
-    Plug 'davidhalter/jedi-vim', {'for': ['python']}     " python awesomeness
+    Plug 'davidhalter/jedi-vim', {'for': ['python']}  " python awesomeness
   endif
-  Plug 'tmhedberg/SimpylFold', {'for': ['python']}     " python folding
+  Plug 'tmhedberg/SimpylFold', {'for': ['python']}    " python folding
   Plug 'xolox/vim-misc'
   \ | Plug 'xolox/vim-pyref',  {'for': ['python']}    " python docs
   "Plug 'jmcantrell/vim-virtualenv, {'for': ['python']}'
 
 """--- markdown ---
-  Plug 'tpope/vim-markdown', {'for': 'md'}             " syntax highlighting, force .md = markdown
-  Plug 'nelstrom/vim-markdown-folding', {'for': 'md'}  " fold those markdowns!
+  Plug 'tpope/vim-markdown', {'for': 'md'}            " syntax highlighting, force .md = markdown
+  Plug 'nelstrom/vim-markdown-folding', {'for': 'md'} " fold those markdowns!
 
 """--- yaml ---
   Plug 'ingydotnet/yaml-vim', {'for': 'yaml'}
   Plug 'munen/find_yaml_key', {'for': 'yaml'}
 
+"""--- toml ---
+  Plug 'cespare/vim-toml', {'for': 'toml'}
+
 """--- xml ---
   Plug 'othree/xml.vim', {'for': ['xml','html','xhtml','sgml']}
 
 """--- csv ---
-  Plug 'chrisbra/csv.vim', {'for': 'csv'}              " csv display and functions
+  Plug 'chrisbra/csv.vim', {'for': 'csv'}             " csv display and functions
 
 """--- lesscss ---
-  Plug 'groenewege/vim-less', {'for': 'less'}          " syntax for lesscss files
-  Plug 'vitalk/vim-lesscss', {'for': 'less'}           " lessc compilation
+  Plug 'groenewege/vim-less', {'for': 'less'}         " syntax for lesscss files
+  Plug 'vitalk/vim-lesscss', {'for': 'less'}          " lessc compilation
 
 """--- vim ---
-  "Plug 'vim-scripts/Vim-Support', {'for': 'vim'} "WolfgangMehner vim stuff
-  Plug 'Shougo/neco-vim'                               " neocomplete for 'vim'
+  Plug 'Shougo/neco-vim'                              " neocomplete for 'vim'
 
 """--- perl ---
-  "Plug 'vim-scripts/perl-support.vim', {'for': 'perl'} "WolfgangMehner perl stuff
-  Plug 'c9s/perlomni.vim', {'for': 'perl'}  " perl omnicomplete
+  Plug 'c9s/perlomni.vim', {'for': 'perl'}            " perl omnicomplete
 
 
 """--- Sample of Unmanaged plugin (manually installed and updated) ---
@@ -382,6 +387,13 @@ call MapKeys('ni', '<F6>', ':TagbarToggle<CR>', '')
 amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tb/F6  <Leader>tb
 "let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 
+"""--- EasyTags ---
+let g:easytags_async = 1
+"set tags=./tags;
+"let g:easytags_dynamic_files = 1
+let g:easytags_events = ['BufWritePost']
+
+
 """--- Python Jedi Completion ---
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 1
@@ -464,16 +476,9 @@ let g:session_autosave  = 'yes'
 let g:session_autoload  = 'no'
 let g:session_command_aliases = 1
 
-"""--- IndentLines ---
-let g:indentline_char = '┆'
-let g:indentLine_color_tty_light = 5
-let g:indentLine_fileTypeExclude = ['text','sql','help','config','viminfo']
-let g:indentLine_leadingSpaceChar = '˽'
-call MapKeys('ni', 'ig', ':IndentLinesToggle<CR>')
-call MapKeys('ni', 'il', ':IndentLinesToggle<CR>')
-amenu .350 &Cometsong.Indent\ &Lines<Tab>il  <Leader>il
-call MapKeys('ni', 'ils', ':LeadingSpaceToggle<CR>')
-amenu .350 &Cometsong.Indent\ Leading Space Toggle<Tab>ils  <Leader>ils
+"""--- IndentGuides ---
+call MapKeys('ni', 'ig', ':IndentGuidesToggle<CR>')
+let g:indentguides_ignorelist = ['text','sql','help','config','viminfo']
 
 """--- TaskList ---
 " this mapping (tl) is also the default
@@ -548,7 +553,6 @@ call MapKeys('ni', '<S-F3>', ':UniteWithBufferDir file<CR>', '')
 call MapKeys('ni', 'uf', ':Unite file<CR>')
 call MapKeys('ni', 'ur', ':Unite register<CR>')
 call MapKeys('ni', '<F3>', ':Unite register<CR>', '')
-call MapKeys('ni', 'um', ':Unite neomru/file -horizontal -direction=dynamicbottom<CR>')
 
 amenu <silent> .13 &Cometsong.&Unite:\ registers<Tab>F3  <F3>
 amenu <silent> .13 &Cometsong.&Unite:\ Files\ BufferDir<Tab>S-F3  <S-F3>

@@ -40,12 +40,12 @@ if has("autocmd")
   "}}} 
 
   "--- pretty stuff for programming {{{
-  augroup Parenthetcial
-    autocmd FileType * RainbowToggle " show all parentheses in color
-  augroup END
-  augroup Indentured
-    au! FileType * IndentLinesEnable
-  augroup END
+  "augroup Parenthetcial
+  "  autocmd FileType * RainbowToggle " show all parentheses in color
+  "augroup END
+  "augroup Indentured
+  "  au! FileType * IndentLinesEnable
+  "augroup END
   "}}} 
 
   "--- for all 'grep' commands, open in QuickFix window {{{
