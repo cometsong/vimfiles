@@ -73,13 +73,11 @@ if has('nvim') " for terminal
 endif
 "}}}
 
-
 "--- map terminal splits  {{{
 "TODO: convert MapKeys to allow 't' and other 
 nnoremap <C-w>t :vsplit term://bash<CR>
 nnoremap <C-w>T :split term://bash<CR>
 "}}}
-
 
 "--- datetime stamps  {{{
 call MapKeys('ni', 'dts', '"=strftime("%Y%m%d_%H%M%S")<CR>p')
@@ -189,15 +187,6 @@ map <d-w> <c-w>
 map <d-x> <c-x>
 map <d-y> <c-y>
 map <d-z> <c-z>
-"}}}
-
-"--- word-searching \*, cf *,# keys, but include word within others {{{
-call MapKeys('n', '*', 'yiw/0<CR>')
-call MapKeys('n', '#', 'yiw/0<CR>')
-"}}}
-
-"--- turn off current search highlighting {{{
-call MapKeys('n', '<M-BS>', ':noh<CR>')
 "}}}
 
 "--- JAX work mappings {{{
