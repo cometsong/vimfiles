@@ -90,12 +90,13 @@ endif
   Plug 'cometsong/scratch.vim'              " create a temporary scratch buffer while running vim
   Plug 'xolox/vim-session'                  " session manager
   Plug 'ervandew/archive'                   " browse contents of archive files
-  Plug 'thaerkh/vim-indentguides'           " marks each indent level with vertical line instead of colors!
+  Plug 'Yggdroot/indentline'                " marks each indent level with vertical line instead of colors!
   Plug 'terryma/vim-multiple-cursors'       " multiple cursors within vim, for quick refactoring, correcting, amazing, etc.
   Plug 'luochen1990/rainbow'                " colors diff levels of parens
   Plug 'wesQ3/vim-windowswap'               " swap window locations
   Plug 'terryma/vim-expand-region'          " expand/contract visual selection using + and _
   "Plug 'ervandew/maximize'                  " max/minimize windows in multi-window layout
+  Plug 'spiiph/vim-space'                   " map <space> to repeat motion commands (n,*,f,t,]c,...)
 
 """--- Alignment ---
   Plug 'cometsong/AlignChips.vim'           " from Dr Chip's Align plugin (vimscript #294)
@@ -139,8 +140,8 @@ endif
   Plug 'joshdick/onedark.vim'               " theme w/ airline as well
   Plug 'w0ng/vim-hybrid'                    " mix of Tomorrow-Night, Codecademy, Jellybeans, Solarized, iTerm
   Plug 'lifepillar/vim-solarized8'          " True Colors, halfway between Solarized and Flattened
-  Plug 'rakr/vim-one'                       " light and dark scheme w/ truecolors!
-  Plug 'rakr/vim-two-firewatch'             " light and dark duotone scheme that works with only 256 colors!
+  "Plug 'rakr/vim-one'                       " light and dark scheme w/ truecolors!
+  "Plug 'rakr/vim-two-firewatch'             " light and dark duotone scheme that works with only 256 colors!
 
 """--- matches ---
   Plug 'Raimondi/delimitMate'               " autoclose {([, etc
@@ -190,10 +191,17 @@ endif
     let g:vimfiler_as_default_explorer = 1
     "let g:vimfiler_no_default_key_mappings = 0
     let g:vimfiler_tree_indentation = 2
-    call MapKeys('n', 'vf', ':VimFiler -split -no-status -winwidth=60 -fnamewidth=30<CR>')
+    call MapKeys('n', 'vf', ':VimFiler -split -no-status -winwidth=60 -fnamewidth=30 -parent<CR>')
+    call MapKeys('n', 'vb', ':VimFilerBufferDir -split -no-status -winwidth=60 -fnamewidth=30<CR>')
     call MapKeys('n', 'hvf', ':h vimfiler-default-key-mappings<CR>')
     call MapKeys('ni', '<F2>', '\vf')
     amenu <silent> .10 &Cometsong.&Explore\ Files<Tab><F2> F2
+
+  Plug 'vim-ctrlspace/vim-ctrlspace'  " lists of stuff:  Buffer List, File List, Tab List, Workspace List, Bookmark List
+  if executable("ag")
+    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+  endif
+  let g:CtrlSpaceUseTabline = 1
 
 """--- versionizing ---
   Plug 'inkarkat/vcscommand.vim'            " all version controllers
@@ -213,10 +221,10 @@ endif
   \| Plug 'arecarn/crunch.vim'              " calculator
 
   "Plug 'justinmk/vim-sneak'                 " minimalist, versatile Vim motion plugin
-  Plug 'hauleth/sad.vim'                    " Search And Destroy, takes over 's' and 'S' keymaps
+  "Plug 'hauleth/sad.vim'                    " Search And Destroy, takes over 's' and 'S' keymaps
   "Plug 'vim-scripts/dbext.vim'              " database connections
   "Plug 'vim-scripts/QuickFixCurrentNumber'  " navigation extension on quickfix items
-  Plug 'vim-scripts/numbered.vim'           " number or renumber lines
+  "Plug 'jmcantrell/numbered.vim'             " number or renumber lines
 
   Plug 'vim-scripts/L9'                     " utils
   \| Plug 'cometsong/VisIncr.vim'           " Dr. Chip's Visual Increasing number,date,octal,etc columns
@@ -272,6 +280,8 @@ endif
 """--- perl ---
   Plug 'c9s/perlomni.vim', {'for': 'perl'}            " perl omnicomplete
 
+"""--- UML ---
+  Plug 'aklt/plantuml-syntax',    {'for': ['uml','plantuml']}      " app for PlantUML !!
 
 """--- Sample of Unmanaged plugin (manually installed and updated) ---
   "Plug '~/my-prototype-plugin'
@@ -331,14 +341,18 @@ let g:solarized_bold = 1
 
 
 """--- vim-airline ---
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#neomake#enabled = 0
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#branch#format = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#csv#enabled = 1
-let g:airline#extensions#windowswap#enabled = 1
+"let g:airline#extensions#tabline#enabled = 0
+"let g:airline#extensions#neomake#enabled = 0
+"let g:airline#extensions#ale#enabled = 1
+"let g:airline#extensions#branch#enabled = 1
+"let g:airline#extensions#branch#format = 1
+"let g:airline#extensions#tagbar#enabled = 1
+"let g:airline#extensions#csv#enabled = 1
+"let g:airline#extensions#windowswap#enabled = 1
+"let g:airline#extensions#space#enabled = 1
+
+let g:airline_extensions = ['branch', 'ale', 'tagbar', 'csv', 'windowswap', 'space', 'ctrlspace']
+let g:airline_exclude_preview = 1
 
 let g:airline_theme = 'onedark'
 let g:airline_skip_empty_sections = 1
@@ -354,9 +368,9 @@ let g:airline_mode_map = {
   \ '__' : '-',
   \ 'n'  : 'NORM',
   \ 'i'  : 'INST',
-  \ 'R'  : 'REPL',
+  \ 'R'  : 'RPLC',
   \ 'c'  : 'CMDL',
-  \ 'v'  : 'VISU',
+  \ 'v'  : 'VISL',
   \ 'V'  : 'VLIN',
   \ '' : 'VBLK',
   \ 's'  : 'SLCT',
@@ -459,11 +473,10 @@ if has('conceal')
 endif
 
 """--- filing ---
-"let g:loaded_netrw = 1
-"let g:loaded_netrwPlugin = 1
+let g:loaded_netrwPlugin = 1
 "abbr vex Vex
-call MapKeys('ni', '<F2>', ':Vex<CR>')
-amenu <silent> .10 &Cometsong.&VExplore\ Files<Tab><F2> F2
+"call MapKeys('ni', '<F2>', ':Vex<CR>')
+"amenu <silent> .10 &Cometsong.&VExplore\ Files<Tab><F2> F2
 
 """--- delimitMate ---
 let delimitMate_autoclose = 1
@@ -477,8 +490,12 @@ let g:session_autoload  = 'no'
 let g:session_command_aliases = 1
 
 """--- IndentGuides ---
-call MapKeys('ni', 'ig', ':IndentGuidesToggle<CR>')
-let g:indentguides_ignorelist = ['text','sql','help','config','viminfo']
+call MapKeys('ni', 'ig', ':IndentLinesToggle<CR>')
+call MapKeys('ni', 'il', ':LeadingSpaceToggle<CR>')
+let g:indentLine_char = '┊'
+let g:indentLine_leadingSpaceChar = '˽'
+let g:indentLine_showFirstIndentLevel = 0
+let g:indentLine_fileTypeExclude = ['text','sql','help','config','viminfo']
 
 """--- TaskList ---
 " this mapping (tl) is also the default
@@ -559,6 +576,11 @@ amenu <silent> .13 &Cometsong.&Unite:\ Files\ BufferDir<Tab>S-F3  <S-F3>
 amenu <silent> .40 &Cometsong.&Unite:\ Most\ Recently\ Used<Tab>um  um
 
 let g:deoplete#enable_at_startup = 1
+
+"""--- peekaboo registers QuickFixes ---
+let g:peekaboo_delay = 5
+let g:peekaboo_compact = 0
+let g:peekaboo_window	= "vert bo 50new"
 
 """--- qf QuickFixes ---
 let g:qf_auto_open_quickfix = 0
