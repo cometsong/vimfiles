@@ -36,11 +36,10 @@ source ~/.vim/config/plugins.vim
 "colorscheme gruvbox
 "colorscheme hybrid
 colorscheme solarized
-if (has('termguicolors'))
-  colorscheme solarized8_dark_high
-endif
-colorscheme one
-set background=dark
+"if (has('termguicolors'))
+"  colorscheme solarized8_dark_high
+"endif
+"colorscheme one
+"set background=dark
 
-set nolist            " do not show special mode characters   
 """ vim:fdm=expr:fdl=1:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
