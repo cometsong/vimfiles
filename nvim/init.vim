@@ -30,6 +30,7 @@ source ~/.vim/config/plugins.vim
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 colorscheme onedark
+set background=dark
 
 """--- Pythonic! ---
 " let g:python_host_prog = '/usr/local/bin/python'
@@ -40,7 +41,9 @@ colorscheme onedark
 
 """--- Nvim Specifics ---
 
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1  " switch cursor to line when in insert mode, and block when not
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+		\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+		\,sm:block-blinkwait175-blinkoff150-blinkon175
 
 set shada=!,'100,<100,s20,h
 set shortmess=filmnrwxtToO
