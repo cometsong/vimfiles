@@ -88,7 +88,6 @@ endif
   Plug 'tpope/vim-abolish'                  " Abbreviation, Subvert, Coercion
   Plug 'cometsong/IndexedSearch.vim'        " shows 'Nth match out of M' at every search
   Plug 'cometsong/scratch.vim'              " create a temporary scratch buffer while running vim
-  Plug 'xolox/vim-session'                  " session manager
   Plug 'ervandew/archive'                   " browse contents of archive files
   Plug 'Yggdroot/indentline'                " marks each indent level with vertical line instead of colors!
   Plug 'terryma/vim-multiple-cursors'       " multiple cursors within vim, for quick refactoring, correcting, amazing, etc.
@@ -487,11 +486,6 @@ let delimitMate_autoclose = 1
 call MapKeys('ni', 'dc', ':DelimitMateSwitch<CR>')
 amenu <silent> .910 &Cometsong.&DelimitMateSwitch<Tab>dc   :DelimitMateSwitch<CR>
 
-"""--- vim-session plugin settings ---
-let g:session_directory = $HOME . '/.vimsessions/'
-let g:session_autosave  = 'yes'
-let g:session_autoload  = 'no'
-let g:session_command_aliases = 1
 
 """--- IndentGuides ---
 call MapKeys('ni', 'ig', ':IndentLinesToggle<CR>')
