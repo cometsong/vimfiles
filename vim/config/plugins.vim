@@ -121,6 +121,15 @@ endif
   Plug 'mhinz/vim-grepper'                  " grepping flexibility
   "Plug 'benmills/vimux'                     " interact with tmux
   "Plug 'ervandew/screen'                    " simulate a split shell in vim using either gnu screen or tmux
+  if has('nvim')
+    Plug 'kassio/neoterm'                   " Use the same terminal for everything.
+    let g:neoterm_position = 'horizontal'
+    let g:neoterm_automap_keys = '<Leader>tt'
+    call MapKeys('nv', 'th', ':call neoterm#close()<cr>') " hide/close terminal
+    call MapKeys('nv', 'tc', ':call neoterm#kill()<cr>')  " kill current job (send <c-c>)
+    " Git commands
+    command! -nargs=+ Tg :T git <args>
+  endif
 
 """--- Colorrific ---
   "Plug 'flazz/vim-colorschemes'             " plethora of colorschemes to choose from
