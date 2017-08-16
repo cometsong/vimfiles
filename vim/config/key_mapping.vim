@@ -58,10 +58,6 @@ call MapKeys('ni', '<C-j>',        ':bnext<CR>', '')
 " :ls with auto-bufselect begun :b
 " idea from romainl: http://vi.stackexchange.com/a/2124/2303
 call MapKeys('n', 'gls', ':ls<CR>:b', '')
-
-if has('nvim')
-  call MapKeys('nvxi', '<c-space>', ':CtrlSpace<cr>', '')
-endif
 "}}}
 
 "}}}

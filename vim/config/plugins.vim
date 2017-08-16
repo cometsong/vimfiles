@@ -211,6 +211,7 @@ endif
     let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
   endif
   let g:CtrlSpaceUseTabline = 1
+  let g:CtrlSpaceDefaultMappingKey = "<C-space> "
 
 """--- versionizing ---
   Plug 'inkarkat/vcscommand.vim'            " all version controllers
