@@ -35,11 +35,11 @@ source ~/.vim/config/plugins.vim
 "colorscheme jellybeans
 "colorscheme gruvbox
 "colorscheme hybrid
-colorscheme solarized
-"if (has('termguicolors'))
-"  colorscheme solarized8_dark_high
-"endif
 "colorscheme one
-"set background=dark
+colorscheme solarized
+if (has('termguicolors'))
+  colorscheme solarized8_dark_high
+endif
+set background=dark
 
 """ vim:fdm=expr:fdl=1:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
