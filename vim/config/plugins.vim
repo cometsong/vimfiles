@@ -344,19 +344,10 @@ let g:solarized_bold = 1
 
 
 """--- vim-airline ---
-"let g:airline#extensions#tabline#enabled = 0
-"let g:airline#extensions#neomake#enabled = 0
-"let g:airline#extensions#ale#enabled = 1
-"let g:airline#extensions#branch#enabled = 1
-"let g:airline#extensions#branch#format = 1
-"let g:airline#extensions#tagbar#enabled = 1
-"let g:airline#extensions#csv#enabled = 1
-"let g:airline#extensions#windowswap#enabled = 1
-"let g:airline#extensions#space#enabled = 1
-
-let g:airline_extensions = ['branch', 'ale', 'tagbar', 'csv', 'windowswap', 'space', 'ctrlspace']
+let g:airline_extensions = ['branch', 'ale', 'tagbar', 'windowswap', 'space', 'ctrlspace']
+let g:airline#extensions#branch#use_vcscommand = 1
+let g:airline#extensions#csv#enabled = 1
 let g:airline_exclude_preview = 1
-
 let g:airline_theme = 'onedark'
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts=0
