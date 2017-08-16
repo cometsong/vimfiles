@@ -242,6 +242,9 @@ endif
 """--- bash ---
   "Plug 'vim-scripts/bash-support.vim', {'for': 'sh'}   " WolfgangMehner bash stuff
 
+"""--- unicode ---
+  Plug 'chrisbra/unicode.vim'   " show code values, allows insertion and completion of unicode chars
+
 """--- python[2/3] ---
   if has('nvim') && has('python3')
     Plug 'zchee/deoplete-jedi', {'for': ['python']}
