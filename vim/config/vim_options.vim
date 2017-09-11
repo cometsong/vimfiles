@@ -97,11 +97,3 @@ endif
 filetype on
 filetype plugin indent on
 "}}}
-
-"--- Encrpytion
-if v:version >= 74401
-    set cryptmethod=blowfish2 " goooood!
-  else
-    set cryptmethod=zip       " weeeak!
-endif
-

@@ -229,6 +229,9 @@ endif
   Plug 'arecarn/selection.vim'
   \| Plug 'arecarn/crunch.vim'              " calculator
 
+  "--- Encryption ---
+  Plug 'jamessan/vim-gnupg'                 " use gpg for file encrpytion
+
   "Plug 'justinmk/vim-sneak'                 " minimalist, versatile Vim motion plugin
   "Plug 'hauleth/sad.vim'                    " Search And Destroy, takes over 's' and 'S' keymaps
   "Plug 'vim-scripts/dbext.vim'              " database connections
