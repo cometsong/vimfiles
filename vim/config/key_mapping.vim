@@ -64,8 +64,6 @@ if has('nvim')
 endif
 "}}}
 
-"}}}
-
 "--- Terminal Pane Access  {{{
 if has('nvim') " for terminal
   call MapKeys('t', '<A-h>', '<C-\><C-n><C-w>h', '')
@@ -193,6 +191,11 @@ map <d-w> <c-w>
 map <d-x> <c-x>
 map <d-y> <c-y>
 map <d-z> <c-z>
+"}}}
+
+"--- WinFix height and width Toggle {{{
+call MapKeys('ni', 'wf', ':call ShowCmdMsg("set wfh! wfw! wfh? wfw?")<CR>')
+amenu <silent> .210 &Cometsong.&WinFixToggle\ (height+width)\ mode<Tab>wf  <Leader>wf
 "}}}
 
 "--- JAX work mappings {{{
