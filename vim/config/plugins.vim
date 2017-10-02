@@ -86,7 +86,8 @@ endif
   Plug 'mbbill/undotree'                    " shows window with all previous undos
   Plug 'vim-scripts/TaskList.vim'           " list all TODOs
   Plug 'tpope/vim-abolish'                  " Abbreviation, Subvert, Coercion
-  Plug 'cometsong/IndexedSearch.vim'        " shows 'Nth match out of M' at every search
+  "Plug 'cometsong/IndexedSearch.vim'        " shows 'Nth match out of M' at every search
+  Plug 'google/vim-searchindex'             " Display current & total number of search matches
   Plug 'cometsong/scratch.vim'              " create a temporary scratch buffer while running vim
   Plug 'ervandew/archive'                   " browse contents of archive files
   Plug 'Yggdroot/indentline'                " marks each indent level with vertical line instead of colors!
