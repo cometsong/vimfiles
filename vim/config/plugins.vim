@@ -357,7 +357,7 @@ let g:solarized_bold = 1
 
 
 """--- vim-airline ---
-let g:airline_extensions = ['branch', 'ale', 'tagbar', 'windowswap', 'space', 'ctrlspace']
+let g:airline_extensions = ['branch', 'ale', 'tagbar', 'windowswap', 'ctrlspace']
 let g:airline#extensions#branch#use_vcscommand = 1
 let g:airline#extensions#csv#enabled = 1
 let g:airline_exclude_preview = 1
