@@ -106,6 +106,14 @@ endif
   Plug 'cometsong/CommentFrame.vim'         " frame and full line comment styles
 
 """--- compilation ---
+  Plug 'sheerun/vim-polyglot'               " A collection of language packs for Vim.
+    "let g:polyglot_disabled = ['css']      " e.g. of disabling
+
+  Plug 'tpope/vim-dispatch'                 " multi-lingual asynchronous make
+  if has('nvim')
+    Plug 'radenling/vim-dispatch-neovim'    " Adds neovim support to vim-dispatch
+  endif
+
   Plug 'thinca/vim-quickrun'                " quick make, many filetypes
   Plug 'JarrodCTaylor/vim-shell-executor'   " execute all or selected with any shell command
   if has('nvim') || v:version > 8
