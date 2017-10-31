@@ -86,8 +86,6 @@ endif
   Plug 'mbbill/undotree'                    " shows window with all previous undos
   Plug 'vim-scripts/TaskList.vim'           " list all TODOs
   Plug 'tpope/vim-abolish'                  " Abbreviation, Subvert, Coercion
-  "Plug 'cometsong/IndexedSearch.vim'        " shows 'Nth match out of M' at every search
-  Plug 'google/vim-searchindex'             " Display current & total number of search matches
   Plug 'cometsong/scratch.vim'              " create a temporary scratch buffer while running vim
   Plug 'ervandew/archive'                   " browse contents of archive files
   Plug 'Yggdroot/indentline'                " marks each indent level with vertical line instead of colors!
@@ -96,7 +94,20 @@ endif
   Plug 'wesQ3/vim-windowswap'               " swap window locations
   Plug 'terryma/vim-expand-region'          " expand/contract visual selection using + and _
   "Plug 'ervandew/maximize'                  " max/minimize windows in multi-window layout
-  Plug 'spiiph/vim-space'                   " map <space> to repeat motion commands (n,*,f,t,]c,...)
+
+"""--- well, Search me! ---
+  Plug 'haya14busa/is.vim'                  " incremental search improved - successor of incsearch.vim
+
+  Plug 'osyo-manga/vim-anzu'                " display search position like (2/10) for n/N commands
+  call MapKeys('n', 'n', '<Plug>(is-nohl)<Plug>(anzu-n-with-echo)')
+  call MapKeys('n', 'N', '<Plug>(is-nohl)<Plug>(anzu-N-with-echo)')
+
+  Plug 'haya14busa/vim-asterisk'            " Start a * or # search from a visual block
+  for key in ['*', '#', 'g*', 'g#', 'z*', 'z#', 'zg*', 'zg#']
+    execute "call MapKeys('n', '" .key. "', '<Plug>(asterisk-" .key. ")<Plug>(is-nohl-1)', '')"
+  endfor
+  let g:asterisk#keeppos = 1
+
 
 """--- Alignment ---
   Plug 'cometsong/AlignChips.vim'           " from Dr Chip's Align plugin (vimscript #294)
@@ -254,7 +265,6 @@ endif
   Plug 'wellle/targets.vim'                 " add various text objects to operate on
   Plug 'junegunn/vim-peekaboo'              " peek at all registers when starting to use one
 
-  Plug 'bronson/vim-visual-star-search'     " Start a * or # search from a visual block
 
   " debug my stuff!
   "Plug 'dahu/bisectly'                      " plugin-manager-agnostic fault-localisation tool
