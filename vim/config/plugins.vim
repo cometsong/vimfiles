@@ -231,6 +231,7 @@ endif
   endif
   let g:CtrlSpaceUseTabline = 1
   "let g:CtrlSpaceDefaultMappingKey = "<C-space>"
+  call MapKeys('n', 'cw', ':CtrlSpaceNewWorkspace <name?>') " keymap for new workspace with name (don't kill all buffers/tabs!)
 
 """--- versionizing ---
   Plug 'inkarkat/vcscommand.vim'            " all version controllers
