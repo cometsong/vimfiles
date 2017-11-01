@@ -97,15 +97,17 @@ endif
 
 """--- well, Search me! ---
   Plug 'haya14busa/is.vim'                  " incremental search improved - successor of incsearch.vim
+  let g:is#do_default_mappings = 1
 
   Plug 'osyo-manga/vim-anzu'                " display search position like (2/10) for n/N commands
-  call MapKeys('n', 'n', '<Plug>(is-nohl)zz<Plug>(anzu-n-with-echo)')
-  call MapKeys('n', 'N', '<Plug>(is-nohl)zz<Plug>(anzu-N-with-echo)')
+  map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)zz<Plug>(anzu-update-search-status-with-echo)
+  map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)zz<Plug>(anzu-update-search-status-with-echo)
 
   Plug 'haya14busa/vim-asterisk'            " Start a * or # search from a visual block
-  for key in ['*', '#', 'g*', 'g#', 'z*', 'z#', 'gz*', 'gz#']
-    execute "call MapKeys('nv', '" .key. "', '<Plug>(asterisk-" .key. ")zz<Plug>(is-nohl-1)', '')"
-  endfor
+  map *  <Plug>(asterisk-z*)zz<Plug>(is-nohl-1)
+  map g* <Plug>(asterisk-gz*)zz<Plug>(is-nohl-1)
+  map #  <Plug>(asterisk-z#)zz<Plug>(is-nohl-1)
+  map g# <Plug>(asterisk-gz#)zz<Plug>(is-nohl-1)
   let g:asterisk#keeppos = 1
 
 """--- Alignment ---
