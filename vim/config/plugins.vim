@@ -99,15 +99,14 @@ endif
   Plug 'haya14busa/is.vim'                  " incremental search improved - successor of incsearch.vim
 
   Plug 'osyo-manga/vim-anzu'                " display search position like (2/10) for n/N commands
-  call MapKeys('n', 'n', '<Plug>(is-nohl)<Plug>(anzu-n-with-echo)')
-  call MapKeys('n', 'N', '<Plug>(is-nohl)<Plug>(anzu-N-with-echo)')
+  call MapKeys('n', 'n', '<Plug>(is-nohl)zz<Plug>(anzu-n-with-echo)')
+  call MapKeys('n', 'N', '<Plug>(is-nohl)zz<Plug>(anzu-N-with-echo)')
 
   Plug 'haya14busa/vim-asterisk'            " Start a * or # search from a visual block
-  for key in ['*', '#', 'g*', 'g#', 'z*', 'z#', 'zg*', 'zg#']
-    execute "call MapKeys('n', '" .key. "', '<Plug>(asterisk-" .key. ")<Plug>(is-nohl-1)', '')"
+  for key in ['*', '#', 'g*', 'g#', 'z*', 'z#', 'gz*', 'gz#']
+    execute "call MapKeys('nv', '" .key. "', '<Plug>(asterisk-" .key. ")zz<Plug>(is-nohl-1)', '')"
   endfor
   let g:asterisk#keeppos = 1
-
 
 """--- Alignment ---
   Plug 'cometsong/AlignChips.vim'           " from Dr Chip's Align plugin (vimscript #294)
