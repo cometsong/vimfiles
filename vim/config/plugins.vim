@@ -56,19 +56,23 @@ endif"
 
 
 ""-- Load all Plugins using plug.vim --
+if has('nvim')
+  let b:bundle_path = '~/.config/nvim/bundle'
+  let b:autoloaddir = '~/.config/nvim/autoload'
+else
+  let b:bundle_path = '~/.vim/bundle'
+  let b:autoloaddir = '~/.vim/autoload'
+endif
+
 """--- Automatic plug.vim installation ---
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !mkdir -p ~/.vim/autoload
-    silent !curl -fLo ~/.vim/autoload/plug.vim
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob(b:autoloaddir.'/plug.vim'))
+    let auld = system("mkdir -p ".b:autoloaddir)
+    let purl = system("curl -fLo ".b:autoloaddir."/plug.vim ".
+      \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim")
     au VimEnter * PlugInstall
 endif
 
-if has('nvim')
-  call plug#begin('~/.config/nvim/bundle')
-else
-  call plug#begin('~/.vim/bundle')
-endif
+call plug#begin(b:bundle_path)
 
 """--- the basics ---
   Plug 'vim-airline/vim-airline'            " status line definition
