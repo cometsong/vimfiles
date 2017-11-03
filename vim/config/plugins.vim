@@ -182,7 +182,7 @@ call plug#begin(b:bundle_path)
   Plug 'Valloric/MatchTagAlways'            " show matching x[ht]ml tags
 
 """--- omnicompletions galore ---
-  if has('nvim') && has('python3')
+  if has('nvim') || v:version > 8 && has('python3') && has('timers')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
   else
