@@ -7,8 +7,10 @@ function! MapKeys(modes, keys, target, ...)
   "   '[mode]noremap  <Leader>keys  target'
   " check for extra arg, work with leader as a:1, default to include preset <Leader>
   let l:leadstr = a:0 >= 1  ?  a:1  :  "<Leader>"
+  let l:silent  = a:0 >= 2  ?  a:2  :  "<silent>"
+
   " begin map construction
-  let l:map_start = 'noremap ' . l:leadstr
+  let l:map_start = 'noremap'
   "let l:map_start = 'map ' . l:leadstr
   for l:mode in (a:modes == '') ? [''] : split(a:modes, '\zs')
     if l:mode == 'i'
@@ -17,10 +19,11 @@ function! MapKeys(modes, keys, target, ...)
       let l:target = a:target
     endif
     if strlen(a:keys)
-      execute l:mode . l:map_start . a:keys  . ' ' . l:target
+      execute l:mode . l:map_start .' '. l:silent .' '. l:leadstr . a:keys  .' '. l:target
     endif
   endfor
 endfunction
 " usage:  call MapKeys('modeinitials', 'keys', 'target')        " for leader = <Leader>
 " usage:  call MapKeys('modeinitials', 'keys', 'target', '')    " for leader = last arg (empty=none)
+" usage:  call MapKeys('modeinitials', 'keys', 'target', '', '') " leader, silent (empty=none)
 
