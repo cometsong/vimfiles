@@ -204,20 +204,6 @@ call plug#begin(b:bundle_path)
 """--- template files ---
   Plug 'cometsong/vim-template'             " forked set of template files
 
-"""--- unite: search and display information from sources: files, buffers, recently used or registers ---
-  if has('nvim') || v:version > 8 && has('python3')
-    Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/unite.vim'
-  endif
-    "\| Plug 'Shougo/vimproc.vim'
-    "\| Plug 'kopischke/unite-spell-suggest'
-    "\| Plug 'Shougo/neomru.vim'
-    "\| Plug 'Shougo/neoyank.vim'
-    "\| Plug 'Shougo/unite-outline'
-    "\| Plug 'tacroe/unite-mark'
-    "\| Plug 'tsukkee/unite-tag'
-
 """--- File Explorer ---
   Plug 'scrooloose/nerdtree'                " Nerdy Directories
   let g:NERDTreeHijackNetrw = 1
@@ -585,22 +571,6 @@ let g:util_debug = 0
 """--- ScratchToggle ---
 call MapKeys('ni', 'sct', ':ScratchToggle<CR>')
 amenu <silent> .61 &Cometsong.ScratchToggle<Tab>sct  <Leader>sct  " Cometsong Menu!
-
-"""--- unite ---
-let g:unite_enable_split_vertically = 1
-let g:unite_winwidth = 40
-
-call MapKeys('ni', 'ub', ':UniteWithBufferDir file<CR>')
-call MapKeys('ni', '<S-F3>', ':UniteWithBufferDir file<CR>', '')
-call MapKeys('ni', 'uf', ':Unite file<CR>')
-call MapKeys('ni', 'ur', ':Unite register<CR>')
-call MapKeys('ni', '<F3>', ':Unite register<CR>', '')
-
-amenu <silent> .13 &Cometsong.&Unite:\ registers<Tab>F3  <F3>
-amenu <silent> .13 &Cometsong.&Unite:\ Files\ BufferDir<Tab>S-F3  <S-F3>
-amenu <silent> .40 &Cometsong.&Unite:\ Most\ Recently\ Used<Tab>um  um
-
-let g:deoplete#enable_at_startup = 1
 
 """--- peekaboo registers QuickFixes ---
 let g:peekaboo_delay = 5
