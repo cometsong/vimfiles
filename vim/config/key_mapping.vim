@@ -158,12 +158,6 @@ call MapKeys('niv', '=j', ':%!python -m json.tool<CR>', '')
 amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong Menu!
 "}}}
 
-"--- Center each search result {{{
-"call MapKeys('nv', 'n', 'nzz')
-"call MapKeys('nv', 'N', 'Nzz')
-" !fails due to IndexedSearch mapping!
-"}}}
-
 "--- OS X: command -> control conversion {{{
 map <d-a> <c-a>
 map <d-b> <c-b>
