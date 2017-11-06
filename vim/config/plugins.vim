@@ -182,13 +182,24 @@ call plug#begin(b:bundle_path)
   Plug 'Valloric/MatchTagAlways'            " show matching x[ht]ml tags
 
 """--- omnicompletions galore ---
-  if has('nvim') || v:version > 8 && has('python3') && has('timers')
+  if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
-  else
+  elseif v:version > 8 && has('python3') && has('timers')
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  else " v:version < 8
     Plug 'Shougo/neocomplete.vim'
     let g:neocomplete#enable_at_startup = 1
+    call MapKeys('vni', 'ct', ':NeoCompleteToggle')
   endif
+  let g:deoplete#enable_at_startup = 1
+  "let g:deoplete#sources._ = ['buffer', 'tag']
+  call MapKeys('vni', 'ct', ':call deoplete#toggle()')
+  " lang-packs
+  Plug 'Shougo/neco-vim'          " deoplete: 'vim'
+  Plug 'zchee/deoplete-go'        " deoplete: 'go'
+  Plug 'wellle/tmux-complete.vim' " deoplete: 'tmux'
 
 """--- snip it! ---
   if has('python') || has('python3')
@@ -298,9 +309,6 @@ call plug#begin(b:bundle_path)
 """--- lesscss ---
   Plug 'groenewege/vim-less', {'for': 'less'}         " syntax for lesscss files
   Plug 'vitalk/vim-lesscss', {'for': 'less'}          " lessc compilation
-
-"""--- vim ---
-  Plug 'Shougo/neco-vim'                              " neocomplete for 'vim'
 
 """--- perl ---
   Plug 'c9s/perlomni.vim', {'for': 'perl'}            " perl omnicomplete
