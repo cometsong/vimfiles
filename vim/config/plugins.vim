@@ -219,16 +219,15 @@ call plug#begin(b:bundle_path)
     "\| Plug 'tsukkee/unite-tag'
 
 """--- File Explorer ---
-  "Plug 'tpope/vim-vinegar'
-  Plug 'Shougo/vimfiler.vim' " requires unite.vim
-    let g:vimfiler_as_default_explorer = 1
-    "let g:vimfiler_no_default_key_mappings = 0
-    let g:vimfiler_tree_indentation = 2
-    call MapKeys('n', 'vf', ':VimFiler -split -no-status -winwidth=60 -fnamewidth=30 -parent<CR>')
-    call MapKeys('n', 'vb', ':VimFilerBufferDir -split -no-status -winwidth=60 -fnamewidth=30<CR>')
-    call MapKeys('n', 'hvf', ':h vimfiler-default-key-mappings<CR>')
-    call MapKeys('ni', '<F2>', '\vf')
-    amenu <silent> .10 &Cometsong.&Explore\ Files<Tab><F2> F2
+  Plug 'scrooloose/nerdtree'                " Nerdy Directories
+  let g:NERDTreeHijackNetrw = 1
+  let g:NERDTreeSortHiddenFirst = 1
+  let g:NERDTreeHighlightCursorline = 1
+  let g:NERDTreeQuitOnOpen = 0
+  let g:NERDTreeShowFiles = 1
+  let g:NERDTreeShowBookmarks = 1
+  let g:NERDTreeNaturalSort = 1
+  call MapKeys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
 
   Plug 'vim-ctrlspace/vim-ctrlspace'  " lists of stuff:  Buffer List, File List, Tab List, Workspace List, Bookmark List
   if executable("ag")
