@@ -243,8 +243,7 @@ call plug#begin(b:bundle_path)
   "Plug 'cohama/agit.vim'                    " Yet another gitk clone for Vim!
 
 """--- tag sale! ---
-  Plug 'xolox/vim-misc'
-  \| Plug 'xolox/vim-easytags'              " UpdateTags! HighlightTags
+  Plug 'ludovicchabant/vim-gutentags'       " background management of tags files
   Plug 'majutsushi/tagbar'                  " shows all tags in sidebar window
 
 """--- misc ---
