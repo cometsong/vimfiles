@@ -58,13 +58,12 @@ if has("autocmd")
   "}}} 
 
   "--- NeoNeoNeovim {{{
-  if has('nvim') " for terminal
-    """"--- Terminicious ---
+  if has('nvim')
     augroup TermsConditions
       autocmd!
-      au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-      au BufEnter term://* startinsert
-      highlight TermCursor ctermfg=red guifg=red
+      au TermOpen * startinsert
+      au TermOpen * setlocal nonumber norelativenumber
+      highlight TermCursor ctermfg=yellow guifg=yellow
     augroup END
     let g:terminal_scrollback_buffer_size = 50000
   endif

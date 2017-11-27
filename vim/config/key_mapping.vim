@@ -64,23 +64,13 @@ if has('nvim')
 endif
 "}}}
 
-"--- Terminal Pane Access  {{{
-if has('nvim') " for terminal
-  call MapKeys('t', '<A-h>', '<C-\><C-n><C-w>h', '')
-  call MapKeys('t', '<A-j>', '<C-\><C-n><C-w>j', '')
-  call MapKeys('t', '<A-k>', '<C-\><C-n><C-w>k', '')
-  call MapKeys('t', '<A-l>', '<C-\><C-n><C-w>l', '')
-  tnoremap <m-h> <C-\><C-n><C-w>h
-  tnoremap <m-j> <C-\><C-n><C-w>j
-  tnoremap <m-k> <C-\><C-n><C-w>k
-  tnoremap <m-l> <C-\><C-n><C-w>l
-endif
-"}}}
-
-"--- map terminal splits  {{{
-"TODO: convert MapKeys to allow 't' and other 
-nnoremap <C-w>t :vsplit term://bash<CR>
-nnoremap <C-w>T :split term://bash<CR>
+"--- Terminal Access  {{{
+"if has('nvim') " for terminal
+  "TODO: convert MapKeys to allow 't' and other 
+  nnoremap <C-w>t :vsplit term://bash<CR>
+  nnoremap <C-w>T :split term://bash<CR>
+  tnoremap <Esc> <C-\><C-n>   " map <Esc> to exit terminal-mode
+"endif
 "}}}
 
 "--- datetime stamps  {{{
