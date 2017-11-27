@@ -53,9 +53,7 @@ if !has("ruby")
   let g:find_yaml_key = 1
 endif"
 
-
-
-""-- Load all Plugins using plug.vim --
+"""--- Load all Plugins using plug.vim ---
 if has('nvim')
   let b:bundle_path = '~/.config/nvim/bundle'
   let b:autoloaddir = '~/.config/nvim/autoload'
