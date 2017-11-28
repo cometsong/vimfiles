@@ -7,3 +7,7 @@ vim/bash-support/*
 
 # use plugin manager, ignore 'bundle' dir
 vim/bundle
+
+# ctags files
+tags*
+
