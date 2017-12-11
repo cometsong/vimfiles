@@ -1,0 +1,4 @@
+--append
+--sort
+--recurse
+--exclude='[\t\/]\.[A-z\.]*\t'
