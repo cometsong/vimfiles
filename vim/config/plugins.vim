@@ -229,6 +229,7 @@ call plug#begin(b:bundle_path)
     let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
   endif
   let g:CtrlSpaceUseTabline = 1
+  let g:CtrlSpaceUseMouseAndArrowsInTerm = 1  " enable arrow keys in lists
   "let g:CtrlSpaceDefaultMappingKey = "<C-space>"
   call MapKeys('n', 'cw', ':CtrlSpaceNewWorkspace <name?>') " keymap for new workspace with name (don't kill all buffers/tabs!)
 
