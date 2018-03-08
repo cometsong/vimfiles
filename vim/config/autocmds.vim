@@ -17,10 +17,13 @@ if has("autocmd")
   "--- filetype specs  {{{
 
   "detect filetype
-  augroup filetypedetect
-    au BufNewFile,BufRead .tmux.conf*,tmux.conf*  setf tmux
-    au BufNewFile,BufRead iptables.*,*.iptables   setf iptables
-    au BufNewFile,BufRead ferm.conf*,*.ferm       setf ferm
+  augroup FT_Detective
+    autocmd!
+    autocmd BufNewFile,BufReadPre *.uml,*.plantuml,*.puml setf plantuml
+    autocmd BufNewFile,BufReadPre *.gmt,*.mgi             setf csv # GO terms, lists, etc
+    autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf*     setf tmux
+    autocmd BufNewFile,BufRead iptables.*,*.iptables      setf iptables
+    autocmd BufNewFile,BufRead ferm.conf*,*.ferm          setf ferm
   augroup END
 
   " all filetypes
@@ -37,11 +40,6 @@ if has("autocmd")
     autocmd FileType javascript   setlocal ts=4 sts=4 sw=4 noexpandtab
     autocmd FileType vim          setlocal ts=2 sts=2 sw=2 expandtab fdm=marker
     autocmd FileType uml          setlocal ts=2 sts=2 sw=2 expandtab
-  augroup END
-  augroup FT_Detective
-    autocmd!
-    autocmd BufNewFile,BufReadPre *.uml,*.plantuml,*.puml set ft=plantuml
-    autocmd BufNewFile,BufReadPre *.gmt,*.mgi set ft=csv  # GO terms, lists, etc
   augroup END
   "}}} 
 
