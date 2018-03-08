@@ -77,7 +77,6 @@ call plug#begin(b:bundle_path)
   Plug 'vim-airline/vim-airline-themes'     " status line colorschemes
   "Plug 'cometsong/statline.vim'             " status line definition
   Plug 'yegappan/mru'                       " most recently used files
-  Plug 'cometsong/minibufexpl.vim'          " buffers listed in top window
   Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }  " replace 'bufkill' with more sanity
   Plug 'kshenoy/vim-signature'              " place, toggle and display marks
   Plug 'vim-scripts/camelcasemotion'        " TraverseCamelStrings
@@ -636,14 +635,6 @@ let g:lesscss_toggle_key = "<leader>lc"
 """--- Signature Marks ---
 let g:SignatureMarkLineHL = "'Exception'"
 
-
-"""--- MiniBufExplorer ---
-" Maintain MBE window position when moving other windows (from:weynhamz/vim-plugin-minibufexpl/issues/31)
-let g:miniBufExplorerAutoStart = 1
-map <C-w>H <C-w>H:MBEOpen!<CR>
-map <C-w>J <C-w>J:MBEOpen!<CR>
-map <C-w>K <C-w>K:MBEOpen!<CR>
-map <C-w>L <C-w>L:MBEOpen!<CR>
 
 """--- Sayonara ---
 call MapKeys('nv', 'bd', ':Sayonara!<CR>')
