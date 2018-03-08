@@ -41,6 +41,7 @@ if has("autocmd")
   augroup FT_Detective
     autocmd!
     autocmd BufNewFile,BufReadPre *.uml,*.plantuml,*.puml set ft=plantuml
+    autocmd BufNewFile,BufReadPre *.gmt,*.mgi set ft=csv  # GO terms, lists, etc
   augroup END
   "}}} 
 
