@@ -231,6 +231,7 @@ call plug#begin(b:bundle_path)
   let g:CtrlSpaceUseMouseAndArrowsInTerm = 1  " enable arrow keys in lists
   "let g:CtrlSpaceDefaultMappingKey = "<C-space>"
   call MapKeys('n', 'cw', ':CtrlSpaceNewWorkspace <name?>') " keymap for new workspace with name (don't kill all buffers/tabs!)
+  call MapKeys('n', 'cws', ':CtrlSpaceSaveWorkspace <name?>') " keymap for new workspace with name (don't kill all buffers/tabs!)
 
 """--- versionizing ---
   Plug 'inkarkat/vcscommand.vim'            " all version controllers

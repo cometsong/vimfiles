@@ -65,12 +65,12 @@ endif
 "}}}
 
 "--- Terminal Access  {{{
-"if has('nvim') " for terminal
+if has('nvim') " for terminal
   "TODO: convert MapKeys to allow 't' and other 
   nnoremap <C-w>t :vsplit term://bash<CR>
   nnoremap <C-w>T :split term://bash<CR>
   tnoremap <Esc> <C-\><C-n>   " map <Esc> to exit terminal-mode
-"endif
+endif
 "}}}
 
 "--- datetime stamps  {{{
