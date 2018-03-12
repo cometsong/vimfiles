@@ -175,7 +175,7 @@ call plug#begin(b:bundle_path)
 
 """--- matches ---
   Plug 'Raimondi/delimitMate'               " autoclose {([, etc
-  Plug 'vim-scripts/matchit.zip'            " show matches of words, not just chars
+  Plug 'andymass/vim-matchup'               " show matches of words, not just chars
   Plug 'Valloric/MatchTagAlways'            " show matching x[ht]ml tags
 
 """--- omnicompletions galore ---
