@@ -525,6 +525,9 @@ endfunction
   Plug 'terryma/vim-expand-region'          " expand/contract visual selection using + and _
   Plug 'wellle/targets.vim'                 " add various text objects to operate on
 
+  " 'must be last'
+  Plug 'ryanoasis/vim-devicons'             " Adds file type glyphs/icons to popular plugins
+
 """--- Add plugins to &runtimepath ---
 call plug#end()
 

@@ -7,6 +7,7 @@
 "-------------------------------------------------------------------------------
 "--- OS Specific {{{1
 if has("gui_macvim")
+    set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h12  " set font and size
     "set fuoptions=maxvert,maxhorz   " fullscreen options (MacVim only), resized window when changed to fullscreen
 
 elseif has("gui_gtk2")
