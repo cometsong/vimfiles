@@ -110,6 +110,7 @@ call plug#begin(b:bundle_path)
     let g:ale_sign_warning = 'w>'
     let g:ale_python_flake8_args = '--max-line-length=100'
     let g:ale_yaml_yamllint_args = '-c $HOME/.yamllint'
+    let g:ale_sh_shellcheck_options = '-x -a -s bash'
     nmap <silent> ]N <Plug>(ale_previous_wrap)
     nmap <silent> ]n <Plug>(ale_next_wrap)
   else
@@ -140,10 +141,12 @@ call plug#begin(b:bundle_path)
   "Plug 'ervandew/screen'                    " simulate a split shell in vim using either gnu screen or tmux
   if has('nvim')
     Plug 'kassio/neoterm'                   " Use the same terminal for everything.
-    let g:neoterm_position = 'horizontal'
+    let g:neoterm_autoinsert   = 1
     let g:neoterm_automap_keys = '<Leader>tt'
+    let g:neoterm_default_mods = 'belowright'
     call MapKeys('nv', 'th', ':call neoterm#close()<cr>') " hide/close terminal
     call MapKeys('nv', 'tc', ':call neoterm#kill()<cr>')  " kill current job (send <c-c>)
+    call MapKeys('nv', 'tn', ':Tnew<cr>')  " start new terminal below current window
     " Git commands
     command! -nargs=+ Tg :T git <args>
   endif
