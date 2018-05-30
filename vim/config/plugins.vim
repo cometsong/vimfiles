@@ -208,14 +208,14 @@ call plug#begin(b:bundle_path)
   call MapKeys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
 
   Plug 'vim-ctrlspace/vim-ctrlspace'  " lists of stuff:  Buffer List, File List, Tab List, Workspace List, Bookmark List
+  let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
   if executable("ag")
     let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
   endif
   let g:CtrlSpaceUseTabline = 1
   let g:CtrlSpaceUseMouseAndArrowsInTerm = 1  " enable arrow keys in lists
-  "let g:CtrlSpaceDefaultMappingKey = "<C-space>"
-  call MapKeys('n', 'cw', ':CtrlSpaceNewWorkspace ') " keymap for new workspace with name (don't kill all buffers/tabs!)
-  call MapKeys('n', 'cws', ':CtrlSpaceSaveWorkspace ') " keymap for saving workspace
+  call MapKeys('n', 'cwn', ':CtrlSpaceNewWorkspace<CR>') " keymap for new workspace with name (don't kill all buffers/tabs!)
+  call MapKeys('n', 'cws', ':CtrlSpaceSaveWorkspace<CR>') " keymap for saving workspace
 
   let g:loaded_netrwPlugin = 1
 
