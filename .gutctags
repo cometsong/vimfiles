@@ -1,4 +1,5 @@
 --append
---sort
+--sort=yes
 --recurse
 --exclude='[\t\/]\.[A-z\.]*\t'
+--exclude=vim/bundle/*

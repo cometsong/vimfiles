@@ -226,8 +226,8 @@ call plug#begin(b:bundle_path)
 
 """--- tag sale! ---
   Plug 'ludovicchabant/vim-gutentags'       " background management of tags files
-  let g:gutentags_ctags_tagfile = '.tags'  " default tags file name in each project
-  "let g:gutentags_ctags_exclude = []     " see each project's '.gutctags' file for these options
+  let g:gutentags_ctags_tagfile = 'tags'    " default tags file name in each project
+  "let g:gutentags_ctags_exclude = []        " see each project's '.gutctags' file for these options
 
   Plug 'majutsushi/tagbar'                  " shows all tags in sidebar window
   let g:tagbar_left = 1
