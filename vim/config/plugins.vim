@@ -26,6 +26,7 @@ call plug#begin(b:bundle_path)
   let g:airline_extensions = ['branch', 'ale', 'tagbar', 'windowswap', 'ctrlspace']
   let g:airline#extensions#branch#use_vcscommand = 1
   let g:airline#extensions#csv#enabled = 1
+  let g:airline#extensions#ale#enabled = 1
   let g:airline_exclude_preview = 1
   let g:airline_theme = 'onedark'
   let g:airline_skip_empty_sections = 1
@@ -108,8 +109,8 @@ call plug#begin(b:bundle_path)
     let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
     let g:ale_sign_error = 'E>'
     let g:ale_sign_warning = 'w>'
-    let g:ale_python_flake8_args = '--max-line-length=100'
-    let g:ale_yaml_yamllint_args = '-c $HOME/.yamllint'
+    let g:ale_python_flake8_options = '--max-line-length=100'
+    let g:ale_yaml_yamllint_options = '-c $HOME/.yamllint'
     let g:ale_sh_shellcheck_options = '-x -a -s bash'
     nmap <silent> ]N <Plug>(ale_previous_wrap)
     nmap <silent> ]n <Plug>(ale_next_wrap)
