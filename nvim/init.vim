@@ -50,5 +50,7 @@ set shortmess=filmnrwxtToO
 set history=10000
 set infercase
 
+set spellfile=~/.vim/spell/en.utf-8.add
+
 
 """ vim:fdm=expr:fdl=10:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
