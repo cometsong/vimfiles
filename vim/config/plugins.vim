@@ -1,13 +1,8 @@
 "- Plugged In -"
 
 """--- Load all Plugins using plug.vim ---
-if has('nvim')
-  let b:bundle_path = '~/.config/nvim/bundle'
-  let b:autoloaddir = '~/.config/nvim/autoload'
-else
-  let b:bundle_path = '~/.vim/bundle'
-  let b:autoloaddir = '~/.vim/autoload'
-endif
+let b:bundle_path = '~/.vim/bundle'
+let b:autoloaddir = '~/.vim/autoload'
 
 """--- Automatic plug.vim installation ---
 if empty(glob(b:autoloaddir.'/plug.vim'))
@@ -94,9 +89,6 @@ call plug#begin(b:bundle_path)
     call MapKeys('nv', 'ds', ':Dispatch<CR>')
     call MapKeys('nv', 'dm', ':Make<CR>')
     amenu <silent> .66 &Cometsong.Dispatch\ file<Tab>dm   <Leader>dm   " Cometsong Menu!
-  if has('nvim')
-    Plug 'radenling/vim-dispatch-neovim'    " Adds neovim support to vim-dispatch
-  endif
 
   Plug 'thinca/vim-quickrun'                " quick make, many filetypes
     call MapKeys('niv', 'qr', ':QuickRun<CR>')
@@ -104,7 +96,7 @@ call plug#begin(b:bundle_path)
 
   Plug 'JarrodCTaylor/vim-shell-executor'   " execute all or selected with any shell command
 
-  if has('nvim') || v:version > 8
+  if v:version > 8
     Plug 'w0rp/ale'                           " Asynchronous Lint Engine
     let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
     let g:ale_sign_error = 'E>'
@@ -140,17 +132,6 @@ call plug#begin(b:bundle_path)
   Plug 'mhinz/vim-grepper'                  " grepping flexibility
   "Plug 'benmills/vimux'                     " interact with tmux
   "Plug 'ervandew/screen'                    " simulate a split shell in vim using either gnu screen or tmux
-  if has('nvim')
-    Plug 'kassio/neoterm'                   " Use the same terminal for everything.
-    let g:neoterm_autoinsert   = 1
-    let g:neoterm_automap_keys = '<Leader>tt'
-    let g:neoterm_default_mods = 'belowright'
-    call MapKeys('nv', 'th', ':call neoterm#close()<cr>') " hide/close terminal
-    call MapKeys('nv', 'tc', ':call neoterm#kill()<cr>')  " kill current job (send <c-c>)
-    call MapKeys('nv', 'tn', ':Tnew<cr>')  " start new terminal below current window
-    " Git commands
-    command! -nargs=+ Tg :T git <args>
-  endif
 
 """--- Colorrific ---
   Plug 'junegunn/limelight.vim'             " highlights each paragraph/section of the file (puts it in the limelight)
@@ -177,24 +158,22 @@ call plug#begin(b:bundle_path)
   amenu <silent> .910 &Cometsong.&DelimitMateSwitch<Tab>dc   :DelimitMateSwitch<CR>
 
 """--- omnicompletions galore ---
-  if has('nvim')
+  if v:version > 8 && has('python3') && has('timers')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  elseif v:version > 8 && has('python3') && has('timers')
-    Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'zchee/deoplete-go', {'for': 'go'}  " deoplete: 'go'
+    let g:deoplete#enable_at_startup = 1
+    "let g:deoplete#sources._ = ['buffer', 'tag']
+    call MapKeys('vni', 'ct', ':call deoplete#toggle()')
   else " v:version < 8
     Plug 'Shougo/neocomplete.vim'
     let g:neocomplete#enable_at_startup = 1
     call MapKeys('vni', 'ct', ':NeoCompleteToggle')
   endif
-  let g:deoplete#enable_at_startup = 1
-  "let g:deoplete#sources._ = ['buffer', 'tag']
-  call MapKeys('vni', 'ct', ':call deoplete#toggle()')
   " lang-packs
-  Plug 'Shougo/neco-vim'                   " deoplete: 'vim'
-  Plug 'zchee/deoplete-go', {'for': 'go'}  " deoplete: 'go'
-  Plug 'wellle/tmux-complete.vim'          " deoplete: 'tmux'
+  Plug 'Shougo/neco-vim'                   " complete: 'vim'
+  Plug 'wellle/tmux-complete.vim'          " complete: 'tmux'
   Plug 'c9s/perlomni.vim', {'for': 'perl'} " perl omnicomplete
 
 """--- File Explorer ---
@@ -276,17 +255,6 @@ call plug#begin(b:bundle_path)
   "let g:gruvbox_number_column = 'gray'
   "let g:gruvbox_italicize_strings = 1
 
-  "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-  "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-  "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-  let s:tmux_ver = system('%r! tmux -V | cut -d\  -f2')
-  if (empty($TMUX) || s:tmux_ver > 2.1)
-    if has('nvim') || v:version > 74
-      "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-      let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    endif
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
   " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
   if (has('termguicolors'))
@@ -452,34 +420,26 @@ endfunction
     command! -nargs=* Py python3 <args>
     let g:jedi#force_py_version = 3
     let g:ale_python_flake8_executable = 'python3'
-    "let g:syntastic_python_python_exec = 'python3'
-    "let g:pymode_python = 'python3'
     call PyVeSPa()
   elseif has('python')
     command! -nargs=* Py python <args>
     let g:jedi#force_py_version = 2
     let g:ale_python_flake8_executable = 'python2'
-    "let g:syntastic_python_python_exec = 'python2'
-    "let g:pymode_python = 'python2'
     call PyVeSPa()
   else
     let g:loaded_jedi = 1
     let g:loaded_youcompleteme = 1
   endif
 
-  if has('nvim') && has('python3')
-    Plug 'zchee/deoplete-jedi', {'for': ['python']}
-  else
-    Plug 'davidhalter/jedi-vim', {'for': ['python']}  " python awesomeness
-  endif
   "--- Python Jedi Completion ---
-  let g:jedi#use_tabs_not_buffers = 0
-  let g:jedi#popup_on_dot = 1
-  let g:jedi#rename_command = "<leader>pr"
-  let g:jedi#squelch_py_warning = 1
-  "let g:jedi#auto_vim_configuration = 0
-  let g:jedi#completions_enabled = 1
-  let g:jedi#show_call_signatures = 0
+  Plug 'davidhalter/jedi-vim', {'for': ['python']}  " python awesomeness
+    let g:jedi#use_tabs_not_buffers = 0
+    let g:jedi#popup_on_dot = 1
+    let g:jedi#rename_command = "<leader>pr"
+    let g:jedi#squelch_py_warning = 1
+    "let g:jedi#auto_vim_configuration = 0
+    let g:jedi#completions_enabled = 1
+    let g:jedi#show_call_signatures = 0
 
   Plug 'tmhedberg/SimpylFold', {'for': ['python']}    " python folding
     let g:SimpylFold_docstring_preview = 1

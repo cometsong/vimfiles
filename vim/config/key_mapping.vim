@@ -58,19 +58,6 @@ call MapKeys('ni', '<C-j>',        ':bnext<CR>', '')
 " :ls with auto-bufselect begun :b
 " idea from romainl: http://vi.stackexchange.com/a/2124/2303
 call MapKeys('n', 'gls', ':ls<CR>:b', '')
-
-if has('nvim')
-  call MapKeys('nvxi', '<c-space>', ':CtrlSpace<cr>', '')
-endif
-"}}}
-
-"--- Terminal Access  {{{
-if has('nvim') " for terminal
-  "TODO: convert MapKeys to allow 't' and other 
-  nnoremap <C-w>t :vsplit term://bash<CR>
-  nnoremap <C-w>T :split term://bash<CR>
-  tnoremap <Esc> <C-\><C-n>   " map <Esc> to exit terminal-mode
-endif
 "}}}
 
 "--- datetime stamps  {{{

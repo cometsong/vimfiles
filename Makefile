@@ -7,12 +7,10 @@ SRCDIR := $(PWD)
 DESTDIR := $(HOME)
 
 all: normals gits
-normals: vims bins nvims
-neovims: nvims
+normals: vims bins
 gits: submodules
 
 VIMFILES=vimrc gvimrc vim
-NVIMFILES=nvim/init.vim
 BINFILES=$(shell ls -1 $(SRCDIR)/bin)
 
 
@@ -31,13 +29,6 @@ endef
 vims:
 	@echo Link all vimfiles
 	@$(call links,$(VIMFILES),$(SRCDIR),$(DESTDIR),.)
-
-nvims: XDG_CONFIG_HOME ?= $(DESTDIR)/.config
-nvims: DESTDIR := $(XDG_CONFIG_HOME)
-nvims:
-	@echo Link all nvim configs
-	@if [ ! -d $(DESTDIR)/nvim ]; then mkdir -p $(DESTDIR)/nvim; fi
-	@$(call links,$(NVIMFILES),$(SRCDIR),$(DESTDIR))
 
 bins:
 	@echo 'Link all files in bin (e.g. 'gvims')'
