@@ -199,7 +199,7 @@ call plug#begin(b:bundle_path)
 
 """--- File Explorer ---
   Plug 'ipod825/vim-netranger'  "ranger style file tree, supporting remotes e.g. Mega, dropbox
-    call MapKeys('ni', '<F2>', ':leftabove 50vsplit %:p:h', '')  " explore cur buf's folder
+    call MapKeys('ni', '<F2>', ':leftabove 50vsplit %:p:h<CR>', '')  " explore cur buf's folder
 
 "  Plug 'scrooloose/nerdtree'                " Nerdy Directories
 "  let g:NERDTreeHijackNetrw = 1
