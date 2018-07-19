@@ -198,15 +198,18 @@ call plug#begin(b:bundle_path)
   Plug 'c9s/perlomni.vim', {'for': 'perl'} " perl omnicomplete
 
 """--- File Explorer ---
-  Plug 'scrooloose/nerdtree'                " Nerdy Directories
-  let g:NERDTreeHijackNetrw = 1
-  let g:NERDTreeSortHiddenFirst = 1
-  let g:NERDTreeHighlightCursorline = 1
-  let g:NERDTreeQuitOnOpen = 0
-  let g:NERDTreeShowFiles = 1
-  let g:NERDTreeShowBookmarks = 1
-  let g:NERDTreeNaturalSort = 1
-  call MapKeys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
+  Plug 'ipod825/vim-netranger'  "ranger style file tree, supporting remotes e.g. Mega, dropbox
+    call MapKeys('ni', '<F2>', ':leftabove 50vsplit %:p:h', '')  " explore cur buf's folder
+
+"  Plug 'scrooloose/nerdtree'                " Nerdy Directories
+"  let g:NERDTreeHijackNetrw = 1
+"  let g:NERDTreeSortHiddenFirst = 1
+"  let g:NERDTreeHighlightCursorline = 1
+"  let g:NERDTreeQuitOnOpen = 0
+"  let g:NERDTreeShowFiles = 1
+"  let g:NERDTreeShowBookmarks = 1
+"  let g:NERDTreeNaturalSort = 1
+"  call MapKeys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
 
   Plug 'vim-ctrlspace/vim-ctrlspace'  " lists of stuff:  Buffer List, File List, Tab List, Workspace List, Bookmark List
   let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
