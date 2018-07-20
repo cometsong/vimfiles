@@ -19,7 +19,7 @@ set mouse=a           " the mouse in VIM in a=all modes
 set mousemodel=popup_setpos "extend, popup or popup_setpos; what the right mouse button is used for
 if has('mouse_sgr')
 	set ttymouse=sgr		" accepts mouse activity past 223 columns
-elseif !(has('nvim'))
+else
 	set ttymouse=xterm2
 end
 
@@ -66,7 +66,7 @@ set laststatus=2      " always show status line
  
 "--- Invisible characters   " If you ':set list', shows trailing spaces, etc
 set listchars=tab:⊢∽,trail:⎵,extends:⋯,precedes:⋯,eol:$
-if has('nvim') || v:version > 8
+if v:version > 8
   set listchars+=space:⎵,nbsp:·
   set showbreak=\ ↪\ 
 endif

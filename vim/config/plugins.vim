@@ -159,17 +159,19 @@ call plug#begin(b:bundle_path)
 
 """--- omnicompletions galore ---
   if v:version > 8 && has('python3') && has('timers')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'zchee/deoplete-go', {'for': 'go'}  " deoplete: 'go'
     let g:deoplete#enable_at_startup = 1
     "let g:deoplete#sources._ = ['buffer', 'tag']
     call MapKeys('vni', 'ct', ':call deoplete#toggle()')
-  else " v:version < 8
+  elseif has('lua') " v:version < 8, 
     Plug 'Shougo/neocomplete.vim'
     let g:neocomplete#enable_at_startup = 1
     call MapKeys('vni', 'ct', ':NeoCompleteToggle')
+  elseif v:version > 747 && has('insert_expand') && has('menu') " v:version < 8, 
+    Plug 'lifepillar/vim-mucomplete'
   endif
   " lang-packs
   Plug 'Shougo/neco-vim'                   " complete: 'vim'

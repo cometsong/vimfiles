@@ -57,7 +57,7 @@ if has("autocmd")
   "}}} 
 
   "--- NeoNeoNeovim {{{
-  if has('nvim')
+  if v:version > 801
     augroup TermsConditions
       autocmd!
       au TermOpen * startinsert
