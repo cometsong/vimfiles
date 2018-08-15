@@ -460,6 +460,9 @@ endfunction
     let g:find_yaml_key = 1
   endif
 
+""""--- html/jinja2 ---
+  Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['jinja2','jinja2.html','jinja.html','html']}
+
 """"--- toml ---
   Plug 'cespare/vim-toml', {'for': 'toml'}
 
