@@ -158,23 +158,32 @@ call plug#begin(b:bundle_path)
   amenu <silent> .910 &Cometsong.&DelimitMateSwitch<Tab>dc   :DelimitMateSwitch<CR>
 
 """--- omnicompletions galore ---
-  if v:version > 8 && has('python3') && has('timers')
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-    Plug 'zchee/deoplete-go', {'for': 'go'}  " deoplete: 'go'
-    let g:deoplete#enable_at_startup = 1
-    "let g:deoplete#sources._ = ['buffer', 'tag']
-    call MapKeys('vni', 'ct', ':call deoplete#toggle()')
-  elseif has('lua') " v:version < 8, 
-    Plug 'Shougo/neocomplete.vim'
-    let g:neocomplete#enable_at_startup = 1
-    call MapKeys('vni', 'ct', ':NeoCompleteToggle')
-  elseif v:version > 747 && has('insert_expand') && has('menu') " v:version < 8, 
-    Plug 'lifepillar/vim-mucomplete'
-  endif
+  Plug 'maralla/completor.vim'
+  "let g:completor_{filetype}_omni_trigger = '<python regex>'  "e.g.
+  let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
+  let g:completor_blacklist = ['tagbar', 'qf', 'netrw', 'unite', 'vimwiki'] " default
+  let g:completor_blacklist = 
+    \ g:completor_blacklist + ['diff', 'netranger'] " add new vals to list var
+    call uniq(sort(g:completor_blacklist)) " remove dupes if exist, when `so %`
+
+  "if v:version > 8 && has('python3') && has('timers')
+  "  Plug 'Shougo/deoplete.nvim'
+  "  Plug 'roxma/nvim-yarp'
+  "  Plug 'roxma/vim-hug-neovim-rpc'
+  "  Plug 'zchee/deoplete-go', {'for': 'go'}  " deoplete: 'go'
+  "  let g:deoplete#enable_at_startup = 1
+  "  "let g:deoplete#sources._ = ['buffer', 'tag']
+  "  call MapKeys('vni', 'ct', ':call deoplete#toggle()')
+  "elseif has('lua') " v:version < 8, 
+  "  Plug 'Shougo/neocomplete.vim'
+  "  let g:neocomplete#enable_at_startup = 1
+  "  call MapKeys('vni', 'ct', ':NeoCompleteToggle')
+  "elseif v:version > 747 && has('insert_expand') && has('menu') " v:version < 8, 
+    "Plug 'lifepillar/vim-mucomplete'
+    "let g:mucomplete#enable_auto_at_startup = 1
+  "endif
   " lang-packs
-  Plug 'Shougo/neco-vim'                   " complete: 'vim'
+  "Plug 'Shougo/neco-vim'                   " complete: 'vim'
   Plug 'wellle/tmux-complete.vim'          " complete: 'tmux'
   Plug 'c9s/perlomni.vim', {'for': 'perl'} " perl omnicomplete
 
