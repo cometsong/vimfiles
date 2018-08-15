@@ -75,11 +75,13 @@ call plug#begin(b:bundle_path)
 """--- commentary ---
   Plug 'scrooloose/nerdcommenter'           " comments smartly by filetype
   Plug 'cometsong/CommentFrame.vim'         " frame and full line comment styles
+  "let g:NERDAltDelims_vim = 1
   let g:NERDCustomDelimiters = {
-    \ 'vim':      { 'left': '"' },
+    \ 'vim':      { 'left': '"', 'leftAlt': '"""' },
     \ 'iptables': { 'left': '# ' },
     \ 'ferm':     { 'left': '# ' }
     \ }
+  map ,dontmap <plug>NERDCommenterSexy " used by VCSStatus
 
 """--- compilation ---
   Plug 'sheerun/vim-polyglot'               " A collection of language packs for Vim.
