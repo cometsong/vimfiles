@@ -78,6 +78,11 @@ if has('persistent_undo')
   set undodir=$HOME/.vimundos   " dir to store undo files in
 endif
 
+"--- popup completion opts  {{{
+set completeopt=menu,menuone,preview
+set completeopt+=noinsert,noselect
+"}}}
+
 "--- Spell Checking  {{{
 set spelllang=en_us   " default spell checker language
 set spellsuggest=10   " number of spelling suggestions listed (from z= )
