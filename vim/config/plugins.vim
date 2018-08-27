@@ -492,6 +492,10 @@ endfunction
 """"--- UML ---
   Plug 'aklt/plantuml-syntax',    {'for': ['uml','plantuml']}      " app for PlantUML !!
 
+""""--- BioColors ---
+  Plug 'bioSyntax/bioSyntax-vim',    {'for': ['fasta', 'fastq', 'sam', 'gtf', 'bed', 'clustal', 'vcf']}
+    au BufRead,BufNewFile *.fsa set filetype=fasta  " add other extension to the possible fasta files
+
 """-- Other Stuff  ---
   Plug 'vim-scripts/camelcasemotion'        " TraverseCamelStrings
   Plug 'cometsong/simplefold.vim'           " custom folding for some syntaxes
