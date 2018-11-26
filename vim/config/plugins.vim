@@ -100,14 +100,42 @@ call plug#begin(b:bundle_path)
 
   if v:version > 8
     Plug 'w0rp/ale'                           " Asynchronous Lint Engine
+    let g:ale_completion_enabled = 0
     let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
     let g:ale_sign_error = 'E>'
     let g:ale_sign_warning = 'w>'
+    nmap <silent> ]N <Plug>(ale_previous_wrap)
+    nmap <silent> ]n <Plug>(ale_next_wrap)
+
+    "" keep linters from running when opening a file
+    "let g:ale_lint_on_enter = 0
+    let g:ale_linters_explicit = 1 " enable limited set
+    let g:ale_linters = {
+    \   'awk':        ['all'],
+    \   'dockerfile': ['all'],
+    \   'git':        ['all'],
+    \   'go':         ['gofmt', 'golint'],
+    \   'javascript': ['all'],
+    \   'json':       ['all'],
+    \   'lua':        ['all'],
+    \   'markdownn':  ['all'],
+    \   'python':     ['prospector', 'pyflakes', 'flake8'],
+    \   'sql':        ['all'],
+    \   'sh':         ['shell', 'shellcheck'],
+    \   'typescript': ['all'],
+    \   'vim':        ['all'],
+    \}
     let g:ale_python_flake8_options = '--max-line-length=100'
     let g:ale_yaml_yamllint_options = '-c $HOME/.yamllint'
     let g:ale_sh_shellcheck_options = '-x -a -s bash'
-    nmap <silent> ]N <Plug>(ale_previous_wrap)
-    nmap <silent> ]n <Plug>(ale_next_wrap)
+    let g:ale_typescript_tslint_config_path = '$HOME/.tslint.json'
+
+    " Do not lint or fix minified files.
+    let g:ale_pattern_options = {
+    \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+    \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+    \}
+
   else
     Plug 'benekastah/neomake'
     let g:neomake_open_list = 0
