@@ -178,6 +178,8 @@ call plug#begin(b:bundle_path)
   Plug 'joshdick/onedark.vim'               " theme w/ airline as well
   Plug 'w0ng/vim-hybrid'                    " mix of Tomorrow-Night, Codecademy, Jellybeans, Solarized, iTerm
   Plug 'lifepillar/vim-solarized8'          " True Colors, halfway between Solarized and Flattened
+  Plug 'chrisbra/Colorizer'                 " Show colors by code, name, etc
+    let g:colorizer_auto_filetype='css,html'
 
 """--- matches ---
   Plug 'Raimondi/delimitMate'               " autoclose {([, etc
