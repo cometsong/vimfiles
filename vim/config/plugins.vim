@@ -527,6 +527,8 @@ endfunction
   Plug 'bioSyntax/bioSyntax-vim',    {'for': ['fasta', 'fastq', 'sam', 'gtf', 'bed', 'clustal', 'vcf']}
     au BufRead,BufNewFile *.fsa set filetype=fasta  " add other extension to the possible fasta files
 
+"""-- for testing plugins ---
+  Plug 'junegunn/vader.vim', {'for': 'vader'}
 """-- Other Stuff  ---
   Plug 'vim-scripts/camelcasemotion'        " TraverseCamelStrings
   Plug 'cometsong/simplefold.vim'           " custom folding for some syntaxes
