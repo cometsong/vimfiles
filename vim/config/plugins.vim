@@ -233,17 +233,33 @@ call plug#begin(b:bundle_path)
 "  let g:NERDTreeNaturalSort = 1
 "  call MapKeys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
 
+  let g:loaded_netrwPlugin = 1
+
+"""--- CtrlSpace ---
   Plug 'vim-ctrlspace/vim-ctrlspace'  " lists of stuff:  Buffer List, File List, Tab List, Workspace List, Bookmark List
   let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
   if executable("ag")
     let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
   endif
-  let g:CtrlSpaceUseTabline = 1
   let g:CtrlSpaceUseMouseAndArrowsInTerm = 1  " enable arrow keys in lists
   call MapKeys('n', 'cwn', ':CtrlSpaceNewWorkspace<CR>') " keymap for new workspace with name (don't kill all buffers/tabs!)
   call MapKeys('n', 'cws', ':CtrlSpaceSaveWorkspace<CR>') " keymap for saving workspace
 
-  let g:loaded_netrwPlugin = 1
+  let g:CtrlSpaceUseTabline = 1
+  function! CWDTabline()
+    let tabline=''
+    let tabline.='%#TabLineFill#'
+    let tabline.='%=|'      "left/right separator
+    let tabline.='%#identifier#'
+    let tabline.='%.30(%{fnamemodify(getcwd(), ":~")}%)'
+    let tabline.='%*'
+    return tabline
+  endfunction
+
+  function! MyTabline()
+    return ctrlspace#api#Tabline().CWDTabline()
+  endfunction
+  set tabline=%!MyTabline()
 
 """--- versionizing ---
   Plug 'inkarkat/vcscommand.vim'            " all version controllers
