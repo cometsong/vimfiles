@@ -37,7 +37,7 @@ runtime config/plugins.vim
 "colorscheme one
 colorscheme solarized
 if (has('termguicolors'))
-  colorscheme solarized8_dark_high
+  colorscheme solarized8_high
 endif
 set background=dark
 
