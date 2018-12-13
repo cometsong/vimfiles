@@ -175,3 +175,5 @@ call MapKeys('n', '=md', ':MinutesDatestamp<CR>', '')
 call MapKeys('n', '=ms', ':saveas t<BS>--mtg.yaml<Left><Left><Left><Left><Left><Left><Left><Left><Left>', '')
 call MapKeys('n', '=mi', '=md=ms', '')
 "}}}
+
+" vim: set ft=vim ts=2 sw=2 tw=100 et fdm=marker:
