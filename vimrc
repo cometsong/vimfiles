@@ -2,11 +2,14 @@
 "    Cometsong's composed and composited vimrc file.     "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
+"""--- (pythonx bug in some vim versions)
+silent pyx 'print();'
+
 """--- Vim Options
-source ~/.vim/config/vim_options.vim
+runtime config/vim_options.vim
 
 """--- Cometsong Menu Init!
-source ~/.vim/config/menu_cometsong.vim
+runtime config/menu_cometsong.vim
 
 """--- Here Be Functions!
 " (need to be sourced before stuff that uses 'em)
@@ -16,20 +19,16 @@ runtime! functions/*.vim
 call Tabspaces()
 
 """--- Key Mapping
-source ~/.vim/config/key_mapping.vim
+runtime config/key_mapping.vim
 
 """--- Folding
-source ~/.vim/config/folding.vim
+runtime config/folding.vim
 
 """--- Autocmds
-source ~/.vim/config/autocmds.vim
-
-"""--- Save My Sessions
-"source ~/.vim/config/sessions.vim
-" test using session manager plugin
+runtime config/autocmds.vim
 
 """--- We Are Plugged In!
-source ~/.vim/config/plugins.vim
+runtime config/plugins.vim
 
 """--- Set Colors
 "colorscheme jellybeans
