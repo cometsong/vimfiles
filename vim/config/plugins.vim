@@ -59,8 +59,8 @@ call plug#begin(b:bundle_path)
   let g:is#do_default_mappings = 1
 
   Plug 'osyo-manga/vim-anzu'                " display search position like (2/10) for n/N commands
-  map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)zz<Plug>(anzu-update-search-status-with-echo)
-  map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)zz<Plug>(anzu-update-search-status-with-echo)
+  map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)<Plug>(anzu-update-search-status-with-echo)
+  map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)<Plug>(anzu-update-search-status-with-echo)
 
   Plug 'haya14busa/vim-asterisk'            " Start a * or # search from a visual block
   map *  <Plug>(asterisk-z*)zz<Plug>(is-nohl-1)
