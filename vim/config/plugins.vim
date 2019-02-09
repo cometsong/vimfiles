@@ -50,8 +50,8 @@ call plug#begin(b:bundle_path)
 """--- MRU --
   Plug 'yegappan/mru'                       " most recently used files
   let MRU_Max_Entries = 400
-  call MapKeys('n', 'mr', ':MRU<CR>')
-  call MapKeys('ni', '<S-F2>', ':MRU<CR>', '')
+  call map#Keys('n', 'mr', ':MRU<CR>')
+  call map#Keys('ni', '<S-F2>', ':MRU<CR>', '')
   amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab>r/S-F2   <S-F2>
 
 """--- well, Search me! ---
@@ -62,12 +62,12 @@ call plug#begin(b:bundle_path)
   map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)<Plug>(anzu-update-search-status-with-echo)
   map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)<Plug>(anzu-update-search-status-with-echo)
 
-  Plug 'haya14busa/vim-asterisk'            " Start a * or # search from a visual block
-  map *  <Plug>(asterisk-z*)zz<Plug>(is-nohl-1)
-  map g* <Plug>(asterisk-gz*)zz<Plug>(is-nohl-1)
-  map #  <Plug>(asterisk-z#)zz<Plug>(is-nohl-1)
-  map g# <Plug>(asterisk-gz#)zz<Plug>(is-nohl-1)
-  let g:asterisk#keeppos = 1
+  "Plug 'haya14busa/vim-asterisk'            " Start a * or # search from a visual block
+  "map *  <Plug>(asterisk-z*)zz<Plug>(is-nohl-1)
+  "map g* <Plug>(asterisk-gz*)zz<Plug>(is-nohl-1)
+  "map #  <Plug>(asterisk-z#)zz<Plug>(is-nohl-1)
+  "map g# <Plug>(asterisk-gz#)zz<Plug>(is-nohl-1)
+  "let g:asterisk#keeppos = 1
 
 """--- Alignment ---
   Plug 'cometsong/AlignChips.vim'           " from Dr Chip's Align plugin (vimscript #294)
@@ -88,12 +88,12 @@ call plug#begin(b:bundle_path)
     "let g:polyglot_disabled = ['css']      " e.g. of disabling
 
   Plug 'tpope/vim-dispatch'                 " multi-lingual asynchronous make
-    call MapKeys('nv', 'ds', ':Dispatch<CR>')
-    call MapKeys('nv', 'dm', ':Make<CR>')
+    call map#Keys('nv', 'ds', ':Dispatch<CR>')
+    call map#Keys('nv', 'dm', ':Make<CR>')
     amenu <silent> .66 &Cometsong.Dispatch\ file<Tab>dm   <Leader>dm   " Cometsong Menu!
 
   Plug 'thinca/vim-quickrun'                " quick make, many filetypes
-    call MapKeys('niv', 'qr', ':QuickRun<CR>')
+    call map#Keys('niv', 'qr', ':QuickRun<CR>')
     amenu <silent> .66 &Cometsong.QuickRun\ file<Tab>qr   <Leader>qr   " Cometsong Menu!
 
   Plug 'JarrodCTaylor/vim-shell-executor'   " execute all or selected with any shell command
@@ -151,7 +151,7 @@ call plug#begin(b:bundle_path)
       \ 'args': '-x -f gcc',
       \ 'cwd':  '%:p:h'
       \ }
-    call MapKeys('ni', '<F5>', ':Neomake<CR>', '')
+    call map#Keys('ni', '<F5>', ':Neomake<CR>', '')
     amenu <silent> .66 &Cometsong.&Neomake<Tab>F5  <F5>
   endif
 
@@ -168,7 +168,7 @@ call plug#begin(b:bundle_path)
     " Background Color name (:help cterm-colors)
     let g:limelight_conceal_ctermg = 'DarkGrey'
     let g:limelight_conceal_guifg = 'DarkGrey'
-    call MapKeys('nvx', 'lm', ':Limelight!!<CR>')  " LimeLight Toggle
+    call map#Keys('nvx', 'lm', ':Limelight!!<CR>')  " LimeLight Toggle
   "Plug 'Lokaltog/vim-distinguished'         " distinguished colors
   "Plug 'nanotech/jellybeans.vim'            " jellybeans colors
   "Plug 'mkarmona/colorsbox'                 " colorsbox color set
@@ -186,7 +186,7 @@ call plug#begin(b:bundle_path)
   Plug 'andymass/vim-matchup'               " show matches of words, not just chars
   Plug 'Valloric/MatchTagAlways'            " show matching x[ht]ml tags
   let delimitMate_autoclose = 1
-  call MapKeys('ni', 'dc', ':DelimitMateSwitch<CR>')
+  call map#Keys('ni', 'dc', ':DelimitMateSwitch<CR>')
   amenu <silent> .910 &Cometsong.&DelimitMateSwitch<Tab>dc   :DelimitMateSwitch<CR>
 
 """--- omnicompletions galore ---
@@ -205,11 +205,11 @@ call plug#begin(b:bundle_path)
   "  Plug 'zchee/deoplete-go', {'for': 'go'}  " deoplete: 'go'
   "  let g:deoplete#enable_at_startup = 1
   "  "let g:deoplete#sources._ = ['buffer', 'tag']
-  "  call MapKeys('vni', 'ct', ':call deoplete#toggle()')
+  "  call map#Keys('vni', 'ct', ':call deoplete#toggle()')
   "elseif has('lua') " v:version < 8, 
   "  Plug 'Shougo/neocomplete.vim'
   "  let g:neocomplete#enable_at_startup = 1
-  "  call MapKeys('vni', 'ct', ':NeoCompleteToggle')
+  "  call map#Keys('vni', 'ct', ':NeoCompleteToggle')
   "elseif v:version > 747 && has('insert_expand') && has('menu') " v:version < 8, 
     "Plug 'lifepillar/vim-mucomplete'
     "let g:mucomplete#enable_auto_at_startup = 1
@@ -221,7 +221,7 @@ call plug#begin(b:bundle_path)
 
 """--- File Explorer ---
   Plug 'ipod825/vim-netranger'  "ranger style file tree, supporting remotes e.g. Mega, dropbox
-    call MapKeys('ni', '<F2>', ':leftabove 50vsplit %:p:h<CR>', '')  " explore cur buf's folder
+    call map#Keys('ni', '<F2>', ':leftabove 50vsplit %:p:h<CR>', '')  " explore cur buf's folder
 
 "  Plug 'scrooloose/nerdtree'                " Nerdy Directories
 "  let g:NERDTreeHijackNetrw = 1
@@ -231,7 +231,7 @@ call plug#begin(b:bundle_path)
 "  let g:NERDTreeShowFiles = 1
 "  let g:NERDTreeShowBookmarks = 1
 "  let g:NERDTreeNaturalSort = 1
-"  call MapKeys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
+"  call map#Keys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
 
   let g:loaded_netrwPlugin = 1
 
@@ -242,8 +242,8 @@ call plug#begin(b:bundle_path)
     let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
   endif
   let g:CtrlSpaceUseMouseAndArrowsInTerm = 1  " enable arrow keys in lists
-  call MapKeys('n', 'cwn', ':CtrlSpaceNewWorkspace<CR>') " keymap for new workspace with name (don't kill all buffers/tabs!)
-  call MapKeys('n', 'cws', ':CtrlSpaceSaveWorkspace<CR>') " keymap for saving workspace
+  call map#Keys('n', 'cwn', ':CtrlSpaceNewWorkspace<CR>') " keymap for new workspace with name (don't kill all buffers/tabs!)
+  call map#Keys('n', 'cws', ':CtrlSpaceSaveWorkspace<CR>') " keymap for saving workspace
 
   let g:CtrlSpaceUseTabline = 1
   function! CWDTabline()
@@ -276,8 +276,8 @@ call plug#begin(b:bundle_path)
   let g:tagbar_width = 50
   let g:tagbar_autoclose = 1
   let g:tagbar_autofocus = 1
-  call MapKeys('ni', 'tb', ':TagbarToggle<CR>')
-  call MapKeys('ni', '<F6>', ':TagbarToggle<CR>', '')
+  call map#Keys('ni', 'tb', ':TagbarToggle<CR>')
+  call map#Keys('ni', '<F6>', ':TagbarToggle<CR>', '')
   amenu <silent> .20 &Cometsong.&Tagbar\ Toggle<Tab>tb/F6  <Leader>tb
   "let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 
@@ -367,7 +367,7 @@ call plug#begin(b:bundle_path)
   "let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
   " Plugin key-mappings.
-  call MapKeys('ni', 'ss', '<C-c>:UltiSnipsEdit<CR>')
+  call map#Keys('ni', 'ss', '<C-c>:UltiSnipsEdit<CR>')
   amenu <silent> .200 &Cometsong.&OpenSnippet\ File<Tab>ss ss
 
   " For conceal markers.
@@ -377,8 +377,8 @@ call plug#begin(b:bundle_path)
 
 """--- IndentLines ---
   Plug 'Yggdroot/indentline'                " marks each indent level with vertical line instead of colors!
-  call MapKeys('ni', 'ig', ':IndentLinesToggle<CR>')
-  call MapKeys('ni', 'il', ':LeadingSpaceToggle<CR>')
+  call map#Keys('ni', 'ig', ':IndentLinesToggle<CR>')
+  call map#Keys('ni', 'il', ':LeadingSpaceToggle<CR>')
   let g:indentLine_char = '┊'
   let g:indentLine_leadingSpaceChar = '˽'
   let g:indentLine_showFirstIndentLevel = 0
@@ -387,19 +387,19 @@ call plug#begin(b:bundle_path)
 """--- TaskList ---
   Plug 'vim-scripts/TaskList.vim'           " list all TODOs
   " this mapping (tl) is also the default
-  "call MapKeys('ni', 'tl', ':TaskList<CR>')
-  call MapKeys('ni', '<S-F4>', ':TaskList<CR>', '')
+  "call map#Keys('ni', 'tl', ':TaskList<CR>')
+  call map#Keys('ni', '<S-F4>', ':TaskList<CR>', '')
   amenu .60 &Cometsong.TaskList<Tab>tl/S-F4  <Leader>tl
 
 """--- UndoTree ---
   Plug 'mbbill/undotree'                    " shows window with all previous undos
-  call MapKeys('ni', 'ut', ':UndotreeToggle<CR>')
-  call MapKeys('ni', '<F4>', ':UndotreeToggle<CR>', '')
+  call map#Keys('ni', 'ut', ':UndotreeToggle<CR>')
+  call map#Keys('ni', '<F4>', ':UndotreeToggle<CR>', '')
   amenu <silent> .12 &Cometsong.&UndoTree\ Toggle<Tab>ut/F4  <Leader>ut
 
 """--- Better Rainbow Parentheses ---
   Plug 'luochen1990/rainbow'                " colors diff levels of parens
-  call MapKeys('ni', 'rpt', ':RainbowToggle<CR>')
+  call map#Keys('ni', 'rpt', ':RainbowToggle<CR>')
   amenu <silent> .80 &Cometsong.&RainbowParentheses\ Toggle<Tab>rpt  <Leader>rpt
 
   let g:rainbow_active = 1
@@ -419,7 +419,7 @@ call plug#begin(b:bundle_path)
 
 """--- ScratchToggle ---
   Plug 'cometsong/scratch.vim'              " create a temporary scratch buffer while running vim
-  call MapKeys('ni', 'sct', ':ScratchToggle<CR>')
+  call map#Keys('ni', 'sct', ':ScratchToggle<CR>')
   amenu <silent> .61 &Cometsong.ScratchToggle<Tab>sct  <Leader>sct  " Cometsong Menu!
 
 """--- peekaboo registers QuickFixes ---
@@ -434,8 +434,8 @@ call plug#begin(b:bundle_path)
 
 """--- Sayonara ---
   Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }  " replace 'bufkill' with more sanity
-  call MapKeys('nv', 'bd', ':Sayonara!<CR>')
-  call MapKeys('nv', 'bD', ':Sayonara<CR>')
+  call map#Keys('nv', 'bd', ':Sayonara!<CR>')
+  call map#Keys('nv', 'bD', ':Sayonara<CR>')
   cabbr BD Sayonara!
 
 """--- debug my stuff!

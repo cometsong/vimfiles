@@ -15,6 +15,8 @@ set cinkeys=0{,0},:,!^F,o,O,e  " See 'cinkeys'; this stops '#' from indenting
 
 set ruler             " show the cursor position all the time
 set fileformat=unix   " No crazy CR/LF
+
+"--- mousey   {{{
 set mouse=a           " the mouse in VIM in a=all modes
 set mousemodel=popup_setpos "extend, popup or popup_setpos; what the right mouse button is used for
 if has('mouse_sgr')
@@ -22,6 +24,7 @@ if has('mouse_sgr')
 else
 	set ttymouse=xterm2
 end
+"}}}
 
 set nojoinspaces      " One space after a '.' rather than 2
 set scrolloff=1       " Minimum lines between cursor and window edge
@@ -31,7 +34,6 @@ set nobackup          " Don't use a backup file (also see writebackup)
 set shortmess=atoOT   " shortmessage options
 set nowrap            " do not wrap lines; see also |Wrap Setup|
 set textwidth=100     " max width of line of text
-set formatoptions=crqnl " how Vim auto-formats text
 set encoding=utf-8    " Necessary to show unicode glyphs
 set t_Co=256          " Explicitly tell vim that the terminal supports 256 colors
 set hidden            " keep buffer mods hidden, allow switching buffers without saving
@@ -41,12 +43,23 @@ set splitright        " set split default on the right
 set modeline          " Enable check for modeline
 "set modelines=5       " set number of lines checked for modeline (default 5)
 
+"--- formatoptions!   {{{
+set formatoptions=q   " allow gq to work on comment
+set formatoptions+=n  " format numbered lists using 'formatlistpat'
+set formatoptions+=1  " don't break after one letter word
+set formatoptions+=j  " try to remove comment when joining lines
+set formatoptions+=b  " only auto-wrap if enter a blank <= &tw
+"set formatoptions+=c  " auto-wrap comments
+"set formatoptions+=r  " enter extends comments
+"set formatoptions+=o  " 'o' and 'O' extends comments
+"}}}
+
 set showmatch         " Show parentheses matching
 set matchpairs+=<:>   " append pairable chars to the default set '(:),{:},[:]'
 set matchtime=5       " Show matching brackets for only 0.3 seconds
 
 set number            " line numbers
-set numberwidth=1     " line numbers minimum gutter width
+set numberwidth=2     " line numbers minimum gutter width
 "if version >= 730
 "    set relativenumber  " linenumber shows num of lines apart from current line
 "endif
@@ -64,19 +77,27 @@ set visualbell        " any bell transmogrifies to a blink
 
 set laststatus=2      " always show status line
  
-"--- Invisible characters   " If you ':set list', shows trailing spaces, etc
+"--- Invisible characters   " If you ':set list', shows trailing spaces, etc   {{{
 set listchars=tab:⊢∽,trail:⎵,extends:⋯,precedes:⋯,eol:$
 if v:version > 8
   set listchars+=space:⎵,nbsp:·
   set showbreak=\ ↪\ 
 endif
 set nolist            " do not show special mode characters   
+"}}}
 
-"--- persistent undo storage for files after they are closed
+"--- persistent undo storage for files after they are closed  {{{
 if has('persistent_undo')
   set undofile          " Maintain undo history between sessions
   set undodir=$HOME/.vimundos   " dir to store undo files in
 endif
+"}}}
+
+"--- foldoptions {{{
+set foldenable
+set foldlevel=0     " levels to show unfolded
+set foldcolumn=0    " show folds in left column
+"}}}
 
 "--- popup completion opts  {{{
 set completeopt=menu,menuone,preview

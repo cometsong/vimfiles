@@ -32,3 +32,9 @@ function! Tabstyle(ts)    "{{{
 endfunction
 amenu <silent> .300 &Cometsong.&Tab\ style\ (4)  :call Tabstyle()<CR>
 "}}}
+
+" from: github.com/romainl/minivimrc
+" commands for adjusting indentation rules manually
+command! -nargs=1 Spaces execute "setlocal tabstop=" . <args> . " shiftwidth=" . <args> . " softtabstop=" . <args> . " expandtab" | setlocal ts? sw? sts? et?
+command! -nargs=1 Tabs   execute "setlocal tabstop=" . <args> . " shiftwidth=" . <args> . " softtabstop=" . <args> . " noexpandtab" | setlocal ts? sw? sts? et?
+

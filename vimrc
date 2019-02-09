@@ -8,16 +8,6 @@ silent pyx 'print();'
 """--- Vim Options
 runtime config/vim_options.vim
 
-"""--- Cometsong Menu Init!
-runtime config/menu_cometsong.vim
-
-"""--- Here Be Functions!
-" (need to be sourced before stuff that uses 'em)
-runtime! functions/*.vim
-
-"""--- Tabs/Indents Functions
-call Tabspaces()
-
 """--- Key Mapping
 runtime config/key_mapping.vim
 
@@ -31,14 +21,6 @@ runtime config/autocmds.vim
 runtime config/plugins.vim
 
 """--- Set Colors
-"colorscheme jellybeans
-"colorscheme gruvbox
-"colorscheme hybrid
-"colorscheme one
-colorscheme solarized
-if (has('termguicolors'))
-  colorscheme solarized8_high
-endif
+colorscheme flattened_dark
 set background=dark
 
-""" vim:fdm=expr:fdl=1:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='

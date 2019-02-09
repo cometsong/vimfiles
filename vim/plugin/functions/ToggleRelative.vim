@@ -3,7 +3,7 @@
 if exists('+relativenumber')
   set relativenumber " start with relative numbers
 
-  function! NumberToggle()
+  function! RelativeNumberToggle()
     if(&relativenumber == 1)
       set norelativenumber
     else
@@ -31,7 +31,7 @@ if exists('+relativenumber')
     endif
   endfunc
 
-  nnoremap <leader>nt :call NumberToggle()<cr>
+  nnoremap <leader>rt :call RelativeNumberToggle()<cr>
   " TODO: Use a function to detect NeoVim terminal buffers and
   " not do anything in those buffers.
   autocmd FocusLost   * :call SetNoRelativeNumber()
@@ -44,4 +44,3 @@ if exists('+relativenumber')
   autocmd CursorMoved * :call SetRelativeNumber()
 
 endif
-
