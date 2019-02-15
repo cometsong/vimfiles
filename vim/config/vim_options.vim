@@ -76,7 +76,11 @@ set wildmode=longest:full,list:full "Complete longest common string, then list a
 set visualbell        " any bell transmogrifies to a blink
 
 set laststatus=2      " always show status line
- 
+
+"--- DiffOptions {{{
+set diffopt=internal,vertical,context:3,filler
+"}}}
+
 "--- Invisible characters   " If you ':set list', shows trailing spaces, etc   {{{
 set listchars=tab:⊢∽,trail:⎵,extends:⋯,precedes:⋯,eol:$
 if v:version > 8
