@@ -335,9 +335,14 @@ call plug#begin(b:bundle_path)
   Plug 'cometsong/vim-template'             " forked set of template files
   "let g:templates_user_variables = [ ['', ''] ]
   let g:templates_no_autocmd = 1
-  let g:username = 'Benjamin (cometsong)'
-  let g:email = 'benjamin(at)cometsong(dot)net'
-  let g:license = 'GPL v3 http://www.gnu.org/licenses/gpl-3.0.txt'
+  
+  " User Variables
+  let g:username = 'cometsong'
+  let g:author   = "Benjamin Leopold (cometsong)"
+  let g:email    = 'benjamin(at)cometsong(dot)net'
+  let g:license  = 'GPL v3 http://www.gnu.org/licenses/gpl-3.0.txt'
+  let g:github   = 'https://github.com/cometsong'
+  let g:gitrepos = 'https://git.cometsong.net'
 
 """--- snippets, completions ---
   if has('python') || has('python3')
@@ -350,9 +355,12 @@ call plug#begin(b:bundle_path)
     \| Plug 'cometsong/vim-snippets'
     \| Plug 'tlavi/SnipMgr'
 
-  let g:snips_author = "Benjamin Leopold (cometsong)"
-  let g:snips_email = g:email
+  " Snip's User Variables
+  let g:snips_author   = g:author
+  let g:snips_email    = g:email
   let g:snips_username = g:username
+  let g:snips_github   = g:github
+  let g:snips_gitrepos = g:gitrepos
 
   let g:snippets_dir = '~/.vim/snippets'
   let g:snippet_dirs = ['~/.vim/bundle/vim-snippets/snippets', '~/.vim/bundle/vim-snippets/UltiSnips']
