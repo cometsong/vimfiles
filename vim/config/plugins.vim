@@ -566,6 +566,7 @@ endfunction
   Plug 'wesQ3/vim-windowswap'               " swap window locations
   Plug 'terryma/vim-expand-region'          " expand/contract visual selection using + and _
   Plug 'wellle/targets.vim'                 " add various text objects to operate on
+  Plug 'romainl/vim-qlist'                  " make results of include- and definition-search easier and more persistent using quickfix list
 
   " 'must be last'
   Plug 'ryanoasis/vim-devicons'             " Adds file type glyphs/icons to popular plugins
