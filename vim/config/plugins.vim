@@ -430,7 +430,7 @@ call plug#begin(b:bundle_path)
   call map#Keys('ni', 'sct', ':ScratchToggle<CR>')
   amenu <silent> .61 &Cometsong.ScratchToggle<Tab>sct  <Leader>sct  " Cometsong Menu!
 
-"""--- peekaboo registers QuickFixes ---
+"""--- peekaboo registers Quick view ---
   Plug 'junegunn/vim-peekaboo'              " peek at all registers when starting to use one
   let g:peekaboo_delay = 5
   let g:peekaboo_compact = 0
@@ -553,6 +553,7 @@ endfunction
 
 """-- for testing plugins ---
   Plug 'junegunn/vader.vim', {'for': 'vader'}
+
 """-- Other Stuff  ---
   Plug 'vim-scripts/camelcasemotion'        " TraverseCamelStrings
   Plug 'cometsong/simplefold.vim'           " custom folding for some syntaxes
