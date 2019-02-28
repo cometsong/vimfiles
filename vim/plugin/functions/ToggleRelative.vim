@@ -1,46 +1,47 @@
 " TOGGLE RELATIVE OR ABSOLUTE NUMBERS
 " snagged, modified from: https://github.com/trusktr/.vimrc/blob/master/.vimrc#L1694-L1737
 if exists('+relativenumber')
-  set relativenumber " start with relative numbers
+  "set relativenumber " start with relative numbers
 
-  function! RelativeNumberToggle()
-    if(&relativenumber == 1)
-      set norelativenumber
+  func! RelativeOK()
+    if(&buftype == 'terminal') ||
+    \ (&filetype == 'netranger')
+      return 0
     else
-      set relativenumber
+      return 1 " truthy
     endif
   endfunc
 
-  function! SetRelativeNumber()
-    if(&buftype == 'terminal')
-      return
-    endif
+  function! RelativeNumberToggle()
+    set relativenumber!
+  endfunc
 
-    if(&number)
+  function! NumberToggle()
+    set number!
+  endfunc
+
+  function! SetRelativeNumber()
+    if RelativeOK() && &number
       set relativenumber
     endif
   endfunc
 
   function! SetNoRelativeNumber()
-    if(&buftype == 'terminal')
-      return
-    endif
-
-    if(&number)
+    if RelativeOK() && &number
       set norelativenumber
     endif
   endfunc
 
   nnoremap <leader>rt :call RelativeNumberToggle()<cr>
-  " TODO: Use a function to detect NeoVim terminal buffers and
-  " not do anything in those buffers.
-  autocmd FocusLost   * :call SetNoRelativeNumber()
-  autocmd FocusGained * :call SetRelativeNumber()
-  autocmd InsertEnter * :call SetNoRelativeNumber()
 
-  " doesn't work in NeoVim 0.1.2
-  autocmd InsertLeave * :call SetRelativeNumber()
-  " workaround:
-  autocmd CursorMoved * :call SetRelativeNumber()
+  "augroup Relatives
+  "  au!
+  "  autocmd FocusLost   * :call SetNoRelativeNumber()
+  "  autocmd FocusGained * :call SetRelativeNumber()
+  "  autocmd InsertEnter * :call SetNoRelativeNumber()
+  "  autocmd InsertLeave * :call SetRelativeNumber()
+  "  autocmd CursorMoved * :call SetRelativeNumber()
+  "augroup END
+  " TODO: use Relative numbers for certain files automatically?
 
 endif
