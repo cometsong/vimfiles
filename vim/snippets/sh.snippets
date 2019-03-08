@@ -1,0 +1,30 @@
+# Shebang. Executing bash via /usr/bin/env makes scripts more portable.
+snippet #!
+	#!/usr/bin/env bash
+
+snippet safe
+	set -euo pipefail
+snippet sbash
+	#!/usr/bin/env bash
+	set -euo pipefail
+	IFS=$'\n\t'
+
+snippet docs
+	#===============================================================================
+	#         File:  ${1:`vim_snippets#Filename('$1.sh', 'foo.sh')`}
+	#  Description:  Display usage information.
+	#         Date:  ${2:date}
+	#       Author:  `g:snips_author`
+	#        Email:  `g:snips_email`
+	#===============================================================================
+
+snippet func
+	${1:function_name}() {
+		${0:#function_body}
+	}
+
+snippet trap
+	${1:function_name}() {
+		${0:#function_body}
+	}
+	trap ${1:function_name} ${2:Signals INT EXIT}
