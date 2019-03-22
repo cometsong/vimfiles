@@ -526,6 +526,7 @@ endfunction
   endif
 
 """"--- html/jinja2r, /(java|type)script ---
+  Plug 'othree/html5', {'for': ['html']}
   Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['jinja2','jinja2.html','jinja.html','html']}
   Plug 'leafgarland/typescript-vim', {'for': ['javascript', 'typescript']}
 
@@ -539,10 +540,12 @@ endfunction
   Plug 'chrisbra/csv.vim', {'for': 'csv'}             " csv display and functions
   let g:csv_table_leftalign = 1
 
-""""--- lesscss ---
+""""--- less/css ---
   Plug 'groenewege/vim-less', {'for': 'less'}         " syntax for lesscss files
   Plug 'vitalk/vim-lesscss', {'for': 'less'}          " lessc compilation
-  let g:lesscss_toggle_key = "<leader>lc"
+    let g:lesscss_toggle_key = "<leader>lc"
+  Plug 'hail2u/vim-css3-syntax', {'for': 'css'}       " css3
+  Plug 'skammer/vim-css-color', {'for': 'css'}        " css
 
 """"--- UML ---
   Plug 'aklt/plantuml-syntax',    {'for': ['uml','plantuml']}      " app for PlantUML !!
