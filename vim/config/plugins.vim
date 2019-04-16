@@ -289,10 +289,47 @@ call plug#begin(b:bundle_path)
 """--- Encryption ---
   Plug 'jamessan/vim-gnupg'                 " use gpg for file encrpytion
 
-"""--- Numeric ---
+"""--- Numeric, Increments ---
   "Plug 'jmcantrell/numbered.vim'             " number or renumber lines
   Plug 'vim-scripts/L9'                     " utils
   \| Plug 'cometsong/VisIncr.vim'           " Dr. Chip's Visual Increasing number,date,octal,etc columns
+
+  Plug 'Konfekt/vim-CtrlXA'                 " [in|de]crement *words.  !Yay!
+  let g:CtrlXA_Toggles = [
+    \ ['true', 'false'], ['True', 'False'], ['TRUE', 'FALSE'],
+    \ ['yes', 'no'], ['Yes', 'No'], ['YES', 'NO'],
+    \ ['on', 'off'], ['On', 'Off'], ['ON', 'OFF'],
+    \ ['up', 'down'], ['Up', 'Down'] ,['UP', 'DOWN'],
+    \ ['set', 'unset'],
+    \ ['is', 'isnot', "isn't"],
+    \ ['if', 'elseif', 'else'],
+    \ ['+', '-', '+=', '-='],
+    \ ['==', '!='], ['<', '>'], ['<=', '>='], ['=~', '!~'],
+    \ ['increase', 'decrease'], ['Increase', 'Decrease'],   
+    \ ['increment', 'decrement'], ['Increment', 'Decrement'], 
+    \ ['positive', 'negative'], ['Positive', 'Negative'],   
+    \ ['enable', 'disable'], ['Enable', 'Disable'],
+    \ ['enabled', 'disabled'], ['Enabled', 'Disabled'],
+    \ ['maximum', 'minimum'], ['Maximum', 'Minimum'],
+    \ ['maximal', 'minimal'], ['Maximal', 'Minimal'],
+    \ ['maximize', 'minimize'], ['Maximize', 'Minimize'],
+    \ ['upper', 'lower'], ['Upper', 'Lower'],
+    \ ['top', 'bottom'], ['Top', 'Bottom'],
+    \ ['above', 'below'], ['Above', 'Below'],
+    \ ['forward', 'backward'], ['Forward', 'Backward'],
+    \ ['up', 'down'], ['Up', 'Down'],
+    \ ['right', 'middle', 'left'], ['Right', 'Middle', 'Left'],
+    \ ['next', 'previous'], ['Next', 'Previous'],
+    \ ['first', 'last'], ['First', 'Last'],
+    \ ['before', 'after'], ['Before', 'After'],
+    \ ['more', 'less'], ['More', 'Less'],
+    \ ['fast', 'slow'], ['Fast', 'Slow'],
+    \ ['faster', 'slower'], ['Faster', 'Slower'],
+    \ ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'viii', 'ix', 'x'],
+    \ ['I', 'II', 'III', 'IV', 'V', 'VI', 'VIII', 'IX', 'X'],
+    "\ ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    "\ ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+    \ ] " roman numerals cross-match with alphabet letters (i, v, x)
 
 """--- Sample of Unmanaged plugin (manually installed and updated) ---
   "Plug '~/my-prototype-plugin'
