@@ -302,7 +302,7 @@ call plug#begin(b:bundle_path)
     \ ['up', 'down'], ['Up', 'Down'] ,['UP', 'DOWN'],
     \ ['set', 'unset'],
     \ ['is', 'isnot', "isn't"],
-    \ ['if', 'elseif', 'else'],
+    \ ['if', 'elseif', 'else', 'endif', 'fi'],
     \ ['+', '-', '+=', '-='],
     \ ['==', '!='], ['<', '>'], ['<=', '>='], ['=~', '!~'],
     \ ['increase', 'decrease'], ['Increase', 'Decrease'],   
@@ -327,8 +327,6 @@ call plug#begin(b:bundle_path)
     \ ['faster', 'slower'], ['Faster', 'Slower'],
     \ ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'viii', 'ix', 'x'],
     \ ['I', 'II', 'III', 'IV', 'V', 'VI', 'VIII', 'IX', 'X'],
-    "\ ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
-    "\ ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
     \ ] " roman numerals cross-match with alphabet letters (i, v, x)
 
 """--- Sample of Unmanaged plugin (manually installed and updated) ---
