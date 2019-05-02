@@ -561,9 +561,10 @@ endfunction
   endif
 
 """"--- html/jinja2r, /(java|type)script ---
-  Plug 'othree/html5', {'for': ['html']}
+  Plug 'othree/html5.vim', {'for': ['html']}
   Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['jinja2','jinja2.html','jinja.html','html']}
   Plug 'leafgarland/typescript-vim', {'for': ['javascript', 'typescript']}
+  Plug 'pangloss/vim-javascript', {'for': ['javascript', 'typescript']}
 
 """"--- toml ---
   Plug 'cespare/vim-toml', {'for': 'toml'}
