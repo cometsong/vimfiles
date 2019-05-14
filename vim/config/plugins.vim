@@ -246,6 +246,8 @@ call plug#begin(b:bundle_path)
   call map#Keys('n', 'cws', ':CtrlSpaceSaveWorkspace<CR>') " keymap for saving workspace
 
   let g:CtrlSpaceUseTabline = 1
+  "set tabline=%!ctrlspace#api#Tabline().CWDTabline()
+  "set tabline=%!CWDTabline()
   function! CWDTabline()
     let tabline=''
     let tabline.='%#TabLineFill#'
@@ -256,10 +258,24 @@ call plug#begin(b:bundle_path)
     return tabline
   endfunction
 
-  function! MyTabline()
-    return ctrlspace#api#Tabline().CWDTabline()
-  endfunction
-  set tabline=%!MyTabline()
+  " Symbols:
+  " WLoad-options: "➚⤴︎ ⇡", 
+  " WSave-options: "➘⤵︎ ⇣",
+  "if (encoding =~? 'utf') "FIXME: 'encoding not variable to check...
+    let g:CtrlSpaceSymbols = {
+        \   "WLoad": "⤴︎",
+        \   "WSave": "⤵︎",
+        \ }
+  "else
+  "  let g:CtrlSpaceSymbols = {
+  "      \   "WLoad": "|^|",
+  "      \   "WSave": "[+]",
+  "      \   "BM": "BkMk",
+  "      \ }
+  "endif
+
+  "let g:CtrlSpaceKeys = {}
+
 
 """--- versionizing ---
   Plug 'inkarkat/vcscommand.vim'            " all version controllers
