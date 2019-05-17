@@ -188,5 +188,10 @@ call map#Keys('ni', 'gf', ':vertical windcmd f<CR>')
 call map#Keys('ni', 'gF', ':vertical windcmd F<CR>') " to linenum
 "}}}
 
+"--- terminal 'termkey'  {{{
+call map#Keys('t', '<C-W>gt', '<C-W>:tabnext<cr>', '')
+call map#Keys('t', '<C-W>gT', '<C-W>:tabprev<cr>', '')
+call map#Keys('t', '<C-W><Space>', '<C-W>:CtrlSpace<cr>', '')
+"}}}
 
 " vim: set ft=vim ts=2 sw=2 tw=100 et fdm=marker:
