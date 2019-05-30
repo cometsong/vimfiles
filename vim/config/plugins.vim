@@ -18,7 +18,7 @@ call plug#begin(b:bundle_path)
 """--- vim-airline ---
   Plug 'vim-airline/vim-airline'            " status line definition
   Plug 'vim-airline/vim-airline-themes'     " status line colorschemes
-  let g:airline_extensions = ['branch', 'ale', 'tagbar', 'windowswap', 'ctrlspace', 'gutentags', 'term', 'undotree'. '']
+  let g:airline_extensions = ['branch', 'ale', 'tagbar', 'windowswap', 'ctrlspace', 'gutentags', 'term', 'undotree']
   let g:airline#extensions#branch#use_vcscommand = 1
   let g:airline#extensions#csv#enabled = 1
   let g:airline#extensions#ale#enabled = 1
