@@ -191,36 +191,20 @@ call plug#begin(b:bundle_path)
 
 """--- omnicompletions galore ---
   Plug 'maralla/completor.vim'
-  "let g:completor_{filetype}_omni_trigger = '<python regex>'  "e.g.
-  let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
-  let g:completor_blacklist = ['tagbar', 'qf', 'netrw', 'unite', 'vimwiki'] " default
-  let g:completor_blacklist = 
-    \ g:completor_blacklist + ['diff', 'netranger'] " add new vals to list var
-    call uniq(sort(g:completor_blacklist)) " remove dupes if exist, when `so %`
+    "let g:completor_{filetype}_omni_trigger = '<python regex>'  "e.g.
+    let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
+    let g:completor_blacklist = ['tagbar', 'qf', 'netrw', 'unite', 'vimwiki'] " default
+    let g:completor_blacklist = 
+      \ g:completor_blacklist + ['diff', 'netranger'] " add new vals to list var
+      call uniq(sort(g:completor_blacklist)) " remove dupes if exist, when `so %`
 
-  "if v:version > 8 && has('python3') && has('timers')
-  "  Plug 'Shougo/deoplete.nvim'
-  "  Plug 'roxma/nvim-yarp'
-  "  Plug 'roxma/vim-hug-neovim-rpc'
-  "  Plug 'zchee/deoplete-go', {'for': 'go'}  " deoplete: 'go'
-  "  let g:deoplete#enable_at_startup = 1
-  "  "let g:deoplete#sources._ = ['buffer', 'tag']
-  "  call map#Keys('vni', 'ct', ':call deoplete#toggle()')
-  "elseif has('lua') " v:version < 8, 
-  "  Plug 'Shougo/neocomplete.vim'
-  "  let g:neocomplete#enable_at_startup = 1
-  "  call map#Keys('vni', 'ct', ':NeoCompleteToggle')
-  "elseif v:version > 747 && has('insert_expand') && has('menu') " v:version < 8, 
-    "Plug 'lifepillar/vim-mucomplete'
-    "let g:mucomplete#enable_auto_at_startup = 1
-  "endif
-  " lang-packs
-  "Plug 'Shougo/neco-vim'                   " complete: 'vim'
   Plug 'wellle/tmux-complete.vim'          " complete: 'tmux'
   Plug 'c9s/perlomni.vim', {'for': 'perl'} " perl omnicomplete
 
 """--- File Explorer ---
   Plug 'ipod825/vim-netranger'  "ranger style file tree, supporting remotes e.g. Mega, dropbox
+    let g:NETRPanelSize = 2
+    let g:NETRSplitOrientation = 'leftabove'
     call map#Keys('ni', '<F2>', ':leftabove 50vsplit %:p:h<CR>', '')  " explore cur buf's folder
 
 "  Plug 'scrooloose/nerdtree'                " Nerdy Directories
@@ -233,7 +217,7 @@ call plug#begin(b:bundle_path)
 "  let g:NERDTreeNaturalSort = 1
 "  call map#Keys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
 
-  let g:loaded_netrwPlugin = 1
+  let g:loaded_netrwPlugin = 0
 
 """--- CtrlSpace ---
   Plug 'vim-ctrlspace/vim-ctrlspace'  " lists of stuff:  Buffer List, File List, Tab List, Workspace List, Bookmark List
@@ -606,6 +590,10 @@ endfunction
   Plug 'bioSyntax/bioSyntax-vim',    {'for': ['fasta', 'fastq', 'sam', 'gtf', 'bed', 'clustal', 'vcf']}
     au BufRead,BufNewFile *.fsa set filetype=fasta  " add other extension to the possible fasta files
 
+""""--- Nextflow ---
+  Plug 'LukeGoodsell/nextflow-vim',  {'for': ['nextflow']}
+    au BufRead,BufNewFile *.nf set filetype=nextflow  " add other extension to the possible fasta files
+
 """-- for testing plugins ---
   Plug 'junegunn/vader.vim', {'for': 'vader'}
 
@@ -622,6 +610,8 @@ endfunction
   Plug 'terryma/vim-expand-region'          " expand/contract visual selection using + and _
   Plug 'wellle/targets.vim'                 " add various text objects to operate on
   Plug 'romainl/vim-qlist'                  " make results of include- and definition-search easier and more persistent using quickfix list
+  Plug 'szw/vim-dict'                       " fetch definitions via dict.org and local dict file
+    set dictionary+=/usr/share/dict/words
 
   " 'must be last'
   Plug 'ryanoasis/vim-devicons'             " Adds file type glyphs/icons to popular plugins
