@@ -41,6 +41,7 @@ set splitright        " set split default on the right
 "set equalalways       " all new windows equal size
 "set verbose=1         " all cmds default to verbose output
 set modeline          " Enable check for modeline
+set modelineexpr      " allow expressions in modeline
 "set modelines=5       " set number of lines checked for modeline (default 5)
 
 "--- formatoptions!   {{{
@@ -78,7 +79,7 @@ set visualbell        " any bell transmogrifies to a blink
 set laststatus=2      " always show status line
 
 "--- DiffOptions {{{
-set diffopt=internal,vertical,context:3,filler
+set diffopt=vertical,context:2,filler
 "}}}
 
 "--- Invisible characters   " If you ':set list', shows trailing spaces, etc   {{{
