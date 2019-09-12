@@ -21,6 +21,7 @@ runtime config/autocmds.vim
 runtime config/plugins.vim
 
 """--- Set Colors
-colorscheme flattened_dark
+"colorscheme flattened_dark
+colorscheme landscape
 set background=dark
 

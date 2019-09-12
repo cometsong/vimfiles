@@ -180,6 +180,7 @@ call plug#begin(b:bundle_path)
   Plug 'lifepillar/vim-solarized8'          " True Colors, halfway between Solarized and Flattened
   Plug 'chrisbra/Colorizer'                 " Show colors by code, name, etc
     let g:colorizer_auto_filetype='css,html'
+  Plug 'itchyny/landscape.vim'              " 'editor be colorful, life be joyful'; a dark/high-contrast scheme
 
 """--- matches ---
   Plug 'Raimondi/delimitMate'               " autoclose {([, etc
