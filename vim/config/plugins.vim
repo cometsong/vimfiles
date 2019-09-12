@@ -261,6 +261,7 @@ call plug#begin(b:bundle_path)
 
   "let g:CtrlSpaceKeys = {}
 
+  let g:CtrlSpaceProjectRootMarkers = []
 
 """--- versionizing ---
   Plug 'inkarkat/vcscommand.vim'            " all version controllers
