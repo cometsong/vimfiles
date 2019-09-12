@@ -599,6 +599,7 @@ endfunction
   Plug 'junegunn/vader.vim', {'for': 'vader'}
 
 """-- Other Stuff  ---
+  Plug 'coderifous/textobj-word-column.vim' " visual select columns based on [wW]ord boundaries
   Plug 'vim-scripts/camelcasemotion'        " TraverseCamelStrings
   Plug 'cometsong/simplefold.vim'           " custom folding for some syntaxes
   Plug 'tpope/vim-surround'                 " surround strings with things
