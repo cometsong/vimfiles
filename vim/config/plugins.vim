@@ -255,7 +255,7 @@ call plug#begin(b:bundle_path)
   "  let g:CtrlSpaceSymbols = {
   "      \   "WLoad": "|^|",
   "      \   "WSave": "[+]",
-  "      \   "BM": "BkMk",
+  "      \   "BM":    "<3",
   "      \ }
   "endif
 
