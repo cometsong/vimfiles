@@ -382,7 +382,7 @@ call plug#begin(b:bundle_path)
   let g:gitrepos = 'https://git.cometsong.net'
 
 """--- snippets, completions ---
-  if has('python') || has('python3')
+  if has('python3')
       Plug 'SirVer/UltiSnips'               " preferred
   else
       Plug 'MarcWeber/vim-addon-mw-utils'
@@ -490,7 +490,7 @@ call plug#begin(b:bundle_path)
 """"--- unicode ---
   Plug 'chrisbra/unicode.vim'   " show code values, allows insertion and completion of unicode chars
 
-""""--- python[2/3] ---
+""""--- python ---
 """""--- PyVeSPa ---
 function! PyVeSPa()  "Py_add_virtualenv_sys_path()
 " Add the python virtualenv's site-packages to vim path
@@ -524,11 +524,6 @@ endfunction
     command! -nargs=* Py python3 <args>
     let g:jedi#force_py_version = 3
     let g:ale_python_flake8_executable = 'python3'
-    call PyVeSPa()
-  elseif has('python')
-    command! -nargs=* Py python <args>
-    let g:jedi#force_py_version = 2
-    let g:ale_python_flake8_executable = 'python2'
     call PyVeSPa()
   else
     let g:loaded_jedi = 1
