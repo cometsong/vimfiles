@@ -165,25 +165,6 @@ call plug#begin(b:bundle_path)
   "Plug 'benmills/vimux'                     " interact with tmux
   "Plug 'ervandew/screen'                    " simulate a split shell in vim using either gnu screen or tmux
 
-"""--- Colorrific ---
-  Plug 'junegunn/limelight.vim'             " highlights each paragraph/section of the file (puts it in the limelight)
-    " Background Color name (:help cterm-colors)
-    let g:limelight_conceal_ctermg = 'DarkGrey'
-    let g:limelight_conceal_guifg = 'DarkGrey'
-    call map#Keys('nvx', 'lm', ':Limelight!!<CR>')  " LimeLight Toggle
-  "Plug 'Lokaltog/vim-distinguished'         " distinguished colors
-  "Plug 'nanotech/jellybeans.vim'            " jellybeans colors
-  "Plug 'mkarmona/colorsbox'                 " colorsbox color set
-  Plug 'romainl/flattened'
-  Plug 'altercation/vim-colors-solarized'   " solarized colorscheme
-  Plug 'morhetz/gruvbox'
-  Plug 'joshdick/onedark.vim'               " theme w/ airline as well
-  Plug 'w0ng/vim-hybrid'                    " mix of Tomorrow-Night, Codecademy, Jellybeans, Solarized, iTerm
-  Plug 'lifepillar/vim-solarized8'          " True Colors, halfway between Solarized and Flattened
-  Plug 'chrisbra/Colorizer'                 " Show colors by code, name, etc
-    let g:colorizer_auto_filetype='css,html'
-  Plug 'itchyny/landscape.vim'              " 'editor be colorful, life be joyful'; a dark/high-contrast scheme
-
 """--- matches ---
   Plug 'Raimondi/delimitMate'               " autoclose {([, etc
   Plug 'andymass/vim-matchup'               " show matches of words, not just chars
@@ -336,39 +317,56 @@ call plug#begin(b:bundle_path)
 """--- Sample of Unmanaged plugin (manually installed and updated) ---
   "Plug '~/my-prototype-plugin'
 
-"""--- Colorrific Options---
-  " for terminal vim:
-  "let g:jellybeans_use_lowcolor_black = 0
-  "let g:jellybeans_use_term_italics = 0
-  "let g:jellybeans_overrides = {
-  "\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-  "\}
-  "other jellybeans_overrides... {
-  "\    'Todo': { 'guifg': '303030', 'guibg': 'f0f000',
-  "\              'ctermfg': 'Black', 'ctermbg': 'Yellow',
-  "\              'attr': 'italics' },
-  "\    'Comment': { 'guifg': 'cccccc' },
-  "\}
-  "let g:gruvbox_italic = 1 "for terminal improvement
-  "let g:gruvbox_number_column = 'gray'
-  "let g:gruvbox_italicize_strings = 1
-
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+"""--- Colorrific ---
   if (has('termguicolors'))
     set termguicolors
   endif
 
-  " hybridized
-  "let g:hybrid_custom_term_colors = 1
-  "let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+  Plug 'junegunn/limelight.vim'             " highlights each paragraph/section of the file (puts it in the limelight)
+    " Background Color name (:help cterm-colors)
+    let g:limelight_conceal_ctermg = 'DarkGrey'
+    let g:limelight_conceal_guifg = 'DarkGrey'
+    call map#Keys('nvx', 'lm', ':Limelight!!<CR>')  " LimeLight Toggle
 
-  " solarized
-  let g:solarized_termcolors = 16
-  let g:solarized_contrast = 'high'
-  let g:solarized_visibility = 'normal'
-  let g:solarized_underline = 0
-  let g:solarized_bold = 1
+  Plug 'nanotech/jellybeans.vim'            " jellybeans colors
+    let g:jellybeans_use_lowcolor_black = 0
+    let g:jellybeans_use_term_italics = 0
+    let g:jellybeans_overrides = {
+    \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \}
+    "other jellybeans_overrides... {
+    "\    'Todo': { 'guifg': '303030', 'guibg': 'f0f000',
+    "\              'ctermfg': 'Black', 'ctermbg': 'Yellow',
+    "\              'attr': 'italics' },
+    "\    'Comment': { 'guifg': 'cccccc' },
+    "\}
+  Plug 'Lokaltog/vim-distinguished'         " distinguished colors
+  Plug 'mkarmona/colorsbox'                 " colorsbox color set
+  Plug 'romainl/flattened'
+  Plug 'altercation/vim-colors-solarized'   " solarized colorscheme
+  Plug 'lifepillar/vim-solarized8'          " True Colors, halfway between Solarized and Flattened
+    let g:solarized_termcolors = 16
+    let g:solarized_contrast = 'high'
+    let g:solarized_visibility = 'normal'
+    let g:solarized_underline = 0
+    let g:solarized_bold = 1
+  Plug 'morhetz/gruvbox'
+    let g:gruvbox_italic = 1 "for terminal improvement
+    let g:gruvbox_number_column = 'gray'
+    let g:gruvbox_italicize_strings = 1
+  Plug 'joshdick/onedark.vim'               " theme w/ airline as well
+  Plug 'w0ng/vim-hybrid'                    " mix of Tomorrow-Night, Codecademy, Jellybeans, Solarized, iTerm
+    let g:hybrid_custom_term_colors = 1
+    let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+  Plug 'chrisbra/Colorizer'                 " Show colors by code, name, etc
+    let g:colorizer_auto_filetype='css,html'
+  Plug 'itchyny/landscape.vim'              " 'editor be colorful, life be joyful'; a dark/high-contrast scheme
+  Plug 'sainnhe/sonokai'                    " High Contrast & Vivid Color Scheme based on Monokai Pro
+    let g:sonokai_style = 'andromeda'
+    let g:sonokai_enable_italic = 1
+    let g:sonokai_disable_italic_comment = 1
+  Plug 'plainfingers/black_is_the_color'    " found on http://vimcolors.com/1066/black_is_the_color/dark
+  Plug 'cjgajard/patagonia-vim'             " A dark and cold theme for vim
 
 """--- Templates ---
   Plug 'cometsong/vim-template'             " forked set of template files
