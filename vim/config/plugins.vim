@@ -592,9 +592,17 @@ endfunction
   Plug 'bioSyntax/bioSyntax-vim',    {'for': ['fasta', 'fastq', 'sam', 'gtf', 'bed', 'clustal', 'vcf']}
     au BufRead,BufNewFile *.fsa set filetype=fasta  " add other extension to the possible fasta files
 
-""""--- Nextflow ---
-  Plug 'LukeGoodsell/nextflow-vim',  {'for': ['nextflow']}
-    au BufRead,BufNewFile *.nf set filetype=nextflow  " add other extension to the possible fasta files
+""""--- Pipelines/Workflows ---
+  "Plug 'LukeGoodsell/nextflow-vim',  {'for': ['nextflow']} # cpu/memory hog?!
+
+  Plug 'thecodesmith/groovy.vim',  {'for': ['groovy','nextflow']}
+    au BufRead,BufNewFile *.nf set filetype=groovy.nextflow
+
+  Plug 'broadinstitute/vim-wdl',  {'for': ['wdl']}
+
+""""--- OS Containers ---
+  Plug 'biosugar0/singularity-vim',  {'for': ['Singularity']}
+    au BufRead,BufNewFile *.def set filetype=Singularity
 
 """-- for testing plugins ---
   Plug 'junegunn/vader.vim', {'for': 'vader'}
