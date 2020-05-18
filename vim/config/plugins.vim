@@ -118,7 +118,7 @@ call plug#begin(b:bundle_path)
     \   'javascript': ['all'],
     \   'json':       ['all'],
     \   'lua':        ['all'],
-    \   'markdownn':  ['all'],
+    \   'markdown':   ['all'],
     \   'python':     ['prospector', 'pyflakes', 'flake8'],
     \   'sql':        ['all'],
     \   'sh':         ['shell', 'shellcheck'],
