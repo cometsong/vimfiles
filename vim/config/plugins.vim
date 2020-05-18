@@ -156,6 +156,8 @@ call plug#begin(b:bundle_path)
   endif
 
 """--- unix/shell/utils ---
+  Plug 'kassio/neoterm'                     " Wrapper of some vim/neovim's :terminal functions
+    let g:neoterm_default_mod = 'rightbelow'
   Plug 'tpope/vim-eunuch'                   " unix
   Plug 'artnez/vim-writepath'               " e some/new/path/file.foo
   Plug 'vim-utils/vim-man'                  " View man pages in vim. Grep for the man pages
