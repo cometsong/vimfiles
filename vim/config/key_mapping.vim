@@ -131,7 +131,7 @@ amenu <silent> .61 &Cometsong.Remove\ EOL\ Spaces<Tab>ers   <Leader>ers   " Come
 "}}}
 
 "--- JSON   {{{
-call map#Keys('niv', '=j', ':%!python -m json.tool<CR>', '')
+call map#Keys('niv', '=j', ':%!pyx -m json.tool<CR>', '')
 amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong Menu!
 "}}}
 
