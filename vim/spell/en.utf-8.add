@@ -4,6 +4,7 @@
 
 # The List of All Good Words!
 # personal
+bleopold
 cometsong
 cometsongs
 cometsong's
@@ -11,7 +12,10 @@ cometsong's
 # software
 bzip2
 checksum
+CSS
+csv
 gzip
+https
 init
 JSON
 md5
@@ -20,8 +24,14 @@ metadata
 nvim
 python3
 pythonic
+rebase
+repo
+runtime
 sha256
-yaml
+UI
+urls
+www
+YAML
 
 # bio
 anadama
@@ -29,8 +39,8 @@ bcl2fastq
 cytokine
 cytokines
 demux
-Demuxing
 demuxing
+exome
 fast5
 fasta
 fastq
@@ -48,9 +58,10 @@ microbiome
 MIMARKS
 MinION/=
 MIXS
-mWGS
 mwgs
+mWGS/=
 NCBI
+nucleotide
 Omics
 PacBio
 phylum
@@ -64,57 +75,56 @@ seqtypes
 SRA/=
 SRS
 transcriptome
+VCF
 virome
-WGS
+WGS/=
 
-# JAX
-jax
-JAXid
-jaxid
-BarHarbor
-HMP
-HMP2
-HMPDCC
-DCC/=
-osdf
-OSDF
-weinstocklab
-mbiomecore
 
-# people
-Blake
-Erica
-George
-Hoan
-Jacqui
-Jethro
-Lauren
-Mark
-Sai
-Shana
-Xin
-Yair
-Yanfei
-Yanjiao
+# Work/GeneDx terms:
+Sema4
+GeneDx/=
+genedx
+GeneMb/=
+CATAlyst/=
+CATA-lyst
+ReportDx
+uniqueId
+XomeLoader
+PIPA
+
 
 # the rest
 appt
-csv
+BCE
+Chanukah
+config
 datasets
 datetime
 eg
+hypermobile
+hypermobility
 linebreak
 macbook
+Maccabee
+mitzvot
+msg
+nutella
 presentation
 qc
 queryable
 rebrand
 schemas
 shite
+subdirectories
+subdirectory
+subdirs
+submodules
 subquery
 SubTask
+TBD
 TODO
-urls
+unstaged
+untracked
 walkthrough
 yuckies
 yucky
