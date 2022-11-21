@@ -66,7 +66,7 @@ set numberwidth=2     " line numbers minimum gutter width
 "endif
 " for line number colors, see colorscheme.vim file, LineNr
 
-"set clipboard=unnamed " all unnamed Yanks/dels go to clipboard, and try to come from it only!
+set clipboard^=unnamed,unnamedplus  " have yanks appear in system clipboard first in list
 
 set incsearch         " incremental searching as you type
 set hlsearch          " highlight all search results
@@ -101,7 +101,7 @@ endif
 "--- foldoptions {{{
 set foldenable
 set foldlevel=0     " levels to show unfolded
-set foldcolumn=0    " show folds in left column
+set foldcolumn=1    " show folds in left column
 "}}}
 
 "--- popup completion opts  {{{
