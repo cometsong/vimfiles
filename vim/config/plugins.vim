@@ -14,6 +14,27 @@ endif
 
 call plug#begin(b:bundle_path)
 
+"""-- Basic Plugins ---
+  Plug 'coderifous/textobj-word-column.vim' " visual select columns based on [wW]ord boundaries
+  Plug 'machakann/vim-highlightedyank'      " highlight yanked text (word, block, etc) post yank
+  Plug 'vim-scripts/camelcasemotion'        " TraverseCamelStrings
+  Plug 'cometsong/simplefold.vim'           " custom folding for some syntaxes
+  Plug 'vim-scripts/genutils'               " provides many useful utility functions for buffers, windows and other misc things
+  \ Plug 'vim-scripts/foldutil.vim'         " FoldMatching for sections, FoldShowMarks, etc.
+    let g:foldutilClearFolds = 0            " foldutil will not clear pre-existing folds (0) when making new ones
+  Plug 'tpope/vim-surround'                 " surround strings with things
+  Plug 'tpope/vim-repeat'                   " repeat many many tasks
+  Plug 'inkarkat/vim-visualrepeat'          " cf. vim-repeat, but in visual mode
+  Plug 'tpope/vim-abolish'                  " Abbreviation, Subvert, Coercion
+  Plug 'ervandew/archive'                   " browse contents of archive files
+  Plug 'terryma/vim-multiple-cursors'       " multiple cursors within vim, for quick refactoring, correcting, amazing, etc.
+  Plug 'wesQ3/vim-windowswap'               " swap window locations
+  Plug 'terryma/vim-expand-region'          " expand/contract visual selection using + and _
+  Plug 'wellle/targets.vim'                 " add various text objects to operate on
+  Plug 'romainl/vim-qlist'                  " make results of include- and definition-search easier and more persistent using quickfix list
+  Plug 'szw/vim-dict'                       " fetch definitions via dict.org and local dict file
+    set dictionary+=/usr/share/dict/words
+
 
 """--- vim-airline ---
   Plug 'vim-airline/vim-airline'            " status line definition
@@ -47,12 +68,29 @@ call plug#begin(b:bundle_path)
     \ '' : 'SBLK',
     \ }
 
+  "Plug 'itchyny/lightline.vim'              " status line definition
+  "let g:lightline = {
+  "      \ 'colorscheme': 'wombat',
+  "      \ 'active': {
+  "      \   'left': [ [ 'mode', 'paste' ],
+  "      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  "      \ },
+  "      \ 'component_function': {
+  "      \   'gitbranch': 'FugitiveHead'
+  "      \ },
+  "      \ }
+
+
 """--- MRU --
-  Plug 'yegappan/mru'                       " most recently used files
-  let MRU_Max_Entries = 400
-  call map#Keys('n', 'mr', ':MRU<CR>')
-  call map#Keys('ni', '<S-F2>', ':MRU<CR>', '')
-  amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab>r/S-F2   <S-F2>
+  Plug 'lambdalisue/mr.vim'
+  \| Plug 'lambdalisue/mr-quickfix.vim'     " MRU (Most Recently Used) and MRW (Written) files to quickfix
+  call map#Keys('n', 'mru', ':Mru \| copen<CR>')
+  call map#Keys('n', 'mrw', ':Mrw \| copen<CR>')
+  call map#Keys('n', 'mrq', ':cclose<CR>')
+  let MRU_File = '~/.vim_mru_files'
+  let g:mr#mru#filename = '~/.cache/mr/mru' " defaults
+  let g:mr#mrw#filename = '~/.cache/mr/mrw'
+  amenu <silent> .40 &Cometsong.&Most\ Recently\ Used\ (MRU)<Tab> <leader>mru
 
 """--- well, Search me! ---
   Plug 'haya14busa/is.vim'                  " incremental search improved - successor of incsearch.vim
@@ -62,20 +100,16 @@ call plug#begin(b:bundle_path)
   map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)<Plug>(anzu-update-search-status-with-echo)
   map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)<Plug>(anzu-update-search-status-with-echo)
 
-  "Plug 'haya14busa/vim-asterisk'            " Start a * or # search from a visual block
-  "map *  <Plug>(asterisk-z*)zz<Plug>(is-nohl-1)
-  "map g* <Plug>(asterisk-gz*)zz<Plug>(is-nohl-1)
-  "map #  <Plug>(asterisk-z#)zz<Plug>(is-nohl-1)
-  "map g# <Plug>(asterisk-gz#)zz<Plug>(is-nohl-1)
-  "let g:asterisk#keeppos = 1
-
 """--- Alignment ---
   Plug 'cometsong/AlignChips.vim'           " from Dr Chip's Align plugin (vimscript #294)
+  let g:DrChipTopLvlMenu= 'Plugin.'         " default: 'DrChip.'
 
 """--- commentary ---
-  Plug 'scrooloose/nerdcommenter'           " comments smartly by filetype
   Plug 'cometsong/CommentFrame.vim'         " frame and full line comment styles
-  "let g:NERDAltDelims_vim = 1
+  let g:CommentFrame_SkipDefaultMappings = 0
+  let g:CommentFrame_TextWidth = 100
+
+  Plug 'scrooloose/nerdcommenter'           " comments smartly by filetype
   let g:NERDCustomDelimiters = {
     \ 'vim':      { 'left': '"', 'leftAlt': '"""' },
     \ 'iptables': { 'left': '# ' },
@@ -91,10 +125,15 @@ call plug#begin(b:bundle_path)
     call map#Keys('nv', 'ds', ':Dispatch<CR>')
     call map#Keys('nv', 'dm', ':Make<CR>')
     amenu <silent> .66 &Cometsong.Dispatch\ file<Tab>dm   <Leader>dm   " Cometsong Menu!
+    let g:dispatch_compilers = {
+          \ 'sh': 'bash',
+          \ }
 
   Plug 'thinca/vim-quickrun'                " quick make, many filetypes
     call map#Keys('niv', 'qr', ':QuickRun<CR>')
     amenu <silent> .66 &Cometsong.QuickRun\ file<Tab>qr   <Leader>qr   " Cometsong Menu!
+    call map#Keys('niv', 'gQ', ':QuickRun<CR>', '')
+    amenu <silent> .66 &Cometsong.QuickRun\ file<Tab>gQ   gQ           " Cometsong Menu!
 
   Plug 'JarrodCTaylor/vim-shell-executor'   " execute all or selected with any shell command
 
@@ -109,21 +148,24 @@ call plug#begin(b:bundle_path)
 
     "" keep linters from running when opening a file
     "let g:ale_lint_on_enter = 0
-    let g:ale_linters_explicit = 1 " enable limited set
+    "let g:ale_linters_explicit = 1 " enable limited set
+    let g:ale_linter_aliases = {'groovy': 'java'}
     let g:ale_linters = {
     \   'awk':        ['all'],
     \   'dockerfile': ['all'],
     \   'git':        ['all'],
     \   'go':         ['gofmt', 'golint'],
+    \   'groovy':     ['groovysh', 'codenarc', 'javac'],
     \   'javascript': ['all'],
     \   'json':       ['all'],
     \   'lua':        ['all'],
     \   'markdown':   ['all'],
-    \   'python':     ['prospector', 'pyflakes', 'flake8'],
+    \   'python':     ['flake8'],
     \   'sql':        ['all'],
     \   'sh':         ['shell', 'shellcheck'],
     \   'typescript': ['all'],
     \   'vim':        ['all'],
+    \   'yaml':       ['all'],
     \}
     let g:ale_python_flake8_options = '--max-line-length=100'
     let g:ale_yaml_yamllint_options = '-c $HOME/.yamllint'
@@ -156,14 +198,38 @@ call plug#begin(b:bundle_path)
   endif
 
 """--- unix/shell/utils ---
-  Plug 'kassio/neoterm'                     " Wrapper of some vim/neovim's :terminal functions
+  Plug 'kassio/neoterm'                     " Wrapper of some (neo)vim's :terminal functions
     let g:neoterm_default_mod = 'rightbelow'
   Plug 'tpope/vim-eunuch'                   " unix
   Plug 'artnez/vim-writepath'               " e some/new/path/file.foo
   Plug 'vim-utils/vim-man'                  " View man pages in vim. Grep for the man pages
-  Plug 'mhinz/vim-grepper'                  " grepping flexibility
+
+"""--- grepping flexibility ---
+  Plug 'mhinz/vim-grepper'
+    let g:grepper = {}
+    "runtime plugin/grepper.vim
+
+    let g:grepper.prompt_text = '$c($t)>'   " prompt: Grepper(tool)
+    let g:grepper.tools = ['rg', 'git', 'grep']
+    let g:grepper.highlight = 1             " highlight matches
+    let g:grepper.git = {'grepprg': 'InGi'} " append case insensitive
+    let g:grepper.jump = 0                  " auto jump to the first match.
+    let g:grepper.append = 0                " append matches to the current list
+
+    "nmap gs <plug>(GrepperOperator)         " put text into 'select' mode
+    "xmap gs <plug>(GrepperOperator)         " put visual text into 'select' mode
+
+    nnoremap <leader>gg :Grepper -tool git<cr>
+    nnoremap <leader>gr :Grepper -cword -dir file<cr>
+    nnoremap <leader>gs :Grepper -side<cr>
+    nnoremap <leader>g* :Grepper -cword -noprompt<cr>
+
+    command! -nargs=1 Gw Grepper -tool rg -dir file -query <args>
+    command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|NOTE|XXX):'
+
   "Plug 'benmills/vimux'                     " interact with tmux
   "Plug 'ervandew/screen'                    " simulate a split shell in vim using either gnu screen or tmux
+  "Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Asynchronous execution plugin for Vim 
 
 """--- matches ---
   Plug 'Raimondi/delimitMate'               " autoclose {([, etc
@@ -179,17 +245,31 @@ call plug#begin(b:bundle_path)
     let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
     let g:completor_blacklist = ['tagbar', 'qf', 'netrw', 'unite', 'vimwiki'] " default
     let g:completor_blacklist = 
-      \ g:completor_blacklist + ['diff', 'netranger'] " add new vals to list var
+      \ g:completor_blacklist + ['diff'] " add new vals to list var
       call uniq(sort(g:completor_blacklist)) " remove dupes if exist, when `so %`
+    let g:completor_complete_options = 'menuone,noselect,preview'
 
   Plug 'wellle/tmux-complete.vim'          " complete: 'tmux'
   Plug 'c9s/perlomni.vim', {'for': 'perl'} " perl omnicomplete
 
 """--- File Explorer ---
-  Plug 'ipod825/vim-netranger'  "ranger style file tree, supporting remotes e.g. Mega, dropbox
-    let g:NETRPanelSize = 2
-    let g:NETRSplitOrientation = 'leftabove'
-    call map#Keys('ni', '<F2>', ':leftabove 50vsplit %:p:h<CR>', '')  " explore cur buf's folder
+  " Disable netrw
+  let g:loaded_netrw             = 1
+  let g:loaded_netrwPlugin       = 1
+  let g:loaded_netrwSettings     = 1
+  let g:loaded_netrwFileHandlers = 1
+
+  Plug 'lambdalisue/fern.vim'
+    call map#Keys('ni', '<F2>', ':Fern . -drawer -keep -toggle -width=45 <CR>', '')  " explore cur buf's folder
+    call map#Keys('ni', '<F3>', ':Fern . -opener="topleft split" <CR>', '')           " explore cur buf's folder
+
+  Plug 'lambdalisue/nerdfont.vim'
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim'       " Fern plugin: use nerdfont icons for filtypes
+    let g:fern#renderer = "nerdfont"
+
+  Plug 'lambdalisue/fern-bookmark.vim'                " Fern plugin: implement bookmark scheme
+  Plug 'lambdalisue/fern-mapping-project-top.vim'     " Fern plugin: to find top project folder via git
+
 
 "  Plug 'scrooloose/nerdtree'                " Nerdy Directories
 "  let g:NERDTreeHijackNetrw = 1
@@ -200,8 +280,6 @@ call plug#begin(b:bundle_path)
 "  let g:NERDTreeShowBookmarks = 1
 "  let g:NERDTreeNaturalSort = 1
 "  call map#Keys('ni', '<F2>', ':NERDTreeToggle<CR>', '')
-
-  let g:loaded_netrwPlugin = 0
 
 """--- CtrlSpace ---
   Plug 'vim-ctrlspace/vim-ctrlspace'  " lists of stuff:  Buffer List, File List, Tab List, Workspace List, Bookmark List
@@ -244,7 +322,8 @@ call plug#begin(b:bundle_path)
 
   "let g:CtrlSpaceKeys = {}
 
-  let g:CtrlSpaceProjectRootMarkers = []
+  "let g:CtrlSpaceCacheDir = expand($HOME)
+  "let g:CtrlSpaceProjectRootMarkers = []
 
 """--- versionizing ---
   Plug 'inkarkat/vcscommand.vim'            " all version controllers
@@ -272,12 +351,12 @@ call plug#begin(b:bundle_path)
   let g:util_debug = 0
 
 """--- Encryption ---
-  Plug 'jamessan/vim-gnupg'                 " use gpg for file encrpytion
+  Plug 'jamessan/vim-gnupg'                 " use gpg for file encryption
 
 """--- Numeric, Increments ---
   "Plug 'jmcantrell/numbered.vim'             " number or renumber lines
   Plug 'vim-scripts/L9'                     " utils
-  \| Plug 'cometsong/VisIncr.vim'           " Dr. Chip's Visual Increasing number,date,octal,etc columns
+  Plug 'cometsong/VisIncr.vim'              " Dr. Chip's Visual Increasing number,date,octal,etc columns
 
   Plug 'Konfekt/vim-CtrlXA'                 " [in|de]crement *words.  !Yay!
   let g:CtrlXA_Toggles = [
@@ -313,9 +392,6 @@ call plug#begin(b:bundle_path)
     \ ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'viii', 'ix', 'x'],
     \ ['I', 'II', 'III', 'IV', 'V', 'VI', 'VIII', 'IX', 'X'],
     \ ] " roman numerals cross-match with alphabet letters (i, v, x)
-
-"""--- Sample of Unmanaged plugin (manually installed and updated) ---
-  "Plug '~/my-prototype-plugin'
 
 """--- Colorrific ---
   if (has('termguicolors'))
@@ -373,47 +449,50 @@ call plug#begin(b:bundle_path)
   "let g:templates_user_variables = [ ['', ''] ]
   let g:templates_no_autocmd = 1
   
-  " User Variables
-  let g:username = 'cometsong'
-  let g:author   = "Benjamin Leopold (cometsong)"
-  let g:email    = 'benjamin(at)cometsong(dot)net'
-  let g:license  = 'GPL v3 http://www.gnu.org/licenses/gpl-3.0.txt'
-  let g:github   = 'https://github.com/cometsong'
-  let g:gitrepos = 'https://git.cometsong.net'
-
 """--- snippets, completions ---
-  if has('python3')
-      Plug 'SirVer/UltiSnips'               " preferred
-  else
-      Plug 'MarcWeber/vim-addon-mw-utils'
-      \| Plug 'tomtom/tlib_vim'
-        \| Plug 'garbas/vim-snipmate'       " backup if no python enabled
-  endif
-    \| Plug 'cometsong/vim-snippets'
-    \| Plug 'tlavi/SnipMgr'
-
-  " Snip's User Variables
-  let g:snips_author   = g:author
-  let g:snips_email    = g:email
-  let g:snips_username = g:username
-  let g:snips_github   = g:github
-  let g:snips_gitrepos = g:gitrepos
 
   let g:snippets_dir = '~/.vim/snippets'
-  let g:snippet_dirs = ['~/.vim/bundle/vim-snippets/snippets', '~/.vim/bundle/vim-snippets/UltiSnips']
+  let g:snippet_dirs = ['~/.vim/bundle/vim-snippets/snippets']
 
-  let g:UltiSnipsEditSplit           = 'vertical'
-  let g:UltiSnipsSnippetsDir         = g:snippets_dir
-  let g:UltiSnipsSnippetDirectories  = g:snippet_dirs
-  let g:UltiSnipsEnableSnipMate      = '1'
-  "let g:UltiSnipsExpandTrigger       = '<tab>'
-  "let g:UltiSnipsListSnippets        = '<c-tab>'
-  "let g:UltiSnipsJumpForwardTrigger  = '<c-j>'
-  "let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+  Plug 'Jorengarenar/miniSnip'          " lightweight minimal snippet engine
+  Plug 'honza/vim-snippets'             " collection of snippets in diff formats
+
+  let g:miniSnip_local = g:snippets_dir
+  let g:miniSnip_dirs = g:snippet_dirs
+  "let g:miniSnip_trigger  = '<Tab>'
+  "let g:miniSnip_complkey = '<C-x><C-u>' = 
+  let g:miniSnip_extends  = {}
+  let g:miniSnip_ext      = 'snippets'
+
+  " To use snipMate format snippets:  " defaults
+  let g:miniSnip_opening  = '${'      " '<{'
+  let g:miniSnip_closing  = '}'       " '}>'
+  let g:miniSnip_evalmark = '`'       " '!' 
+  let g:miniSnip_finalTag = '0'       " '+' 
+  let g:miniSnip_noskip   = '!'       " '`' 
+
+  let g:miniSnip_delimChg = '='       " '$' 
+  let g:miniSnip_descmark = '?'       " '?' 
+  let g:miniSnip_refmark  = '~'       " '~' 
+  let g:miniSnip_named    = '@'       " '@' 
+
+
+  " Plug 'drmingdrmer/xptemplate'         " code snippets engine for vim, and snippets library
+  " let g:xptemplate_key = '<C-\>'
+  " let g:xptemplate_always_show_pum = 1  " default:1
+  " let g:xptemplate_brace_complete = 0   " default:1
+  " let g:xptemplate_break_undo = 1       " default:0
+  " "let g:xptemplate_close_pum = 0        " default:0
+  " "let g:xptemplate_minimal_prefix =     " number of chars to trigger
+  " let g:xptemplate_pum_quick_back = 0    " 1=>remove >1 chars back to longer list
+  " "let g:xptemplate_strip_left = 
+  " "let g:xptemplate_vars = 
+  " "  \ 'author=cometsong'
+  " "  \ '&email=cometsong.net'
 
   " Plugin key-mappings.
-  call map#Keys('ni', 'ss', '<C-c>:UltiSnipsEdit<CR>')
-  amenu <silent> .200 &Cometsong.&OpenSnippet\ File<Tab>ss ss
+  "call map#Keys('ni', 'ss', '<C-c>:UltiSnipsEdit<CR>')
+  "amenu <silent> .200 &Cometsong.&OpenSnippet\ File<Tab>ss ss
 
   " For conceal markers.
   if has('conceal')
@@ -467,18 +546,19 @@ call plug#begin(b:bundle_path)
   call map#Keys('ni', 'sct', ':ScratchToggle<CR>')
   amenu <silent> .61 &Cometsong.ScratchToggle<Tab>sct  <Leader>sct  " Cometsong Menu!
 
-"""--- peekaboo registers Quick view ---
+"""--- Registers ---
   Plug 'junegunn/vim-peekaboo'              " peek at all registers when starting to use one
   let g:peekaboo_delay = 5
   let g:peekaboo_compact = 0
   let g:peekaboo_window	= "vert bo 50new"
+  Plug 'inkarkat/vim-ingo-library'          " lib for inkarkat plugins
+  \|Plug 'inkarkat/vim-ReplaceWithRegister' " a two-in-one command that replaces text with register, d'ing to black hole
 
 """--- Signature Marks ---
   Plug 'kshenoy/vim-signature'              " place, toggle and display marks
-  let g:SignatureMarkLineHL = "'Exception'"
 
 """--- Sayonara ---
-  Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }  " replace 'bufkill' with more sanity
+  Plug 'cometsong/vim-sayonara'  " replace 'bufkill' with more sanity; forked from mhinz
   call map#Keys('nv', 'bd', ':Sayonara!<CR>')
   call map#Keys('nv', 'bD', ':Sayonara<CR>')
   cabbr BD Sayonara!
@@ -545,17 +625,12 @@ endfunction
   Plug 'xolox/vim-misc'
   \ | Plug 'xolox/vim-pyref',  {'for': ['python']}    " python docs
 
+""""--- json ---
+  Plug 'tpope/vim-jdaddy', {'for': ['json']}          " JSON manipulation and pretty printing
+
 """"--- markdown ---
   Plug 'tpope/vim-markdown', {'for': 'md'}            " syntax highlighting, force .md = markdown
   Plug 'nelstrom/vim-markdown-folding', {'for': 'md'} " fold those markdowns!
-
-""""--- yaml ---
-  Plug 'ingydotnet/yaml-vim', {'for': 'yaml'}
-  if has("ruby")
-    Plug 'munen/find_yaml_key', {'for': 'yaml'}
-  else
-    let g:find_yaml_key = 1
-  endif
 
 """"--- html/jinja2, /(java|type)script ---
   Plug 'othree/html5.vim',           {'for': ['html']}
@@ -563,11 +638,16 @@ endfunction
   Plug 'leafgarland/typescript-vim', {'for': ['javascript', 'typescript']}
   Plug 'pangloss/vim-javascript',    {'for': ['javascript', 'typescript']}
 
-""""--- toml ---
+""""--- xml/toml/yaml ---
+  Plug 'othree/xml.vim', {'for': ['xml','html','xhtml','sgml']}
   Plug 'cespare/vim-toml', {'for': 'toml'}
 
-""""--- xml ---
-  Plug 'othree/xml.vim', {'for': ['xml','html','xhtml','sgml']}
+  Plug 'ingydotnet/yaml-vim', {'for': 'yaml'}
+  if has("ruby")
+    Plug 'munen/find_yaml_key', {'for': 'yaml'}
+  else
+    let g:find_yaml_key = 1
+  endif
 
 """"--- csv ---
   Plug 'chrisbra/csv.vim', {'for': 'csv'}             " csv display and functions
@@ -596,33 +676,23 @@ endfunction
   Plug 'broadinstitute/vim-wdl',  {'for': ['wdl']}
 
 """"--- OS Containers ---
-  Plug 'biosugar0/singularity-vim',  {'for': ['Singularity']}
-    au BufRead,BufNewFile *.def set filetype=Singularity
+  Plug 'biosugar0/singularity-vim',  {'for': ['Singularity','singularity']}
+    au BufRead,BufNewFile *.def set filetype=singularity
 
-"""-- for testing plugins ---
-  Plug 'junegunn/vader.vim', {'for': 'vader'}
+""""--- sub-context ftdetect ---
+  Plug 'Shougo/context_filetype.vim'        " find fenced code blocks, assign filetype
 
-"""-- Other Stuff  ---
-  Plug 'coderifous/textobj-word-column.vim' " visual select columns based on [wW]ord boundaries
-  Plug 'vim-scripts/camelcasemotion'        " TraverseCamelStrings
-  Plug 'cometsong/simplefold.vim'           " custom folding for some syntaxes
-  Plug 'tpope/vim-surround'                 " surround strings with things
-  Plug 'tpope/vim-repeat'                   " repeat many many tasks
-  Plug 'vim-scripts/visualrepeat'           " cf. vim-repeat, but in visual mode
-  Plug 'tpope/vim-abolish'                  " Abbreviation, Subvert, Coercion
-  Plug 'ervandew/archive'                   " browse contents of archive files
-  Plug 'terryma/vim-multiple-cursors'       " multiple cursors within vim, for quick refactoring, correcting, amazing, etc.
-  Plug 'wesQ3/vim-windowswap'               " swap window locations
-  Plug 'terryma/vim-expand-region'          " expand/contract visual selection using + and _
-  Plug 'wellle/targets.vim'                 " add various text objects to operate on
-  Plug 'romainl/vim-qlist'                  " make results of include- and definition-search easier and more persistent using quickfix list
-  Plug 'szw/vim-dict'                       " fetch definitions via dict.org and local dict file
-    set dictionary+=/usr/share/dict/words
+"""--- for testing plugins ---
+  Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
-  " 'must be last'
+"""--- Sample of Unmanaged plugin (manually installed and updated) ---
+  "Plug '~/my-prototype-plugin'
+
+"""--- devicons 'must be last'
   Plug 'ryanoasis/vim-devicons'             " Adds file type glyphs/icons to popular plugins
 
 """--- Add plugins to &runtimepath ---
 call plug#end()
 
-""" vim:fdm=expr:fdl=1:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
+""" vim:fdm=expr:fdl=0:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
+
