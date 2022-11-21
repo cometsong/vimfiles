@@ -131,7 +131,7 @@ amenu <silent> .61 &Cometsong.Remove\ EOL\ Spaces<Tab>ers   <Leader>ers   " Come
 "}}}
 
 "--- JSON   {{{
-call map#Keys('niv', '=j', ':%!pyx -m json.tool<CR>', '')
+call map#Keys('niv', '=j', ':%!python -m json.tool --indent 2<CR>', '')
 amenu <silent> .901 &Cometsong.Format\ JSON\ buffer<Tab>\=j   =j   " Cometsong Menu!
 "}}}
 
@@ -169,7 +169,7 @@ call map#Keys('ni', 'wf', ':call ShowCmdMsg("set wfh! wfw! wfh? wfw?")<CR>')
 amenu <silent> .210 &Cometsong.&WinFixToggle\ (height+width)\ mode<Tab>wf  <Leader>wf
 "}}}
 
-"--- JAX work mappings {{{
+"--- Meeting Minutes YAML mappings {{{
 command! MinutesDatestamp normggo- datetime: "\dtzggO\dtsyiw"tdd/event<CR>$diW
 call map#Keys('n', '=md', ':MinutesDatestamp<CR>', '')
 call map#Keys('n', '=ms', ':saveas t<BS>--mtg.yaml<Left><Left><Left><Left><Left><Left><Left><Left><Left>', '')
@@ -192,6 +192,10 @@ call map#Keys('ni', 'gF', ':vertical windcmd F<CR>') " to linenum
 call map#Keys('t', '<C-W>gt', '<C-W>:tabnext<cr>', '')
 call map#Keys('t', '<C-W>gT', '<C-W>:tabprev<cr>', '')
 call map#Keys('t', '<C-W><Space>', '<C-W>:CtrlSpace<cr>', '')
+"}}}
+
+"--- Repeat substitution over selected lines  {{{
+xnoremap & :norm &<CR>
 "}}}
 
 " vim: set ft=vim ts=2 sw=2 tw=100 et fdm=marker:
